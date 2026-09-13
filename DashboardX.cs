@@ -28,8 +28,21 @@ namespace Dentistry
             this.TomorrowPatientLbl.Text = TomorrowDate.DayName;
             this.AfterTomorrowPatientLbl.Text = AfterTomorrowDate.DayName;
 
-            GetCheque_CurrentWeek();
-            GetCheque_NextWeek();
+            try
+            {
+
+                LoadUserInfo();
+                GetPatients_Today();
+                GetPatients_Tomorrow();
+                GetPatients_AfterTomorrow();
+                GetCheque_CurrentWeek();
+                GetCheque_NextWeek();
+                GetFollowup_CurrentWeek();
+            }
+            catch(Exception exp)
+            {
+                this.Close();
+            }
         }
 
         #region LoadInformation
@@ -213,6 +226,8 @@ namespace Dentistry
             this.TodayPatientTxt.Text = count.ToString();
 
         }
+    
+
         private void GetPatients_Tomorrow()
         {
             int days = 0;
@@ -228,6 +243,7 @@ namespace Dentistry
             this.TomorrowPatientTxt.Text = count.ToString();
 
         }
+     
         private void GetPatients_AfterTomorrow()
         {
             int days = 0;
@@ -253,32 +269,31 @@ namespace Dentistry
 
             IEnumerable<dynamic> list = null;
 
-            if (result != null && result.Success == true && result.Data != null)
-            {
-                var dd = result.Data;
-                list = dd != null && (Enumerable.Count(dd) > 0) ? (dd as IEnumerable<dynamic>).Where(i => Convert.ToBoolean(i.IsDeleted) != true)
-                                                                                  .Select(i =>
-                                                                                  new
-                                                                                  {
-                                                                                      i.Id,
-                                                                                      i.PatientId,
-                                                                                      i.PatientName,
-                                                                                      i.DoctorId,
-                                                                                      i.DoctorTitle,
-                                                                                      i.ServiceGroupId,
-                                                                                      i.ServiceGroupTitle,
-                                                                                      i.SolarDate,
-                                                                                      i.StartTime,
-                                                                                      i.EndTime,
-                                                                                      i.Color,
-                                                                                      i.MobilePhone
-                                                                                  }).ToList() : Enumerable.Empty<dynamic>(); 
 
-            }
+            var data = (result != null && result.Data != null && result.Data != null && (Enumerable.Count(result.Data) > 0)) ? result.Data : null;
+            list = data != null ? (data as IEnumerable<dynamic>).Where(i => Convert.ToBoolean(i.IsDeleted) != true)
+                                    .Select(i =>
+                                    new
+                                    {
+                                        i.Id,
+                                        i.PatientId,
+                                        i.PatientName,
+                                        i.DoctorId,
+                                        i.DoctorTitle,
+                                        i.ServiceGroupId,
+                                        i.ServiceGroupTitle,
+                                        i.SolarDate,
+                                        i.StartTime,
+                                        i.EndTime,
+                                        i.Color,
+                                        i.MobilePhone
+                                    }).ToList() : Enumerable.Empty<dynamic>(); 
+
+            
             return list;
         
         }
-
+       
         private void GetCheque_CurrentWeek()
         {
             int days = 0;
@@ -296,7 +311,7 @@ namespace Dentistry
             int count = Enumerable.Count(list);
             this.CurrentWeekChequeTxt.Text = count.ToString();              
         }
-
+       
         private void GetCheque_NextWeek()
         {
             int days = 7;
@@ -322,10 +337,10 @@ namespace Dentistry
             sObj.FromDate = fromDate;
             sObj.ToDate = toDate;
 
-            var data = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
-            var dd = (data != null && data.Data != null && data.Data != null && (Enumerable.Count(data.Data) > 0)) ? data.Data : null;
+            var result = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+            var data = (result != null && result.Data != null && result.Data != null && (Enumerable.Count(result.Data) > 0)) ? result.Data : null;
 
-            IEnumerable<dynamic> list = dd != null ? (dd as IEnumerable<dynamic>)
+            IEnumerable<dynamic> list = data != null ? (data as IEnumerable<dynamic>)
                                                                             .Select(i =>
                                                                             new
                                                                             {
@@ -340,7 +355,7 @@ namespace Dentistry
             return list;
             
         }
-
+       
         private void GetFollowup_CurrentWeek()
         {
             int days = 0;
@@ -392,10 +407,9 @@ namespace Dentistry
             sObj.IsDeleted = null;
 
             var result = DataProvider.GetPatientFollowUpsX(sObj);
-           
-            var dd = result.Data;
-            IEnumerable<dynamic> list = dd != null && dd != null && (Enumerable.Count(dd) > 0)
-                                        ? (dd as IEnumerable<dynamic>).Where(i => Convert.ToBoolean(i.IsDeleted) != true).Select(i => i).ToList()
+            var data = (result != null && result.Data != null && result.Data != null && (Enumerable.Count(result.Data) > 0)) ? result.Data : null;
+            IEnumerable<dynamic> list = data != null 
+                                        ? (data as IEnumerable<dynamic>).Where(i => Convert.ToBoolean(i.IsDeleted) != true).Select(i => i).ToList()
                                         : Enumerable.Empty<dynamic>();
 
             return list;
