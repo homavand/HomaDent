@@ -1,0 +1,1459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model1TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DentalContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BaseCodings" EntityType="Model1.BaseCoding" />
+          <EntitySet Name="BaseTables" EntityType="Model1.BaseTable" />
+          <EntitySet Name="Configs" EntityType="Model1.Config" />
+          <EntitySet Name="Costs" EntityType="Model1.Cost" />
+          <AssociationSet Name="CostTypeCost" Association="Model1.CostTypeCost">
+            <End Role="CostType" EntitySet="BaseCodings" />
+            <End Role="Cost" EntitySet="Costs" />
+          </AssociationSet>
+          <AssociationSet Name="PayTypeCost" Association="Model1.PayTypeCost">
+            <End Role="PayType" EntitySet="BaseCodings" />
+            <End Role="Cost" EntitySet="Costs" />
+          </AssociationSet>
+          <AssociationSet Name="BargainSideCost" Association="Model1.BargainSideCost">
+            <End Role="BargainSide" EntitySet="BaseCodings" />
+            <End Role="Cost" EntitySet="Costs" />
+          </AssociationSet>
+          <AssociationSet Name="BankCost" Association="Model1.BankCost">
+            <End Role="Bank" EntitySet="BaseCodings" />
+            <End Role="Cost" EntitySet="Costs" />
+          </AssociationSet>
+          <EntitySet Name="Insurers" EntityType="Model1.Insurer" />
+          <AssociationSet Name="InsuranceInsurer" Association="Model1.InsuranceInsurer">
+            <End Role="Insurance" EntitySet="BaseCodings" />
+            <End Role="Insurer" EntitySet="Insurers" />
+          </AssociationSet>
+          <AssociationSet Name="InsuranceBoxInsurer" Association="Model1.InsuranceBoxInsurer">
+            <End Role="InsuranceBox" EntitySet="BaseCodings" />
+            <End Role="Insurer" EntitySet="Insurers" />
+          </AssociationSet>
+          <EntitySet Name="Offices" EntityType="Model1.Office" />
+          <EntitySet Name="Patients" EntityType="Model1.Patient" />
+          <EntitySet Name="Users" EntityType="Model1.User" />
+          <EntitySet Name="WorkTimes" EntityType="Model1.WorkTime" />
+          <EntitySet Name="Visits" EntityType="Model1.Visit" />
+          <EntitySet Name="Services" EntityType="Model1.Service" />
+          <AssociationSet Name="ServiceGroupService" Association="Model1.ServiceGroupService">
+            <End Role="ServiceGroup" EntitySet="BaseCodings" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
+          <EntitySet Name="Teeth" EntityType="Model1.Tooth" />
+          <EntitySet Name="Staffs" EntityType="Model1.Staff" />
+          <AssociationSet Name="StaffTypeStaff" Association="Model1.StaffTypeStaff">
+            <End Role="StaffType" EntitySet="BaseCodings" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="GenderStaff" Association="Model1.GenderStaff">
+            <End Role="Gender" EntitySet="BaseCodings" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="SpecialtyDoctor" Association="Model1.SpecialtyDoctor">
+            <End Role="Specialty" EntitySet="BaseCodings" />
+            <End Role="Doctor" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="GenderPatient" Association="Model1.GenderPatient">
+            <End Role="Gender" EntitySet="BaseCodings" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="NationalityPatient" Association="Model1.NationalityPatient">
+            <End Role="Nationality" EntitySet="BaseCodings" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="MaritalStatusPatient" Association="Model1.MaritalStatusPatient">
+            <End Role="MaritalStatus" EntitySet="BaseCodings" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="EducationLevelPatient" Association="Model1.EducationLevelPatient">
+            <End Role="EducationLevel" EntitySet="BaseCodings" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="DoctorPatient" Association="Model1.DoctorPatient">
+            <End Role="Doctor" EntitySet="Staffs" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <EntitySet Name="PatientTeeth" EntityType="Model1.PatientTooth" />
+          <AssociationSet Name="PatientPatientTooth" Association="Model1.PatientPatientTooth">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientTooth" EntitySet="PatientTeeth" />
+          </AssociationSet>
+          <AssociationSet Name="ToothPatientTooth" Association="Model1.ToothPatientTooth">
+            <End Role="Tooth" EntitySet="Teeth" />
+            <End Role="PatientTooth" EntitySet="PatientTeeth" />
+          </AssociationSet>
+          <EntitySet Name="PatientSpecialDrugs" EntityType="Model1.PatientSpecialDrug" />
+          <EntitySet Name="PatientSpecialDiseases" EntityType="Model1.PatientSpecialDisease" />
+          <EntitySet Name="PatientSpecialComments" EntityType="Model1.PatientSpecialComment" />
+          <AssociationSet Name="PatientPatientSpecialComment" Association="Model1.PatientPatientSpecialComment">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientSpecialComment" EntitySet="PatientSpecialComments" />
+          </AssociationSet>
+          <AssociationSet Name="PatientPatientSpecialDisease" Association="Model1.PatientPatientSpecialDisease">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientSpecialDisease" EntitySet="PatientSpecialDiseases" />
+          </AssociationSet>
+          <AssociationSet Name="PatientPatientSpecialDrug" Association="Model1.PatientPatientSpecialDrug">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientSpecialDrug" EntitySet="PatientSpecialDrugs" />
+          </AssociationSet>
+          <AssociationSet Name="SpecialCommentTypePatientSpecialComment" Association="Model1.SpecialCommentTypePatientSpecialComment">
+            <End Role="SpecialCommentType" EntitySet="BaseCodings" />
+            <End Role="PatientSpecialComment" EntitySet="PatientSpecialComments" />
+          </AssociationSet>
+          <EntitySet Name="PatientServices" EntityType="Model1.PatientService" />
+          <AssociationSet Name="PatientPatientService" Association="Model1.PatientPatientService">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientService" EntitySet="PatientServices" />
+          </AssociationSet>
+          <AssociationSet Name="ServicePatientService" Association="Model1.ServicePatientService">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="PatientService" EntitySet="PatientServices" />
+          </AssociationSet>
+          <AssociationSet Name="DoctorPatientService" Association="Model1.DoctorPatientService">
+            <End Role="Doctor" EntitySet="Staffs" />
+            <End Role="PatientService" EntitySet="PatientServices" />
+          </AssociationSet>
+          <EntitySet Name="PatientInsurances" EntityType="Model1.PatientInsurance" />
+          <AssociationSet Name="PatientInsuranceInsurer" Association="Model1.PatientInsuranceInsurer">
+            <End Role="PatientInsurance" EntitySet="PatientInsurances" />
+            <End Role="Insurer" EntitySet="Insurers" />
+          </AssociationSet>
+          <AssociationSet Name="PatientPatientInsurance" Association="Model1.PatientPatientInsurance">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientInsurance" EntitySet="PatientInsurances" />
+          </AssociationSet>
+          <AssociationSet Name="InsuranceBookletTypePatientInsurance" Association="Model1.InsuranceBookletTypePatientInsurance">
+            <End Role="InsuranceBookletType" EntitySet="BaseCodings" />
+            <End Role="PatientInsurance" EntitySet="PatientInsurances" />
+          </AssociationSet>
+          <AssociationSet Name="InsuranceTypePatientInsurance" Association="Model1.InsuranceTypePatientInsurance">
+            <End Role="InsuranceType" EntitySet="BaseCodings" />
+            <End Role="PatientInsurance" EntitySet="PatientInsurances" />
+          </AssociationSet>
+          <AssociationSet Name="PersonRelationTypePatientInsurance" Association="Model1.PersonRelationTypePatientInsurance">
+            <End Role="PersonRelationType" EntitySet="BaseCodings" />
+            <End Role="PatientInsurance" EntitySet="PatientInsurances" />
+          </AssociationSet>
+          <EntitySet Name="PatientFollowups" EntityType="Model1.PatientFollowup" />
+          <AssociationSet Name="PatientPatientFollowup" Association="Model1.PatientPatientFollowup">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientFollowup" EntitySet="PatientFollowups" />
+          </AssociationSet>
+          <AssociationSet Name="DoctorPatientFollowup" Association="Model1.DoctorPatientFollowup">
+            <End Role="Doctor" EntitySet="Staffs" />
+            <End Role="PatientFollowup" EntitySet="PatientFollowups" />
+          </AssociationSet>
+          <EntitySet Name="PatientFinancials" EntityType="Model1.PatientFinancial" />
+          <AssociationSet Name="DoctorWorkTime" Association="Model1.DoctorWorkTime">
+            <End Role="Doctor" EntitySet="Staffs" />
+            <End Role="WorkTime" EntitySet="WorkTimes" />
+          </AssociationSet>
+          <AssociationSet Name="PatientPatientFinancial" Association="Model1.PatientPatientFinancial">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientFinancial" EntitySet="PatientFinancials" />
+          </AssociationSet>
+          <AssociationSet Name="PayTypePatientFinancial" Association="Model1.PayTypePatientFinancial">
+            <End Role="PayType" EntitySet="BaseCodings" />
+            <End Role="PatientFinancial" EntitySet="PatientFinancials" />
+          </AssociationSet>
+          <AssociationSet Name="BankPatientFinancial" Association="Model1.BankPatientFinancial">
+            <End Role="Bank" EntitySet="BaseCodings" />
+            <End Role="PatientFinancial" EntitySet="PatientFinancials" />
+          </AssociationSet>
+          <AssociationSet Name="ChequeStatusPatientFinancial" Association="Model1.ChequeStatusPatientFinancial">
+            <End Role="ChequeStatus" EntitySet="BaseCodings" />
+            <End Role="PatientFinancial" EntitySet="PatientFinancials" />
+          </AssociationSet>
+          <EntitySet Name="PatientDocuments" EntityType="Model1.PatientDocument" />
+          <AssociationSet Name="PatientPatientDocument" Association="Model1.PatientPatientDocument">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="PatientDocument" EntitySet="PatientDocuments" />
+          </AssociationSet>
+          <EntitySet Name="InsurerServiceTarefeChanges" EntityType="Model1.InsurerServiceTarefeChange" />
+          <AssociationSet Name="InsurerInsurerServiceTarefeChange" Association="Model1.InsurerInsurerServiceTarefeChange">
+            <End Role="Insurer" EntitySet="Insurers" />
+            <End Role="InsurerServiceTarefeChange" EntitySet="InsurerServiceTarefeChanges" />
+          </AssociationSet>
+          <AssociationSet Name="ServiceInsurerServiceTarefeChange" Association="Model1.ServiceInsurerServiceTarefeChange">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="InsurerServiceTarefeChange" EntitySet="InsurerServiceTarefeChanges" />
+          </AssociationSet>
+          <AssociationSet Name="UserInsurerServiceTarefeChange" Association="Model1.UserInsurerServiceTarefeChange">
+            <End Role="User" EntitySet="Users" />
+            <End Role="InsurerServiceTarefeChange" EntitySet="InsurerServiceTarefeChanges" />
+          </AssociationSet>
+          <EntitySet Name="InsurerFinancials" EntityType="Model1.InsurerFinancial" />
+          <AssociationSet Name="InsurerInsurerFinancial" Association="Model1.InsurerInsurerFinancial">
+            <End Role="Insurer" EntitySet="Insurers" />
+            <End Role="InsurerFinancial" EntitySet="InsurerFinancials" />
+          </AssociationSet>
+          <AssociationSet Name="UserInsurerFinancial" Association="Model1.UserInsurerFinancial">
+            <End Role="User" EntitySet="Users" />
+            <End Role="InsurerFinancial" EntitySet="InsurerFinancials" />
+          </AssociationSet>
+          <EntitySet Name="AppActions" EntityType="Model1.AppAction" />
+          <EntitySet Name="UserPermissions" EntityType="Model1.UserPermission" />
+          <AssociationSet Name="UserUserPermission" Association="Model1.UserUserPermission">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserPermission" EntitySet="UserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="AppActionUserPermission" Association="Model1.AppActionUserPermission">
+            <End Role="AppAction" EntitySet="AppActions" />
+            <End Role="UserPermission" EntitySet="UserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="DoctorVisit" Association="Model1.DoctorVisit">
+            <End Role="Doctor" EntitySet="Staffs" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="PatientVisit" Association="Model1.PatientVisit">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="ServiceGroupVisit" Association="Model1.ServiceGroupVisit">
+            <End Role="ServiceGroup" EntitySet="BaseCodings" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="SpecialDiseasPatientSpecialDisease" Association="Model1.SpecialDiseasPatientSpecialDisease">
+            <End Role="SpecialDiseas" EntitySet="BaseCodings" />
+            <End Role="PatientSpecialDisease" EntitySet="PatientSpecialDiseases" />
+          </AssociationSet>
+          <AssociationSet Name="SpecialDrugPatientSpecialDrug" Association="Model1.SpecialDrugPatientSpecialDrug">
+            <End Role="SpecialDrug" EntitySet="BaseCodings" />
+            <End Role="PatientSpecialDrug" EntitySet="PatientSpecialDrugs" />
+          </AssociationSet>
+          <AssociationSet Name="JobPatient" Association="Model1.JobPatient">
+            <End Role="Job" EntitySet="BaseCodings" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="BaseCoding">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="true" />
+          <Property Name="Value" Type="String" Nullable="true" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <Property Name="sort" Type="Int32" Nullable="false" />
+          <Property Name="TerminologyId" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdmissionType" BaseType="Model1.BaseCoding" />
+        <EntityType Name="Bank" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Costs" Relationship="Model1.BankCost" FromRole="Bank" ToRole="Cost" />
+          <NavigationProperty Name="PatientFinancials" Relationship="Model1.BankPatientFinancial" FromRole="Bank" ToRole="PatientFinancial" />
+        </EntityType>
+        <EntityType Name="BargainSide" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Costs" Relationship="Model1.BargainSideCost" FromRole="BargainSide" ToRole="Cost" />
+        </EntityType>
+        <EntityType Name="CheckupType" BaseType="Model1.BaseCoding" >
+        </EntityType>
+        <EntityType Name="ChequeStatus" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="PatientFinancials" Relationship="Model1.ChequeStatusPatientFinancial" FromRole="ChequeStatus" ToRole="PatientFinancial" />
+        </EntityType>
+        <EntityType Name="CostType" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Costs" Relationship="Model1.CostTypeCost" FromRole="CostType" ToRole="Cost" />
+        </EntityType>
+        <EntityType Name="DentalUnit" BaseType="Model1.BaseCoding" />
+        <EntityType Name="Diagnosis" BaseType="Model1.BaseCoding" />
+        <EntityType Name="DiagnosisStatus" BaseType="Model1.BaseCoding" />
+        <EntityType Name="DrugFrequency" BaseType="Model1.BaseCoding" />
+        <EntityType Name="DrugRoute" BaseType="Model1.BaseCoding" />
+        <EntityType Name="DrugShape" BaseType="Model1.BaseCoding" />
+        <EntityType Name="Drug" BaseType="Model1.BaseCoding" />
+        <EntityType Name="EducationLevel" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Patients" Relationship="Model1.EducationLevelPatient" FromRole="EducationLevel" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Gender" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Staffs" Relationship="Model1.GenderStaff" FromRole="Gender" ToRole="Staff" />
+          <NavigationProperty Name="Patients" Relationship="Model1.GenderPatient" FromRole="Gender" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="InsuranceBookletType" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="PatientInsurances" Relationship="Model1.InsuranceBookletTypePatientInsurance" FromRole="InsuranceBookletType" ToRole="PatientInsurance" />
+        </EntityType>
+        <EntityType Name="InsuranceBox" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Insurers" Relationship="Model1.InsuranceBoxInsurer" FromRole="InsuranceBox" ToRole="Insurer" />
+        </EntityType>
+        <EntityType Name="InsuranceType" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="PatientInsurances" Relationship="Model1.InsuranceTypePatientInsurance" FromRole="InsuranceType" ToRole="PatientInsurance" />
+        </EntityType>
+        <EntityType Name="Insurance" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Insurers" Relationship="Model1.InsuranceInsurer" FromRole="Insurance" ToRole="Insurer" />
+        </EntityType>
+        <EntityType Name="ItemUnit" BaseType="Model1.BaseCoding" />
+        <EntityType Name="Job" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Patients" Relationship="Model1.JobPatient" FromRole="Job" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="MaritalStatus" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Patients" Relationship="Model1.MaritalStatusPatient" FromRole="MaritalStatus" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Nationality" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Patients" Relationship="Model1.NationalityPatient" FromRole="Nationality" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="OrdinalTerm" BaseType="Model1.BaseCoding" />
+        <EntityType Name="PayStatus" BaseType="Model1.BaseCoding" />
+        <EntityType Name="PayType" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Costs" Relationship="Model1.PayTypeCost" FromRole="PayType" ToRole="Cost" />
+          <NavigationProperty Name="PatientFinancials" Relationship="Model1.PayTypePatientFinancial" FromRole="PayType" ToRole="PatientFinancial" />
+        </EntityType>
+        <EntityType Name="PersonRelationType" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="PatientInsurances" Relationship="Model1.PersonRelationTypePatientInsurance" FromRole="PersonRelationType" ToRole="PatientInsurance" />
+        </EntityType>
+        <EntityType Name="ReferredReason" BaseType="Model1.BaseCoding" />
+        <EntityType Name="ReferredType" BaseType="Model1.BaseCoding" />
+        <EntityType Name="ServiceGroup" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Services" Relationship="Model1.ServiceGroupService" FromRole="ServiceGroup" ToRole="Service" />
+          <NavigationProperty Name="Visits" Relationship="Model1.ServiceGroupVisit" FromRole="ServiceGroup" ToRole="Visit" />
+        </EntityType>
+        <EntityType Name="ServiceUnit" BaseType="Model1.BaseCoding" />
+        <EntityType Name="Severity" BaseType="Model1.BaseCoding" />
+        <EntityType Name="SpecialCommentType" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="PatientSpecialComments" Relationship="Model1.SpecialCommentTypePatientSpecialComment" FromRole="SpecialCommentType" ToRole="PatientSpecialComment" />
+        </EntityType>
+        <EntityType Name="SpecialDiseas" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="PatientSpecialDiseases" Relationship="Model1.SpecialDiseasPatientSpecialDisease" FromRole="SpecialDiseas" ToRole="PatientSpecialDisease" />
+        </EntityType>
+        <EntityType Name="SpecialDrug" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="PatientSpecialDrugs" Relationship="Model1.SpecialDrugPatientSpecialDrug" FromRole="SpecialDrug" ToRole="PatientSpecialDrug" />
+        </EntityType>
+        <EntityType Name="Specialty" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Doctors" Relationship="Model1.SpecialtyDoctor" FromRole="Specialty" ToRole="Doctor" />
+        </EntityType>
+        <EntityType Name="StaffType" BaseType="Model1.BaseCoding" >
+          <NavigationProperty Name="Staffs" Relationship="Model1.StaffTypeStaff" FromRole="StaffType" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="StuffTransactionType" BaseType="Model1.BaseCoding" />
+        <EntityType Name="StuffType" BaseType="Model1.BaseCoding" />
+        <EntityType Name="SubstanceType" BaseType="Model1.BaseCoding" />
+        <EntityType Name="ToothNumber" BaseType="Model1.BaseCoding" />
+        <EntityType Name="ToothPart" BaseType="Model1.BaseCoding" />
+        <EntityType Name="ToothSegment" BaseType="Model1.BaseCoding" />
+        <EntityType Name="BaseTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Entity" Type="String" Nullable="false" />
+          <Property Name="Table" Type="String" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="true" />
+          <Property Name="Tag" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Cost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <Property Name="FactorNumber" Type="String" Nullable="true" />
+          <Property Name="ChequeNumber" Type="String" Nullable="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="DateOfIssuance" Type="DateTime" Nullable="true" />
+          <Property Name="DateOfMaturity" Type="DateTime" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="CostType" Relationship="Model1.CostTypeCost" FromRole="Cost" ToRole="CostType" />
+          <Property Name="CostTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CheckupTypeId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="PayType" Relationship="Model1.PayTypeCost" FromRole="Cost" ToRole="PayType" />
+          <Property Name="PayTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BargainSide" Relationship="Model1.BargainSideCost" FromRole="Cost" ToRole="BargainSide" />
+          <Property Name="BargainSideId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Bank" Relationship="Model1.BankCost" FromRole="Cost" ToRole="Bank" />
+          <Property Name="BankId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <Association Name="CostTypeCost">
+          <End Type="Model1.CostType" Role="CostType" Multiplicity="1" />
+          <End Type="Model1.Cost" Role="Cost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cost">
+              <PropertyRef Name="CostTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PayTypeCost">
+          <End Type="Model1.PayType" Role="PayType" Multiplicity="1" />
+          <End Type="Model1.Cost" Role="Cost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cost">
+              <PropertyRef Name="PayTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BargainSideCost">
+          <End Type="Model1.BargainSide" Role="BargainSide" Multiplicity="0..1" />
+          <End Type="Model1.Cost" Role="Cost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BargainSide">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cost">
+              <PropertyRef Name="BargainSideId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BankCost">
+          <End Type="Model1.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="Model1.Cost" Role="Cost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cost">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Insurer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="IsBasic" Type="Boolean" Nullable="true" />
+          <Property Name="IsExtra" Type="Boolean" Nullable="true" />
+          <Property Name="InsurerPercent" Type="Int32" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="DefineDate" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Insurance" Relationship="Model1.InsuranceInsurer" FromRole="Insurer" ToRole="Insurance" />
+          <Property Name="InsuranceId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="InsuranceBox" Relationship="Model1.InsuranceBoxInsurer" FromRole="Insurer" ToRole="InsuranceBox" />
+          <Property Name="InsuranceBoxId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="PatientInsurances" Relationship="Model1.PatientInsuranceInsurer" FromRole="Insurer" ToRole="PatientInsurance" />
+          <NavigationProperty Name="InsurerServiceTarefeChanges" Relationship="Model1.InsurerInsurerServiceTarefeChange" FromRole="Insurer" ToRole="InsurerServiceTarefeChange" />
+          <NavigationProperty Name="InsurerFinancials" Relationship="Model1.InsurerInsurerFinancial" FromRole="Insurer" ToRole="InsurerFinancial" />
+        </EntityType>
+        <Association Name="InsuranceInsurer">
+          <End Type="Model1.Insurance" Role="Insurance" Multiplicity="0..1" />
+          <End Type="Model1.Insurer" Role="Insurer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Insurer">
+              <PropertyRef Name="InsuranceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InsuranceBoxInsurer">
+          <End Type="Model1.InsuranceBox" Role="InsuranceBox" Multiplicity="0..1" />
+          <End Type="Model1.Insurer" Role="Insurer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceBox">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Insurer">
+              <PropertyRef Name="InsuranceBoxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficeName" Type="String" Nullable="true" />
+          <Property Name="DoctorName" Type="String" Nullable="true" />
+          <Property Name="OfficeCode" Type="String" Nullable="true" />
+          <Property Name="OfficeType" Type="String" cg:SetterAccess="Public" Nullable="true" />
+          <Property Name="NezamPezeshki" Type="String" Nullable="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="true" />
+          <Property Name="OfficeAddress" Type="String" Nullable="true" />
+          <Property Name="Email" Type="String" Nullable="true" />
+          <Property Name="Website" Type="String" Nullable="true" />
+          <Property Name="DefineDate" Type="DateTime" Nullable="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+          <Property Name="DefaultDoctorId" Type="Int32" Nullable="true" />
+          <Property Name="DefaultBasicInsurerId" Type="Int32" Nullable="true" />
+          <Property Name="DefaultMaritalStatusId" Type="Int32" Nullable="true" />
+          <Property Name="DefaultEducationLevelId" Type="Int32" Nullable="true" />
+          <Property Name="DefaultNationalityId" Type="Int32" Nullable="true" />
+          <Property Name="BackupPath" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Doctor" BaseType="Model1.Staff">
+          <Property Name="MedicalNumber" Type="String" Nullable="false" />
+          <NavigationProperty Name="Specialty" Relationship="Model1.SpecialtyDoctor" FromRole="Doctor" ToRole="Specialty" />
+          <Property Name="SpecialtyId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Patients" Relationship="Model1.DoctorPatient" FromRole="Doctor" ToRole="Patient" />
+          <NavigationProperty Name="PatientServices" Relationship="Model1.DoctorPatientService" FromRole="Doctor" ToRole="PatientService" />
+          <NavigationProperty Name="PatientFollowups" Relationship="Model1.DoctorPatientFollowup" FromRole="Doctor" ToRole="PatientFollowup" />
+          <NavigationProperty Name="WorkTimes" Relationship="Model1.DoctorWorkTime" FromRole="Doctor" ToRole="WorkTime" />
+          <NavigationProperty Name="Visits" Relationship="Model1.DoctorVisit" FromRole="Doctor" ToRole="Visit" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="FatherName" Type="String" Nullable="false" />
+          <Property Name="NationalCode" Type="String" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Presenter" Type="String" Nullable="true" />
+          <Property Name="FixedPhone" Type="String" Nullable="true" />
+          <Property Name="MobilePhone" Type="String" Nullable="true" />
+          <Property Name="Address" Type="String" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <NavigationProperty Name="Gender" Relationship="Model1.GenderPatient" FromRole="Patient" ToRole="Gender" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Nationality" Relationship="Model1.NationalityPatient" FromRole="Patient" ToRole="Nationality" />
+          <Property Name="NationalityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MaritalStatu" Relationship="Model1.MaritalStatusPatient" FromRole="Patient" ToRole="MaritalStatus" />
+          <Property Name="MaritalStatusId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="EducationLevel" Relationship="Model1.EducationLevelPatient" FromRole="Patient" ToRole="EducationLevel" />
+          <Property Name="EducationLevelId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Doctor" Relationship="Model1.DoctorPatient" FromRole="Patient" ToRole="Doctor" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PatientTeeth" Relationship="Model1.PatientPatientTooth" FromRole="Patient" ToRole="PatientTooth" />
+          <NavigationProperty Name="PatientSpecialComments" Relationship="Model1.PatientPatientSpecialComment" FromRole="Patient" ToRole="PatientSpecialComment" />
+          <NavigationProperty Name="PatientSpecialDiseases" Relationship="Model1.PatientPatientSpecialDisease" FromRole="Patient" ToRole="PatientSpecialDisease" />
+          <NavigationProperty Name="PatientSpecialDrugs" Relationship="Model1.PatientPatientSpecialDrug" FromRole="Patient" ToRole="PatientSpecialDrug" />
+          <NavigationProperty Name="PatientServices" Relationship="Model1.PatientPatientService" FromRole="Patient" ToRole="PatientService" />
+          <NavigationProperty Name="PatientInsurances" Relationship="Model1.PatientPatientInsurance" FromRole="Patient" ToRole="PatientInsurance" />
+          <NavigationProperty Name="PatientFollowups" Relationship="Model1.PatientPatientFollowup" FromRole="Patient" ToRole="PatientFollowup" />
+          <NavigationProperty Name="PatientFinancials" Relationship="Model1.PatientPatientFinancial" FromRole="Patient" ToRole="PatientFinancial" />
+          <NavigationProperty Name="PatientDocuments" Relationship="Model1.PatientPatientDocument" FromRole="Patient" ToRole="PatientDocument" />
+          <NavigationProperty Name="Visits" Relationship="Model1.PatientVisit" FromRole="Patient" ToRole="Visit" />
+          <NavigationProperty Name="Job" Relationship="Model1.JobPatient" FromRole="Patient" ToRole="Job" />
+          <Property Name="JobId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="UserPass" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="InsurerServiceTarefeChanges" Relationship="Model1.UserInsurerServiceTarefeChange" FromRole="User" ToRole="InsurerServiceTarefeChange" />
+          <NavigationProperty Name="InsurerFinancials" Relationship="Model1.UserInsurerFinancial" FromRole="User" ToRole="InsurerFinancial" />
+          <NavigationProperty Name="UserPermissions" Relationship="Model1.UserUserPermission" FromRole="User" ToRole="UserPermission" />
+        </EntityType>
+        <EntityType Name="WorkTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" />
+          <Property Name="EndTime" Type="Time" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Doctor" Relationship="Model1.DoctorWorkTime" FromRole="WorkTime" ToRole="Doctor" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Visit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" />
+          <Property Name="EndTime" Type="Time" Nullable="false" />
+          <Property Name="Color" Type="Int32" Nullable="true" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Doctor" Relationship="Model1.DoctorVisit" FromRole="Visit" ToRole="Doctor" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientVisit" FromRole="Visit" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ServiceGroup" Relationship="Model1.ServiceGroupVisit" FromRole="Visit" ToRole="ServiceGroup" />
+          <Property Name="ServiceGroupId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="true" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <Property Name="Color" Type="Int32" Nullable="true" />
+          <Property Name="IsToothNumber" Type="Boolean" Nullable="true" />
+          <Property Name="IsMoreTooth" Type="Boolean" Nullable="true" />
+          <Property Name="DefineDate" Type="DateTime" Nullable="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="ServiceGroup" Relationship="Model1.ServiceGroupService" FromRole="Service" ToRole="ServiceGroup" />
+          <Property Name="ServiceGroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PatientServices" Relationship="Model1.ServicePatientService" FromRole="Service" ToRole="PatientService" />
+          <NavigationProperty Name="InsurerServiceTarefeChanges" Relationship="Model1.ServiceInsurerServiceTarefeChange" FromRole="Service" ToRole="InsurerServiceTarefeChange" />
+        </EntityType>
+        <Association Name="ServiceGroupService">
+          <End Type="Model1.ServiceGroup" Role="ServiceGroup" Multiplicity="1" />
+          <End Type="Model1.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ServiceGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tooth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToothName" Type="String" Nullable="false" />
+          <Property Name="ToothTitle" Type="String" Nullable="false" />
+          <Property Name="ToothGroup" Type="Int32" Nullable="false" />
+          <Property Name="ToothImage" Type="Binary" Nullable="false" />
+          <Property Name="ToothModel" Type="String" Nullable="false" />
+          <Property Name="ToothRegion" Type="String" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PatientTeeth" Relationship="Model1.ToothPatientTooth" FromRole="Tooth" ToRole="PatientTooth" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="NationalCode" Type="String" Nullable="true" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <Property Name="FixedPhone" Type="String" Nullable="true" />
+          <Property Name="MobilePhone" Type="String" Nullable="true" />
+          <Property Name="Address" Type="String" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="StaffType" Relationship="Model1.StaffTypeStaff" FromRole="Staff" ToRole="StaffType" />
+          <Property Name="StaffTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Model1.GenderStaff" FromRole="Staff" ToRole="Gender" />
+          <Property Name="GenderId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="StaffTypeStaff">
+          <End Type="Model1.StaffType" Role="StaffType" Multiplicity="1" />
+          <End Type="Model1.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="StaffTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GenderStaff">
+          <End Type="Model1.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="Model1.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SpecialtyDoctor">
+          <End Type="Model1.Specialty" Role="Specialty" Multiplicity="0..1" />
+          <End Type="Model1.Doctor" Role="Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="SpecialtyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GenderPatient">
+          <End Type="Model1.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="NationalityPatient">
+          <End Type="Model1.Nationality" Role="Nationality" Multiplicity="1" />
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="NationalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MaritalStatusPatient">
+          <End Type="Model1.MaritalStatus" Role="MaritalStatus" Multiplicity="0..1" />
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaritalStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="MaritalStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EducationLevelPatient">
+          <End Type="Model1.EducationLevel" Role="EducationLevel" Multiplicity="0..1" />
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="EducationLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DoctorPatient">
+          <End Type="Model1.Doctor" Role="Doctor" Multiplicity="1" />
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatientTooth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <Property Name="Rotate" Type="Int32" Nullable="false" />
+          <Property Name="TipB" Type="Int32" Nullable="false" />
+          <Property Name="TipM" Type="Int32" Nullable="false" />
+          <Property Name="ShiftM" Type="Int32" Nullable="false" />
+          <Property Name="ShiftO" Type="Int32" Nullable="false" />
+          <Property Name="ShiftB" Type="Int32" Nullable="false" />
+          <Property Name="IsRCT" Type="Boolean" Nullable="false" />
+          <Property Name="ColorRCT" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="IsBU" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="ColorBU" Type="Int32" Nullable="false" />
+          <Property Name="IsImplant" Type="Boolean" Nullable="false" />
+          <Property Name="ColorImplant" Type="Int32" Nullable="false" />
+          <Property Name="IsCrown" Type="Boolean" Nullable="false" />
+          <Property Name="IsPontic" Type="Boolean" Nullable="false" />
+          <Property Name="IsSealant" Type="Boolean" Nullable="false" />
+          <Property Name="ColorSealant" Type="Int32" Nullable="false" />
+          <Property Name="IsMissiong" Type="Boolean" Nullable="false" />
+          <Property Name="Surface" Type="String" Nullable="false" />
+          <Property Name="SurfaceColor" Type="Int32" Nullable="true" />
+          <Property Name="Surface_B" Type="Boolean" Nullable="true" DefaultValue="false" />
+          <Property Name="Surface_B_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_F" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_F_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_C" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_C_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_D" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_D_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_E" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_E_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_L" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_L_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_M" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_M_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_O" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_O_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_I" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_I_Color" Type="Int32" Nullable="false" />
+          <Property Name="Surface_V" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Surface_V_Color" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientTooth" FromRole="PatientTooth" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Tooth" Relationship="Model1.ToothPatientTooth" FromRole="PatientTooth" ToRole="Tooth" />
+          <Property Name="ToothId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PatientPatientTooth">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientTooth" Role="PatientTooth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientTooth">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ToothPatientTooth">
+          <End Type="Model1.Tooth" Role="Tooth" Multiplicity="1" />
+          <End Type="Model1.PatientTooth" Role="PatientTooth" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tooth">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientTooth">
+              <PropertyRef Name="ToothId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatientSpecialDrug">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientSpecialDrug" FromRole="PatientSpecialDrug" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="SpecialDrug" Relationship="Model1.SpecialDrugPatientSpecialDrug" FromRole="PatientSpecialDrug" ToRole="SpecialDrug" />
+          <Property Name="SpecialDrugId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientSpecialDisease">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientSpecialDisease" FromRole="PatientSpecialDisease" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="SpecialDisea" Relationship="Model1.SpecialDiseasPatientSpecialDisease" FromRole="PatientSpecialDisease" ToRole="SpecialDiseas" />
+          <Property Name="SpecialDiseasId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientSpecialComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientSpecialComment" FromRole="PatientSpecialComment" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="SpecialCommentType" Relationship="Model1.SpecialCommentTypePatientSpecialComment" FromRole="PatientSpecialComment" ToRole="SpecialCommentType" />
+          <Property Name="SpecialCommentTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PatientPatientSpecialComment">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientSpecialComment" Role="PatientSpecialComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientSpecialComment">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatientPatientSpecialDisease">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientSpecialDisease" Role="PatientSpecialDisease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientSpecialDisease">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatientPatientSpecialDrug">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientSpecialDrug" Role="PatientSpecialDrug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientSpecialDrug">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SpecialCommentTypePatientSpecialComment">
+          <End Type="Model1.SpecialCommentType" Role="SpecialCommentType" Multiplicity="1" />
+          <End Type="Model1.PatientSpecialComment" Role="PatientSpecialComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialCommentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientSpecialComment">
+              <PropertyRef Name="SpecialCommentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatientService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Count" Type="String" Nullable="false" />
+          <Property Name="IsHadMoreTooth" Type="Boolean" Nullable="true" />
+          <Property Name="ActionPrice" Type="Decimal" Nullable="false" />
+          <Property Name="ServicePrice" Type="Decimal" Nullable="false" />
+          <Property Name="InsurerPrice" Type="Decimal" Nullable="false" />
+          <Property Name="InsurerShare" Type="Decimal" Nullable="false" />
+          <Property Name="FranchiseShare" Type="Decimal" Nullable="false" />
+          <Property Name="FreeShare" Type="Decimal" Nullable="false" />
+          <Property Name="ToothIds" Type="String" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientService" FromRole="PatientService" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Model1.ServicePatientService" FromRole="PatientService" ToRole="Service" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Doctor" Relationship="Model1.DoctorPatientService" FromRole="PatientService" ToRole="Doctor" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PatientPatientService">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientService" Role="PatientService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientService">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServicePatientService">
+          <End Type="Model1.Service" Role="Service" Multiplicity="1" />
+          <End Type="Model1.PatientService" Role="PatientService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientService">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DoctorPatientService">
+          <End Type="Model1.Doctor" Role="Doctor" Multiplicity="1" />
+          <End Type="Model1.PatientService" Role="PatientService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientService">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatientInsurance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InsuredNumber" Type="String" Nullable="false" />
+          <Property Name="InsuranceBookletSerialNumber" Type="String" Nullable="true" />
+          <Property Name="IntroLetterNum" Type="String" Nullable="true" />
+          <Property Name="ExpirationDate" Type="DateTime" Nullable="true" />
+          <Property Name="PageNumber" Type="String" Nullable="true" />
+          <Property Name="Percent" Type="Int32" Nullable="false" />
+          <Property Name="MaxPay" Type="Decimal" Nullable="true" />
+          <Property Name="IssuedPlaceCode" Type="String" Nullable="true" />
+          <Property Name="InsurerAgentCode" Type="String" Nullable="true" />
+          <Property Name="HID" Type="String" Nullable="true" />
+          <Property Name="SHEBAD" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Insurer" Relationship="Model1.PatientInsuranceInsurer" FromRole="PatientInsurance" ToRole="Insurer" />
+          <Property Name="InsurerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientInsurance" FromRole="PatientInsurance" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="InsuranceBookletType" Relationship="Model1.InsuranceBookletTypePatientInsurance" FromRole="PatientInsurance" ToRole="InsuranceBookletType" />
+          <Property Name="InsuranceBookletTypeId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="InsuranceType" Relationship="Model1.InsuranceTypePatientInsurance" FromRole="PatientInsurance" ToRole="InsuranceType" />
+          <Property Name="InsuranceTypeId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="PersonRelationType" Relationship="Model1.PersonRelationTypePatientInsurance" FromRole="PatientInsurance" ToRole="PersonRelationType" />
+          <Property Name="PersonRelationTypeId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <Association Name="PatientInsuranceInsurer">
+          <End Type="Model1.PatientInsurance" Role="PatientInsurance" Multiplicity="*" />
+          <End Type="Model1.Insurer" Role="Insurer" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Insurer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientInsurance">
+              <PropertyRef Name="InsurerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatientPatientInsurance">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientInsurance" Role="PatientInsurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientInsurance">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InsuranceBookletTypePatientInsurance">
+          <End Type="Model1.InsuranceBookletType" Role="InsuranceBookletType" Multiplicity="0..1" />
+          <End Type="Model1.PatientInsurance" Role="PatientInsurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceBookletType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientInsurance">
+              <PropertyRef Name="InsuranceBookletTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="InsuranceTypePatientInsurance">
+          <End Type="Model1.InsuranceType" Role="InsuranceType" Multiplicity="0..1" />
+          <End Type="Model1.PatientInsurance" Role="PatientInsurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientInsurance">
+              <PropertyRef Name="InsuranceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PersonRelationTypePatientInsurance">
+          <End Type="Model1.PersonRelationType" Role="PersonRelationType" Multiplicity="0..1" />
+          <End Type="Model1.PatientInsurance" Role="PatientInsurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonRelationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientInsurance">
+              <PropertyRef Name="PersonRelationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatientFollowup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="FollowupDate" Type="DateTime" Nullable="true" />
+          <Property Name="ReminderDate" Type="DateTime" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientFollowup" FromRole="PatientFollowup" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Doctor" Relationship="Model1.DoctorPatientFollowup" FromRole="PatientFollowup" ToRole="Doctor" />
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PatientPatientFollowup">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientFollowup" Role="PatientFollowup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientFollowup">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DoctorPatientFollowup">
+          <End Type="Model1.Doctor" Role="Doctor" Multiplicity="1" />
+          <End Type="Model1.PatientFollowup" Role="PatientFollowup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientFollowup">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatientFinancial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="true" />
+          <Property Name="TransactionCode" Type="String" Nullable="true" />
+          <Property Name="ChequeNumber" Type="String" Nullable="true" />
+          <Property Name="DateOfIssuance" Type="DateTime" Nullable="true" />
+          <Property Name="DateOfMaturity" Type="DateTime" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientFinancial" FromRole="PatientFinancial" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PayType" Relationship="Model1.PayTypePatientFinancial" FromRole="PatientFinancial" ToRole="PayType" />
+          <Property Name="PayTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="Model1.BankPatientFinancial" FromRole="PatientFinancial" ToRole="Bank" />
+          <Property Name="BankId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="ChequeStatu" Relationship="Model1.ChequeStatusPatientFinancial" FromRole="PatientFinancial" ToRole="ChequeStatus" />
+          <Property Name="ChequeStatusId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <Association Name="DoctorWorkTime">
+          <End Type="Model1.Doctor" Role="Doctor" Multiplicity="1" />
+          <End Type="Model1.WorkTime" Role="WorkTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkTime">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatientPatientFinancial">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientFinancial" Role="PatientFinancial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientFinancial">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PayTypePatientFinancial">
+          <End Type="Model1.PayType" Role="PayType" Multiplicity="1" />
+          <End Type="Model1.PatientFinancial" Role="PatientFinancial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientFinancial">
+              <PropertyRef Name="PayTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BankPatientFinancial">
+          <End Type="Model1.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="Model1.PatientFinancial" Role="PatientFinancial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientFinancial">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ChequeStatusPatientFinancial">
+          <End Type="Model1.ChequeStatus" Role="ChequeStatus" Multiplicity="0..1" />
+          <End Type="Model1.PatientFinancial" Role="PatientFinancial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChequeStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientFinancial">
+              <PropertyRef Name="ChequeStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatientDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="ImagePath" Type="String" Nullable="true" />
+          <Property Name="Image" Type="Binary" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Model1.PatientPatientDocument" FromRole="PatientDocument" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <Association Name="PatientPatientDocument">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.PatientDocument" Role="PatientDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDocument">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="InsurerServiceTarefeChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DefineDate" Type="DateTime" Nullable="false" />
+          <Property Name="RunDate" Type="DateTime" Nullable="false" />
+          <Property Name="FreePrice" Type="Decimal" Nullable="false" />
+          <Property Name="InsurerPrice" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Insurer" Relationship="Model1.InsurerInsurerServiceTarefeChange" FromRole="InsurerServiceTarefeChange" ToRole="Insurer" />
+          <Property Name="InsurerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="Model1.ServiceInsurerServiceTarefeChange" FromRole="InsurerServiceTarefeChange" ToRole="Service" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserInsurerServiceTarefeChange" FromRole="InsurerServiceTarefeChange" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="InsurerInsurerServiceTarefeChange">
+          <End Type="Model1.Insurer" Role="Insurer" Multiplicity="1" />
+          <End Type="Model1.InsurerServiceTarefeChange" Role="InsurerServiceTarefeChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InsurerServiceTarefeChange">
+              <PropertyRef Name="InsurerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServiceInsurerServiceTarefeChange">
+          <End Type="Model1.Service" Role="Service" Multiplicity="1" />
+          <End Type="Model1.InsurerServiceTarefeChange" Role="InsurerServiceTarefeChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InsurerServiceTarefeChange">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserInsurerServiceTarefeChange">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.InsurerServiceTarefeChange" Role="InsurerServiceTarefeChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InsurerServiceTarefeChange">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="InsurerFinancial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrescriptionCount" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="FromDate" Type="DateTime" Nullable="true" />
+          <Property Name="ToDate" Type="DateTime" Nullable="true" />
+          <Property Name="RequestedValue" Type="Decimal" Nullable="false" />
+          <Property Name="ReceivedValue" Type="Decimal" Nullable="true" />
+          <Property Name="DeductionValue" Type="Decimal" Nullable="true" />
+          <Property Name="RemainPrice" Type="Decimal" Nullable="true" />
+          <Property Name="IsSendToInsurer" Type="Boolean" Nullable="true" />
+          <Property Name="IsPrimaryCheck" Type="Boolean" Nullable="true" />
+          <Property Name="IsFinalCheck" Type="Boolean" Nullable="false" />
+          <Property Name="IsCloseStatus" Type="Boolean" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Insurer" Relationship="Model1.InsurerInsurerFinancial" FromRole="InsurerFinancial" ToRole="Insurer" />
+          <Property Name="InsurerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserInsurerFinancial" FromRole="InsurerFinancial" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="InsurerInsurerFinancial">
+          <End Type="Model1.Insurer" Role="Insurer" Multiplicity="1" />
+          <End Type="Model1.InsurerFinancial" Role="InsurerFinancial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InsurerFinancial">
+              <PropertyRef Name="InsurerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserInsurerFinancial">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.InsurerFinancial" Role="InsurerFinancial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InsurerFinancial">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AppAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormTitle" Type="String" Nullable="false" />
+          <Property Name="GroupTitle" Type="String" Nullable="true" />
+          <Property Name="ActionTitle" Type="String" Nullable="true" />
+          <NavigationProperty Name="UserPermissions" Relationship="Model1.AppActionUserPermission" FromRole="AppAction" ToRole="UserPermission" />
+        </EntityType>
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserUserPermission" FromRole="UserPermission" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AppAction" Relationship="Model1.AppActionUserPermission" FromRole="UserPermission" ToRole="AppAction" />
+          <Property Name="AppActionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserUserPermission">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.UserPermission" Role="UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AppActionUserPermission">
+          <End Type="Model1.AppAction" Role="AppAction" Multiplicity="1" />
+          <End Type="Model1.UserPermission" Role="UserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppAction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermission">
+              <PropertyRef Name="AppActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DoctorVisit">
+          <End Type="Model1.Doctor" Role="Doctor" Multiplicity="1" />
+          <End Type="Model1.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatientVisit">
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="Model1.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServiceGroupVisit">
+          <End Type="Model1.ServiceGroup" Role="ServiceGroup" Multiplicity="0..1" />
+          <End Type="Model1.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="ServiceGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SpecialDiseasPatientSpecialDisease">
+          <End Type="Model1.SpecialDiseas" Role="SpecialDiseas" Multiplicity="1" />
+          <End Type="Model1.PatientSpecialDisease" Role="PatientSpecialDisease" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialDiseas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientSpecialDisease">
+              <PropertyRef Name="SpecialDiseasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SpecialDrugPatientSpecialDrug">
+          <End Type="Model1.SpecialDrug" Role="SpecialDrug" Multiplicity="1" />
+          <End Type="Model1.PatientSpecialDrug" Role="PatientSpecialDrug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialDrug">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientSpecialDrug">
+              <PropertyRef Name="SpecialDrugId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobPatient">
+          <End Type="Model1.Job" Role="Job" Multiplicity="0..1" />
+          <End Type="Model1.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="DentalContext" StorageEntityContainer="Model1TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

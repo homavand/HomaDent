@@ -1,0 +1,1511 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="0" />
+    <DataSources isList="true" count="4">
+      <Data_Financial Ref="2" type="Stimulsoft.Report.Dictionary.StiBusinessObjectSource" isKey="true">
+        <Alias>Data_Financial</Alias>
+        <Columns isList="true" count="4">
+          <value>TitleX,System.String</value>
+          <value>NumberX,System.Int32</value>
+          <value>TotalX,System.Nullable`1[System.Decimal]</value>
+          <value>PercentX,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>f4b40abc38f947f2889e0a3db1451e9f</Key>
+        <Name>Data_Financial</Name>
+        <NameInSource>Data_Financial</NameInSource>
+      </Data_Financial>
+      <Data_Action Ref="3" type="Stimulsoft.Report.Dictionary.StiBusinessObjectSource" isKey="true">
+        <Alias>Data_Action</Alias>
+        <Columns isList="true" count="4">
+          <value>TitleX,System.String</value>
+          <value>NumberX,System.Int32</value>
+          <value>TotalX,System.Decimal</value>
+          <value>PercentX,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>50f3900bc0594a9ebeca1b8cc132d6fa</Key>
+        <Name>Data_Action</Name>
+        <NameInSource>Data_Action</NameInSource>
+      </Data_Action>
+      <Data_Insurance Ref="4" type="Stimulsoft.Report.Dictionary.StiBusinessObjectSource" isKey="true">
+        <Alias>Data_Insurance</Alias>
+        <Columns isList="true" count="4">
+          <value>TitleX,System.String</value>
+          <value>NumberX,System.Int32</value>
+          <value>TotalX,System.Decimal</value>
+          <value>PercentX,System.Nullable`1[System.Decimal]</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>69db70902c014bf2a07655ca87b4b9ab</Key>
+        <Name>Data_Insurance</Name>
+        <NameInSource>Data_Insurance</NameInSource>
+      </Data_Insurance>
+      <Data_Cost Ref="5" type="Stimulsoft.Report.Dictionary.StiBusinessObjectSource" isKey="true">
+        <Alias>Data_Cost</Alias>
+        <Columns isList="true" count="4">
+          <value>TitleX,System.String</value>
+          <value>NumberX,System.Int32</value>
+          <value>TotalX,System.Decimal</value>
+          <value>PercentX,System.Decimal</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Key>70d063425dbb49c68e680bb1924f98e5</Key>
+        <Name>Data_Cost</Name>
+        <NameInSource>Data_Cost</NameInSource>
+      </Data_Cost>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="8">
+      <value>,TodayDate,TodayDate,,System.String,,False,False,True,False</value>
+      <value>,DoctorName,DoctorName,,System.String,,False,False,True,False</value>
+      <value>,NezamPezeshki,NezamPezeshki,,System.String,,False,False,True,False</value>
+      <value>,PhoneNumber,PhoneNumber,,System.String,,False,False,True,False</value>
+      <value>,OfficeAddress,OfficeAddress,,System.String,,False,False,True,False</value>
+      <value>,ReportTitle,ReportTitle,,System.String,,False,False,False,False</value>
+      <value>,FromDate,FromDate,,System.String,,False,False,False,False</value>
+      <value>,ToDate,ToDate,,System.String,,False,False,False,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>518fdb13c2ab47ab8430e4c4f93946d4</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="14">
+        <PageHeaderBand1 Ref="7" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.2,7.9,1.5</ClientRectangle>
+          <Components isList="true" count="10">
+            <Text17 Ref="8" type="Text" isKey="true">
+              <Border>All;DimGray;1;Solid;False;4;Black</Border>
+              <Brush>WhiteSmoke</Brush>
+              <ClientRectangle>2.4,0.1,3.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir,9,Bold</Font>
+              <Guid>5deb1563c54c4216aeb90f7714050084</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{ReportTitle}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text17>
+            <Text2 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,0.1,1.1,0.5</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Guid>383b84c843db47e0a431245127f372ed</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{TodayDate}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Panel1 Ref="10" type="Panel" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.9,7.9,0.4</ClientRectangle>
+              <Components isList="true" count="4">
+                <Text4 Ref="11" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>5.6,0.1,0.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9</Font>
+                  <Guid>1ff79a375f0d44b49ced173853320658</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text4</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="10" />
+                  <Text>از تاریخ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text4>
+                <Text18 Ref="12" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>4.4,0.1,1.1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir FD,10</Font>
+                  <Guid>6e9a9f0f14194117ad11c48d0767bf11</Guid>
+                  <HorAlignment>Right</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text18</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="10" />
+                  <Text>{FromDate}</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text18>
+                <Text45 Ref="13" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>3.4,0.1,0.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9</Font>
+                  <Guid>97da452aec244def8e8da86531ab0b88</Guid>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text45</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="10" />
+                  <Text>تا تاریخ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text45>
+                <Text53 Ref="14" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>2.2,0.1,1.1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir FD,10</Font>
+                  <Guid>d9bd14df11dc4732be2c491382641393</Guid>
+                  <HorAlignment>Right</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text53</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="10" />
+                  <Text>{ToDate}</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text53>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Guid>f112fbdc88ea45e692372757299ad6aa</Guid>
+              <Name>Panel1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+            </Panel1>
+            <Text26 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.9,0.1,0.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Guid>c23cc905513b4cacb7c4cdb34c188b79</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>پزشک</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+            <Text27 Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.9,0.3,0.4,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Guid>2de6f1c6a3a04c69a7157637cf11c196</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>ن.پ</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text27>
+            <Text28 Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.1,1.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir,9</Font>
+              <Guid>3a053c50e0634bceb709979d75920b8a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{DoctorName}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text28>
+            <Text29 Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.3,1.9,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Guid>2124493fc62d447ebe7d836c77364037</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{NezamPezeshki}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text29>
+            <HorizontalLinePrimitive3 Ref="19" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,0.3,2.4,0.01</ClientRectangle>
+              <Color>DimGray</Color>
+              <Conditions isList="true" count="0" />
+              <EndCap Ref="20" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Expressions isList="true" count="0" />
+              <Guid>dd39abcd9bf14e589cb7ea7515da22b4</Guid>
+              <Name>HorizontalLinePrimitive3</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Size>3</Size>
+              <StartCap Ref="21" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive3>
+            <HorizontalLinePrimitive1 Ref="22" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>5.6,0.3,0.8,0.01</ClientRectangle>
+              <Color>DimGray</Color>
+              <Conditions isList="true" count="0" />
+              <EndCap Ref="23" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Expressions isList="true" count="0" />
+              <Guid>c67a8115ce6c45f7a505c5065d2a8609</Guid>
+              <Name>HorizontalLinePrimitive1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Size>3</Size>
+              <StartCap Ref="24" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive1>
+            <HorizontalLinePrimitive6 Ref="25" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>7.5,0.3,0.4,0.01</ClientRectangle>
+              <Color>DimGray</Color>
+              <Conditions isList="true" count="0" />
+              <EndCap Ref="26" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Expressions isList="true" count="0" />
+              <Guid>dbca3373d57c441197acfa34721f189f</Guid>
+              <Name>HorizontalLinePrimitive6</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Size>3</Size>
+              <StartCap Ref="27" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive6>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </PageHeaderBand1>
+        <PageFooterBand1 Ref="28" type="PageFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,15.01,7.9,0.8</ClientRectangle>
+          <Components isList="true" count="5">
+            <Text19 Ref="29" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,0.08,1.1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir,9</Font>
+              <Guid>f206284a266a4d3e89fc971688b923a4</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>صفحه {PageNumber} از {TotalPageCount}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text19>
+            <Text20 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.38,2.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Guid>b538cb398cf44d41b0bd70811eab4073</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>شماره تماس: {PhoneNumber}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text20>
+            <Text21 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.7,0.38,5.2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir,9</Font>
+              <Guid>17a7023e69ad43ad99963a3892723f1e</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Text>آدرس: {OfficeAddress}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <HorizontalLinePrimitive4 Ref="32" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>7.5,0.18,0.4,0.01</ClientRectangle>
+              <Color>DimGray</Color>
+              <Conditions isList="true" count="0" />
+              <EndCap Ref="33" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Expressions isList="true" count="0" />
+              <Guid>acf559d681234d93a109db8b4cdf49ba</Guid>
+              <Name>HorizontalLinePrimitive4</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Size>3</Size>
+              <StartCap Ref="34" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive4>
+            <HorizontalLinePrimitive5 Ref="35" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,0.18,6.4,0.01</ClientRectangle>
+              <Color>DimGray</Color>
+              <Conditions isList="true" count="0" />
+              <EndCap Ref="36" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Expressions isList="true" count="0" />
+              <Guid>3b0156a4dd0745179ec333312823fcc0</Guid>
+              <Name>HorizontalLinePrimitive5</Name>
+              <Page isRef="6" />
+              <Parent isRef="28" />
+              <Size>3</Size>
+              <StartCap Ref="37" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+            </HorizontalLinePrimitive5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Guid>3d83c24f00d54157bb105128eaf86383</Guid>
+          <Name>PageFooterBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </PageFooterBand1>
+        <ColumnHeaderBand1 Ref="38" type="Stimulsoft.Report.Components.StiColumnHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,2.1,7.9,0.5</ClientRectangle>
+          <Components isList="true" count="2">
+            <Panel2 Ref="39" type="Panel" isKey="true">
+              <Anchor>Top, Right</Anchor>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.1,0.3,5.8,0.2</ClientRectangle>
+              <Components isList="true" count="4">
+                <Text3 Ref="40" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>3.3,0,2.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>b5070cde346d40d3aab07ecc97624150</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text3</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="39" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>عنوان درمان</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text3>
+                <Text8 Ref="41" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>2.8,0,0.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>f99ff7f7201f4372a4586fba9346598d</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text8</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="39" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>تعداد</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text8>
+                <Text5 Ref="42" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>1.1,0,1.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>5f133cf5b5d24448b7d15dc55c8cbdd0</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text5</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="39" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>مبلغ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text5>
+                <Text6 Ref="43" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>0.1,0,1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>7addb55a4c8c4203ae3d7579d76a858e</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text6</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="39" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>درصد از کل مبلغ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text6>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Name>Panel2</Name>
+              <Page isRef="6" />
+              <Parent isRef="38" />
+              <ShiftMode>None</ShiftMode>
+            </Panel2>
+            <Text30 Ref="44" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.4,0,3.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="6" />
+              <Parent isRef="38" />
+              <Text>درمانهای انجام شده بر اساس گروه خدمت</Text>
+              <TextBrush>[89:89:89]</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text30>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Name>ColumnHeaderBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnHeaderBand1>
+        <DataBand1 Ref="45" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,3,7.9,0.2</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text10 Ref="46" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.9,0,0.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>cb6438b4c8ad4ab6b330fe02ef8b10a5</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="6" />
+              <Parent isRef="45" />
+              <Text>{Data_Action.NumberX}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text11 Ref="47" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>841d4a50f6d44c2a85dff4d741326b62</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="6" />
+              <Parent isRef="45" />
+              <Text>{Data_Action.TotalX}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="48" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text12 Ref="49" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.2,0,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>491ce384961242fb964cddbb7aae440f</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="6" />
+              <Parent isRef="45" />
+              <Text>{Data_Action.PercentX}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="50" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text22 Ref="51" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,0,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir,10</Font>
+              <Guid>3fee2c49717b47d091c60c85ccfd41a4</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="6" />
+              <Parent isRef="45" />
+              <Text>{Data_Action.TitleX}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>Data_Action</DataSourceName>
+          <Expressions isList="true" count="0" />
+          <FilterOn>False</FilterOn>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <ColumnFooterBand1 Ref="52" type="Stimulsoft.Report.Components.StiColumnFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,3.6,7.9,0.5</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text24 Ref="53" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[242:242:242]</Brush>
+              <ClientRectangle>3.2,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>49dc24b8e2d54bf5b07ba73efc50aac1</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="6" />
+              <Parent isRef="52" />
+              <Text>{Sum(DataBand1,Data_Action.TotalX)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="54" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Name>ColumnFooterBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnFooterBand1>
+        <ColumnHeaderBand2 Ref="55" type="Stimulsoft.Report.Components.StiColumnHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.5,7.9,0.5</ClientRectangle>
+          <Components isList="true" count="2">
+            <Panel3 Ref="56" type="Panel" isKey="true">
+              <Anchor>Top, Right</Anchor>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.1,0.3,5.8,0.2</ClientRectangle>
+              <Components isList="true" count="4">
+                <Text14 Ref="57" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>3.3,0,2.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>70a8b8ace29b497a9f217d994b3ae57c</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text14</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="56" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>نوع دریافت</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text14>
+                <Text13 Ref="58" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>2.8,0,0.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>b2ac4aa875b04561a954bdd287110ac5</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text13</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="56" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>تعداد</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text13>
+                <Text7 Ref="59" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>1.1,0,1.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>62415a22519f447b8aed28df7e825ebe</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text7</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="56" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>مبلغ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text7>
+                <Text9 Ref="60" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>0.1,0,1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>0a3b2a9f976948dd930e443ce4d41042</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text9</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="56" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>درصد از کل مبلغ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text9>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Name>Panel3</Name>
+              <Page isRef="6" />
+              <Parent isRef="55" />
+              <ShiftMode>None</ShiftMode>
+            </Panel3>
+            <Text31 Ref="61" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.4,0,3.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="6" />
+              <Parent isRef="55" />
+              <Text>دریافتی مطب از بیماران </Text>
+              <TextBrush>[89:89:89]</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text31>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Guid>29e33b8affeb494ea9dfd40380bab000</Guid>
+          <Name>ColumnHeaderBand2</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnHeaderBand2>
+        <DataBand2 Ref="62" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,5.4,7.9,0.2</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text16 Ref="63" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.9,0,0.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>1ad8f1603d8948dfb44f7b91b4e06508</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="6" />
+              <Parent isRef="62" />
+              <Text>{Data_Financial.NumberX}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text16>
+            <Text23 Ref="64" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>4b5868070d5f42bf967bfd5f18224324</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="6" />
+              <Parent isRef="62" />
+              <Text>{Data_Financial.TotalX}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="65" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text32 Ref="66" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.2,0,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>f0e96019a78041bea4702526b54c0fc0</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="6" />
+              <Parent isRef="62" />
+              <Text>{Data_Financial.PercentX}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="67" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text32>
+            <Text33 Ref="68" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,0,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir,10</Font>
+              <Guid>021f4a1153204666b2d398f9407f90cd</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="6" />
+              <Parent isRef="62" />
+              <Text>{Data_Financial.TitleX}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text33>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>Data_Financial</DataSourceName>
+          <Expressions isList="true" count="0" />
+          <FilterOn>False</FilterOn>
+          <Filters isList="true" count="0" />
+          <Guid>9b1ee0448dfa42e28f709bd1b1ac6be8</Guid>
+          <Name>DataBand2</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+        <ColumnFooterBand2 Ref="69" type="Stimulsoft.Report.Components.StiColumnFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6,7.9,0.5</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text15 Ref="70" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[242:242:242]</Brush>
+              <ClientRectangle>3.2,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>380dbf8b138840fda14d40fddc178909</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="6" />
+              <Parent isRef="69" />
+              <Text>{Sum(DataBand2,Data_Financial.TotalX)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="71" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text15>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Guid>4e6b30d592af4c4d93164011d9aaeef5</Guid>
+          <Name>ColumnFooterBand2</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnFooterBand2>
+        <ColumnHeaderBand3 Ref="72" type="Stimulsoft.Report.Components.StiColumnHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,6.9,7.9,0.5</ClientRectangle>
+          <Components isList="true" count="2">
+            <Panel4 Ref="73" type="Panel" isKey="true">
+              <Anchor>Top, Right</Anchor>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.1,0.3,5.8,0.2</ClientRectangle>
+              <Components isList="true" count="4">
+                <Text40 Ref="74" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>3.3,0,2.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>b5a7ca5910094284a03110cbe820c025</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text40</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="73" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>عنوان بیمه</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text40>
+                <Text39 Ref="75" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>2.8,0,0.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>467451fd438e4707b7646ee6a6874f9e</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text39</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="73" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>تعداد</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text39>
+                <Text34 Ref="76" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>1.1,0,1.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>6a452ab9e026428b8751ea794438d151</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text34</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="73" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>مبلغ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text34>
+                <Text38 Ref="77" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>0.1,0,1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>f05e11b746bd409298ee40a948be9655</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text38</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="73" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>درصد از کل مبلغ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text38>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Name>Panel4</Name>
+              <Page isRef="6" />
+              <Parent isRef="72" />
+              <ShiftMode>None</ShiftMode>
+            </Panel4>
+            <Text35 Ref="78" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.4,0,3.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text35</Name>
+              <Page isRef="6" />
+              <Parent isRef="72" />
+              <Text>دریافتی مطب از بیمه ها</Text>
+              <TextBrush>[89:89:89]</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text35>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Guid>f0b8fb3ba8b944d79e989a0398a8da24</Guid>
+          <Name>ColumnHeaderBand3</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnHeaderBand3>
+        <DataBand3 Ref="79" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,7.8,7.9,0.2</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text49 Ref="80" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.9,0,0.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>fc987d6657a741af832825aaf0808545</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text49</Name>
+              <Page isRef="6" />
+              <Parent isRef="79" />
+              <Text>{Data_Insurance.NumberX}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text49>
+            <Text50 Ref="81" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>f316b78873474545beb1d2723f6d559b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text50</Name>
+              <Page isRef="6" />
+              <Parent isRef="79" />
+              <Text>{Data_Insurance.TotalX}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="82" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text50>
+            <Text51 Ref="83" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.2,0,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>a21baf3183aa49b882c9c179b6e38876</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text51</Name>
+              <Page isRef="6" />
+              <Parent isRef="79" />
+              <Text>{Data_Insurance.PercentX}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="84" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text51>
+            <Text52 Ref="85" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,0,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir,10</Font>
+              <Guid>4b6839a741c6471da1ee80a9e6af2850</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text52</Name>
+              <Page isRef="6" />
+              <Parent isRef="79" />
+              <Text>{Data_Insurance.TitleX}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text52>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>Data_Insurance</DataSourceName>
+          <Expressions isList="true" count="0" />
+          <FilterOn>False</FilterOn>
+          <Filters isList="true" count="0" />
+          <Guid>0500c17a41364319ac1659e7daf2d8b2</Guid>
+          <Name>DataBand3</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataBand3>
+        <ColumnFooterBand3 Ref="86" type="Stimulsoft.Report.Components.StiColumnFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.4,7.9,0.5</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text1 Ref="87" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[242:242:242]</Brush>
+              <ClientRectangle>3.2,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>a69e7133829e421088e934524345bf0d</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="86" />
+              <Text>{Sum(DataBand3,Data_Insurance.TotalX)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="88" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Guid>5fbc98cff0284661920920e1189187b5</Guid>
+          <Name>ColumnFooterBand3</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnFooterBand3>
+        <ColumnHeaderBand4 Ref="89" type="Stimulsoft.Report.Components.StiColumnHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,9.3,7.9,0.5</ClientRectangle>
+          <Components isList="true" count="2">
+            <Panel5 Ref="90" type="Panel" isKey="true">
+              <Anchor>Top, Right</Anchor>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.1,0.3,5.8,0.2</ClientRectangle>
+              <Components isList="true" count="4">
+                <Text59 Ref="91" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>3.3,0,2.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>3103b644680548e991ca90360690cd0c</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text59</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="90" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>عنوان هزینه</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text59>
+                <Text58 Ref="92" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>2.8,0,0.5,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>5107f69c4b59480d9f6f3ebfdcdb05ae</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text58</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="90" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>تعداد</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text58>
+                <Text56 Ref="93" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>1.1,0,1.7,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>138036dd18f244d2b659e2303d5ccfc3</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text56</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="90" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>مبلغ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text56>
+                <Text57 Ref="94" type="Text" isKey="true">
+                  <Anchor>Top, Right</Anchor>
+                  <Border>All;DimGray;1;Solid;False;4;Black</Border>
+                  <Brush>WhiteSmoke</Brush>
+                  <ClientRectangle>0.1,0,1,0.2</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Expressions isList="true" count="0" />
+                  <Font>Vazir,9,Bold</Font>
+                  <Guid>b134a57278cf463d87a197a1f82ed912</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text57</Name>
+                  <Page isRef="6" />
+                  <Parent isRef="90" />
+                  <ShiftMode>None</ShiftMode>
+                  <Text>درصد از کل مبلغ</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                  <VertAlignment>Center</VertAlignment>
+                </Text57>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Name>Panel5</Name>
+              <Page isRef="6" />
+              <Parent isRef="89" />
+              <ShiftMode>None</ShiftMode>
+            </Panel5>
+            <Text36 Ref="95" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.4,0,3.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,9</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="6" />
+              <Parent isRef="89" />
+              <Text>هزینه های مطب براساس گروه هزینه ها</Text>
+              <TextBrush>[89:89:89]</TextBrush>
+              <TextOptions>,,RightToLeft=True,,,A=0</TextOptions>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text36>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Guid>08e888cd819c4f7d947313a2b4f44a9a</Guid>
+          <Name>ColumnHeaderBand4</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnHeaderBand4>
+        <DataBand4 Ref="96" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,10.2,7.9,0.2</ClientRectangle>
+          <Components isList="true" count="4">
+            <Text60 Ref="97" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.9,0,0.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>f9c8893209bb4d2bb93e34f24828aa2d</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text60</Name>
+              <Page isRef="6" />
+              <Parent isRef="96" />
+              <Text>{Data_Cost.NumberX}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text60>
+            <Text61 Ref="98" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.2,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>f86fbfb03c5c452b90eda483db27c683</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text61</Name>
+              <Page isRef="6" />
+              <Parent isRef="96" />
+              <Text>{Data_Cost.TotalX}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="99" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text61>
+            <Text62 Ref="100" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.2,0,1,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>c3494f733b8e46fab012e2732d08aa50</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text62</Name>
+              <Page isRef="6" />
+              <Parent isRef="96" />
+              <Text>{Data_Cost.PercentX}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="101" type="NumberFormat" isKey="true">
+                <DecimalDigits>2</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text62>
+            <Text63 Ref="102" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.4,0,2.5,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir,10</Font>
+              <Guid>26a660a486114bd5a6e9ad83653ce7a8</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text63</Name>
+              <Page isRef="6" />
+              <Parent isRef="96" />
+              <Text>{Data_Cost.TitleX}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text63>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>Data_Cost</DataSourceName>
+          <Expressions isList="true" count="0" />
+          <FilterOn>False</FilterOn>
+          <Filters isList="true" count="0" />
+          <Guid>89de1eae5f4f4851989dbc9feb327438</Guid>
+          <Name>DataBand4</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataBand4>
+        <ColumnFooterBand4 Ref="103" type="Stimulsoft.Report.Components.StiColumnFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,10.8,7.9,0.5</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text25 Ref="104" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[242:242:242]</Brush>
+              <ClientRectangle>3.2,0,1.7,0.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Vazir FD,10</Font>
+              <Guid>d045197a69da4c85b3cf85ab3d60f76c</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="6" />
+              <Parent isRef="103" />
+              <Text>{Sum(DataBand4,Data_Cost.TotalX)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="105" type="NumberFormat" isKey="true">
+                <DecimalDigits>0</DecimalDigits>
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <UseLocalSetting>False</UseLocalSetting>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Guid>4a98df20f2bd4a8d98ef9086354b8787</Guid>
+          <Name>ColumnFooterBand4</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ColumnFooterBand4>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Expressions isList="true" count="0" />
+      <Guid>120ee5eade974895829ec6cbbc40964e</Guid>
+      <Margins>0.18,0.19,0.2,0.2</Margins>
+      <Name>Page1</Name>
+      <PageHeight>11.69</PageHeight>
+      <PageWidth>8.27</PageWidth>
+      <PaperSize>A4</PaperSize>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>1/7/2025 3:31:42 PM</ReportChanged>
+  <ReportCreated>2/24/2016 4:34:01 PM</ReportCreated>
+  <ReportFile>D:\Dental-SQLite\Dentistry\Reports\rpt_OfficeX.mrt</ReportFile>
+  <ReportGuid>209d7ad502f0403a9ceb5821c58aa0ee</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2023.1.1.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

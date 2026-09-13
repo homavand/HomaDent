@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<ArrayOfItemInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ItemInfo>
+    <StartTime>2014-04-09T12:00:00</StartTime>
+    <EndTime>2014-04-09T13:00:00</EndTime>
+    <Text>بيمار شماره يك
+System.Data.DataRowView</Text>
+    <A>0</A>
+    <R>0</R>
+    <G>0</G>
+    <B>0</B>
+  </ItemInfo>
+  <ItemInfo>
+    <StartTime>2014-04-09T15:00:00</StartTime>
+    <EndTime>2014-04-09T17:00:00</EndTime>
+    <Text>يك دو سه
+</Text>
+    <A>255</A>
+    <R>255</R>
+    <G>0</G>
+    <B>0</B>
+  </ItemInfo>
+  <ItemInfo>
+    <StartTime>2014-04-10T13:30:00</StartTime>
+    <EndTime>2014-04-10T14:30:00</EndTime>
+    <Text>سلام
+قادر صيدي</Text>
+    <A>0</A>
+    <R>0</R>
+    <G>0</G>
+    <B>0</B>
+  </ItemInfo>
+  <ItemInfo>
+    <StartTime>2014-04-08T13:00:00</StartTime>
+    <EndTime>2014-04-08T14:00:00</EndTime>
+    <Text> عنوان : يك دو يك
+ نام بیمار : حبيبه2 حسن زاده1</Text>
+    <A>0</A>
+    <R>0</R>
+    <G>0</G>
+    <B>0</B>
+  </ItemInfo>
+  <ItemInfo>
+    <StartTime>2014-04-08T15:00:00</StartTime>
+    <EndTime>2014-04-08T16:00:00</EndTime>
+    <Text> عنوان : پرو
+ نام بیمار : علي طايفه</Text>
+    <A>0</A>
+    <R>0</R>
+    <G>0</G>
+    <B>0</B>
+  </ItemInfo>
+</ArrayOfItemInfo>

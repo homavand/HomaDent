@@ -1,0 +1,1306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.2\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AAC89CEA-61E6-4BB4-ABE8-C1BA05A2258D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dentistry</RootNamespace>
+    <AssemblyName>Dentistry</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>http://localhost/Dentistry/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <!-- <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols> -->
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>MyAsm.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Dental.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Dentistry.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DNTPersianUtils.Core, Version=5.4.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DNTPersianUtils.Core.5.4.5\lib\net46\DNTPersianUtils.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiMessageBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\FarsiMessageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.AxSms">
+      <HintPath>..\Dll\Interop.AxSms.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.WIALib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\Interop.WIALib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Conversion.v3.5" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\Microsoft.VisualBasic.PowerPacks.Vs.dll</HintPath>
+    </Reference>
+    <Reference Include="PersianDateTime, Version=1.1.5082.36395, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\PersianDateTime.dll</HintPath>
+    </Reference>
+    <Reference Include="PopupControl, Version=1.4.0.968, Culture=neutral, PublicKeyToken=04c10344d6495b18, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\PopupControl.dll</HintPath>
+    </Reference>
+    <Reference Include="POS_PC, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\POS_PC.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SparksToothChart, Version=4.4.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dental.SparksToothChart\bin\Debug\SparksToothChart.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Base, Version=2016.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Stimulsoft.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls, Version=2016.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Stimulsoft.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls.Win, Version=2016.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Stimulsoft.Controls.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2016.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design, Version=2016.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Stimulsoft.Report.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Win, Version=2016.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Stimulsoft.Report.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SQLite, Version=2.0.4.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.2.0.4\lib\net471\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=2.0.3.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.2.0.3\lib\net471\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.Calendar, Version=1.0.8634.29874, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\System.Windows.Forms.Calendar.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Tao.OpenGl, Version=0.0.0.0, Culture=neutral, PublicKeyToken=1ca010269a4501ef">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SparksToothChart\bin\Debug\Tao.OpenGl.dll</HintPath>
+    </Reference>
+    <Reference Include="Tao.Platform.Windows, Version=1.0.0.3, Culture=neutral, PublicKeyToken=701104b2da67a104">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SparksToothChart\bin\Debug\Tao.Platform.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WebCam_Capture, Version=1.0.2887.32162, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\WebCam_Capture.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI">
+      <HintPath>..\Dll\WeifenLuo.WinFormsUI.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsControlLibrary">
+      <HintPath>..\..\Dental.Calendar\System.Windows.Forms.Calendar\bin\Debug\WindowsControlLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseCoding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseCoding.Designer.cs">
+      <DependentUpon>BaseCoding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseCodingDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseCodingDefine.Designer.cs">
+      <DependentUpon>BaseCodingDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="class\Constant.cs" />
+    <Compile Include="class\Converts.cs" />
+    <Compile Include="class\DataProvider.cs" />
+    <Compile Include="class\DatePattern.cs" />
+    <Compile Include="class\ToothInfo.cs" />
+    <Compile Include="class\WaitFormFunc.cs" />
+    <Compile Include="context\DentalContext.cs" />
+    <Compile Include="context\models\AppAction.cs" />
+    <Compile Include="context\models\BaseCoding.cs" />
+    <Compile Include="context\models\Config.cs" />
+    <Compile Include="context\models\Cost.cs" />
+    <Compile Include="context\models\Insurer.cs" />
+    <Compile Include="context\models\InsurerFinancial.cs" />
+    <Compile Include="context\models\InsurerServiceTarefeChange.cs" />
+    <Compile Include="context\models\models.cs" />
+    <Compile Include="context\models\Office.cs" />
+    <Compile Include="context\models\Patient.cs" />
+    <Compile Include="context\models\PatientDocument.cs" />
+    <Compile Include="context\models\PatientFinancial.cs" />
+    <Compile Include="context\models\PatientFollowup.cs" />
+    <Compile Include="context\models\PatientInsurance.cs" />
+    <Compile Include="context\models\PatientService.cs" />
+    <Compile Include="context\models\PatientSpecialComment.cs" />
+    <Compile Include="context\models\PatientSpecialDisease.cs" />
+    <Compile Include="context\models\PatientSpecialDrug.cs" />
+    <Compile Include="context\models\PatientTooth.cs" />
+    <Compile Include="context\models\Service.cs" />
+    <Compile Include="context\models\Staff.cs" />
+    <Compile Include="context\models\Tooth.cs" />
+    <Compile Include="context\models\User.cs" />
+    <Compile Include="context\models\UserPermission.cs" />
+    <Compile Include="context\models\Visit.cs" />
+    <Compile Include="context\models\WorkTime.cs" />
+    <Compile Include="DashboardX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardX.Designer.cs">
+      <DependentUpon>DashboardX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\CurrencyTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\DataRepeaterItemHelper.cs" />
+    <Compile Include="class\DapperManager.cs" />
+    <Compile Include="class\Date.cs" />
+    <Compile Include="class\DB.cs" />
+    <Compile Include="class\Enums.cs" />
+    <Compile Include="userControls\ExPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControls\ExtendedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\Extensions.cs" />
+    <Compile Include="class\InsurerServiceTarefe.cs" />
+    <Compile Include="class\JsonResponse.cs" />
+    <Compile Include="userControls\MoneyLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="userControls\NumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="class\PatientService.cs" />
+    <Compile Include="userControls\PersianCalendar\MonthUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControls\PersianCalendar\PersianDate.cs" />
+    <Compile Include="userControls\PersianCalendar\PersianDateConverter.cs" />
+    <Compile Include="userControls\PersianCalendar\PersianDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="userControls\PersianCalendar\PersianMonthCalendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="userControls\PersianCalendar\PersianMonthCalendarEventArgs.cs" />
+    <Compile Include="class\Provider.cs" />
+    <Compile Include="class\WorkTime.cs" />
+    <Compile Include="class\PosBank.cs" />
+    <Compile Include="PatientsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientsList.Designer.cs">
+      <DependentUpon>PatientsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSpecialCommentDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientSpecialCommentDefine.Designer.cs">
+      <DependentUpon>PatientSpecialCommentDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceInsurersPriceDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceInsurersPriceDefine.Designer.cs">
+      <DependentUpon>ServiceInsurersPriceDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffDefine.Designer.cs">
+      <DependentUpon>StaffDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffsList.Designer.cs">
+      <DependentUpon>StaffsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\VerticalLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VisitDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisitDefine.Designer.cs">
+      <DependentUpon>VisitDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="class\AutoComplete.cs" />
+    <Compile Include="class\CaptureSnap.cs" />
+    <Compile Include="class\ErrorClass.cs" />
+    <Compile Include="class\ImageAcquisition.cs" />
+    <Compile Include="class\Publics.cs" />
+    <Compile Include="class\SysInfo.cs" />
+    <Compile Include="class\ToothInfoClass.cs" />
+    <Compile Include="class\Config.cs" />
+    <Compile Include="InsurerDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsurerDefine.Designer.cs">
+      <DependentUpon>InsurerDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsurerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsurerList.Designer.cs">
+      <DependentUpon>InsurerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientServicesFinancialList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientServicesFinancialList.Designer.cs">
+      <DependentUpon>PatientServicesFinancialList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientTeethView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientTeethView.Designer.cs">
+      <DependentUpon>PatientTeethView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportViewer\ReportViewer11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportViewer\ReportViewer11.Designer.cs">
+      <DependentUpon>ReportViewer11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceInsurersPrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceInsurersPrices.Designer.cs">
+      <DependentUpon>ServiceInsurersPrices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CamCapture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CamCapture.Designer.cs">
+      <DependentUpon>CamCapture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientFollowUpDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientFollowUpDefine.Designer.cs">
+      <DependentUpon>PatientFollowUpDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientServiceDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientServiceDefine.Designer.cs">
+      <DependentUpon>PatientServiceDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceDefine.Designer.cs">
+      <DependentUpon>ServiceDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientsBlackList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientsBlackList.designer.cs">
+      <DependentUpon>PatientsBlackList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChequeFinancialList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChequeFinancialList.designer.cs">
+      <DependentUpon>ChequeFinancialList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChequeFinancialDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChequeFinancialDefine.designer.cs">
+      <DependentUpon>ChequeFinancialDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CostFinancialList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CostFinancialList.designer.cs">
+      <DependentUpon>CostFinancialList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CostFinancialDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CostFinancialDefine.designer.cs">
+      <DependentUpon>CostFinancialDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientDelete.designer.cs">
+      <DependentUpon>PatientDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientDocDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientDocDefine.Designer.cs">
+      <DependentUpon>PatientDocDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientTransactionsFinancialList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientTransactionsFinancialList.designer.cs">
+      <DependentUpon>PatientTransactionsFinancialList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientInfo.designer.cs">
+      <DependentUpon>PatientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientFinancialDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientFinancialDefine.designer.cs">
+      <DependentUpon>PatientFinancialDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsuranceFinancialList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsuranceFinancialList.designer.cs">
+      <DependentUpon>InsuranceFinancialList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InsuranceFinancialDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsuranceFinancialDefine.designer.cs">
+      <DependentUpon>InsuranceFinancialDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAdmission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientAdmission.designer.cs">
+      <DependentUpon>PatientAdmission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserList.designer.cs">
+      <DependentUpon>UserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserDefine.Designer.cs">
+      <DependentUpon>UserDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportList.designer.cs">
+      <DependentUpon>ReportList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeSetting.designer.cs">
+      <DependentUpon>OfficeSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BackupRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BackupRestore.designer.cs">
+      <DependentUpon>BackupRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportViewer\frm_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportViewer\frm_Report.Designer.cs">
+      <DependentUpon>frm_Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialDiseaseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialDiseaseList.Designer.cs">
+      <DependentUpon>SpecialDiseaseList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectSpecialDrugList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectSpecialDrugList.designer.cs">
+      <DependentUpon>SelectSpecialDrugList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceList.designer.cs">
+      <DependentUpon>ServiceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserProfile.designer.cs">
+      <DependentUpon>UserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserLogin.designer.cs">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reportViewer\ReportViewer22.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportViewer\ReportViewer22.Designer.cs">
+      <DependentUpon>ReportViewer22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportViewer\ReportViewer33.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportViewer\ReportViewer33.Designer.cs">
+      <DependentUpon>ReportViewer33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportViewer\ReportViewer44.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportViewer\ReportViewer44.Designer.cs">
+      <DependentUpon>ReportViewer44.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForm.Designer.cs">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkTimeDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkTimeDefine.Designer.cs">
+      <DependentUpon>WorkTimeDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkTimesDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkTimesDefine.Designer.cs">
+      <DependentUpon>WorkTimesDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisitsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisitsList.Designer.cs">
+      <DependentUpon>VisitsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkTimes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkTimes.Designer.cs">
+      <DependentUpon>WorkTimes.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DashboardX.resx">
+      <DependentUpon>DashboardX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientsList.resx">
+      <DependentUpon>PatientsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientSpecialCommentDefine.resx">
+      <DependentUpon>PatientSpecialCommentDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceInsurersPriceDefine.resx">
+      <DependentUpon>ServiceInsurersPriceDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffDefine.resx">
+      <DependentUpon>StaffDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffsList.resx">
+      <DependentUpon>StaffsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userControls\PersianCalendar\PersianMonthCalendar.resx">
+      <DependentUpon>PersianMonthCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitDefine.resx">
+      <DependentUpon>VisitDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseCoding.resx">
+      <DependentUpon>BaseCoding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseCodingDefine.resx">
+      <DependentUpon>BaseCodingDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsurerDefine.resx">
+      <DependentUpon>InsurerDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsurerList.resx">
+      <DependentUpon>InsurerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientServicesFinancialList.resx">
+      <DependentUpon>PatientServicesFinancialList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientTeethView.resx">
+      <DependentUpon>PatientTeethView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportViewer\ReportViewer11.resx">
+      <DependentUpon>ReportViewer11.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceInsurersPrices.resx">
+      <DependentUpon>ServiceInsurersPrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CamCapture.resx">
+      <DependentUpon>CamCapture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientFollowUpDefine.resx">
+      <DependentUpon>PatientFollowUpDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientServiceDefine.resx">
+      <DependentUpon>PatientServiceDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceDefine.resx">
+      <DependentUpon>ServiceDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientsBlackList.resx">
+      <DependentUpon>PatientsBlackList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChequeFinancialList.resx">
+      <DependentUpon>ChequeFinancialList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChequeFinancialDefine.resx">
+      <DependentUpon>ChequeFinancialDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CostFinancialList.resx">
+      <DependentUpon>CostFinancialList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CostFinancialDefine.resx">
+      <DependentUpon>CostFinancialDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientDelete.resx">
+      <DependentUpon>PatientDelete.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientDocDefine.resx">
+      <DependentUpon>PatientDocDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientTransactionsFinancialList.resx">
+      <DependentUpon>PatientTransactionsFinancialList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientInfo.resx">
+      <DependentUpon>PatientInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientFinancialDefine.resx">
+      <DependentUpon>PatientFinancialDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsuranceFinancialList.resx">
+      <DependentUpon>InsuranceFinancialList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsuranceFinancialDefine.resx">
+      <DependentUpon>InsuranceFinancialDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientAdmission.resx">
+      <DependentUpon>PatientAdmission.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserList.resx">
+      <DependentUpon>UserList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDefine.resx">
+      <DependentUpon>UserDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportList.resx">
+      <DependentUpon>ReportList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeSetting.resx">
+      <DependentUpon>OfficeSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackupRestore.resx">
+      <DependentUpon>BackupRestore.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="reportViewer\frm_Report.resx">
+      <DependentUpon>frm_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialDiseaseList.resx">
+      <DependentUpon>SpecialDiseaseList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectSpecialDrugList.resx">
+      <DependentUpon>SelectSpecialDrugList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceList.resx">
+      <DependentUpon>ServiceList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserProfile.resx">
+      <DependentUpon>UserProfile.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserLogin.resx">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportViewer\ReportViewer22.resx">
+      <DependentUpon>ReportViewer22.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportViewer\ReportViewer33.resx">
+      <DependentUpon>ReportViewer33.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportViewer\ReportViewer44.resx">
+      <DependentUpon>ReportViewer44.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm.resx">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkTimeDefine.resx">
+      <DependentUpon>WorkTimeDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkTimesDefine.resx">
+      <DependentUpon>WorkTimesDefine.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitsList.resx">
+      <DependentUpon>VisitsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userControls\ToothLabel.resx">
+      <DependentUpon>ToothLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkTimes.resx">
+      <DependentUpon>WorkTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\DataBase\Dental.db" />
+    <None Include="MyAsm.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="userControls\ToothLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControls\ToothLabel.Designer.cs">
+      <DependentUpon>ToothLabel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="reports\rpt_ActionFirstX.mrt" />
+    <EmbeddedResource Include="reports\rpt_CostsFinancialX.mrt" />
+    <EmbeddedResource Include="reports\rpt_InsurancesFinancialX.mrt" />
+    <EmbeddedResource Include="reports\rpt_OfficeX.mrt" />
+    <EmbeddedResource Include="reports\rpt_PatientBill.mrt" />
+    <EmbeddedResource Include="reports\rpt_PatientFish.mrt" />
+    <EmbeddedResource Include="reports\rpt_Creditor_Debtor.mrt" />
+    <EmbeddedResource Include="reports\rpt_PatientsCheques.mrt" />
+    <EmbeddedResource Include="reports\rpt_CostsChequesX.mrt" />
+    <EmbeddedResource Include="reports\rpt_PatientsPays.mrt" />
+    <EmbeddedResource Include="reports\rpt_AccountPartyCompanyFinancial.mrt" />
+    <EmbeddedResource Include="reports\rpt_PatientsServices.mrt" />
+    <EmbeddedResource Include="reports\rpt_PatientBaraat.mrt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dentistry1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_apply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\head.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\header1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\L_Off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\L_On.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Music.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\R_Off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\R_On.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Resources.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpecialDocument.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PasShode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bargasht.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PasNaShode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\data1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.9.2">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2005 Express Edition SP2 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OtherInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_BlackList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desktop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Picture_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\R.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cheque.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_list_bullets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exclamation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nurse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Docter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Symbol - Check0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Symbol - Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Symbol - Remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_Off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok_On.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Symbol .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tinyCheck.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emptyPoint.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\banner.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scaner.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\Dentistry.exe.config" />
+    <None Include="bin\Debug\Dentistry.vshost.exe.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\Error" />
+    <None Include="bin\Debug\Notes.bnb" />
+    <None Include="bin\Debug\Reminders.bnb" />
+    <None Include="bin\Debug\Temp.jpegtest" />
+    <None Include="Resources\folder.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Dentistry.exe" />
+    <Content Include="bin\Debug\Dentistry.pdb" />
+    <Content Include="bin\Debug\Dentistry.vshost.exe" />
+    <None Include="Resources\SMSX0.png" />
+    <None Include="Resources\SMSX1.png" />
+    <None Include="Resources\remove24.png" />
+    <None Include="Resources\Symbols_Critical_32xLG.png" />
+    <None Include="Resources\UniformGridElement_10696.png" />
+    <None Include="Resources\resource_16xMD.png" />
+    <None Include="Resources\resource_32xMD.png" />
+    <None Include="Resources\Symbols_Blocked_32xSM.png" />
+    <None Include="Resources\Symbols_Critical_16xLG1.png" />
+    <None Include="Resources\Symbols_Complete_and_ok_16xLG.png" />
+    <None Include="Resources\UniformGridElement_10696_MD.png" />
+    <None Include="Resources\Symbols_Critical_16xLG.png" />
+    <None Include="Resources\pencil_005_16xLG.png" />
+    <None Include="Resources\pencil_003_16xMD.png" />
+    <None Include="Resources\Bullets_11690.png" />
+    <None Include="Resources\Bullets_116901.png" />
+    <None Include="Resources\action_Cancel_16xLG.png" />
+    <Content Include="Dental.ico" />
+    <None Include="Resources\banner.png" />
+    <None Include="Resources\BackupX1.png" />
+    <None Include="Resources\BackupX0.png" />
+    <None Include="Resources\478.gif" />
+    <None Include="Resources\478 %281%29.gif" />
+    <Content Include="e_sqlite3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\arrow_Next_16xMD.png" />
+    <None Include="Resources\arrow_previous_16xMD.png" />
+    <Content Include="Resources\Cancel2.png" />
+    <Content Include="Resources\Cancel3.png" />
+    <Content Include="Resources\Cancel4.png" />
+    <None Include="Resources\grid_Data_16xLG.png" />
+    <None Include="Resources\HiddenFolder_428.png" />
+    <None Include="Resources\grid_Data_16xMD.png" />
+    <None Include="Resources\OffUser.png" />
+    <None Include="Resources\NewDocument.png" />
+    <None Include="Resources\Offline_16xLG.png" />
+    <None Include="Resources\male.png" />
+    <None Include="Resources\female.png" />
+    <None Include="Resources\dental-icon2.png" />
+    <None Include="Resources\number-0-OFF.png" />
+    <None Include="Resources\number-0-ON.png" />
+    <None Include="Resources\number-1-OFF.png" />
+    <None Include="Resources\number-1-ON.png" />
+    <None Include="Resources\number-2-OFF.png" />
+    <None Include="Resources\number-2-ON.png" />
+    <None Include="Resources\number-3-OFF.png" />
+    <None Include="Resources\number-3-ON.png" />
+    <None Include="Resources\number-4-OFF.png" />
+    <None Include="Resources\number-4-ON.png" />
+    <None Include="Resources\number-5-OFF.png" />
+    <None Include="Resources\number-5-ON.png" />
+    <None Include="Resources\number-6-OFF.png" />
+    <None Include="Resources\number-6-ON.png" />
+    <None Include="Resources\number-7-OFF.png" />
+    <None Include="Resources\number-7-ON.png" />
+    <None Include="Resources\number-8-OFF.png" />
+    <None Include="Resources\number-8-ON.png" />
+    <None Include="Resources\number-9-OFF.png" />
+    <None Include="Resources\number-9-ON.png" />
+    <Content Include="Resources\Ok2.png" />
+    <None Include="Resources\EmptyPerson.png" />
+    <None Include="bin\Debug\Icons\setting.jpg" />
+    <None Include="bin\Debug\Icons\settingS.jpg" />
+    <None Include="bin\Debug\Icons\ScreenS.jpg" />
+    <None Include="bin\Debug\Icons\visits.jpg" />
+    <None Include="bin\Debug\Icons\DocS.jpg" />
+    <None Include="bin\Debug\Icons\PatientDoc.jpg" />
+    <None Include="bin\Debug\Icons\ToothActionS.jpg" />
+    <None Include="bin\Debug\Icons\costsS.jpg" />
+    <None Include="bin\Debug\Icons\BackupS.jpg" />
+    <None Include="bin\Debug\Icons\ReportSS.jpg" />
+    <None Include="bin\Debug\Icons\setting2S.jpg" />
+    <None Include="bin\Debug\Icons\PatientFinancialS.jpg" />
+    <None Include="bin\Debug\Icons\InsuranceSr.jpg" />
+    <None Include="bin\Debug\Icons\listS.jpg" />
+    <None Include="bin\Debug\Icons\ChequeS.jpg" />
+    <None Include="bin\Debug\Icons\PatientInfoS.jpg" />
+    <None Include="bin\Debug\Icons\ScreenS2.png" />
+    <None Include="bin\Debug\Icons\settingS2.png" />
+    <None Include="bin\Debug\Icons\visitS2.png" />
+    <None Include="bin\Debug\Icons\ReportSS1.jpg" />
+    <None Include="bin\Debug\Icons\setting1.jpg" />
+    <None Include="bin\Debug\Icons\PatientInfoS2.png" />
+    <None Include="bin\Debug\Icons\PatientS2.png" />
+    <None Include="bin\Debug\Icons\ToothActionS2.png" />
+    <None Include="bin\Debug\Icons\PatientFinancialS2.png" />
+    <None Include="bin\Debug\Icons\PatientDocS2.png" />
+    <None Include="bin\Debug\Icons\ReportSS2.png" />
+    <None Include="bin\Debug\Icons\costsS2.png" />
+    <None Include="bin\Debug\Icons\ChequeS2.png" />
+    <None Include="bin\Debug\Icons\listS2.png" />
+    <None Include="bin\Debug\Icons\BackupS2.png" />
+    <None Include="bin\Debug\Icons\InsuranceS2.jpg" />
+    <None Include="bin\Debug\Icons\BackupS1.png" />
+    <None Include="bin\Debug\Icons\BackupX0.png" />
+    <None Include="bin\Debug\Icons\BackupX1.png" />
+    <None Include="bin\Debug\Icons\ReportX0.png" />
+    <None Include="bin\Debug\Icons\ReportX1.png" />
+    <None Include="bin\Debug\Icons\ChequeX0.png" />
+    <None Include="bin\Debug\Icons\ChequeX1.png" />
+    <None Include="bin\Debug\Icons\costsX0.png" />
+    <None Include="bin\Debug\Icons\costX1.jpg" />
+    <None Include="bin\Debug\Icons\FileX0.png" />
+    <None Include="bin\Debug\Icons\FileX1.png" />
+    <None Include="bin\Debug\Icons\InsuranceX0.png" />
+    <None Include="bin\Debug\Icons\InsuranceX1.png" />
+    <None Include="bin\Debug\Icons\listS2.jpg" />
+    <None Include="bin\Debug\Icons\PatientDocX0.png" />
+    <None Include="bin\Debug\Icons\PatientDocX1.png" />
+    <None Include="bin\Debug\Icons\PatientFinancialX0.png" />
+    <None Include="bin\Debug\Icons\PatientFinancialX1.png" />
+    <None Include="bin\Debug\Icons\PatientX0.png" />
+    <None Include="bin\Debug\Icons\PatientX1.png" />
+    <None Include="bin\Debug\Icons\settingX0.png" />
+    <None Include="bin\Debug\Icons\settingX1.png" />
+    <None Include="bin\Debug\Icons\SMSX0.png" />
+    <None Include="bin\Debug\Icons\SMSX1.png" />
+    <None Include="bin\Debug\Icons\StoreX0.png" />
+    <None Include="bin\Debug\Icons\StoreX1.png" />
+    <None Include="bin\Debug\Icons\ToothActionX0.png" />
+    <None Include="bin\Debug\Icons\ToothActionX1.png" />
+    <None Include="bin\Debug\Icons\visitX0.png" />
+    <None Include="bin\Debug\Icons\visitX1.png" />
+    <None Include="bin\Debug\Icons\ScreenX0.png" />
+    <None Include="bin\Debug\Icons\ScreenX1.png" />
+    <None Include="bin\Debug\Icons\dental-icon.png" />
+    <None Include="bin\Debug\Icons\dental-icon2.png" />
+    <None Include="bin\Debug\Icons\number-4.png" />
+    <None Include="bin\Debug\Icons\number-4-OFF.png" />
+    <None Include="bin\Debug\Icons\number-ON.png" />
+    <None Include="bin\Debug\Icons\number-4-ON.png" />
+    <None Include="bin\Debug\Icons\number-0-OFF.png" />
+    <None Include="bin\Debug\Icons\number-0-ON.png" />
+    <None Include="bin\Debug\Icons\number-1-OFF.png" />
+    <None Include="bin\Debug\Icons\number-1-ON.png" />
+    <None Include="bin\Debug\Icons\number-2-OFF.png" />
+    <None Include="bin\Debug\Icons\number-2-ON.png" />
+    <None Include="bin\Debug\Icons\number-3-OFF.png" />
+    <None Include="bin\Debug\Icons\number-3-ON.png" />
+    <None Include="bin\Debug\Icons\number-5-OFF.png" />
+    <None Include="bin\Debug\Icons\number-5-ON.png" />
+    <None Include="bin\Debug\Icons\number-6-OFF.png" />
+    <None Include="bin\Debug\Icons\number-6-ON.png" />
+    <None Include="bin\Debug\Icons\number-7-OFF.png" />
+    <None Include="bin\Debug\Icons\number-7-ON.png" />
+    <None Include="bin\Debug\Icons\number-8-OFF.png" />
+    <None Include="bin\Debug\Icons\number-8-ON.png" />
+    <None Include="bin\Debug\Icons\number-9-OFF.png" />
+    <None Include="bin\Debug\Icons\number-9-ON.png" />
+    <Content Include="bin\Debug\Temp.bmp" />
+    <Content Include="bin\Debug\Temp.jpeg" />
+    <Content Include="bin\Debug\Temp.jpg" />
+    <Content Include="Logo.ico" />
+    <None Include="Resources\folder-icon-512x512.png" />
+    <None Include="Resources\yellow-manila-folder.png" />
+    <None Include="Resources\hmove.cur" />
+    <None Include="Resources\harrow.cur" />
+    <None Include="Resources\arrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="model\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>if /I "$(ConfigurationName)" == "Release" Eazfuscator.NET.exe "$(TargetPath)" --msbuild-project-path "$(ProjectPath)" --msbuild-project-configuration "$(ConfigurationName)" --msbuild-project-platform "$(PlatformName)" --msbuild-solution-path "$(SolutionPath)" -n --newline-flush -v 3.0</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.2\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.2\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.2\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.2\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+</Project>
