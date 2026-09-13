@@ -205,34 +205,47 @@ namespace Dentistry
                 dt = dt.AddDays(1);
             }
             DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-            DateTime toDate = fromDate.AddDays(days);
+            DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
 
-            int count = GetChequeCount(fromDate, toDate);
-            this.CurrentWeekChequeTxt.Text = count.ToString();
-
-            IEnumerable<dynamic> list = GetChequeList(fromDate, toDate);
-            dgTodayCheque.DataSource = list;
+            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
+            dgCheque.DataSource = list;
+            int count = Enumerable.Count(list);
+            this.TodayPatientTxt.Text = count.ToString();
 
         }
-        private void GetPatients()
+        private void GetPatients_Tomorrow()
         {
-            int day = 0;
-            foreach (var pnl in this.dysTypePnl.Controls.OfType<UserControls.ExPanel>().ToList())
-            {
-                var rdoX = pnl.Controls.OfType<RadioButton>().ToList().Where(i => Convert.ToBoolean(i.Checked) == true).Select(i => i).SingleOrDefault();
+            int days = 0;
+            DateTime today = DateTime.Now;
+            DateTime tomorrow = today.AddDays(1);
+           
+            DateTime fromDate = new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day , 0, 0, 0);
+            DateTime toDate = new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day, 23, 59, 59);
 
-                if (rdoX != null)
-                {
-                    day = Convert.ToInt32(rdoX.Tag);
+            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
+            dgCheque.DataSource = list;
+            int count = Enumerable.Count(list);
+            this.TomorrowPatientTxt.Text = count.ToString();
 
-                    break;
-                }
+        }
+        private void GetPatients_AfterTomorrow()
+        {
+            int days = 0;
+            DateTime today = DateTime.Now;
+            DateTime afterTomorrow = today.AddDays(2);
 
-            }
+            DateTime fromDate = new DateTime(afterTomorrow.Year, afterTomorrow.Month, afterTomorrow.Day, 0, 0, 0);
+            DateTime toDate = new DateTime(afterTomorrow.Year, afterTomorrow.Month, afterTomorrow.Day, 23, 59, 59);
 
-            DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-            DateTime toDate = fromDate.AddDays(day);
+         
+            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
+            dgPatient.DataSource = list;
+            int count = Enumerable.Count(list);
+            this.AfterTomorrowPatientTxt.Text = count.ToString();
 
+        }
+        private IEnumerable<dynamic> GetPatientList(DateTime fromDate, DateTime toDate)
+        {                   
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.FromDate = fromDate;
             sObj.ToDate = toDate;
@@ -259,14 +272,11 @@ namespace Dentistry
                                                                                       i.EndTime,
                                                                                       i.Color,
                                                                                       i.MobilePhone
-                                                                                  }).ToList() : null;
+                                                                                  }).ToList() : Enumerable.Empty<dynamic>(); 
 
             }
-
-            this.dgTodayPatients.DataSource = list;
-            TodayPatientCount = list != null && Enumerable.Count(list) > 0 ? Enumerable.Count(list) : 0;
-
-            tabPage1.Text = " بیماران  ( " + TodayPatientCount.ToString() + " ) ";
+            return list;
+        
         }
 
         private void GetCheque_CurrentWeek()
@@ -280,13 +290,11 @@ namespace Dentistry
             }
             DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             DateTime toDate = fromDate.AddDays(days);
-
-            int count = GetChequeCount(fromDate, toDate);
-            this.CurrentWeekChequeTxt.Text = count.ToString();
-
-            IEnumerable<dynamic> list = GetChequeList(fromDate, toDate);
-            dgTodayCheque.DataSource = list;
-         
+           
+            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
+            dgCheque.DataSource = list;
+            int count = Enumerable.Count(list);
+            this.CurrentWeekChequeTxt.Text = count.ToString();              
         }
 
         private void GetCheque_NextWeek()
@@ -299,25 +307,11 @@ namespace Dentistry
             }
             DateTime fromDate = new DateTime(dt.Year, dt.Month, dt.Day, 0, 0, 0);
             DateTime toDate = fromDate.AddDays(days);
-
-            int count = GetChequeCount(fromDate, toDate);
+         
+            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
+            dgCheque.DataSource = list;
+            int count = Enumerable.Count(list);
             this.NextWeekChequeTxt.Text = count.ToString();
-
-            IEnumerable<dynamic> list = GetChequeList(fromDate, toDate);
-            dgTodayCheque.DataSource = list;
-        }
-
-        private int GetChequeCount(DateTime fromDate , DateTime toDate)
-        {            
-            dynamic sObj = new System.Dynamic.ExpandoObject();
-            sObj.PayTypeId = 14461; //  چک
-            sObj.IsDateOfMaturity = true;
-            sObj.FromDate = fromDate;
-            sObj.ToDate = toDate;
-
-            var data = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
-            int count = (data != null && data.Data != null && data.Data != null ) ? Enumerable.Count(data.Data) : 0;
-            return count;
         }
 
         private IEnumerable<dynamic> GetChequeList(DateTime fromDate, DateTime toDate)
@@ -341,73 +335,122 @@ namespace Dentistry
                                                                                 i.ChequeNumber,
                                                                                 i.Amount,
                                                                                 i.Comment,
-                                                                            }).ToList() : null;
+                                                                            }).ToList() : Enumerable.Empty<dynamic>();
 
             return list;
             
         }
 
-        private void GetFollowUpPatients()
+        private void GetFollowup_CurrentWeek()
         {
-            try
+            int days = 0;
+            DateTime dt = DateTime.Now;
+            while (dt.DayOfWeek != DayOfWeek.Friday)
             {
-                int day = 7;
-                
-                DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
-                DateTime toDate = fromDate.AddDays(day);
+                days++;
+                dt = dt.AddDays(1);
+            }
+            DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            DateTime toDate = fromDate.AddDays(days);
 
-                dynamic sObj = new System.Dynamic.ExpandoObject();
-                sObj.FromDate = fromDate;
-                sObj.toDate = toDate;
-                sObj.IsDeleted = null;
+            IEnumerable<dynamic> list = GetFollowupList(fromDate, toDate);
+            
+            int count = Enumerable.Count(list);
+            this.CurrentWeekFollowupTxt.Text = count.ToString();
 
-                var result = DataProvider.GetPatientFollowUpsX(sObj);
-                if (result == null || result.Success == false)
-                    return;
+            this.dgFollowup.Items.Clear();
 
-
-                var dd = result.Data;
-                IEnumerable<dynamic> list = dd != null && dd != null && (Enumerable.Count(dd) > 0)
-                                            ? (dd as IEnumerable<dynamic>).Where(i => Convert.ToBoolean(i.IsDeleted) != true).Select(i => i).ToList()
-                                            : Enumerable.Empty<dynamic>();
-
-                if (list == null)
-                    return;
-
-                int FollowupCount = list != null && Enumerable.Count(list) > 0 ? Enumerable.Count(list) : 0;
-                CurrentWeekFollowupTxt.Text =  FollowupCount.ToString() ;
-
-                this.lvPatientFollowUp.Items.Clear();
-
-
-                List<DateTime> listDate = new List<DateTime>();
-                foreach (dynamic obj in list)
-                {
-                    if (obj == null)
-                        break;
-                    if (obj.FollowUpDate == null)
-                        continue;
-                    DateTime followUpDate = Publics.GetPropertyValue<DateTime>(obj, "FollowUpDate");
-                    DateTime date = DateTime.Parse((followUpDate).ToShortDateString());
-                    if (!listDate.Contains(date))
-                        listDate.Add(date);
-
-                }
-
-                foreach (DateTime date in listDate)
-                {
-                    var rows = list.Where(i => ((DateTime)i.FollowUpDate).ToShortDateString() == ((DateTime)date).ToShortDateString()).Select(i => i).ToList();
-                    if (rows == null)
-                        continue;
-                    FillListView(rows, date);
-                }
-
+            List<DateTime> listDate = new List<DateTime>();
+            foreach (dynamic obj in list)
+            {
+                if (obj == null)
+                    break;
+                if (obj.FollowUpDate == null)
+                    continue;
+                DateTime followUpDate = Publics.GetPropertyValue<DateTime>(obj, "FollowUpDate");
+                DateTime date = DateTime.Parse((followUpDate).ToShortDateString());
+                if (!listDate.Contains(date))
+                    listDate.Add(date);
 
             }
-            catch (Exception exp)
+
+            foreach (DateTime date in listDate)
             {
-                this.Close();
+                var rows = list.Where(i => ((DateTime)i.FollowUpDate).ToShortDateString() == ((DateTime)date).ToShortDateString()).Select(i => i).ToList();
+                if (rows == null)
+                    continue;
+                FillListView(rows, date);
             }
         }
+
+        private IEnumerable<dynamic> GetFollowupList(DateTime fromDate, DateTime toDate)
+        {
+            
+            dynamic sObj = new System.Dynamic.ExpandoObject();
+            sObj.FromDate = fromDate;
+            sObj.toDate = toDate;
+            sObj.IsDeleted = null;
+
+            var result = DataProvider.GetPatientFollowUpsX(sObj);
+           
+            var dd = result.Data;
+            IEnumerable<dynamic> list = dd != null && dd != null && (Enumerable.Count(dd) > 0)
+                                        ? (dd as IEnumerable<dynamic>).Where(i => Convert.ToBoolean(i.IsDeleted) != true).Select(i => i).ToList()
+                                        : Enumerable.Empty<dynamic>();
+
+            return list;
+                
+        
+        }
+
+        public void FillListView(IEnumerable<dynamic> rows, DateTime date)
+        {
+
+            IEnumerable<dynamic> list = rows;
+
+            try
+            {
+
+                string dateString = string.Format("{0}/{1}/{2}", date.Year.ToString(), date.Month.ToString(), date.Day.ToString());
+                string dateStr = Class.Date.ToSolar(dateString);
+
+                ListViewGroup grp;
+                grp = dgFollowup.Groups.Add(dateStr, dateStr);
+
+
+                if (list.Count() <= 0)
+                {
+                    FarsiMessageBox.FMessageBox.Show("در این تاریخ عملباتی وچود ندارد", "No Info", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Information);
+                    return;
+                }
+
+                foreach (dynamic obj in list)
+                {
+
+                    ListViewItem item = new ListViewItem(grp);
+
+
+                    if (obj.PatientName != null)
+                        item.SubItems.Add(obj.PatientName);
+                    if (obj.SolarDate != null)
+                        item.SubItems.Add(obj.SolarDate);
+                    if (obj.MobilePhone != null)
+                        item.SubItems.Add(obj.MobilePhone);
+                    if (obj.Comment != null)
+                        item.SubItems.Add(obj.Comment);
+
+
+                    dgFollowup.Items.Add(item);
+
+                }
+            }
+
+
+            catch (Exception exp)
+            {
+                MessageBox.Show("can't get data because of the followeing error \n" + exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
