@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exPanel1 = new Dentistry.UserControls.ExPanel();
             this.AfterTomorrowPatientTxt = new System.Windows.Forms.LinkLabel();
             this.TomorrowPatientTxt = new System.Windows.Forms.LinkLabel();
@@ -52,6 +52,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.exPanel5 = new Dentistry.UserControls.ExPanel();
+            this.CurrentWeekFollowupTxt = new System.Windows.Forms.LinkLabel();
+            this.CurrentWeekFollowupLbl = new System.Windows.Forms.Label();
             this.FollowupLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -83,15 +85,17 @@
             this.ColumneX2Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChequePanelTitleLbl = new System.Windows.Forms.Label();
             this.FollowupPnl = new System.Windows.Forms.TableLayoutPanel();
-            this.FollowupPanelTitleLbl = new System.Windows.Forms.Label();
             this.lvPatientFollowUp = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CurrentWeekFollowupTxt = new System.Windows.Forms.LinkLabel();
-            this.CurrentWeekFollowupLbl = new System.Windows.Forms.Label();
+            this.FollowupPanelTitleLbl = new System.Windows.Forms.Label();
+            this.UserProfileBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.UserNameTxt = new System.Windows.Forms.Label();
+            this.BackupBtn = new System.Windows.Forms.Button();
             this.exPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -350,6 +354,33 @@
             this.exPanel5.Size = new System.Drawing.Size(194, 174);
             this.exPanel5.TabIndex = 0;
             // 
+            // CurrentWeekFollowupTxt
+            // 
+            this.CurrentWeekFollowupTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.CurrentWeekFollowupTxt.AutoSize = true;
+            this.CurrentWeekFollowupTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentWeekFollowupTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.CurrentWeekFollowupTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.CurrentWeekFollowupTxt.Location = new System.Drawing.Point(36, 80);
+            this.CurrentWeekFollowupTxt.Name = "CurrentWeekFollowupTxt";
+            this.CurrentWeekFollowupTxt.Size = new System.Drawing.Size(39, 37);
+            this.CurrentWeekFollowupTxt.TabIndex = 15;
+            this.CurrentWeekFollowupTxt.TabStop = true;
+            this.CurrentWeekFollowupTxt.Tag = "CurrentWeek";
+            this.CurrentWeekFollowupTxt.Text = "10";
+            this.CurrentWeekFollowupTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CurrentWeekFollowupTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkFollowup_LinkClicked);
+            // 
+            // CurrentWeekFollowupLbl
+            // 
+            this.CurrentWeekFollowupLbl.AutoSize = true;
+            this.CurrentWeekFollowupLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.CurrentWeekFollowupLbl.Location = new System.Drawing.Point(76, 89);
+            this.CurrentWeekFollowupLbl.Name = "CurrentWeekFollowupLbl";
+            this.CurrentWeekFollowupLbl.Size = new System.Drawing.Size(82, 20);
+            this.CurrentWeekFollowupLbl.TabIndex = 16;
+            this.CurrentWeekFollowupLbl.Text = "هفته ی جاری";
+            // 
             // FollowupLbl
             // 
             this.FollowupLbl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -408,15 +439,15 @@
             this.dgTodayPatients.BackgroundColor = System.Drawing.Color.White;
             this.dgTodayPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgTodayPatients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgTodayPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgTodayPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgTodayPatients.ColumnHeadersHeight = 30;
             this.dgTodayPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgTodayPatients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -440,14 +471,14 @@
             this.dgTodayPatients.Name = "dgTodayPatients";
             this.dgTodayPatients.ReadOnly = true;
             this.dgTodayPatients.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgTodayPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgTodayPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgTodayPatients.RowHeadersVisible = false;
             this.dgTodayPatients.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgTodayPatients.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
@@ -460,12 +491,12 @@
             // 
             this.ColumnPatientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnPatientName.DataPropertyName = "PatientName";
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.ColumnPatientName.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.ColumnPatientName.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnPatientName.HeaderText = "نام بیمار";
             this.ColumnPatientName.Name = "ColumnPatientName";
             this.ColumnPatientName.ReadOnly = true;
@@ -606,15 +637,15 @@
             this.dgTodayCheque.BackgroundColor = System.Drawing.Color.White;
             this.dgTodayCheque.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgTodayCheque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgTodayCheque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgTodayCheque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgTodayCheque.ColumnHeadersHeight = 30;
             this.dgTodayCheque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgTodayCheque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -633,14 +664,14 @@
             this.dgTodayCheque.Name = "dgTodayCheque";
             this.dgTodayCheque.ReadOnly = true;
             this.dgTodayCheque.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgTodayCheque.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgTodayCheque.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgTodayCheque.RowHeadersVisible = false;
             this.dgTodayCheque.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgTodayCheque.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
@@ -731,16 +762,6 @@
             this.FollowupPnl.TabIndex = 12;
             this.FollowupPnl.Visible = false;
             // 
-            // FollowupPanelTitleLbl
-            // 
-            this.FollowupPanelTitleLbl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.FollowupPanelTitleLbl.Location = new System.Drawing.Point(8, 5);
-            this.FollowupPanelTitleLbl.Name = "FollowupPanelTitleLbl";
-            this.FollowupPanelTitleLbl.Size = new System.Drawing.Size(227, 30);
-            this.FollowupPanelTitleLbl.TabIndex = 10;
-            this.FollowupPanelTitleLbl.Text = "label1";
-            this.FollowupPanelTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // lvPatientFollowUp
             // 
             this.lvPatientFollowUp.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -791,32 +812,72 @@
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader3.Width = 500;
             // 
-            // CurrentWeekFollowupTxt
+            // FollowupPanelTitleLbl
             // 
-            this.CurrentWeekFollowupTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
-            this.CurrentWeekFollowupTxt.AutoSize = true;
-            this.CurrentWeekFollowupTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentWeekFollowupTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.CurrentWeekFollowupTxt.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.CurrentWeekFollowupTxt.Location = new System.Drawing.Point(36, 80);
-            this.CurrentWeekFollowupTxt.Name = "CurrentWeekFollowupTxt";
-            this.CurrentWeekFollowupTxt.Size = new System.Drawing.Size(39, 37);
-            this.CurrentWeekFollowupTxt.TabIndex = 15;
-            this.CurrentWeekFollowupTxt.TabStop = true;
-            this.CurrentWeekFollowupTxt.Tag = "CurrentWeek";
-            this.CurrentWeekFollowupTxt.Text = "10";
-            this.CurrentWeekFollowupTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CurrentWeekFollowupTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkFollowup_LinkClicked);
+            this.FollowupPanelTitleLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.FollowupPanelTitleLbl.Location = new System.Drawing.Point(8, 5);
+            this.FollowupPanelTitleLbl.Name = "FollowupPanelTitleLbl";
+            this.FollowupPanelTitleLbl.Size = new System.Drawing.Size(227, 30);
+            this.FollowupPanelTitleLbl.TabIndex = 10;
+            this.FollowupPanelTitleLbl.Text = "label1";
+            this.FollowupPanelTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // CurrentWeekFollowupLbl
+            // UserProfileBtn
             // 
-            this.CurrentWeekFollowupLbl.AutoSize = true;
-            this.CurrentWeekFollowupLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.CurrentWeekFollowupLbl.Location = new System.Drawing.Point(76, 89);
-            this.CurrentWeekFollowupLbl.Name = "CurrentWeekFollowupLbl";
-            this.CurrentWeekFollowupLbl.Size = new System.Drawing.Size(82, 20);
-            this.CurrentWeekFollowupLbl.TabIndex = 16;
-            this.CurrentWeekFollowupLbl.Text = "هفته ی جاری";
+            this.UserProfileBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserProfileBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.UserProfileBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
+            this.UserProfileBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.UserProfileBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UserProfileBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserProfileBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
+            this.UserProfileBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.UserProfileBtn.Location = new System.Drawing.Point(837, 12);
+            this.UserProfileBtn.Name = "UserProfileBtn";
+            this.UserProfileBtn.Size = new System.Drawing.Size(150, 30);
+            this.UserProfileBtn.TabIndex = 134;
+            this.UserProfileBtn.Text = "پروفایل کاربر";
+            this.UserProfileBtn.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1205, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 20);
+            this.label1.TabIndex = 132;
+            this.label1.Text = "نام کاربر";
+            // 
+            // UserNameTxt
+            // 
+            this.UserNameTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserNameTxt.BackColor = System.Drawing.Color.Transparent;
+            this.UserNameTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameTxt.ForeColor = System.Drawing.Color.Black;
+            this.UserNameTxt.Location = new System.Drawing.Point(1009, 13);
+            this.UserNameTxt.Name = "UserNameTxt";
+            this.UserNameTxt.Size = new System.Drawing.Size(187, 25);
+            this.UserNameTxt.TabIndex = 131;
+            this.UserNameTxt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // BackupBtn
+            // 
+            this.BackupBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackupBtn.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackupBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
+            this.BackupBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.BackupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackupBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackupBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
+            this.BackupBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BackupBtn.Location = new System.Drawing.Point(654, 12);
+            this.BackupBtn.Name = "BackupBtn";
+            this.BackupBtn.Size = new System.Drawing.Size(150, 30);
+            this.BackupBtn.TabIndex = 133;
+            this.BackupBtn.Text = "تهیه فایل پشتیبان";
+            this.BackupBtn.UseVisualStyleBackColor = false;
             // 
             // DashboardX
             // 
@@ -824,6 +885,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1325, 865);
+            this.Controls.Add(this.UserProfileBtn);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.UserNameTxt);
+            this.Controls.Add(this.BackupBtn);
             this.Controls.Add(this.FollowupPnl);
             this.Controls.Add(this.ChequePnl);
             this.Controls.Add(this.PatientPnl);
@@ -853,6 +918,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgTodayCheque)).EndInit();
             this.FollowupPnl.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -917,5 +983,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.LinkLabel CurrentWeekFollowupTxt;
         private System.Windows.Forms.Label CurrentWeekFollowupLbl;
+        private System.Windows.Forms.Button UserProfileBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label UserNameTxt;
+        private System.Windows.Forms.Button BackupBtn;
     }
 }

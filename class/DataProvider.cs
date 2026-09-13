@@ -1766,8 +1766,7 @@ namespace Dentistry
             {
                 return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message, };
             }
-        }
-
+        }   
 
         public static JsonResponse<dynamic> GetPatientSpecialCommentsX(dynamic searchObj)
         {
