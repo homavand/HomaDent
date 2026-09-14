@@ -221,7 +221,7 @@ namespace Dentistry
             DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
 
             IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
-            dgCheque.DataSource = list;
+            dgPatient.DataSource = list;
             int count = Enumerable.Count(list);
             this.TodayPatientTxt.Text = count.ToString();
 
@@ -238,7 +238,7 @@ namespace Dentistry
             DateTime toDate = new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day, 23, 59, 59);
 
             IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
-            dgCheque.DataSource = list;
+            dgPatient.DataSource = list;
             int count = Enumerable.Count(list);
             this.TomorrowPatientTxt.Text = count.ToString();
 
@@ -306,7 +306,7 @@ namespace Dentistry
             DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             DateTime toDate = fromDate.AddDays(days);
            
-            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
+            IEnumerable<dynamic> list = GetChequeList(fromDate, toDate);
             dgCheque.DataSource = list;
             int count = Enumerable.Count(list);
             this.CurrentWeekChequeTxt.Text = count.ToString();              
@@ -323,7 +323,7 @@ namespace Dentistry
             DateTime fromDate = new DateTime(dt.Year, dt.Month, dt.Day, 0, 0, 0);
             DateTime toDate = fromDate.AddDays(days);
          
-            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
+            IEnumerable<dynamic> list = GetChequeList(fromDate, toDate);
             dgCheque.DataSource = list;
             int count = Enumerable.Count(list);
             this.NextWeekChequeTxt.Text = count.ToString();

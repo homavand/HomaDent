@@ -137,7 +137,7 @@ namespace Dentistry
 
             iObj.WeekDayTimes = weekDayTimes;
 
-            JsonResponse<dynamic> result = Dentistry.Provider.DefineWorkTimeX(iObj);
+            JsonResponse<dynamic> result = Dentistry.DataProvider.DefineWorkTimeX(iObj);
             if (result.Success == true)
             {
                 FarsiMessageBox.FMessageBox.Show("اطلاعات با موفقیت ثبت شدند", "پیام", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Information, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);

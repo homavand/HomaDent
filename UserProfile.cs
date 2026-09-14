@@ -38,7 +38,7 @@ namespace Dentistry
                 UserId = userId
             };
 
-            JsonResponse<dynamic> result = Dentistry.Provider.GetUserX(sObj);
+            JsonResponse<dynamic> result = Dentistry.DataProvider.GetUserX(sObj);
 
             if (result == null || result.Success == false || result.Data == null)
                 return;
@@ -79,7 +79,7 @@ namespace Dentistry
                 iObj.UserPass = this.textBoxPass.Text;
             iObj.Email = this.EmailTxt.Text.ToString();
 
-            JsonResponse<dynamic> result = Dentistry.Provider.DefineUserX(iObj);
+            JsonResponse<dynamic> result = Dentistry.DataProvider.DefineUserX(iObj);
 
             if (result != null && result.Success == true && result.Data != null)
             {

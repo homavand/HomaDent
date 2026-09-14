@@ -3440,25 +3440,44 @@ namespace Dentistry
                         query = query.Where(vst => vst.IsDeleted == IsDeleted.Value);
 
                     var resultList = query
-                        .Select(vst => new
-                        {
-                            vst.Id,
-                            PatientId = (int?)vst.PatientId,
-                            PatientName = vst.Patient.FirstName + " " + vst.Patient.LastName,
-                            vst.DoctorId,
-                            DoctorTitle = vst.Doctor != null ? vst.Doctor.FirstName + " " + vst.Doctor.LastName : null,
-                            MedicalCouncilCode = vst.Doctor != null ? vst.Doctor.MedicalCouncilCode : null,
-                            vst.ServiceGroupId,
-                            ServiceGroupTitle = vst.ServiceGroup != null ? vst.ServiceGroup.Title : null,
-                            Date = vst.Date,
-                            StartTime = vst.StartTime,
-                            EndTime = vst.EndTime,
-                            vst.Description,
-                            vst.Color,
-                            IsDeleted = vst.IsDeleted ?? false,
-                            MobilePhone = vst.Patient.MobilePhone
-                        })
-                        .ToList();
+                                    .Select(vst => new
+                                    {
+                                        vst.Id,
+                                        PatientId = (int?)vst.PatientId,
+                                        PatientName = vst.Patient.FirstName + " " + vst.Patient.LastName,
+                                        vst.DoctorId,
+                                        DoctorTitle = vst.Doctor != null ? vst.Doctor.FirstName + " " + vst.Doctor.LastName : null,
+                                        MedicalCouncilCode = vst.Doctor != null ? vst.Doctor.MedicalCouncilCode : null,
+                                        vst.ServiceGroupId,
+                                        ServiceGroupTitle = vst.ServiceGroup != null ? vst.ServiceGroup.Title : null,
+                                        Date = vst.Date,
+                                        StartTimeRaw = vst.StartTimeRaw,   // فیلد خام مپ‌شده
+                                        EndTimeRaw = vst.EndTimeRaw,       // فیلد خام مپ‌شده
+                                        vst.Description,
+                                        vst.Color,
+                                        IsDeleted = vst.IsDeleted ?? false,
+                                        MobilePhone = vst.Patient.MobilePhone
+                                    })
+                                    .AsEnumerable()   // از اینجا به بعد در حافظه (LINQ to Objects)
+                                    .Select(i => new
+                                    {
+                                        i.Id,
+                                        i.PatientId,
+                                        i.PatientName,
+                                        i.DoctorId,
+                                        i.DoctorTitle,
+                                        i.MedicalCouncilCode,
+                                        i.ServiceGroupId,
+                                        i.ServiceGroupTitle,
+                                        i.Date,
+                                        StartTime = TimeSpan.TryParse(i.StartTimeRaw, out var st) ? st : TimeSpan.Zero,
+                                        EndTime = TimeSpan.TryParse(i.EndTimeRaw, out var et) ? et : TimeSpan.Zero,
+                                        i.Description,
+                                        i.Color,
+                                        i.IsDeleted,
+                                        i.MobilePhone
+                                    })
+                                    .ToList();
 
                     var finalResult = resultList.Select(i => new
                     {
@@ -4676,11 +4695,10 @@ namespace Dentistry
                                     // "replace" pattern: soft-delete any exact
                                     // DoctorId+Date+StartTime+EndTime match, then
                                     // always insert a fresh row - preserved as-is.
-                                    var exactMatches = db.WorkTimes.Where(w =>
-                                        w.DoctorId == DoctorId.Value
-                                        && w.Date == date.Date
-                                        && w.StartTime == startTime
-                                        && w.EndTime == endTime);
+                                    var exactMatches = db.WorkTimes
+                                                       .Where(w => w.DoctorId == DoctorId.Value && w.Date == date.Date)
+                                                       .AsEnumerable() // از اینجا به بعد در حافظه اجرا میشه
+                                                       .Where(w => w.StartTime == startTime && w.EndTime == endTime);
                                     foreach (var m in exactMatches)
                                         m.IsDeleted = true;
 
@@ -4698,11 +4716,10 @@ namespace Dentistry
                                 {
                                     // range-contained match gets soft-deleted, no
                                     // insert - preserved as-is.
-                                    var rangeMatches = db.WorkTimes.Where(w =>
-                                        w.DoctorId == DoctorId.Value
-                                        && w.Date == date.Date
-                                        && w.StartTime >= startTime
-                                        && w.EndTime <= endTime);
+                                    var rangeMatches = db.WorkTimes
+                                                        .Where(w => w.DoctorId == DoctorId.Value && w.Date == date.Date)
+                                                        .AsEnumerable()
+                                                        .Where(w => w.StartTime >= startTime && w.EndTime <= endTime);
                                     foreach (var m in rangeMatches)
                                         m.IsDeleted = true;
                                 }
