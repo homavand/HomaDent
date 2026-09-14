@@ -115,7 +115,6 @@ namespace Dentistry
             PopupControl.Popup p;
 
             PatientPanelTitleLbl.Text = title;
-            PatientPnl.Visible = true;
             p = new PopupControl.Popup(PatientPnl);
             x1 = PatientPnl.Width;
             y1 = ctrl.Location.Y;
@@ -233,7 +232,7 @@ namespace Dentistry
             DateTime toDate = new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day, 23, 59, 59);
 
             IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
-            dgPatient.DataSource = list;
+            dgPatient.DataSource = null;
             int count = Enumerable.Count(list);
             this.TomorrowPatientTxt.Text = count.ToString();
 
