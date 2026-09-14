@@ -115,6 +115,7 @@ namespace Dentistry
             PopupControl.Popup p;
 
             PatientPanelTitleLbl.Text = title;
+            PatientPnl.Visible = true;
             p = new PopupControl.Popup(PatientPnl);
             x1 = PatientPnl.Width;
             y1 = ctrl.Location.Y;
@@ -126,12 +127,6 @@ namespace Dentistry
             //p.Show(MousePosition.X, MousePosition.Y);
             p.Show(x2 - x1 , y2 + 10);
             p = null;
-        }
-
-        private void LinkCheque_Click(object sender, EventArgs e)
-        {
-            
-
         }
 
         private void LinkCheque_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -265,13 +260,14 @@ namespace Dentistry
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.FromDate = fromDate;
             sObj.ToDate = toDate;
+            sObj.IsDeleted = false;
             var result = Dentistry.DataProvider.GetVisitX(sObj);
 
             IEnumerable<dynamic> list = null;
 
 
             var data = (result != null && result.Data != null && result.Data != null && (Enumerable.Count(result.Data) > 0)) ? result.Data : null;
-            list = data != null ? (data as IEnumerable<dynamic>).Where(i => Convert.ToBoolean(i.IsDeleted) != true)
+            list = data != null ? (data as IEnumerable<dynamic>)
                                     .Select(i =>
                                     new
                                     {
