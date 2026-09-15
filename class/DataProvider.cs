@@ -1042,7 +1042,7 @@ namespace Dentistry
 
                 using (var db = new DentalContext())
                 {
-                    db.Database.Log = sql => System.IO.File.AppendAllText(@"C:\temp\ef_log.txt", sql + "\r\n");
+                    //db.Database.Log = sql => System.IO.File.AppendAllText(@"C:\temp\ef_log.txt", sql + "\r\n");
                     // Original WHERE always hardcoded (InsuranceTypeId = 1) AND (IsDeleted = 0),
                     // then optionally ANDed a caller-supplied IsDeleted on top of that same
                     // hardcoded 0 - so calling this with IsDeleted = true always returns empty
@@ -1117,7 +1117,7 @@ namespace Dentistry
                         BI_ExpirationDate = i.BI_ExpirationDate,
                         BI_ExpirationDateSolar = i.BI_ExpirationDate != null ? Publics.GetSolarDate(i.BI_ExpirationDate) : "",
 
-                        //i.BI_Percent,
+                        i.BI_Percent,
                         i.BI_MaxPay,
 
                         BI_VDateDiff = i.BI_ExpirationDate != null ? (now.Date - i.BI_ExpirationDate.Value.Date).TotalDays : 0,

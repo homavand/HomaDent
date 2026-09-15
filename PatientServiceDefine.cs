@@ -640,7 +640,11 @@ namespace Dentistry
             foreach (DataGridViewRow row in dg.Rows)
             {
                 var color = row.Cells["ColumnServiceGroupColor" + tag].Value;
-                row.Cells["ColumnServiceGroupColor" + tag].Style.BackColor = Color.FromArgb(Convert.ToInt32(color));
+                Color parsedColor = Color.FromArgb(Convert.ToInt32(color));
+                var cell = row.Cells["ColumnServiceGroupColor" + tag];
+                cell.Style.BackColor = parsedColor;
+                cell.Style.SelectionBackColor = parsedColor;
+               
             }
            
            
@@ -840,7 +844,10 @@ namespace Dentistry
 
             var color = dg.Rows[e.RowIndex].Cells[2].Value;
             if (color != null)
+            {
                 ServiceColorLbl.BackColor = Color.FromArgb(Convert.ToInt32(color));
+                
+            }
             else
                 ServiceColorLbl.BackColor = Color.White;
            
