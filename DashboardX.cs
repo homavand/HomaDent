@@ -13,9 +13,26 @@ namespace Dentistry
 {
     public partial class DashboardX : Form
     {
+        List<PatientVisitRow> TodayPatientList = new List<PatientVisitRow>();
+        List<PatientVisitRow> TomorrowPatientList = new List<PatientVisitRow>();
+        List<PatientVisitRow> AfterTomorrowPatientList = new List<PatientVisitRow>();
+
+        List<PatientChequeRow> CurrentWeekChequeList = new List<PatientChequeRow>();
+        List<PatientChequeRow> NextWeekChequeList = new List<PatientChequeRow>();
+
+        private BindingSource patientBindingSource = new BindingSource();
+        private BindingSource chequeBindingSource = new BindingSource();
+
         public DashboardX()
         {
+          
             InitializeComponent();
+            this.dgPatient.AutoGenerateColumns = false;
+            this.dgCheque.AutoGenerateColumns = false;
+            //this.dgFollowup.AutoGenerateColumns = false;
+            dgPatient.DataSource = patientBindingSource;
+            dgCheque.DataSource = chequeBindingSource;
+
         }
 
         private void DashboardX_Load(object sender, EventArgs e)
@@ -91,19 +108,23 @@ namespace Dentistry
         {
             var link = ((LinkLabel)sender);
             var title = "---";
+            //dgPatient.DataSource = Enumerable.Empty<dynamic>();
             switch (link.Tag.ToString())
             {
                 case "Today":
                     title = this.TodayPatientLbl.Text;
+                    patientBindingSource.DataSource = TodayPatientList;                    
                     break;
                 case "Tomorrow":
                     title = this.TomorrowPatientLbl.Text;
+                    patientBindingSource.DataSource = TomorrowPatientList;
                     break;
                 case "AfterTomorrow":
                     title = this.AfterTomorrowPatientLbl.Text;
+                    patientBindingSource.DataSource = AfterTomorrowPatientList;
                     break;
             }
-            
+            patientBindingSource.ResetBindings(false);
             Show_PatientPanel(link, title);
             
         }
@@ -113,7 +134,7 @@ namespace Dentistry
             
             int x1 = 0, y1 = 0;
             PopupControl.Popup p;
-
+              
             PatientPanelTitleLbl.Text = title;
             p = new PopupControl.Popup(PatientPnl);
             x1 = PatientPnl.Width;
@@ -136,9 +157,11 @@ namespace Dentistry
             {
                 case "CurrentWeek":
                     title = this.CurrentWeekChequeLbl.Text;
+                    chequeBindingSource.DataSource = CurrentWeekChequeList;
                     break;
                 case "NextWeek":
                     title = this.NextWeekChequeLbl.Text;
+                    chequeBindingSource.DataSource = NextWeekChequeList;
                     break;
               
             }
@@ -214,8 +237,8 @@ namespace Dentistry
             DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             DateTime toDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
 
-            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
-            dgPatient.DataSource = list;
+           var list = GetPatientList(fromDate, toDate);
+            TodayPatientList = list;           
             int count = Enumerable.Count(list);
             this.TodayPatientTxt.Text = count.ToString();
 
@@ -231,8 +254,8 @@ namespace Dentistry
             DateTime fromDate = new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day , 0, 0, 0);
             DateTime toDate = new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day, 23, 59, 59);
 
-            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
-            dgPatient.DataSource = null;
+            var list = GetPatientList(fromDate, toDate);
+            TomorrowPatientList = list;
             int count = Enumerable.Count(list);
             this.TomorrowPatientTxt.Text = count.ToString();
 
@@ -248,13 +271,13 @@ namespace Dentistry
             DateTime toDate = new DateTime(afterTomorrow.Year, afterTomorrow.Month, afterTomorrow.Day, 23, 59, 59);
 
          
-            IEnumerable<dynamic> list = GetPatientList(fromDate, toDate);
-            dgPatient.DataSource = list;
+            var list = GetPatientList(fromDate, toDate);
+            AfterTomorrowPatientList = list;
             int count = Enumerable.Count(list);
             this.AfterTomorrowPatientTxt.Text = count.ToString();
 
         }
-        private IEnumerable<dynamic> GetPatientList(DateTime fromDate, DateTime toDate)
+        private List<PatientVisitRow> GetPatientList(DateTime fromDate, DateTime toDate)
         {                   
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.FromDate = fromDate;
@@ -262,29 +285,44 @@ namespace Dentistry
             sObj.IsDeleted = false;
             var result = Dentistry.DataProvider.GetVisitX(sObj);
 
-            IEnumerable<dynamic> list = null;
+            //IEnumerable<dynamic> list = null;
 
 
             var data = (result != null && result.Data != null && result.Data != null && (Enumerable.Count(result.Data) > 0)) ? result.Data : null;
-            list = data != null ? (data as IEnumerable<dynamic>)
-                                    .Select(i =>
-                                    new
-                                    {
-                                        i.Id,
-                                        i.PatientId,
-                                        i.PatientName,
-                                        i.DoctorId,
-                                        i.DoctorTitle,
-                                        i.ServiceGroupId,
-                                        i.ServiceGroupTitle,
-                                        i.SolarDate,
-                                        i.StartTime,
-                                        i.EndTime,
-                                        i.Color,
-                                        i.MobilePhone
-                                    }).ToList() : Enumerable.Empty<dynamic>(); 
+            //var list = data != null ? (data as IEnumerable<dynamic>)
+            //                        .Select(i =>
+            //                        new
+            //                        {
+            //                            i.PatientId,
+            //                            i.PatientName,
+            //                            i.DoctorId,
+            //                            i.DoctorTitle,
+            //                            i.ServiceGroupId,
+            //                            i.ServiceGroupTitle,
+            //                            i.SolarDate,
+            //                            i.StartTime,
+            //                            i.EndTime,
+            //                            i.MobilePhone
+            //                        }).ToList() : Enumerable.Empty<dynamic>();
 
-            
+
+            List<PatientVisitRow> list = data != null
+            ? (data as IEnumerable<dynamic>).Select(i => new PatientVisitRow
+            {
+                PatientId = Publics.GetPropertyValue<int>(i, "PatientId"),
+                PatientName = Publics.GetPropertyValue<string>(i, "PatientName"),
+                DoctorId = Publics.GetPropertyValue<int?>(i, "DoctorId"),
+                DoctorTitle = Publics.GetPropertyValue<string>(i, "DoctorTitle"),
+                ServiceGroupId = Publics.GetPropertyValue<int?>(i, "ServiceGroupId"),
+                ServiceGroupTitle = Publics.GetPropertyValue<string>(i, "ServiceGroupTitle"),
+                SolarDate = Publics.GetPropertyValue<string>(i, "SolarDate"),
+                StartTime = Publics.GetPropertyValue<string>(i, "StartTime"),
+                EndTime = Publics.GetPropertyValue<string>(i, "EndTime"),
+                MobilePhone = Publics.GetPropertyValue<string>(i, "MobilePhone"),
+            }).ToList()
+            : new List<PatientVisitRow>();
+
+
             return list;
         
         }
@@ -301,8 +339,8 @@ namespace Dentistry
             DateTime fromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             DateTime toDate = fromDate.AddDays(days);
            
-            IEnumerable<dynamic> list = GetChequeList(fromDate, toDate);
-            dgCheque.DataSource = list;
+            List<PatientChequeRow> list = GetChequeList(fromDate, toDate);
+            CurrentWeekChequeList = list;
             int count = Enumerable.Count(list);
             this.CurrentWeekChequeTxt.Text = count.ToString();              
         }
@@ -317,14 +355,14 @@ namespace Dentistry
             }
             DateTime fromDate = new DateTime(dt.Year, dt.Month, dt.Day, 0, 0, 0);
             DateTime toDate = fromDate.AddDays(days);
-         
-            IEnumerable<dynamic> list = GetChequeList(fromDate, toDate);
-            dgCheque.DataSource = list;
+
+            List<PatientChequeRow> list = GetChequeList(fromDate, toDate);
+            NextWeekChequeList = list;
             int count = Enumerable.Count(list);
             this.NextWeekChequeTxt.Text = count.ToString();
         }
 
-        private IEnumerable<dynamic> GetChequeList(DateTime fromDate, DateTime toDate)
+        private List<PatientChequeRow> GetChequeList(DateTime fromDate, DateTime toDate)
         {
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.PayTypeId = 14461; //  چک
@@ -335,20 +373,32 @@ namespace Dentistry
             var result = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
             var data = (result != null && result.Data != null && result.Data != null && (Enumerable.Count(result.Data) > 0)) ? result.Data : null;
 
-            IEnumerable<dynamic> list = data != null ? (data as IEnumerable<dynamic>)
-                                                                            .Select(i =>
-                                                                            new
-                                                                            {
-                                                                                i.PatientName,
-                                                                                i.ChequeTypeTitle,
-                                                                                i.SolarDateOfMaturity,
-                                                                                i.ChequeNumber,
-                                                                                i.Amount,
-                                                                                i.Comment,
-                                                                            }).ToList() : Enumerable.Empty<dynamic>();
+            //IEnumerable<dynamic> list = data != null ? (data as IEnumerable<dynamic>)
+            //                                                                .Select(i =>
+            //                                                                new
+            //                                                                {
+            //                                                                    i.PatientName,
+            //                                                                    i.ChequeTypeTitle,
+            //                                                                    i.SolarDateOfMaturity,
+            //                                                                    i.ChequeNumber,
+            //                                                                    i.Amount,
+            //                                                                    i.Comment,
+            //                                                                }).ToList() : Enumerable.Empty<dynamic>();
+
+            List<PatientChequeRow> list = data != null
+            ? (data as IEnumerable<dynamic>).Select(i => new PatientChequeRow
+            {
+                PatientId = Publics.GetPropertyValue<int>(i, "PatientId"),
+                PatientName = Publics.GetPropertyValue<string>(i, "PatientName"),
+                ChequeTypeTitle = Publics.GetPropertyValue<string>(i, "ChequeTypeTitle"),
+                SolarDateOfMaturity = Publics.GetPropertyValue<string>(i, "SolarDateOfMaturity"),             
+                ChequeNumber = Publics.GetPropertyValue<string>(i, "ChequeNumber"),
+                Amount = Publics.GetPropertyValue<double>(i, "Amount"),
+                Comment = Publics.GetPropertyValue<string>(i, "Comment"),              
+            }).ToList()
+            : new List<PatientChequeRow>();
 
             return list;
-            
         }
        
         private void GetFollowup_CurrentWeek()
@@ -462,4 +512,31 @@ namespace Dentistry
         }
 
     }
+
+    public class PatientVisitRow
+    {
+        public int Id { get; set; }
+        public int PatientId { get; set; }
+        public string PatientName { get; set; }
+        public int? DoctorId { get; set; }
+        public string DoctorTitle { get; set; }
+        public int? ServiceGroupId { get; set; }
+        public string ServiceGroupTitle { get; set; }
+        public string SolarDate { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public string MobilePhone { get; set; }
+    }
+
+    public class PatientChequeRow
+    {
+        public int PatientId { get; set; }
+        public string PatientName { get; set; }
+        public string ChequeTypeTitle { get; set; }
+        public string SolarDateOfMaturity { get; set; }
+        public string ChequeNumber { get; set; }
+        public double Amount { get; set; }
+        public string Comment { get; set; }
+    }
+                                                                            
 }

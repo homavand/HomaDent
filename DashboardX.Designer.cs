@@ -30,29 +30,36 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.exPanel1 = new Dentistry.UserControls.ExPanel();
+            this.AfterTomorrowPatientTxt = new System.Windows.Forms.LinkLabel();
+            this.TomorrowPatientTxt = new System.Windows.Forms.LinkLabel();
+            this.TodayPatientTxt = new System.Windows.Forms.LinkLabel();
+            this.PatientLbl = new System.Windows.Forms.Label();
+            this.TodayPatientLbl = new System.Windows.Forms.Label();
+            this.TomorrowPatientLbl = new System.Windows.Forms.Label();
+            this.AfterTomorrowPatientLbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.exPanel4 = new Dentistry.UserControls.ExPanel();
+            this.NextWeekChequeTxt = new System.Windows.Forms.LinkLabel();
+            this.CurrentWeekChequeTxt = new System.Windows.Forms.LinkLabel();
+            this.CurrentWeekChequeLbl = new System.Windows.Forms.Label();
+            this.NextWeekChequeLbl = new System.Windows.Forms.Label();
+            this.ChequeLbl = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.exPanel5 = new Dentistry.UserControls.ExPanel();
+            this.CurrentWeekFollowupTxt = new System.Windows.Forms.LinkLabel();
+            this.CurrentWeekFollowupLbl = new System.Windows.Forms.Label();
+            this.FollowupLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.dgPatient = new System.Windows.Forms.DataGridView();
-            this.ColumnPatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDoctorTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSolarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnFromTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnToTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnServiceGroupTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPatientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDoctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnServiceGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientPnl = new System.Windows.Forms.TableLayoutPanel();
             this.PatientPanelTitleLbl = new System.Windows.Forms.Label();
             this.ChequePnl = new System.Windows.Forms.TableLayoutPanel();
@@ -77,36 +84,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.UserNameTxt = new System.Windows.Forms.Label();
             this.BackupBtn = new System.Windows.Forms.Button();
-            this.exPanel5 = new Dentistry.UserControls.ExPanel();
-            this.CurrentWeekFollowupTxt = new System.Windows.Forms.LinkLabel();
-            this.CurrentWeekFollowupLbl = new System.Windows.Forms.Label();
-            this.FollowupLbl = new System.Windows.Forms.Label();
-            this.exPanel4 = new Dentistry.UserControls.ExPanel();
-            this.NextWeekChequeTxt = new System.Windows.Forms.LinkLabel();
-            this.CurrentWeekChequeTxt = new System.Windows.Forms.LinkLabel();
-            this.CurrentWeekChequeLbl = new System.Windows.Forms.Label();
-            this.NextWeekChequeLbl = new System.Windows.Forms.Label();
-            this.ChequeLbl = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.exPanel1 = new Dentistry.UserControls.ExPanel();
-            this.AfterTomorrowPatientTxt = new System.Windows.Forms.LinkLabel();
-            this.TomorrowPatientTxt = new System.Windows.Forms.LinkLabel();
-            this.TodayPatientTxt = new System.Windows.Forms.LinkLabel();
-            this.PatientLbl = new System.Windows.Forms.Label();
-            this.TodayPatientLbl = new System.Windows.Forms.Label();
-            this.TomorrowPatientLbl = new System.Windows.Forms.Label();
-            this.AfterTomorrowPatientLbl = new System.Windows.Forms.Label();
+            this.ColumnPatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDoctorTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSolarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnFromTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnToTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnServiceGroupTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPatientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDoctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnServiceGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            this.exPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.exPanel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.exPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPatient)).BeginInit();
             this.PatientPnl.SuspendLayout();
             this.ChequePnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCheque)).BeginInit();
             this.FollowupPnl.SuspendLayout();
-            this.exPanel5.SuspendLayout();
-            this.exPanel4.SuspendLayout();
-            this.exPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -120,6 +119,116 @@
             this.panel1.Size = new System.Drawing.Size(200, 180);
             this.panel1.TabIndex = 5;
             // 
+            // exPanel1
+            // 
+            this.exPanel1.BackColor = System.Drawing.Color.White;
+            this.exPanel1.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.exPanel1.Controls.Add(this.AfterTomorrowPatientTxt);
+            this.exPanel1.Controls.Add(this.TomorrowPatientTxt);
+            this.exPanel1.Controls.Add(this.TodayPatientTxt);
+            this.exPanel1.Controls.Add(this.PatientLbl);
+            this.exPanel1.Controls.Add(this.TodayPatientLbl);
+            this.exPanel1.Controls.Add(this.TomorrowPatientLbl);
+            this.exPanel1.Controls.Add(this.AfterTomorrowPatientLbl);
+            this.exPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exPanel1.Location = new System.Drawing.Point(3, 3);
+            this.exPanel1.Name = "exPanel1";
+            this.exPanel1.Size = new System.Drawing.Size(194, 174);
+            this.exPanel1.TabIndex = 0;
+            // 
+            // AfterTomorrowPatientTxt
+            // 
+            this.AfterTomorrowPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.AfterTomorrowPatientTxt.AutoSize = true;
+            this.AfterTomorrowPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AfterTomorrowPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.AfterTomorrowPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.AfterTomorrowPatientTxt.Location = new System.Drawing.Point(62, 127);
+            this.AfterTomorrowPatientTxt.Name = "AfterTomorrowPatientTxt";
+            this.AfterTomorrowPatientTxt.Size = new System.Drawing.Size(39, 37);
+            this.AfterTomorrowPatientTxt.TabIndex = 12;
+            this.AfterTomorrowPatientTxt.TabStop = true;
+            this.AfterTomorrowPatientTxt.Tag = "AfterTomorrow";
+            this.AfterTomorrowPatientTxt.Text = "10";
+            this.AfterTomorrowPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AfterTomorrowPatientTxt.Click += new System.EventHandler(this.LinkPatient_Click);
+            // 
+            // TomorrowPatientTxt
+            // 
+            this.TomorrowPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.TomorrowPatientTxt.AutoSize = true;
+            this.TomorrowPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TomorrowPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.TomorrowPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.TomorrowPatientTxt.Location = new System.Drawing.Point(62, 89);
+            this.TomorrowPatientTxt.Name = "TomorrowPatientTxt";
+            this.TomorrowPatientTxt.Size = new System.Drawing.Size(39, 37);
+            this.TomorrowPatientTxt.TabIndex = 11;
+            this.TomorrowPatientTxt.TabStop = true;
+            this.TomorrowPatientTxt.Tag = "Tomorrow";
+            this.TomorrowPatientTxt.Text = "10";
+            this.TomorrowPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TomorrowPatientTxt.Click += new System.EventHandler(this.LinkPatient_Click);
+            // 
+            // TodayPatientTxt
+            // 
+            this.TodayPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.TodayPatientTxt.AutoSize = true;
+            this.TodayPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TodayPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.TodayPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.TodayPatientTxt.Location = new System.Drawing.Point(62, 50);
+            this.TodayPatientTxt.Name = "TodayPatientTxt";
+            this.TodayPatientTxt.Size = new System.Drawing.Size(39, 37);
+            this.TodayPatientTxt.TabIndex = 7;
+            this.TodayPatientTxt.TabStop = true;
+            this.TodayPatientTxt.Tag = "Today";
+            this.TodayPatientTxt.Text = "10";
+            this.TodayPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TodayPatientTxt.Click += new System.EventHandler(this.LinkPatient_Click);
+            // 
+            // PatientLbl
+            // 
+            this.PatientLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PatientLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PatientLbl.Location = new System.Drawing.Point(0, 0);
+            this.PatientLbl.Name = "PatientLbl";
+            this.PatientLbl.Size = new System.Drawing.Size(194, 36);
+            this.PatientLbl.TabIndex = 4;
+            this.PatientLbl.Text = "بیماران نوبت دهی شده";
+            this.PatientLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TodayPatientLbl
+            // 
+            this.TodayPatientLbl.AutoSize = true;
+            this.TodayPatientLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.TodayPatientLbl.Location = new System.Drawing.Point(102, 59);
+            this.TodayPatientLbl.Name = "TodayPatientLbl";
+            this.TodayPatientLbl.Size = new System.Drawing.Size(36, 20);
+            this.TodayPatientLbl.TabIndex = 8;
+            this.TodayPatientLbl.Text = "امروز";
+            // 
+            // TomorrowPatientLbl
+            // 
+            this.TomorrowPatientLbl.AutoSize = true;
+            this.TomorrowPatientLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.TomorrowPatientLbl.Location = new System.Drawing.Point(102, 101);
+            this.TomorrowPatientLbl.Name = "TomorrowPatientLbl";
+            this.TomorrowPatientLbl.Size = new System.Drawing.Size(29, 20);
+            this.TomorrowPatientLbl.TabIndex = 9;
+            this.TomorrowPatientLbl.Text = "فردا";
+            // 
+            // AfterTomorrowPatientLbl
+            // 
+            this.AfterTomorrowPatientLbl.AutoSize = true;
+            this.AfterTomorrowPatientLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.AfterTomorrowPatientLbl.Location = new System.Drawing.Point(102, 138);
+            this.AfterTomorrowPatientLbl.Name = "AfterTomorrowPatientLbl";
+            this.AfterTomorrowPatientLbl.Size = new System.Drawing.Size(53, 20);
+            this.AfterTomorrowPatientLbl.TabIndex = 10;
+            this.AfterTomorrowPatientLbl.Text = "پس فردا";
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -131,6 +240,95 @@
             this.panel2.Size = new System.Drawing.Size(200, 180);
             this.panel2.TabIndex = 6;
             // 
+            // exPanel4
+            // 
+            this.exPanel4.BackColor = System.Drawing.Color.White;
+            this.exPanel4.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.exPanel4.Controls.Add(this.NextWeekChequeTxt);
+            this.exPanel4.Controls.Add(this.CurrentWeekChequeTxt);
+            this.exPanel4.Controls.Add(this.CurrentWeekChequeLbl);
+            this.exPanel4.Controls.Add(this.NextWeekChequeLbl);
+            this.exPanel4.Controls.Add(this.ChequeLbl);
+            this.exPanel4.Controls.Add(this.label5);
+            this.exPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exPanel4.Location = new System.Drawing.Point(3, 3);
+            this.exPanel4.Name = "exPanel4";
+            this.exPanel4.Size = new System.Drawing.Size(194, 174);
+            this.exPanel4.TabIndex = 0;
+            // 
+            // NextWeekChequeTxt
+            // 
+            this.NextWeekChequeTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.NextWeekChequeTxt.AutoSize = true;
+            this.NextWeekChequeTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NextWeekChequeTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.NextWeekChequeTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.NextWeekChequeTxt.Location = new System.Drawing.Point(45, 107);
+            this.NextWeekChequeTxt.Name = "NextWeekChequeTxt";
+            this.NextWeekChequeTxt.Size = new System.Drawing.Size(39, 37);
+            this.NextWeekChequeTxt.TabIndex = 17;
+            this.NextWeekChequeTxt.TabStop = true;
+            this.NextWeekChequeTxt.Tag = "NextWeek";
+            this.NextWeekChequeTxt.Text = "10";
+            this.NextWeekChequeTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.NextWeekChequeTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkCheque_LinkClicked);
+            // 
+            // CurrentWeekChequeTxt
+            // 
+            this.CurrentWeekChequeTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.CurrentWeekChequeTxt.AutoSize = true;
+            this.CurrentWeekChequeTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentWeekChequeTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.CurrentWeekChequeTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.CurrentWeekChequeTxt.Location = new System.Drawing.Point(45, 65);
+            this.CurrentWeekChequeTxt.Name = "CurrentWeekChequeTxt";
+            this.CurrentWeekChequeTxt.Size = new System.Drawing.Size(39, 37);
+            this.CurrentWeekChequeTxt.TabIndex = 13;
+            this.CurrentWeekChequeTxt.TabStop = true;
+            this.CurrentWeekChequeTxt.Tag = "CurrentWeek";
+            this.CurrentWeekChequeTxt.Text = "10";
+            this.CurrentWeekChequeTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CurrentWeekChequeTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkCheque_LinkClicked);
+            // 
+            // CurrentWeekChequeLbl
+            // 
+            this.CurrentWeekChequeLbl.AutoSize = true;
+            this.CurrentWeekChequeLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.CurrentWeekChequeLbl.Location = new System.Drawing.Point(85, 74);
+            this.CurrentWeekChequeLbl.Name = "CurrentWeekChequeLbl";
+            this.CurrentWeekChequeLbl.Size = new System.Drawing.Size(82, 20);
+            this.CurrentWeekChequeLbl.TabIndex = 14;
+            this.CurrentWeekChequeLbl.Text = "هفته ی جاری";
+            // 
+            // NextWeekChequeLbl
+            // 
+            this.NextWeekChequeLbl.AutoSize = true;
+            this.NextWeekChequeLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.NextWeekChequeLbl.Location = new System.Drawing.Point(85, 116);
+            this.NextWeekChequeLbl.Name = "NextWeekChequeLbl";
+            this.NextWeekChequeLbl.Size = new System.Drawing.Size(73, 20);
+            this.NextWeekChequeLbl.TabIndex = 15;
+            this.NextWeekChequeLbl.Text = "هفته ی آتی";
+            // 
+            // ChequeLbl
+            // 
+            this.ChequeLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ChequeLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChequeLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ChequeLbl.Location = new System.Drawing.Point(0, 0);
+            this.ChequeLbl.Name = "ChequeLbl";
+            this.ChequeLbl.Size = new System.Drawing.Size(194, 36);
+            this.ChequeLbl.TabIndex = 7;
+            this.ChequeLbl.Text = "سررسید چک ها";
+            this.ChequeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 23);
+            this.label5.TabIndex = 8;
+            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -141,6 +339,58 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(3);
             this.panel3.Size = new System.Drawing.Size(200, 180);
             this.panel3.TabIndex = 6;
+            // 
+            // exPanel5
+            // 
+            this.exPanel5.BackColor = System.Drawing.Color.White;
+            this.exPanel5.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.exPanel5.Controls.Add(this.CurrentWeekFollowupTxt);
+            this.exPanel5.Controls.Add(this.CurrentWeekFollowupLbl);
+            this.exPanel5.Controls.Add(this.FollowupLbl);
+            this.exPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exPanel5.Location = new System.Drawing.Point(3, 3);
+            this.exPanel5.Name = "exPanel5";
+            this.exPanel5.Size = new System.Drawing.Size(194, 174);
+            this.exPanel5.TabIndex = 0;
+            // 
+            // CurrentWeekFollowupTxt
+            // 
+            this.CurrentWeekFollowupTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.CurrentWeekFollowupTxt.AutoSize = true;
+            this.CurrentWeekFollowupTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentWeekFollowupTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.CurrentWeekFollowupTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.CurrentWeekFollowupTxt.Location = new System.Drawing.Point(36, 80);
+            this.CurrentWeekFollowupTxt.Name = "CurrentWeekFollowupTxt";
+            this.CurrentWeekFollowupTxt.Size = new System.Drawing.Size(39, 37);
+            this.CurrentWeekFollowupTxt.TabIndex = 15;
+            this.CurrentWeekFollowupTxt.TabStop = true;
+            this.CurrentWeekFollowupTxt.Tag = "CurrentWeek";
+            this.CurrentWeekFollowupTxt.Text = "10";
+            this.CurrentWeekFollowupTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CurrentWeekFollowupTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkFollowup_LinkClicked);
+            // 
+            // CurrentWeekFollowupLbl
+            // 
+            this.CurrentWeekFollowupLbl.AutoSize = true;
+            this.CurrentWeekFollowupLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.CurrentWeekFollowupLbl.Location = new System.Drawing.Point(76, 89);
+            this.CurrentWeekFollowupLbl.Name = "CurrentWeekFollowupLbl";
+            this.CurrentWeekFollowupLbl.Size = new System.Drawing.Size(82, 20);
+            this.CurrentWeekFollowupLbl.TabIndex = 16;
+            this.CurrentWeekFollowupLbl.Text = "هفته ی جاری";
+            // 
+            // FollowupLbl
+            // 
+            this.FollowupLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FollowupLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FollowupLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.FollowupLbl.Location = new System.Drawing.Point(0, 0);
+            this.FollowupLbl.Name = "FollowupLbl";
+            this.FollowupLbl.Size = new System.Drawing.Size(194, 36);
+            this.FollowupLbl.TabIndex = 7;
+            this.FollowupLbl.Text = "فالوآپ بیماران";
+            this.FollowupLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -210,8 +460,7 @@
             this.ColumnId,
             this.ColumnPatientId,
             this.ColumnDoctorId,
-            this.ColumnServiceGroupId,
-            this.ColumnColor});
+            this.ColumnServiceGroupId});
             this.dgPatient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgPatient.EnableHeadersVisualStyles = false;
             this.dgPatient.GridColor = System.Drawing.Color.White;
@@ -230,110 +479,12 @@
             this.dgPatient.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgPatient.RowHeadersVisible = false;
             this.dgPatient.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgPatient.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.dgPatient.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.dgPatient.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgPatient.RowTemplate.Height = 25;
             this.dgPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPatient.Size = new System.Drawing.Size(680, 204);
             this.dgPatient.TabIndex = 9;
-            // 
-            // ColumnPatientName
-            // 
-            this.ColumnPatientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnPatientName.DataPropertyName = "PatientName";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.ColumnPatientName.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnPatientName.HeaderText = "نام بیمار";
-            this.ColumnPatientName.Name = "ColumnPatientName";
-            this.ColumnPatientName.ReadOnly = true;
-            // 
-            // ColumnDoctorTitle
-            // 
-            this.ColumnDoctorTitle.DataPropertyName = "DoctorTitle";
-            this.ColumnDoctorTitle.HeaderText = "نام دکتر";
-            this.ColumnDoctorTitle.Name = "ColumnDoctorTitle";
-            this.ColumnDoctorTitle.ReadOnly = true;
-            this.ColumnDoctorTitle.Width = 200;
-            // 
-            // ColumnSolarDate
-            // 
-            this.ColumnSolarDate.DataPropertyName = "SolarDate";
-            this.ColumnSolarDate.HeaderText = "تاریخ";
-            this.ColumnSolarDate.Name = "ColumnSolarDate";
-            this.ColumnSolarDate.ReadOnly = true;
-            // 
-            // ColumnFromTime
-            // 
-            this.ColumnFromTime.DataPropertyName = "StartTime";
-            this.ColumnFromTime.HeaderText = "از ساعت";
-            this.ColumnFromTime.Name = "ColumnFromTime";
-            this.ColumnFromTime.ReadOnly = true;
-            // 
-            // ColumnToTime
-            // 
-            this.ColumnToTime.DataPropertyName = "EndTime";
-            this.ColumnToTime.HeaderText = "تا ساعت";
-            this.ColumnToTime.Name = "ColumnToTime";
-            this.ColumnToTime.ReadOnly = true;
-            // 
-            // ColumnServiceGroupTitle
-            // 
-            this.ColumnServiceGroupTitle.DataPropertyName = "ServiceGroupTitle";
-            this.ColumnServiceGroupTitle.HeaderText = "گروه خدمت";
-            this.ColumnServiceGroupTitle.Name = "ColumnServiceGroupTitle";
-            this.ColumnServiceGroupTitle.ReadOnly = true;
-            this.ColumnServiceGroupTitle.Width = 200;
-            // 
-            // ColumnMobile
-            // 
-            this.ColumnMobile.DataPropertyName = "MobilePhone";
-            this.ColumnMobile.HeaderText = "شماره تلفن";
-            this.ColumnMobile.Name = "ColumnMobile";
-            this.ColumnMobile.ReadOnly = true;
-            this.ColumnMobile.Width = 150;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.DataPropertyName = "Id";
-            this.ColumnId.HeaderText = "Id";
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
-            // 
-            // ColumnPatientId
-            // 
-            this.ColumnPatientId.DataPropertyName = "PatientId";
-            this.ColumnPatientId.HeaderText = "PatientId";
-            this.ColumnPatientId.Name = "ColumnPatientId";
-            this.ColumnPatientId.ReadOnly = true;
-            this.ColumnPatientId.Visible = false;
-            // 
-            // ColumnDoctorId
-            // 
-            this.ColumnDoctorId.DataPropertyName = "DoctorId";
-            this.ColumnDoctorId.HeaderText = "DoctorId";
-            this.ColumnDoctorId.Name = "ColumnDoctorId";
-            this.ColumnDoctorId.ReadOnly = true;
-            this.ColumnDoctorId.Visible = false;
-            // 
-            // ColumnServiceGroupId
-            // 
-            this.ColumnServiceGroupId.DataPropertyName = "ServiceGroupId";
-            this.ColumnServiceGroupId.HeaderText = "ServiceGroupId";
-            this.ColumnServiceGroupId.Name = "ColumnServiceGroupId";
-            this.ColumnServiceGroupId.ReadOnly = true;
-            this.ColumnServiceGroupId.Visible = false;
-            // 
-            // ColumnColor
-            // 
-            this.ColumnColor.DataPropertyName = "Color";
-            this.ColumnColor.HeaderText = "Color";
-            this.ColumnColor.Name = "ColumnColor";
-            this.ColumnColor.ReadOnly = true;
-            this.ColumnColor.Visible = false;
             // 
             // PatientPnl
             // 
@@ -423,8 +574,9 @@
             this.dgCheque.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgCheque.RowHeadersVisible = false;
             this.dgCheque.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgCheque.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.dgCheque.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.dgCheque.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCheque.RowTemplate.Height = 25;
             this.dgCheque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCheque.Size = new System.Drawing.Size(680, 204);
             this.dgCheque.TabIndex = 11;
@@ -501,7 +653,7 @@
             this.FollowupPnl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.FollowupPnl.Controls.Add(this.dgFollowup, 0, 1);
             this.FollowupPnl.Controls.Add(this.FollowupPanelTitleLbl, 0, 0);
-            this.FollowupPnl.Location = new System.Drawing.Point(91, 331);
+            this.FollowupPnl.Location = new System.Drawing.Point(47, 271);
             this.FollowupPnl.Name = "FollowupPnl";
             this.FollowupPnl.Padding = new System.Windows.Forms.Padding(5);
             this.FollowupPnl.RowCount = 2;
@@ -628,256 +780,96 @@
             this.BackupBtn.Text = "تهیه فایل پشتیبان";
             this.BackupBtn.UseVisualStyleBackColor = false;
             // 
-            // exPanel5
+            // ColumnPatientName
             // 
-            this.exPanel5.BackColor = System.Drawing.Color.White;
-            this.exPanel5.BorderColor = System.Drawing.Color.DeepSkyBlue;
-            this.exPanel5.Controls.Add(this.CurrentWeekFollowupTxt);
-            this.exPanel5.Controls.Add(this.CurrentWeekFollowupLbl);
-            this.exPanel5.Controls.Add(this.FollowupLbl);
-            this.exPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exPanel5.Location = new System.Drawing.Point(3, 3);
-            this.exPanel5.Name = "exPanel5";
-            this.exPanel5.Size = new System.Drawing.Size(194, 174);
-            this.exPanel5.TabIndex = 0;
+            this.ColumnPatientName.DataPropertyName = "PatientName";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.ColumnPatientName.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnPatientName.HeaderText = "نام بیمار";
+            this.ColumnPatientName.Name = "ColumnPatientName";
+            this.ColumnPatientName.ReadOnly = true;
+            this.ColumnPatientName.Width = 150;
             // 
-            // CurrentWeekFollowupTxt
+            // ColumnDoctorTitle
             // 
-            this.CurrentWeekFollowupTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
-            this.CurrentWeekFollowupTxt.AutoSize = true;
-            this.CurrentWeekFollowupTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentWeekFollowupTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.CurrentWeekFollowupTxt.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.CurrentWeekFollowupTxt.Location = new System.Drawing.Point(36, 80);
-            this.CurrentWeekFollowupTxt.Name = "CurrentWeekFollowupTxt";
-            this.CurrentWeekFollowupTxt.Size = new System.Drawing.Size(39, 37);
-            this.CurrentWeekFollowupTxt.TabIndex = 15;
-            this.CurrentWeekFollowupTxt.TabStop = true;
-            this.CurrentWeekFollowupTxt.Tag = "CurrentWeek";
-            this.CurrentWeekFollowupTxt.Text = "10";
-            this.CurrentWeekFollowupTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CurrentWeekFollowupTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkFollowup_LinkClicked);
+            this.ColumnDoctorTitle.DataPropertyName = "DoctorTitle";
+            this.ColumnDoctorTitle.HeaderText = "نام دکتر";
+            this.ColumnDoctorTitle.Name = "ColumnDoctorTitle";
+            this.ColumnDoctorTitle.ReadOnly = true;
+            this.ColumnDoctorTitle.Width = 200;
             // 
-            // CurrentWeekFollowupLbl
+            // ColumnSolarDate
             // 
-            this.CurrentWeekFollowupLbl.AutoSize = true;
-            this.CurrentWeekFollowupLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.CurrentWeekFollowupLbl.Location = new System.Drawing.Point(76, 89);
-            this.CurrentWeekFollowupLbl.Name = "CurrentWeekFollowupLbl";
-            this.CurrentWeekFollowupLbl.Size = new System.Drawing.Size(82, 20);
-            this.CurrentWeekFollowupLbl.TabIndex = 16;
-            this.CurrentWeekFollowupLbl.Text = "هفته ی جاری";
+            this.ColumnSolarDate.DataPropertyName = "SolarDate";
+            this.ColumnSolarDate.HeaderText = "تاریخ";
+            this.ColumnSolarDate.Name = "ColumnSolarDate";
+            this.ColumnSolarDate.ReadOnly = true;
             // 
-            // FollowupLbl
+            // ColumnFromTime
             // 
-            this.FollowupLbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FollowupLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FollowupLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.FollowupLbl.Location = new System.Drawing.Point(0, 0);
-            this.FollowupLbl.Name = "FollowupLbl";
-            this.FollowupLbl.Size = new System.Drawing.Size(194, 36);
-            this.FollowupLbl.TabIndex = 7;
-            this.FollowupLbl.Text = "فالوآپ بیماران";
-            this.FollowupLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ColumnFromTime.DataPropertyName = "StartTime";
+            this.ColumnFromTime.HeaderText = "از ساعت";
+            this.ColumnFromTime.Name = "ColumnFromTime";
+            this.ColumnFromTime.ReadOnly = true;
             // 
-            // exPanel4
+            // ColumnToTime
             // 
-            this.exPanel4.BackColor = System.Drawing.Color.White;
-            this.exPanel4.BorderColor = System.Drawing.Color.DeepSkyBlue;
-            this.exPanel4.Controls.Add(this.NextWeekChequeTxt);
-            this.exPanel4.Controls.Add(this.CurrentWeekChequeTxt);
-            this.exPanel4.Controls.Add(this.CurrentWeekChequeLbl);
-            this.exPanel4.Controls.Add(this.NextWeekChequeLbl);
-            this.exPanel4.Controls.Add(this.ChequeLbl);
-            this.exPanel4.Controls.Add(this.label5);
-            this.exPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exPanel4.Location = new System.Drawing.Point(3, 3);
-            this.exPanel4.Name = "exPanel4";
-            this.exPanel4.Size = new System.Drawing.Size(194, 174);
-            this.exPanel4.TabIndex = 0;
+            this.ColumnToTime.DataPropertyName = "EndTime";
+            this.ColumnToTime.HeaderText = "تا ساعت";
+            this.ColumnToTime.Name = "ColumnToTime";
+            this.ColumnToTime.ReadOnly = true;
             // 
-            // NextWeekChequeTxt
+            // ColumnServiceGroupTitle
             // 
-            this.NextWeekChequeTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
-            this.NextWeekChequeTxt.AutoSize = true;
-            this.NextWeekChequeTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NextWeekChequeTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.NextWeekChequeTxt.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.NextWeekChequeTxt.Location = new System.Drawing.Point(45, 107);
-            this.NextWeekChequeTxt.Name = "NextWeekChequeTxt";
-            this.NextWeekChequeTxt.Size = new System.Drawing.Size(39, 37);
-            this.NextWeekChequeTxt.TabIndex = 17;
-            this.NextWeekChequeTxt.TabStop = true;
-            this.NextWeekChequeTxt.Tag = "NextWeek";
-            this.NextWeekChequeTxt.Text = "10";
-            this.NextWeekChequeTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.NextWeekChequeTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkCheque_LinkClicked);
+            this.ColumnServiceGroupTitle.DataPropertyName = "ServiceGroupTitle";
+            this.ColumnServiceGroupTitle.HeaderText = "گروه خدمت";
+            this.ColumnServiceGroupTitle.Name = "ColumnServiceGroupTitle";
+            this.ColumnServiceGroupTitle.ReadOnly = true;
+            this.ColumnServiceGroupTitle.Width = 200;
             // 
-            // CurrentWeekChequeTxt
+            // ColumnMobile
             // 
-            this.CurrentWeekChequeTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
-            this.CurrentWeekChequeTxt.AutoSize = true;
-            this.CurrentWeekChequeTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentWeekChequeTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.CurrentWeekChequeTxt.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.CurrentWeekChequeTxt.Location = new System.Drawing.Point(45, 65);
-            this.CurrentWeekChequeTxt.Name = "CurrentWeekChequeTxt";
-            this.CurrentWeekChequeTxt.Size = new System.Drawing.Size(39, 37);
-            this.CurrentWeekChequeTxt.TabIndex = 13;
-            this.CurrentWeekChequeTxt.TabStop = true;
-            this.CurrentWeekChequeTxt.Tag = "CurrentWeek";
-            this.CurrentWeekChequeTxt.Text = "10";
-            this.CurrentWeekChequeTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CurrentWeekChequeTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkCheque_LinkClicked);
+            this.ColumnMobile.DataPropertyName = "MobilePhone";
+            this.ColumnMobile.HeaderText = "شماره تلفن";
+            this.ColumnMobile.Name = "ColumnMobile";
+            this.ColumnMobile.ReadOnly = true;
+            this.ColumnMobile.Width = 150;
             // 
-            // CurrentWeekChequeLbl
+            // ColumnId
             // 
-            this.CurrentWeekChequeLbl.AutoSize = true;
-            this.CurrentWeekChequeLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.CurrentWeekChequeLbl.Location = new System.Drawing.Point(85, 74);
-            this.CurrentWeekChequeLbl.Name = "CurrentWeekChequeLbl";
-            this.CurrentWeekChequeLbl.Size = new System.Drawing.Size(82, 20);
-            this.CurrentWeekChequeLbl.TabIndex = 14;
-            this.CurrentWeekChequeLbl.Text = "هفته ی جاری";
+            this.ColumnId.DataPropertyName = "Id";
+            this.ColumnId.HeaderText = "Id";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
             // 
-            // NextWeekChequeLbl
+            // ColumnPatientId
             // 
-            this.NextWeekChequeLbl.AutoSize = true;
-            this.NextWeekChequeLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.NextWeekChequeLbl.Location = new System.Drawing.Point(85, 116);
-            this.NextWeekChequeLbl.Name = "NextWeekChequeLbl";
-            this.NextWeekChequeLbl.Size = new System.Drawing.Size(73, 20);
-            this.NextWeekChequeLbl.TabIndex = 15;
-            this.NextWeekChequeLbl.Text = "هفته ی آتی";
+            this.ColumnPatientId.DataPropertyName = "PatientId";
+            this.ColumnPatientId.HeaderText = "PatientId";
+            this.ColumnPatientId.Name = "ColumnPatientId";
+            this.ColumnPatientId.ReadOnly = true;
+            this.ColumnPatientId.Visible = false;
             // 
-            // ChequeLbl
+            // ColumnDoctorId
             // 
-            this.ChequeLbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ChequeLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChequeLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ChequeLbl.Location = new System.Drawing.Point(0, 0);
-            this.ChequeLbl.Name = "ChequeLbl";
-            this.ChequeLbl.Size = new System.Drawing.Size(194, 36);
-            this.ChequeLbl.TabIndex = 7;
-            this.ChequeLbl.Text = "سررسید چک ها";
-            this.ChequeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ColumnDoctorId.DataPropertyName = "DoctorId";
+            this.ColumnDoctorId.HeaderText = "DoctorId";
+            this.ColumnDoctorId.Name = "ColumnDoctorId";
+            this.ColumnDoctorId.ReadOnly = true;
+            this.ColumnDoctorId.Visible = false;
             // 
-            // label5
+            // ColumnServiceGroupId
             // 
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 23);
-            this.label5.TabIndex = 8;
-            // 
-            // exPanel1
-            // 
-            this.exPanel1.BackColor = System.Drawing.Color.White;
-            this.exPanel1.BorderColor = System.Drawing.Color.DeepSkyBlue;
-            this.exPanel1.Controls.Add(this.AfterTomorrowPatientTxt);
-            this.exPanel1.Controls.Add(this.TomorrowPatientTxt);
-            this.exPanel1.Controls.Add(this.TodayPatientTxt);
-            this.exPanel1.Controls.Add(this.PatientLbl);
-            this.exPanel1.Controls.Add(this.TodayPatientLbl);
-            this.exPanel1.Controls.Add(this.TomorrowPatientLbl);
-            this.exPanel1.Controls.Add(this.AfterTomorrowPatientLbl);
-            this.exPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exPanel1.Location = new System.Drawing.Point(3, 3);
-            this.exPanel1.Name = "exPanel1";
-            this.exPanel1.Size = new System.Drawing.Size(194, 174);
-            this.exPanel1.TabIndex = 0;
-            // 
-            // AfterTomorrowPatientTxt
-            // 
-            this.AfterTomorrowPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
-            this.AfterTomorrowPatientTxt.AutoSize = true;
-            this.AfterTomorrowPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AfterTomorrowPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.AfterTomorrowPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.AfterTomorrowPatientTxt.Location = new System.Drawing.Point(62, 127);
-            this.AfterTomorrowPatientTxt.Name = "AfterTomorrowPatientTxt";
-            this.AfterTomorrowPatientTxt.Size = new System.Drawing.Size(39, 37);
-            this.AfterTomorrowPatientTxt.TabIndex = 12;
-            this.AfterTomorrowPatientTxt.TabStop = true;
-            this.AfterTomorrowPatientTxt.Tag = "AfterTomorrow";
-            this.AfterTomorrowPatientTxt.Text = "10";
-            this.AfterTomorrowPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.AfterTomorrowPatientTxt.Click += new System.EventHandler(this.LinkPatient_Click);
-            // 
-            // TomorrowPatientTxt
-            // 
-            this.TomorrowPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
-            this.TomorrowPatientTxt.AutoSize = true;
-            this.TomorrowPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TomorrowPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.TomorrowPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.TomorrowPatientTxt.Location = new System.Drawing.Point(62, 89);
-            this.TomorrowPatientTxt.Name = "TomorrowPatientTxt";
-            this.TomorrowPatientTxt.Size = new System.Drawing.Size(39, 37);
-            this.TomorrowPatientTxt.TabIndex = 11;
-            this.TomorrowPatientTxt.TabStop = true;
-            this.TomorrowPatientTxt.Tag = "Tomorrow";
-            this.TomorrowPatientTxt.Text = "10";
-            this.TomorrowPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.TomorrowPatientTxt.Click += new System.EventHandler(this.LinkPatient_Click);
-            // 
-            // TodayPatientTxt
-            // 
-            this.TodayPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
-            this.TodayPatientTxt.AutoSize = true;
-            this.TodayPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TodayPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.TodayPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.TodayPatientTxt.Location = new System.Drawing.Point(62, 50);
-            this.TodayPatientTxt.Name = "TodayPatientTxt";
-            this.TodayPatientTxt.Size = new System.Drawing.Size(39, 37);
-            this.TodayPatientTxt.TabIndex = 7;
-            this.TodayPatientTxt.TabStop = true;
-            this.TodayPatientTxt.Tag = "Today";
-            this.TodayPatientTxt.Text = "10";
-            this.TodayPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.TodayPatientTxt.Click += new System.EventHandler(this.LinkPatient_Click);
-            // 
-            // PatientLbl
-            // 
-            this.PatientLbl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PatientLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PatientLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.PatientLbl.Location = new System.Drawing.Point(0, 0);
-            this.PatientLbl.Name = "PatientLbl";
-            this.PatientLbl.Size = new System.Drawing.Size(194, 36);
-            this.PatientLbl.TabIndex = 4;
-            this.PatientLbl.Text = "بیماران نوبت دهی شده";
-            this.PatientLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TodayPatientLbl
-            // 
-            this.TodayPatientLbl.AutoSize = true;
-            this.TodayPatientLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.TodayPatientLbl.Location = new System.Drawing.Point(102, 59);
-            this.TodayPatientLbl.Name = "TodayPatientLbl";
-            this.TodayPatientLbl.Size = new System.Drawing.Size(36, 20);
-            this.TodayPatientLbl.TabIndex = 8;
-            this.TodayPatientLbl.Text = "امروز";
-            // 
-            // TomorrowPatientLbl
-            // 
-            this.TomorrowPatientLbl.AutoSize = true;
-            this.TomorrowPatientLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.TomorrowPatientLbl.Location = new System.Drawing.Point(102, 101);
-            this.TomorrowPatientLbl.Name = "TomorrowPatientLbl";
-            this.TomorrowPatientLbl.Size = new System.Drawing.Size(29, 20);
-            this.TomorrowPatientLbl.TabIndex = 9;
-            this.TomorrowPatientLbl.Text = "فردا";
-            // 
-            // AfterTomorrowPatientLbl
-            // 
-            this.AfterTomorrowPatientLbl.AutoSize = true;
-            this.AfterTomorrowPatientLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.AfterTomorrowPatientLbl.Location = new System.Drawing.Point(102, 138);
-            this.AfterTomorrowPatientLbl.Name = "AfterTomorrowPatientLbl";
-            this.AfterTomorrowPatientLbl.Size = new System.Drawing.Size(53, 20);
-            this.AfterTomorrowPatientLbl.TabIndex = 10;
-            this.AfterTomorrowPatientLbl.Text = "پس فردا";
+            this.ColumnServiceGroupId.DataPropertyName = "ServiceGroupId";
+            this.ColumnServiceGroupId.HeaderText = "ServiceGroupId";
+            this.ColumnServiceGroupId.Name = "ColumnServiceGroupId";
+            this.ColumnServiceGroupId.ReadOnly = true;
+            this.ColumnServiceGroupId.Visible = false;
             // 
             // DashboardX
             // 
@@ -904,19 +896,19 @@
             this.Text = "داشبورد";
             this.Load += new System.EventHandler(this.DashboardX_Load);
             this.panel1.ResumeLayout(false);
+            this.exPanel1.ResumeLayout(false);
+            this.exPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.exPanel4.ResumeLayout(false);
+            this.exPanel4.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.exPanel5.ResumeLayout(false);
+            this.exPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPatient)).EndInit();
             this.PatientPnl.ResumeLayout(false);
             this.ChequePnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCheque)).EndInit();
             this.FollowupPnl.ResumeLayout(false);
-            this.exPanel5.ResumeLayout(false);
-            this.exPanel5.PerformLayout();
-            this.exPanel4.ResumeLayout(false);
-            this.exPanel4.PerformLayout();
-            this.exPanel1.ResumeLayout(false);
-            this.exPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -945,18 +937,6 @@
         private System.Windows.Forms.LinkLabel AfterTomorrowPatientTxt;
         private System.Windows.Forms.LinkLabel TomorrowPatientTxt;
         public System.Windows.Forms.DataGridView dgPatient;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPatientName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDoctorTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSolarDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFromTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnToTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnServiceGroupTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMobile;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPatientId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDoctorId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnServiceGroupId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnColor;
         private System.Windows.Forms.TableLayoutPanel PatientPnl;
         private System.Windows.Forms.Label PatientPanelTitleLbl;
         private System.Windows.Forms.TableLayoutPanel ChequePnl;
@@ -987,5 +967,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label UserNameTxt;
         private System.Windows.Forms.Button BackupBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPatientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDoctorTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSolarDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFromTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnToTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnServiceGroupTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMobile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPatientId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDoctorId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnServiceGroupId;
     }
 }

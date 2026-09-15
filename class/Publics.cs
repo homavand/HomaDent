@@ -907,7 +907,7 @@ namespace Dentistry
         }
         public static DateTime ConvertStringToDateTime(string str)
         {
-            string pattern = @"(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})";
+            string pattern = @"(\d{4})[-/](\d{2})[-/](\d{2}) (\d{2}):(\d{2})";
             if (Regex.IsMatch(str, pattern))
             {
                 Match match = Regex.Match(str, pattern);
@@ -916,13 +916,28 @@ namespace Dentistry
                 int day = Convert.ToInt32(match.Groups[3].Value);
                 int hour = Convert.ToInt32(match.Groups[4].Value);
                 int minute = Convert.ToInt32(match.Groups[5].Value);
-               
+
                 return new DateTime(year, month, day, hour, minute, 0, 0);
             }
             else
             {
-                throw new Exception("Unable to parse.");
+                throw new Exception($"Unable to parse date: '{str}'");
             }
+        }
+
+        public static DateTime ConvertStringToDateTimeX(string str)
+        {
+            string[] formats = {
+                                "yyyy-MM-dd HH:mm",
+                                "yyyy/MM/dd HH:mm",
+                                "yyyy-MM-dd",
+                                "yyyy/MM/dd"
+                                };
+
+            if (DateTime.TryParseExact(str, formats, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime result))
+                return result;
+
+            throw new Exception($"Unable to parse date: '{str}'");
         }
 
         public static int GetComboIndex(ComboBox cbo, object value)
