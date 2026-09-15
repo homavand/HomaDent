@@ -20,8 +20,25 @@ namespace Dentistry.Models
     // would have thrown EF validation errors on save.
     // ---------------------------------------------------------------
 
+    // Shared shape for the flattened lookup family (Gender, PayType, ...).
+    // Lets generic helpers (see DataProvider.GetFullCodingList<T>/
+    // GetMinimalCodingList<T>) keep working with a single type-parameter
+    // constraint now that there is no common BaseCoding base class to
+    // constrain against.
+    public interface IBaseCoding
+    {
+        int Id { get; set; }
+        string Code { get; set; }
+        string Value { get; set; }
+        string Title { get; set; }
+        int? Sort { get; set; }
+        string TerminologyId { get; set; }
+        string Description { get; set; }
+        bool IsDeleted { get; set; }
+    }
+
     [Table("BaseCoding_AdmissionTypes")]
-    public class AdmissionType
+    public class AdmissionType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -35,7 +52,7 @@ namespace Dentistry.Models
 
     // Real table "BaseCoding_Banks" has 3 extra columns beyond Id.
     [Table("BaseCoding_Banks")]
-    public class Bank
+    public class Bank : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -61,7 +78,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_BargainSides")]
-    public class BargainSide
+    public class BargainSide : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -81,7 +98,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_CheckupTypes")]
-    public class CheckupType
+    public class CheckupType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -94,7 +111,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_ChequeStatus")]
-    public class ChequeStatus
+    public class ChequeStatus : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -115,7 +132,7 @@ namespace Dentistry.Models
 
     // Present in real DB ("BaseCoding_ChequeTypes") - was missing from the model.
     [Table("BaseCoding_ChequeTypes")]
-    public class ChequeType
+    public class ChequeType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -128,7 +145,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_CostTypes")]
-    public class CostType
+    public class CostType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -148,7 +165,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_DentalUnits")]
-    public class DentalUnit
+    public class DentalUnit : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -161,7 +178,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_Diagnosis")]
-    public class Diagnosis
+    public class Diagnosis : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -174,7 +191,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_DiagnosisStatus")]
-    public class DiagnosisStatus
+    public class DiagnosisStatus : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -187,7 +204,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_DrugFrequencies")]
-    public class DrugFrequency
+    public class DrugFrequency : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -200,7 +217,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_DrugRoutes")]
-    public class DrugRoute
+    public class DrugRoute : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -213,7 +230,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_DrugShapes")]
-    public class DrugShape
+    public class DrugShape : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -226,7 +243,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_Drugs")]
-    public class Drug
+    public class Drug : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -239,7 +256,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_EducationLevels")]
-    public class EducationLevel
+    public class EducationLevel : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -259,7 +276,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_Genders")]
-    public class Gender
+    public class Gender : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -282,7 +299,7 @@ namespace Dentistry.Models
 
     // Present in real DB ("BaseCoding_HealthcareProviders") - was missing from the model.
     [Table("BaseCoding_HealthcareProviders")]
-    public class HealthcareProvider
+    public class HealthcareProvider : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -295,7 +312,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_InsuranceBookletTypes")]
-    public class InsuranceBookletType
+    public class InsuranceBookletType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -315,7 +332,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_InsuranceBoxs")]
-    public class InsuranceBox
+    public class InsuranceBox : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -335,7 +352,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_InsuranceTypes")]
-    public class InsuranceType
+    public class InsuranceType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -355,7 +372,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_Insurances")]
-    public class Insurance
+    public class Insurance : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -376,7 +393,7 @@ namespace Dentistry.Models
 
     // Real table "BaseCoding_ItemUnits" has 1 extra column beyond Id.
     [Table("BaseCoding_ItemUnits")]
-    public class ItemUnit
+    public class ItemUnit : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -391,7 +408,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_Jobs")]
-    public class Job
+    public class Job : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -411,7 +428,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_MaritalStatus")]
-    public class MaritalStatus
+    public class MaritalStatus : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -431,7 +448,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_Nationalities")]
-    public class Nationality
+    public class Nationality : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -451,7 +468,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_OrdinalTerms")]
-    public class OrdinalTerm
+    public class OrdinalTerm : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -465,7 +482,7 @@ namespace Dentistry.Models
 
     // Present in real DB ("BaseCoding_OrganizationTypes") - was missing from the model.
     [Table("BaseCoding_OrganizationTypes")]
-    public class OrganizationType
+    public class OrganizationType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -478,7 +495,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_PayStatus")]
-    public class PayStatus
+    public class PayStatus : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -491,7 +508,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_PayTypes")]
-    public class PayType
+    public class PayType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -513,7 +530,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_PersonRelationTypes")]
-    public class PersonRelationType
+    public class PersonRelationType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -533,7 +550,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_ReferredReasons")]
-    public class ReferredReason
+    public class ReferredReason : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -546,7 +563,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_ReferredTypes")]
-    public class ReferredType
+    public class ReferredType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -560,7 +577,7 @@ namespace Dentistry.Models
 
     // Real table "BaseCoding_ServiceGroups" has 1 extra column beyond Id.
     [Table("BaseCoding_ServiceGroups")]
-    public class ServiceGroup
+    public class ServiceGroup : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -584,7 +601,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_ServiceUnits")]
-    public class ServiceUnit
+    public class ServiceUnit : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -597,7 +614,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_Severities")]
-    public class Severity
+    public class Severity : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -610,7 +627,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_SpecialCommentTypes")]
-    public class SpecialCommentType
+    public class SpecialCommentType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -630,7 +647,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_SpecialDiseases")]
-    public class SpecialDiseas
+    public class SpecialDiseas : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -650,7 +667,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_SpecialDrugs")]
-    public class SpecialDrug
+    public class SpecialDrug : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -670,7 +687,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_Specialties")]
-    public class Specialty
+    public class Specialty : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -690,7 +707,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_StaffTypes")]
-    public class StaffType
+    public class StaffType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -710,7 +727,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_StuffTransactionTypes")]
-    public class StuffTransactionType
+    public class StuffTransactionType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -723,7 +740,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_StuffTypes")]
-    public class StuffType
+    public class StuffType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -736,7 +753,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_SubstanceTypes")]
-    public class SubstanceType
+    public class SubstanceType : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -749,7 +766,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_ToothNumbers")]
-    public class ToothNumber
+    public class ToothNumber : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -762,7 +779,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_ToothParts")]
-    public class ToothPart
+    public class ToothPart : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -775,7 +792,7 @@ namespace Dentistry.Models
     }
 
     [Table("BaseCoding_ToothSegments")]
-    public class ToothSegment
+    public class ToothSegment : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -789,7 +806,7 @@ namespace Dentistry.Models
 
     // Present in real DB ("BaseCoding_CodingICD10") - was missing from the model.
     [Table("BaseCoding_CodingICD10")]
-    public class CodingICD10
+    public class CodingICD10 : IBaseCoding
     {
         public int Id { get; set; }
         public string Code { get; set; }

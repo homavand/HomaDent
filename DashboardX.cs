@@ -365,7 +365,7 @@ namespace Dentistry
         private List<PatientChequeRow> GetChequeList(DateTime fromDate, DateTime toDate)
         {
             dynamic sObj = new System.Dynamic.ExpandoObject();
-            sObj.PayTypeId = 14461; //  چک
+            sObj.PayTypeId = 3; //  چک
             sObj.IsDateOfMaturity = true;
             sObj.FromDate = fromDate;
             sObj.ToDate = toDate;

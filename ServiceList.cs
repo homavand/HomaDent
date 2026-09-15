@@ -16,14 +16,15 @@ namespace Dentistry
         private int serviceGroupId = 0;
         public int ServiceGroupId
         {
-            set { 
+            set
+            {
                 this.serviceGroupId = value;
                 this.FillGrid_dgServices();
             }
             get { return this.serviceGroupId; }
         }
 
-        
+
 
         #region FormService
         public ServiceList()
@@ -38,7 +39,7 @@ namespace Dentistry
 
             this.dgServices_Init();
         }
-        
+
         private void dgServices_Init()
         {
             dgServices.AutoGenerateColumns = false;
@@ -50,7 +51,7 @@ namespace Dentistry
             dgServices.Columns["ColumnPriceDefineDate"].DisplayIndex = 3;
             dgServices.Columns["ColumnIsDeletedPic"].DisplayIndex = 4;
 
-            dgServices.Columns["ColumnServiceCode"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;            
+            dgServices.Columns["ColumnServiceCode"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgServices.Columns["ColumnServiceTitle"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgServices.Columns["ColumnServiceFreePrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgServices.Columns["ColumnPriceDefineDate"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -66,7 +67,7 @@ namespace Dentistry
             };
             var result = Dentistry.DataProvider.GetBaseCodingX(sObj);
             var dd = result != null && result.Data != null ? result.Data : null;
-           
+
             IEnumerable<dynamic> serviceGroupList = dd != null && (Enumerable.Count(dd) > 0) ? (dd as IEnumerable<dynamic>)
                                                                             .Select(i =>
                                                                                 new
@@ -85,37 +86,37 @@ namespace Dentistry
         }
         #endregion
 
-      
+
 
         #region FillGrid_dgServices
         public void FillGrid_dgServices(bool flag = false)
         {
             try
             {
-                
+
                 dynamic sObj = new System.Dynamic.ExpandoObject();
 
                 //if(flag == true)
                 //{
-                if (this.ServiceGroupId != 0 )
+                if (this.ServiceGroupId != 0)
                     sObj.ServiceGroupId = this.ServiceGroupId;
 
                 //if(!string.IsNullOrEmpty(this.ServiceCodeTxt.Text))
                 //    sObj.ServiceCode    = this.ServiceCodeTxt.Text; 
                 //if(!string.IsNullOrEmpty(this.ServiceTitleTxt.Text))
                 //    sObj.ServiceTitle   = this.ServiceTitleTxt.Text;                  
-               
+
                 if (Convert.ToBoolean(this.IsDeletedChk.Checked) != true)
                     sObj.IsDeleted = false;
-             
+
 
                 var result = DataProvider.GetServicesX(sObj);
-                if (result == null || result.Success == false )
+                if (result == null || result.Success == false)
                     return;
 
                 var dd = result.Data;
                 IEnumerable<dynamic> list = dd != null && (Enumerable.Count(dd) > 0) ? (dd as IEnumerable<dynamic>).Select(i => i)
-                                                                              .Select(i =>                                                                              
+                                                                              .Select(i =>
                                                                                 new
                                                                                 {
                                                                                     i.ServiceId,
@@ -127,12 +128,12 @@ namespace Dentistry
                                                                                     i.PriceDefineDate
 
                                                                                 }).ToList() : Enumerable.Empty<dynamic>();
-              
 
-              
+
+
                 this.dgServices.DataSource = list;
 
-               
+
             }
             catch (System.Exception exp)
             {
@@ -142,7 +143,7 @@ namespace Dentistry
         }
         #endregion
 
-      
+
         #region dataGridViewService_CellDoubleClick
         private void dataGridViewService_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -194,18 +195,25 @@ namespace Dentistry
                         ((DataGridViewImageCell)this.dgServices["ColumnIsDeletedPic", row.Index]).Value = (Image)global::Dentistry.Properties.Resources.emptyPoint;
                     }
 
-                   
+
 
                     if (this.dgServices["ColumnServiceColor", row.Index].Value != null)
                     {
                         string color = this.dgServices["ColumnServiceColor", row.Index].Value.ToString();
-                        DataGridViewCell cell = this.dgServices["ColumnColor", row.Index];                   
-                        cell.Style.BackColor =  Color.FromArgb(Convert.ToInt32(color));
-                     
+                        DataGridViewCell cell = this.dgServices["ColumnColor", row.Index];
+                        Color parsedColor = Color.FromArgb(Convert.ToInt32(color));
+                        cell.Style.BackColor = parsedColor;
+                        // Without this, selecting the row overrides this cell's
+                        // background with the grid's default selection highlight
+                        // (DataGridView paints SelectionBackColor, not BackColor,
+                        // for cells in a selected row) - setting both to the same
+                        // color makes the swatch immune to selection highlighting.
+                        cell.Style.SelectionBackColor = parsedColor;
+
                     }
                 }
-                
-                   
+
+
 
             }
             catch (Exception exp)
@@ -237,16 +245,16 @@ namespace Dentistry
                 return;
             try
             {
-                
+
                 int id = Convert.ToInt32(this.dgServices.CurrentRow.Cells["ColumnServiceId"].Value);
                 ServiceDefine form = new ServiceDefine(id);
                 var result = form.ShowDialog(this);
                 if (result == DialogResult.OK)
                     this.FillGrid_dgServices();
                 form.Dispose();
-               
 
-                                     
+
+
             }
             catch (System.Exception exp)
             {
@@ -254,7 +262,7 @@ namespace Dentistry
                 this.Close();
             }
         }
-        #endregion 
+        #endregion
 
         #region ButtonDelete_Click
         private void ButtonDelete_Click(object sender, EventArgs e)
@@ -281,10 +289,10 @@ namespace Dentistry
                         this.FillGrid_dgServices();
                     }
 
-                    
+
                 }
             }
-            catch(System.Exception exp)
+            catch (System.Exception exp)
             {
                 MessageBox.Show(exp.ToString());
                 this.Close();
@@ -292,17 +300,17 @@ namespace Dentistry
         }
         #endregion
 
-     
+
 
         #region buttonCancel_Click
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-           
+
         }
-        #endregion 
-        
-      
-      
+        #endregion
+
+
+
 
         private void ButtonServicePricing_Click(object sender, EventArgs e)
         {
@@ -328,18 +336,29 @@ namespace Dentistry
             if (this.dgServiceGroup.Columns[e.ColumnIndex].Name.Trim().Equals("ColumnGroupColor"))
             {
                 var color = this.dgServiceGroup.Rows[e.RowIndex].Cells["ColumnServiceGroupColor"].Value;
-                this.dgServiceGroup.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.FromArgb(Convert.ToInt32(color));
+                if (color != null)
+                {
+                    Color parsedColor = Color.FromArgb(Convert.ToInt32(color));
+                    var cell = this.dgServiceGroup.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    cell.Style.BackColor = parsedColor;
+                    // Same reasoning as dataGridViewService_CellFormatting below:
+                    // a selected row's cells are painted with SelectionBackColor,
+                    // not BackColor, by default. Setting SelectionBackColor to the
+                    // same color keeps this swatch showing its real color whether
+                    // the row is selected or not.
+                    cell.Style.SelectionBackColor = parsedColor;
+                }
                 //this.dgServiceGroup.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
             }
         }
         private void dgServiceGroup_SelectionChanged(object sender, EventArgs e)
         {
-            if(this.dgServiceGroup.Focus())
+            if (this.dgServiceGroup.Focus())
                 if ((this.dgServiceGroup.CurrentRow != null) && (((DataGridView)sender).CurrentRow.Selected))
                 {
                     this.ServiceGroupId = Convert.ToInt32(this.dgServiceGroup.CurrentRow.Cells["ColumnServiceGroupId"].Value);
                     this.serviceGroupTitleLbl.Text = Convert.ToString(this.dgServiceGroup.CurrentRow.Cells["ColumnServiceGroupTitle"].Value);
-               
+
                 }
         }
 
@@ -348,6 +367,6 @@ namespace Dentistry
             this.FillGrid_dgServices();
         }
 
-       
+
     }
 }

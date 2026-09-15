@@ -174,10 +174,10 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Lavender;
+            this.panel1.BackColor = System.Drawing.Color.Silver;
             this.panel1.Location = new System.Drawing.Point(35, 216);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(484, 5);
+            this.panel1.Size = new System.Drawing.Size(484, 2);
             this.panel1.TabIndex = 171;
             // 
             // label7
@@ -194,7 +194,7 @@
             // serviceGroupTitleLbl
             // 
             this.serviceGroupTitleLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.serviceGroupTitleLbl.BackColor = System.Drawing.Color.Lavender;
+            this.serviceGroupTitleLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.serviceGroupTitleLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serviceGroupTitleLbl.Location = new System.Drawing.Point(64, 27);
             this.serviceGroupTitleLbl.Name = "serviceGroupTitleLbl";
@@ -245,7 +245,7 @@
             this.dgServiceGroup.RowHeadersVisible = false;
             this.dgServiceGroup.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Vazir", 9.5F);
             this.dgServiceGroup.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgServiceGroup.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.dgServiceGroup.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.dgServiceGroup.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgServiceGroup.RowTemplate.Height = 30;
             this.dgServiceGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -384,7 +384,7 @@
             this.ColorLbl.AutoSize = true;
             this.ColorLbl.BackColor = System.Drawing.Color.Black;
             this.ColorLbl.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColorLbl.Location = new System.Drawing.Point(432, 236);
+            this.ColorLbl.Location = new System.Drawing.Point(433, 236);
             this.ColorLbl.Name = "ColorLbl";
             this.ColorLbl.Size = new System.Drawing.Size(17, 18);
             this.ColorLbl.TabIndex = 6;

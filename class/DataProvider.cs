@@ -19,7 +19,11 @@ namespace Dentistry
     {
 
         // Shape: Id, Code, Value, Title, TerminologyId, SortOrder, IsDeleted
-        private static List<dynamic> GetFullCodingList<T>(DentalContext db) where T : BaseCoding
+        // Constraint was "where T : BaseCoding" - the flattened lookup family
+        // (see models/BaseCoding.cs) no longer has that shared base class, so
+        // the constraint is now against the IBaseCoding interface every one
+        // of those types implements instead.
+        private static List<dynamic> GetFullCodingList<T>(DentalContext db) where T : class, IBaseCoding
         {
             return db.Set<T>()
                 .OrderBy(b => b.Id)
@@ -37,7 +41,7 @@ namespace Dentistry
         }
 
         // Shape: Id, Title, IsDeleted
-        private static List<dynamic> GetMinimalCodingList<T>(DentalContext db) where T : BaseCoding
+        private static List<dynamic> GetMinimalCodingList<T>(DentalContext db) where T : class, IBaseCoding
         {
             return db.Set<T>()
                 .OrderBy(b => b.Id)
@@ -406,7 +410,7 @@ namespace Dentistry
 
                 using (var db = new DentalContext())
                 {
-                    IQueryable<Patient> query = db.Patients                       
+                    IQueryable<Patient> query = db.Patients
                         .Where(p => p.Id > 0);
 
                     if (IsDeleted != null)
@@ -417,15 +421,15 @@ namespace Dentistry
                         p.Id,
                         p.FirstName,
                         p.LastName,
-                    
+
                     }).ToList();
 
                     var finalResult = rows.Select(i => new
                     {
                         i.Id,
-                        PatientId = i.Id,                        
+                        PatientId = i.Id,
                         PatientName = (i.LastName ?? "") + " " + (i.FirstName ?? ""),
-                      
+
                     }).ToList();
 
                     return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
@@ -637,7 +641,7 @@ namespace Dentistry
                         GenderId = (int?)i.GenderId,
                         GenderTitle = (string)i.GenderTitle,
                         JobId = (int?)i.JobId,
-                        JobTitle = i.JobTitle ,
+                        JobTitle = i.JobTitle,
                         Presenter = (string)i.Presenter,
                         MaritalStatusId = (int?)i.MaritalStatusId,
                         EducationLevelId = (int?)i.EducationLevelId,
@@ -1418,7 +1422,7 @@ namespace Dentistry
                     // CheckupTypeId is never actually null here (defaults to 2
                     // above), so this filter is effectively always applied -
                     // preserved exactly as in the original.
-                   // query = query.Where(ps => ps.CheckupTypeId == CheckupTypeId);
+                    // query = query.Where(ps => ps.CheckupTypeId == CheckupTypeId);
 
                     if (ServiceGroupId != null)
                         // original filtered on svc.ServiceGroupId (the Service's
@@ -1766,7 +1770,7 @@ namespace Dentistry
             {
                 return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message, };
             }
-        }   
+        }
 
         public static JsonResponse<dynamic> GetPatientSpecialCommentsX(dynamic searchObj)
         {

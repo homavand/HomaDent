@@ -30,15 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgServices = new System.Windows.Forms.DataGridView();
+            this.ColumnServiceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnServiceTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnServiceFreePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPriceDefineDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIsDeletedPic = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColumnServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnServiceColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIsDeleted = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bindingNavigatorService = new System.Windows.Forms.BindingNavigator(this.components);
             this.ButtonNew = new System.Windows.Forms.ToolStripButton();
             this.ButtonEdit = new System.Windows.Forms.ToolStripButton();
@@ -62,15 +71,6 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnServiceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnServiceTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnServiceFreePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPriceDefineDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIsDeletedPic = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnServiceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnServiceColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIsDeleted = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorService)).BeginInit();
             this.bindingNavigatorService.SuspendLayout();
@@ -136,6 +136,90 @@
             this.dgServices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellDoubleClick);
             this.dgServices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewService_DataBindingComplete);
             this.dgServices.SelectionChanged += new System.EventHandler(this.dataGridViewService_SelectionChanged);
+            // 
+            // ColumnServiceCode
+            // 
+            this.ColumnServiceCode.DataPropertyName = "ServiceCode";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ColumnServiceCode.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnServiceCode.HeaderText = "کد خدمت";
+            this.ColumnServiceCode.Name = "ColumnServiceCode";
+            this.ColumnServiceCode.ReadOnly = true;
+            this.ColumnServiceCode.Width = 150;
+            // 
+            // ColumnServiceTitle
+            // 
+            this.ColumnServiceTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnServiceTitle.DataPropertyName = "ServiceTitle";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ColumnServiceTitle.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnServiceTitle.HeaderText = "خدمت";
+            this.ColumnServiceTitle.Name = "ColumnServiceTitle";
+            this.ColumnServiceTitle.ReadOnly = true;
+            // 
+            // ColumnColor
+            // 
+            this.ColumnColor.HeaderText = "";
+            this.ColumnColor.Name = "ColumnColor";
+            this.ColumnColor.ReadOnly = true;
+            this.ColumnColor.Width = 30;
+            // 
+            // ColumnServiceFreePrice
+            // 
+            this.ColumnServiceFreePrice.DataPropertyName = "ServiceFreePrice";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.ColumnServiceFreePrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnServiceFreePrice.HeaderText = "قیمت آزاد";
+            this.ColumnServiceFreePrice.Name = "ColumnServiceFreePrice";
+            this.ColumnServiceFreePrice.ReadOnly = true;
+            this.ColumnServiceFreePrice.Width = 150;
+            // 
+            // ColumnPriceDefineDate
+            // 
+            this.ColumnPriceDefineDate.DataPropertyName = "PriceDefineDate";
+            this.ColumnPriceDefineDate.HeaderText = "تاریخ قیمت دهی";
+            this.ColumnPriceDefineDate.Name = "ColumnPriceDefineDate";
+            this.ColumnPriceDefineDate.ReadOnly = true;
+            this.ColumnPriceDefineDate.Width = 120;
+            // 
+            // ColumnIsDeletedPic
+            // 
+            this.ColumnIsDeletedPic.HeaderText = "فعال";
+            this.ColumnIsDeletedPic.Name = "ColumnIsDeletedPic";
+            this.ColumnIsDeletedPic.ReadOnly = true;
+            this.ColumnIsDeletedPic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColumnIsDeletedPic.Width = 50;
+            // 
+            // ColumnServiceId
+            // 
+            this.ColumnServiceId.DataPropertyName = "ServiceId";
+            this.ColumnServiceId.HeaderText = "ServiceId";
+            this.ColumnServiceId.Name = "ColumnServiceId";
+            this.ColumnServiceId.ReadOnly = true;
+            this.ColumnServiceId.Visible = false;
+            this.ColumnServiceId.Width = 20;
+            // 
+            // ColumnServiceColor
+            // 
+            this.ColumnServiceColor.DataPropertyName = "ServiceColor";
+            this.ColumnServiceColor.HeaderText = "";
+            this.ColumnServiceColor.Name = "ColumnServiceColor";
+            this.ColumnServiceColor.ReadOnly = true;
+            this.ColumnServiceColor.Visible = false;
+            // 
+            // ColumnIsDeleted
+            // 
+            this.ColumnIsDeleted.DataPropertyName = "IsDeleted";
+            this.ColumnIsDeleted.HeaderText = "قابل رویت ";
+            this.ColumnIsDeleted.Name = "ColumnIsDeleted";
+            this.ColumnIsDeleted.ReadOnly = true;
+            this.ColumnIsDeleted.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColumnIsDeleted.Visible = false;
+            this.ColumnIsDeleted.Width = 50;
             // 
             // bindingNavigatorService
             // 
@@ -357,7 +441,7 @@
             this.dgServiceGroup.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgServiceGroup.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Vazir", 9.5F);
             this.dgServiceGroup.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgServiceGroup.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.dgServiceGroup.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.dgServiceGroup.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgServiceGroup.RowTemplate.DividerHeight = 5;
             this.dgServiceGroup.RowTemplate.Height = 35;
@@ -442,90 +526,6 @@
             this.dataGridViewImageColumn2.ReadOnly = true;
             this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewImageColumn2.Width = 50;
-            // 
-            // ColumnServiceCode
-            // 
-            this.ColumnServiceCode.DataPropertyName = "ServiceCode";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold);
-            this.ColumnServiceCode.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnServiceCode.HeaderText = "کد خدمت";
-            this.ColumnServiceCode.Name = "ColumnServiceCode";
-            this.ColumnServiceCode.ReadOnly = true;
-            this.ColumnServiceCode.Width = 150;
-            // 
-            // ColumnServiceTitle
-            // 
-            this.ColumnServiceTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnServiceTitle.DataPropertyName = "ServiceTitle";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold);
-            this.ColumnServiceTitle.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnServiceTitle.HeaderText = "خدمت";
-            this.ColumnServiceTitle.Name = "ColumnServiceTitle";
-            this.ColumnServiceTitle.ReadOnly = true;
-            // 
-            // ColumnColor
-            // 
-            this.ColumnColor.HeaderText = "";
-            this.ColumnColor.Name = "ColumnColor";
-            this.ColumnColor.ReadOnly = true;
-            this.ColumnColor.Width = 30;
-            // 
-            // ColumnServiceFreePrice
-            // 
-            this.ColumnServiceFreePrice.DataPropertyName = "ServiceFreePrice";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.ColumnServiceFreePrice.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnServiceFreePrice.HeaderText = "قیمت آزاد";
-            this.ColumnServiceFreePrice.Name = "ColumnServiceFreePrice";
-            this.ColumnServiceFreePrice.ReadOnly = true;
-            this.ColumnServiceFreePrice.Width = 150;
-            // 
-            // ColumnPriceDefineDate
-            // 
-            this.ColumnPriceDefineDate.DataPropertyName = "PriceDefineDate";
-            this.ColumnPriceDefineDate.HeaderText = "تاریخ قیمت دهی";
-            this.ColumnPriceDefineDate.Name = "ColumnPriceDefineDate";
-            this.ColumnPriceDefineDate.ReadOnly = true;
-            this.ColumnPriceDefineDate.Width = 120;
-            // 
-            // ColumnIsDeletedPic
-            // 
-            this.ColumnIsDeletedPic.HeaderText = "فعال";
-            this.ColumnIsDeletedPic.Name = "ColumnIsDeletedPic";
-            this.ColumnIsDeletedPic.ReadOnly = true;
-            this.ColumnIsDeletedPic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ColumnIsDeletedPic.Width = 50;
-            // 
-            // ColumnServiceId
-            // 
-            this.ColumnServiceId.DataPropertyName = "ServiceId";
-            this.ColumnServiceId.HeaderText = "ServiceId";
-            this.ColumnServiceId.Name = "ColumnServiceId";
-            this.ColumnServiceId.ReadOnly = true;
-            this.ColumnServiceId.Visible = false;
-            this.ColumnServiceId.Width = 20;
-            // 
-            // ColumnServiceColor
-            // 
-            this.ColumnServiceColor.DataPropertyName = "ServiceColor";
-            this.ColumnServiceColor.HeaderText = "";
-            this.ColumnServiceColor.Name = "ColumnServiceColor";
-            this.ColumnServiceColor.ReadOnly = true;
-            this.ColumnServiceColor.Visible = false;
-            // 
-            // ColumnIsDeleted
-            // 
-            this.ColumnIsDeleted.DataPropertyName = "IsDeleted";
-            this.ColumnIsDeleted.HeaderText = "قابل رویت ";
-            this.ColumnIsDeleted.Name = "ColumnIsDeleted";
-            this.ColumnIsDeleted.ReadOnly = true;
-            this.ColumnIsDeleted.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ColumnIsDeleted.Visible = false;
-            this.ColumnIsDeleted.Width = 50;
             // 
             // ServiceList
             // 
