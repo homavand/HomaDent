@@ -20,17 +20,16 @@ namespace Dentistry
 {
     public partial class PatientServiceDefine : Form
     {
-
+        private bool _isSyncingSelection = false;
         PopupControl.Popup p;
         //---------------------------------------------------
-        int patientIdX = 0;
         int patientId = 0;
         public int PatientId
         {
             get { return this.patientId; }
             set
             {
-                if ((value < 0) || (value == null))
+                if (value < 0) 
                     this.patientId = 0;
                 else
                     this.patientId = value;
@@ -88,7 +87,7 @@ namespace Dentistry
             get { return this.basicInsurerId; }
             set
             {
-                if ((value < 0) || (value == null))
+                if (value < 0) 
                     this.basicInsurerId = 0;
                 else
                     this.basicInsurerId = value;
@@ -121,7 +120,7 @@ namespace Dentistry
             set
             {
                 this.serviceId = value;
-                this.FetchServiceFinancialInfo(this.serviceId);
+                this.FetchServiceFinancialInfo();
             }
             get
             {
@@ -136,18 +135,11 @@ namespace Dentistry
 
         //---------------------------------------------------
         int DefaultDoctorId = 0;
-        int MaxActionId = 0;
-        int MaxToothId = 0;
         bool IsNeed4ToothNumber = true;
-        int Service_OrginalToothId = 0;
         public int CheckupTypeId = 0;
                     
         public dynamic ServiceTarefe = null;       
-        
-        public Dictionary<int, string> teethSurfDic = new Dictionary<int, string>();
-        public double ServicePrice = 0;
         public string BasicInsurerTitle = "";
-
         public bool ChartIsInPrimaryMode = false;
 
         public PatientServiceDefine(int patientId, int checkupTypeId , int? patientServiceId = null)
@@ -163,11 +155,13 @@ namespace Dentistry
 
    
         private void PatientActionDefine_Load(object sender, EventArgs e)
-        {            
-            this.LoadFormInit();
-            this.setDefaultValues();
+        {
+            
 
-                       
+            this.LoadFormInit();
+
+            this.DefaultDoctorId = Dentistry.AppInfo.DefaultDoctorId;
+
             if (this.PatientId > 0)
             {
                 this.GetPatientInfo(this.patientId);
@@ -179,6 +173,10 @@ namespace Dentistry
 
         private void PatientServiceDefine_Shown(object sender, EventArgs e)
         {
+            dgServiceGroup1.CellEnter += this.dgServiceGroup_CellEnter;
+            dgServiceGroup2.CellEnter += this.dgServiceGroup_CellEnter;
+            dgServiceGroup3.CellEnter += this.dgServiceGroup_CellEnter;
+            dgServices.CellEnter += this.dgServices_CellEnter;
             if (this.PatientServiceId > 0)
             {
                 GetPatientServiceInfo(this.PatientServiceId.Value);
@@ -193,8 +191,6 @@ namespace Dentistry
             dynamic sObj = new
             {
                 IsServiceGroup = true,             
-                IsMaxActionId = true,
-                IsMaxToothId = true,
             };
 
             var result = Dentistry.DataProvider.LoadFormInitInfo(sObj);
@@ -266,12 +262,6 @@ namespace Dentistry
             this.dgServiceGroup3.DataSource = dt3;
 
 
-
-
-            MaxActionId = dd.MaxActionId != null ? dd.MaxActionId.Id : 0;
-            MaxToothId = dd.MaxToothId != null ? dd.MaxToothId.Id : 0;
-
-
             ////////////////////////////////////////////////////////////////////////////////////////////
             
             sObj = new System.Dynamic.ExpandoObject();
@@ -301,34 +291,7 @@ namespace Dentistry
         }
         #endregion
 
-        #region setDefaultValues
-        private void setDefaultValues()
-        {
-            dynamic sObj = new System.Dynamic.ExpandoObject();
-            JsonResponse<dynamic> result = Dentistry.DataProvider.GetOfficeInfoX(sObj);
-
-            if (result == null || result.Success == false)
-                return;
-            var dd = result.Data;
-
-            int count = System.Linq.Enumerable.Count(dd);
-            if (count < 1)
-                return;
-            var obj = dd[0];
-
-            if (obj == null)
-                return;
-
-
-            if (obj.DefaultDoctorId != null)
-            {
-                var defaultDoctorId = Publics.GetPropertyValue<int>(obj, "DefaultDoctorId");
-                this.DefaultDoctorId = defaultDoctorId;
-            }
-
-
-        }
-        #endregion 
+      
 
         public void GetPatientInfo(int patientId)
         {
@@ -377,6 +340,9 @@ namespace Dentistry
             sObj.PatientServiceId = patientServiceId;
 
             var data = Dentistry.DataProvider.GetPatientServicesX(sObj);
+            if (data == null || data.Data == null)
+                return;
+
             var dd = data.Data;
 
             if (dd != null && (Enumerable.Count(dd) > 0))
@@ -400,24 +366,28 @@ namespace Dentistry
                 {
                     this.ToothNumbers = new ArrayList();
 
-                    foreach (var tooth in obj.Tooths)
+                    if (obj.Tooths != null)
                     {
-                        var toothName = ToothInfoClass.ToothIdToToothName(tooth.ToothId);                        
+                        foreach (var tooth in obj.Tooths)
+                        {
+                            var toothName = ToothInfoClass.ToothIdToToothName(tooth.ToothId);
 
-                        this.ToothNumbers.Add(toothName);                      
-                    }                 
+                            this.ToothNumbers.Add(toothName);
+                        }
+                    }
                 }
               
             }
 
-            foreach (string toothName in this.ToothNumbers)
+            if (this.ToothNumbers != null)
             {
-                if (ToothGraphic.IsPrimary(toothName))
-                {                    
-                    this.chkAtfal.Checked = true;
+                foreach (string toothName in this.ToothNumbers)
+                {
+                    if (ToothGraphic.IsPrimary(toothName))
+                        this.chkAtfal.Checked = true;
                 }
             }
-            
+
 
             dynamic patientServiceInfo = new
             {
@@ -442,75 +412,70 @@ namespace Dentistry
             if (this.PatientServiceInfo == null)
                 return;
 
-            var doctorId = Publics.GetPropertyValue<int>(this.PatientServiceInfo, "DoctorId");
-            this.DoctorCbo.SelectedIndex = Publics.GetComboIndex(this.DoctorCbo, doctorId);
-
-            var serviceGroupId = Publics.GetPropertyValue<int>(this.PatientServiceInfo, "ServiceGroupId");
-
-            DataGridView dg = null;
-
-            int rowIndex = -1;
-            foreach (DataGridViewRow row in dgServiceGroup1.Rows)
+            _isSyncingSelection = true;
+            try
             {
-                if (Convert.ToInt32(row.Cells["ColumnServiceGroupId1"].Value) == serviceGroupId)
+                var doctorId = Publics.GetPropertyValue<int>(this.PatientServiceInfo, "DoctorId");
+                this.DoctorCbo.SelectedIndex = Publics.GetComboIndex(this.DoctorCbo, doctorId);
+
+                var serviceGroupId = Publics.GetPropertyValue<int>(this.PatientServiceInfo, "ServiceGroupId");
+
+                DataGridView[] groupGrids = { dgServiceGroup1, dgServiceGroup2, dgServiceGroup3 };
+                string[] idColumns = { "ColumnServiceGroupId1", "ColumnServiceGroupId2", "ColumnServiceGroupId3" };
+
+                DataGridView dg = null;
+                int rowIndex = -1;
+                for (int g = 0; g < groupGrids.Length && rowIndex == -1; g++)
                 {
-                    dg = dgServiceGroup1;
-                    rowIndex = row.Index;
-                    break;
+                    foreach (DataGridViewRow row in groupGrids[g].Rows)
+                    {
+                        if (Convert.ToInt32(row.Cells[idColumns[g]].Value) == serviceGroupId)
+                        {
+                            dg = groupGrids[g];
+                            rowIndex = row.Index;
+                            break;
+                        }
+                    }
+                }
+
+                // ⬅️ صریحاً هر سه گرید رو قبل از ست کردن Selection جدید پاک می‌کنیم
+                dgServiceGroup1.ClearSelection();
+                dgServiceGroup2.ClearSelection();
+                dgServiceGroup3.ClearSelection();
+
+                if (rowIndex != -1)
+                    dg.CurrentCell = dg.Rows[rowIndex].Cells[1];
+
+                var serviceId = Publics.GetPropertyValue<int>(this.PatientServiceInfo, "ServiceId");
+
+                rowIndex = -1;
+                foreach (DataGridViewRow row in dgServices.Rows)
+                {
+                    if (Convert.ToInt32(row.Cells["ColumnServiceId"].Value) == serviceId)
+                    {
+                        rowIndex = row.Index;
+                        break;
+                    }
+                }
+                if (rowIndex != -1)
+                    dgServices.CurrentCell = dgServices.Rows[rowIndex].Cells[1];
+
+                if (this.PatientServiceInfo.ToothNumbers != null)
+                {
+                    foreach (string toothName in this.ToothNumbers)
+                    {
+                        TeethChart.SetSelected(toothName, true);
+                    }
+
+                    if (this.ChartIsInPrimaryMode)
+                    {
+                        TeethChart.ChartSetToPrimary();
+                    }
                 }
             }
-            foreach (DataGridViewRow row in dgServiceGroup2.Rows)
+            finally
             {
-                if (Convert.ToInt32(row.Cells["ColumnServiceGroupId2"].Value) == serviceGroupId)
-                {
-                    dg = dgServiceGroup2;
-                    rowIndex = row.Index;
-                    break;
-                }
-            }
-            foreach (DataGridViewRow row in dgServiceGroup3.Rows)
-            {
-                if (Convert.ToInt32(row.Cells["ColumnServiceGroupId3"].Value) == serviceGroupId)
-                {
-                    dg = dgServiceGroup3;
-                    rowIndex = row.Index;
-                    break;
-                }
-            }
-
-            //dg.ClearSelection();
-            if (rowIndex != -1)
-                dg.CurrentCell = dg.Rows[rowIndex].Cells[1];
-
-
-            var serviceId = Publics.GetPropertyValue<int>(this.PatientServiceInfo, "ServiceId");
-
-            rowIndex = -1;
-            foreach (DataGridViewRow row in dgServices.Rows)
-            {
-                if (Convert.ToInt32(row.Cells["ColumnServiceId"].Value) == serviceId)
-                {
-                    rowIndex = row.Index;
-                    break;
-                }
-            }
-            if (rowIndex != -1)
-                dgServices.CurrentCell = dgServices.Rows[rowIndex].Cells[1];
-
-
-            if(this.PatientServiceInfo.ToothNumbers != null)
-            {
-                
-                foreach (string toothName in this.ToothNumbers)
-                {                                  
-                    TeethChart.SetSelected(toothName, true);
-                }
-                
-                if (this.ChartIsInPrimaryMode)
-                {
-                    TeethChart.ChartSetToPrimary();
-                }
-
+                _isSyncingSelection = false;
             }
         }
 
@@ -577,9 +542,6 @@ namespace Dentistry
                 return;
             }
 
-            int patientServiceId = 0;
-            
-
             try
             {
                 List<int> toothIds = new List<int>();
@@ -619,13 +581,12 @@ namespace Dentistry
 
                 JsonResponse<dynamic> result = Dentistry.DataProvider.DefinePatientServiceX(iObj);
                 if (result != null && result.Success == true)
-                {
-                    patientServiceId = result.Data != null ? result.Data.Id : 0;
+                {                  
                     FarsiMessageBox.FMessageBox.Show(" ثبت درمان با موفقیت انجام شد", "خطا", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Information, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);
                     this.DialogResult = DialogResult.OK;
                 }               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 FarsiMessageBox.FMessageBox.Show("خطا در ثبت درمان ", "خطا", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Error, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);
             }
@@ -646,8 +607,7 @@ namespace Dentistry
                 cell.Style.SelectionBackColor = parsedColor;
                
             }
-           
-           
+                      
         }
 
 
@@ -703,7 +663,7 @@ namespace Dentistry
 
      
 
-        private void FetchServiceFinancialInfo(int serviceId)
+        private void FetchServiceFinancialInfo()
         {
 
             dynamic sObj = new
@@ -800,16 +760,18 @@ namespace Dentistry
             this.dgServiceGroup_CellFormatting(dg);
             dg.CurrentCell = null;
 
-            // dg.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgServiceGroup_RowEnter);
+            //dg.CellEnter -= this.dgServiceGroup_CellEnter;
+            //dg.CellEnter += this.dgServiceGroup_CellEnter;
 
-            dg.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgServiceGroup_CellEnter);
+           
         }
 
        
 
         private void dgServiceGroup_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (_isSyncingSelection)
+                return;
 
             DataGridView dg = ((DataGridView)sender);
            
@@ -855,13 +817,19 @@ namespace Dentistry
 
         private void dgServices_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            this.dgServices.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgServices_CellEnter);
+            DataGridView dg = (DataGridView)sender;
+            dg.CurrentCell = null;
+            //dg.CellEnter -= this.dgServices_CellEnter;
+            //dg.CellEnter += this.dgServices_CellEnter;
+
         }
 
         private void dgServices_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            int serviceId = Convert.ToInt32(this.dgServices["ColumnServiceId", e.RowIndex].Value);
+            if (_isSyncingSelection)
+                return;
 
+            int serviceId = Convert.ToInt32(this.dgServices["ColumnServiceId", e.RowIndex].Value);
             if (serviceId != this.ServiceId)
                 this.ServiceId = serviceId;
 
@@ -882,8 +850,8 @@ namespace Dentistry
 
         private void ServiceFinancialBtn_Click(object sender, EventArgs e)
         {
-            p = null;
-            Point location = new Point();
+            //p = null;
+           
             if (p == null)
             {
 
@@ -897,13 +865,15 @@ namespace Dentistry
 
                 p.ShowingAnimation = p.HidingAnimation = PopupAnimations.Blend;
 
-                Rectangle screen = Screen.PrimaryScreen.Bounds;
-                location = new Point(
-                  (screen.Width - panel.Width) / 2,
-                  (screen.Height - panel.Height) / 2);
+               
 
                
-            }           
+            }
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            Point location = new Point(
+                (screen.Width - this.dgServiceFinancialsPnl.Width) / 2,
+                (screen.Height - this.dgServiceFinancialsPnl.Height) / 2);
+
             p.Hide();
             if(this.ServiceId == -1 )
             {

@@ -243,6 +243,7 @@
     <Compile Include="BaseCodingDefine.Designer.cs">
       <DependentUpon>BaseCodingDefine.cs</DependentUpon>
     </Compile>
+    <Compile Include="class\AppInfo.cs" />
     <Compile Include="class\Constant.cs" />
     <Compile Include="class\Converts.cs" />
     <Compile Include="class\DataProvider.cs" />

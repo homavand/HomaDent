@@ -12,6 +12,7 @@ using System.Net;
 
 namespace Dentistry
 {
+
     static class Program
     {
         /// <summary>
@@ -33,61 +34,70 @@ namespace Dentistry
 
         static void Application_ApplicationExit(object sender, EventArgs e)
         {
-           
+
         }
 
 
- 
+
         [STAThread]
         static void Main()
-        {            
+        {
             bool instanceCountOne = false;
-                using (System.Threading.Mutex Mutex = new System.Threading.Mutex(true, "Mutex", out instanceCountOne))
+            using (System.Threading.Mutex Mutex = new System.Threading.Mutex(true, "Mutex", out instanceCountOne))
+            {
+                if (!instanceCountOne)
                 {
-                    if (instanceCountOne)
-                    {
-                        Application.EnableVisualStyles();
-                        Application.SetCompatibleTextRenderingDefault(false);
-                        Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
-                        Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
-
-                        DB.GetConnection();
-
-
-
-                    //string key = Publics.PSW.ToString();
-                    //if (DB.Access !=  key)
-                    //    Application.Run(new AccessForm());
-
-
-                    //Application.Run(new PatientsDocs());
-                    //return;
-                    //Application.Run(new VisitsList());
-                    //return;
-
-                    UserLogin login = new UserLogin();
-
-                        if (login.ShowDialog() == DialogResult.OK)
-                        {
-                            login.Dispose();
-                            
-                            Application.Run(new MainForm());
-                           
-                            Mutex.ReleaseMutex();
-                        }
-                        else
-                            login.Dispose();
-                       
-                    }
-                    else
-                    {
-                        MessageBox.Show("برنامه هم اکنون در حال اجرا می باشد");
-                    }
+                    MessageBox.Show("برنامه هم اکنون در حال اجرا می باشد");
+                    return;
                 }
-           
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
+                Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
+
+                DB.GetConnection();
+
+                //string key = Publics.PSW.ToString();
+                //if (DB.Access !=  key)
+                //    Application.Run(new AccessForm());
+
+
+                //Application.Run(new PatientsDocs());
+                //return;
+                //Application.Run(new VisitsList());
+                //return;
+
+                UserLogin login = new UserLogin();
+
+                try
+                {
+                    if (login.ShowDialog() != DialogResult.OK)
+                        return;
+
+                    login.Dispose();
+
+                    if (!Dentistry.AppInfo.Load())
+                    {
+                        MessageBox.Show(
+                            "خطا در بارگذاری اطلاعات مطب. برنامه بسته می‌شود.",
+                            "خطا",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    Application.Run(new MainForm());
+                }
+                finally
+                {
+                    login.Dispose();
+                    Mutex.ReleaseMutex();
+                }
+            }
         }
-      
-        
-    
+
+
+
     }
 }

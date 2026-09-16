@@ -2839,8 +2839,8 @@ namespace Dentistry
                     if (ServiceTitle != null)
                         serviceQuery = serviceQuery.Where(svc => DbFunctions.Like(svc.Title, "%" + ServiceTitle + "%"));
 
-                    if (IsDeleted != null)
-                        serviceQuery = serviceQuery.Where(svc => svc.IsDeleted == IsDeleted.Value);
+                    if (IsDeleted != null && IsDeleted != false)
+                        serviceQuery = serviceQuery.Where(svc => svc.IsDeleted != true);
 
                     if (IsMoreTooth != null)
                         serviceQuery = serviceQuery.Where(svc => svc.IsMoreTooth == IsMoreTooth.Value);
