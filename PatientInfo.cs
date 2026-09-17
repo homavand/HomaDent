@@ -57,7 +57,6 @@ namespace Dentistry
                     // تب رو صرفاً بصری فعال می‌کنیم و منطق لود رو صریح و یک‌بار صدا می‌زنیم
                     this.tabControl.SelectedTab = this.tab0;
                     this.SelectedTabIndex = 0;
-                    this.ActionTypeRdo2.Checked = true;
                     this.FillGrid_dgPatientServices();
                 }
                 finally
@@ -89,43 +88,19 @@ namespace Dentistry
         }
 
         private void PatientInfo_Load(object sender, EventArgs e)
-        {
-            this.ActionTypeRdo0.CheckedChanged += new System.EventHandler(this.ActionTypeRdo_CheckedChanged);
-            this.ActionTypeRdo2.CheckedChanged += new System.EventHandler(this.ActionTypeRdo_CheckedChanged);
-
+        {            
             this.dgPatientFinancialTransactions.MouseWheel += new MouseEventHandler(dgPatientFinancialTransactions_MouseWheel);
-
-
         }
 
         #region LoadFormInit
         private void LoadFormInit()
         {
-
             dynamic sObj = new
-            {
-                IsServiceGroup = true,
-            };
-            var result = Dentistry.DataProvider.LoadFormInitInfo(sObj);
-            var dd = result != null && result.Data != null ? result.Data : null;
-
-
-            this.ServiceGroupCbo.SelectedIndexChanged -= new EventHandler(this.ServiceGroupCbo_SelectedIndexChanged);
-
-            this.ServiceGroupCbo.ComboBox.DataSource = dd.ServiceGroup;
-            this.ServiceGroupCbo.ComboBox.ValueMember = "Id";
-            this.ServiceGroupCbo.ComboBox.DisplayMember = "Title";
-
-            this.ServiceGroupCbo.SelectedIndexChanged += new EventHandler(this.ServiceGroupCbo_SelectedIndexChanged);
-
-
-            //
-            sObj = new
             {
                 IsDeleted = false
             };
-            result = Dentistry.DataProvider.GetAllPatientsFullNamesX(sObj);
-            dd = result != null && result.Data != null ? result.Data : null;
+            var result = Dentistry.DataProvider.GetAllPatientsFullNamesX(sObj);
+            var dd = result != null && result.Data != null ? result.Data : null;
 
             var patientList = (dd as IEnumerable<dynamic>)
                    .Select(i =>
@@ -291,19 +266,13 @@ namespace Dentistry
         {
             this.dgPatientServices_ColumnOrder();
 
-            var radio = this.panelActionTypes.Controls.OfType<RadioButton>()
-                           .FirstOrDefault(n => n.Checked);
-            int checkupTypeId = radio == null || Convert.ToString(radio.Tag) == ""
-                                ? 2
-                                : Convert.ToInt16(radio.Tag);
+          
+            int checkupTypeId = 2;
 
             dynamic sObj = new ExpandoObject();
 
             sObj.PatientId = this.PatientId;
-            sObj.CheckupTypeId = checkupTypeId;
-
-            if (this.ServiceGroupCbo.ComboBox.SelectedIndex > 0)
-                sObj.ServiceGroupId = Convert.ToInt32(this.ServiceGroupCbo.ComboBox.SelectedValue);
+            sObj.CheckupTypeId = checkupTypeId;          
 
             JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientServicesX(sObj);
 
@@ -339,37 +308,13 @@ namespace Dentistry
                    }).ToList() : Enumerable.Empty<dynamic>();
 
 
-            switch (checkupTypeId)
-            {
-                case 2:
-                    this.dgPatientServices.DataSource = actionList.Where(i => Convert.ToInt32(i.CheckupTypeCode) == 2).ToList();
 
-                    break;
-                case 1:
-                    this.dgPatientServices.DataSource = actionList.Where(i => Convert.ToInt32(i.CheckupTypeCode) == 1).ToList();
-                    break;
-                case 0:
-                    this.dgPatientServices.DataSource = actionList.Where(i => Convert.ToInt32(i.CheckupTypeCode) == 0).ToList();
-
-                    break;
-            }
-
+            this.dgPatientServices.DataSource = actionList;
             this.dgPatientServices.Refresh();
 
         }
         #endregion
 
-        #region ActionTypeRdo_CheckedChanged
-        private void ActionTypeRdo_CheckedChanged(object sender, EventArgs e)
-        {
-            var rdo = ((RadioButton)sender);
-            if (rdo.Checked == false)
-                return;
-
-
-            this.FillGrid_dgPatientServices();
-        }
-        #endregion
 
         #region linkLabelBaraat_LinkClicked
         private void linkLabelBaraat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -437,12 +382,8 @@ namespace Dentistry
             if (patientId < 1)
                 return;
 
-            var radio = this.panelActionTypes.Controls.OfType<RadioButton>()
-                             .FirstOrDefault(n => n.Checked);
-            int checkupTypeId = radio == null || Convert.ToString(radio.Tag) == ""
-                                ? 2
-                                : Convert.ToInt16(radio.Tag);
 
+            int checkupTypeId = 2;                                
 
             PatientServiceDefine form = new PatientServiceDefine(this.PatientId, checkupTypeId);
             var result = form.ShowDialog(this);
@@ -462,11 +403,8 @@ namespace Dentistry
             if (this.dgPatientServices.CurrentCell == null)
                 return;
 
-            var radio = this.panelActionTypes.Controls.OfType<RadioButton>()
-                            .FirstOrDefault(n => n.Checked);
-            int checkupTypeId = radio == null || Convert.ToString(radio.Tag) == ""
-                                ? 2
-                                : Convert.ToInt16(radio.Tag);
+          
+            int checkupTypeId = 2;
 
             var patientServiceId = Convert.ToInt32(this.dgPatientServices["ColumnPatientServiceId", this.dgPatientServices.CurrentRow.Index].Value);
 
@@ -527,7 +465,6 @@ namespace Dentistry
             if (tabControl.SelectedTab.Name.ToString() == "tab0")
             {
                 this.SelectedTabIndex = 0;
-                this.ActionTypeRdo2.Checked = true;
                 this.FillGrid_dgPatientServices();
             }
 

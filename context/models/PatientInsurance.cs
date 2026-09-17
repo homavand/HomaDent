@@ -28,7 +28,7 @@ namespace Dentistry.Models
         public int InsurerId { get; set; }
         public virtual Insurer Insurer { get; set; }
 
-        public long PatientId { get; set; }
+        public int PatientId { get; set; }
         public virtual Patient Patient { get; set; }
 
         public int? InsuranceBookletTypeId { get; set; }

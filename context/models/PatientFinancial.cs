@@ -54,7 +54,7 @@ namespace Dentistry.Models
         public string Comment { get; set; }
         public bool? IsDeleted { get; set; }
 
-        public long PatientId { get; set; }
+        public int PatientId { get; set; }
         public virtual Patient Patient { get; set; }
 
         public int PayTypeId { get; set; }

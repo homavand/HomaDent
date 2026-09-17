@@ -72,9 +72,6 @@
             this.tab0 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.PatientTeethBtn = new System.Windows.Forms.Button();
-            this.panelActionTypes = new System.Windows.Forms.Panel();
-            this.ActionTypeRdo0 = new System.Windows.Forms.RadioButton();
-            this.ActionTypeRdo2 = new System.Windows.Forms.RadioButton();
             this.dgPatientServices = new System.Windows.Forms.DataGridView();
             this.ColumnProviderStaffTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnServiceSolarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,10 +93,6 @@
             this.ButtonEdit0 = new System.Windows.Forms.ToolStripButton();
             this.ButtonDelete0 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
-            this.ServiceGroupCbo = new System.Windows.Forms.ToolStripComboBox();
             this.ButtonActionReport = new System.Windows.Forms.ToolStripButton();
             this.tab1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -205,10 +198,8 @@
             this.tabControl.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panelActionTypes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPatientServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator0)).BeginInit();
             this.bindingNavigator0.SuspendLayout();
@@ -307,8 +298,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer1.Panel1.Controls.Add(this.PatientTeethBtn);
-            this.splitContainer1.Panel1.Controls.Add(this.panelActionTypes);
             this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             // 
             // splitContainer1.Panel2
@@ -329,57 +318,13 @@
             this.PatientTeethBtn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold);
             this.PatientTeethBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
             this.PatientTeethBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.PatientTeethBtn.Location = new System.Drawing.Point(15, 10);
+            this.PatientTeethBtn.Location = new System.Drawing.Point(383, 10);
             this.PatientTeethBtn.Name = "PatientTeethBtn";
             this.PatientTeethBtn.Size = new System.Drawing.Size(191, 31);
             this.PatientTeethBtn.TabIndex = 176;
             this.PatientTeethBtn.Text = "وضعیت دهان بیمار";
             this.PatientTeethBtn.UseVisualStyleBackColor = false;
             this.PatientTeethBtn.Click += new System.EventHandler(this.PatientTeethBtn_Click);
-            // 
-            // panelActionTypes
-            // 
-            this.panelActionTypes.Controls.Add(this.ActionTypeRdo0);
-            this.panelActionTypes.Controls.Add(this.ActionTypeRdo2);
-            this.panelActionTypes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelActionTypes.Location = new System.Drawing.Point(855, 0);
-            this.panelActionTypes.Name = "panelActionTypes";
-            this.panelActionTypes.Size = new System.Drawing.Size(658, 50);
-            this.panelActionTypes.TabIndex = 6;
-            // 
-            // ActionTypeRdo0
-            // 
-            this.ActionTypeRdo0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ActionTypeRdo0.BackColor = System.Drawing.Color.DimGray;
-            this.ActionTypeRdo0.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActionTypeRdo0.ForeColor = System.Drawing.Color.White;
-            this.ActionTypeRdo0.Location = new System.Drawing.Point(177, 11);
-            this.ActionTypeRdo0.MaximumSize = new System.Drawing.Size(220, 30);
-            this.ActionTypeRdo0.MinimumSize = new System.Drawing.Size(220, 30);
-            this.ActionTypeRdo0.Name = "ActionTypeRdo0";
-            this.ActionTypeRdo0.Padding = new System.Windows.Forms.Padding(5);
-            this.ActionTypeRdo0.Size = new System.Drawing.Size(220, 30);
-            this.ActionTypeRdo0.TabIndex = 5;
-            this.ActionTypeRdo0.Tag = "0";
-            this.ActionTypeRdo0.Text = " درمان های انجام شده قبل از مراجعه";
-            this.ActionTypeRdo0.UseVisualStyleBackColor = false;
-            // 
-            // ActionTypeRdo2
-            // 
-            this.ActionTypeRdo2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ActionTypeRdo2.BackColor = System.Drawing.Color.OliveDrab;
-            this.ActionTypeRdo2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActionTypeRdo2.ForeColor = System.Drawing.Color.White;
-            this.ActionTypeRdo2.Location = new System.Drawing.Point(420, 11);
-            this.ActionTypeRdo2.MaximumSize = new System.Drawing.Size(220, 30);
-            this.ActionTypeRdo2.MinimumSize = new System.Drawing.Size(220, 30);
-            this.ActionTypeRdo2.Name = "ActionTypeRdo2";
-            this.ActionTypeRdo2.Padding = new System.Windows.Forms.Padding(5);
-            this.ActionTypeRdo2.Size = new System.Drawing.Size(220, 30);
-            this.ActionTypeRdo2.TabIndex = 3;
-            this.ActionTypeRdo2.Tag = "2";
-            this.ActionTypeRdo2.Text = "درمان های انجام شده در مطب";
-            this.ActionTypeRdo2.UseVisualStyleBackColor = false;
             // 
             // dgPatientServices
             // 
@@ -613,10 +558,6 @@
             this.ButtonEdit0,
             this.ButtonDelete0,
             this.toolStripSeparator6,
-            this.toolStripButton5,
-            this.toolStripLabel3,
-            this.toolStripLabel4,
-            this.ServiceGroupCbo,
             this.ButtonActionReport});
             this.bindingNavigator0.Location = new System.Drawing.Point(0, 262);
             this.bindingNavigator0.MoveFirstItem = null;
@@ -672,37 +613,6 @@
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 30);
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = global::Dentistry.Properties.Resources.Search_16x16;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 27);
-            this.toolStripButton5.Text = "جستجو بر اساس :";
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(60, 27);
-            this.toolStripLabel3.Text = "جستجو  :";
-            // 
-            // toolStripLabel4
-            // 
-            this.toolStripLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.toolStripLabel4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(71, 27);
-            this.toolStripLabel4.Text = "گروه خدمت";
-            // 
-            // ServiceGroupCbo
-            // 
-            this.ServiceGroupCbo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ServiceGroupCbo.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.ServiceGroupCbo.Name = "ServiceGroupCbo";
-            this.ServiceGroupCbo.Size = new System.Drawing.Size(200, 30);
-            this.ServiceGroupCbo.SelectedIndexChanged += new System.EventHandler(this.ServiceGroupCbo_SelectedIndexChanged);
             // 
             // ButtonActionReport
             // 
@@ -1029,7 +939,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.panel3);
             this.splitContainer3.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.splitContainer3.Size = new System.Drawing.Size(1513, 302);
-            this.splitContainer3.SplitterDistance = 205;
+            this.splitContainer3.SplitterDistance = 203;
             this.splitContainer3.SplitterWidth = 5;
             this.splitContainer3.TabIndex = 11;
             // 
@@ -1080,7 +990,7 @@
             this.dgPatientFinancialTransactions.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgPatientFinancialTransactions.RowTemplate.Height = 30;
             this.dgPatientFinancialTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPatientFinancialTransactions.Size = new System.Drawing.Size(1513, 165);
+            this.dgPatientFinancialTransactions.Size = new System.Drawing.Size(1513, 163);
             this.dgPatientFinancialTransactions.TabIndex = 9;
             this.dgPatientFinancialTransactions.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPatientFinancialTransactions_CellDoubleClick);
             this.dgPatientFinancialTransactions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgPatientFinancialTransactions_CellFormatting);
@@ -1167,7 +1077,7 @@
             this.ButtonSuratHesab,
             this.toolStripSeparator4,
             this.BottonFish});
-            this.bindingNavigatorFinancial.Location = new System.Drawing.Point(0, 165);
+            this.bindingNavigatorFinancial.Location = new System.Drawing.Point(0, 163);
             this.bindingNavigatorFinancial.MoveFirstItem = null;
             this.bindingNavigatorFinancial.MoveLastItem = null;
             this.bindingNavigatorFinancial.MoveNextItem = null;
@@ -1264,7 +1174,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(1513, 92);
+            this.panel3.Size = new System.Drawing.Size(1513, 94);
             this.panel3.TabIndex = 8;
             // 
             // panel13
@@ -1274,7 +1184,7 @@
             this.panel13.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel13.Location = new System.Drawing.Point(228, 5);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(320, 82);
+            this.panel13.Size = new System.Drawing.Size(320, 84);
             this.panel13.TabIndex = 50;
             // 
             // TotalRemianedTxt
@@ -1313,7 +1223,7 @@
             this.panel14.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel14.Location = new System.Drawing.Point(548, 5);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(320, 82);
+            this.panel14.Size = new System.Drawing.Size(320, 84);
             this.panel14.TabIndex = 51;
             // 
             // TotalDiscountTxt
@@ -1351,7 +1261,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel15.Location = new System.Drawing.Point(868, 5);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(320, 82);
+            this.panel15.Size = new System.Drawing.Size(320, 84);
             this.panel15.TabIndex = 52;
             // 
             // TotalPayableTxt
@@ -1389,7 +1299,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel16.Location = new System.Drawing.Point(1188, 5);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(320, 82);
+            this.panel16.Size = new System.Drawing.Size(320, 84);
             this.panel16.TabIndex = 51;
             // 
             // TotalPriceTxt
@@ -1731,6 +1641,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelX1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.PanelX1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(150)))), ((int)(((byte)(157)))));
+            this.PanelX1.Controls.Add(this.PatientTeethBtn);
             this.PanelX1.Controls.Add(this.BaraatBtn);
             this.PanelX1.Controls.Add(this.btnFollowUp);
             this.PanelX1.Controls.Add(this.label4);
@@ -1751,7 +1662,7 @@
             this.BaraatBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BaraatBtn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BaraatBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
-            this.BaraatBtn.Location = new System.Drawing.Point(200, 10);
+            this.BaraatBtn.Location = new System.Drawing.Point(204, 10);
             this.BaraatBtn.Name = "BaraatBtn";
             this.BaraatBtn.Size = new System.Drawing.Size(150, 30);
             this.BaraatBtn.TabIndex = 62;
@@ -2352,11 +2263,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PatientInfo_KeyDown);
             this.tabControl.ResumeLayout(false);
             this.tab0.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panelActionTypes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgPatientServices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator0)).EndInit();
             this.bindingNavigator0.ResumeLayout(false);
@@ -2443,18 +2352,12 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.RadioButton ActionTypeRdo0;
-        private System.Windows.Forms.RadioButton ActionTypeRdo2;
         private System.Windows.Forms.TabPage tab2;
         private System.Windows.Forms.BindingNavigator bindingNavigator0;
         private System.Windows.Forms.ToolStripButton ButtonNew0;
         private System.Windows.Forms.ToolStripButton ButtonEdit0;
         private System.Windows.Forms.ToolStripButton ButtonDelete0;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
-        private System.Windows.Forms.ToolStripComboBox ServiceGroupCbo;
         private System.Windows.Forms.DataGridView dgPatientServices;
         private System.Windows.Forms.Button btnFollowUp;
         private System.Windows.Forms.Button BaraatBtn;
@@ -2482,7 +2385,6 @@
         private System.Windows.Forms.ToolStripButton ButtonSuratHesab;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton BottonFish;
-        private System.Windows.Forms.Panel panelActionTypes;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dgPatientDocs;

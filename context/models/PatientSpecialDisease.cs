@@ -10,7 +10,7 @@ namespace Dentistry.Models
     [Table("PatientSpecialDiseases")]
     public class PatientSpecialDisease
     {
-        public long PatientId { get; set; }
+        public int PatientId { get; set; }
         public virtual Patient Patient { get; set; }
 
         public int SpecialDiseasId { get; set; }

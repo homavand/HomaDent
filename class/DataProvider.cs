@@ -1337,8 +1337,270 @@ namespace Dentistry
                 return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message, };
             }
         }
-
         public static JsonResponse<dynamic> GetPatientServicesX(dynamic searchObj)
+        {
+            try
+            {
+                var x = new RouteValueDictionary(searchObj);
+                var PatientId = x.HasValue("PatientId") ? x.GetValue<int>("PatientId") : (int?)null;
+                var DoctorId = x.HasValue("DoctorId") ? x.GetValue<int>("DoctorId") : (int?)null;
+                var PatientServiceId = x.HasValue("PatientServiceId") ? x.GetValue<int>("PatientServiceId") : (int?)null;
+                var BasicInsurerId = x.HasValue("BasicInsurerId") ? x.GetValue<int>("BasicInsurerId") : (int?)null;
+                var ServiceGroupId = x.HasValue("ServiceGroupId") ? x.GetValue<int>("ServiceGroupId") : (int?)null;
+                var ServiceId = x.HasValue("ServiceId") ? x.GetValue<int>("ServiceId") : (int?)null;
+                var CheckupTypeId = x.HasValue("CheckupTypeId") ? x.GetValue<int>("CheckupTypeId") : (int)2;
+                var ToothId = x.HasValue("ToothId") ? x.GetValue<int>("ToothId") : (int?)null;
+                var ProviderDoctorId = x.HasValue("ProviderDoctorId") ? x.GetValue<int>("ProviderDoctorId") : (int?)null;
+                var Date = x.HasValue("Date") ? x.GetValue<DateTime>("Date") : (DateTime?)null;
+                var FromDate = x.HasValue("FromDate") ? x.GetValue<DateTime>("FromDate") : (DateTime?)null;
+                var ToDate = x.HasValue("ToDate") ? x.GetValue<DateTime>("ToDate") : (DateTime?)null;
+                var IsDeleted = x.HasValue("IsDeleted") ? x.GetValue<bool>("IsDeleted") : (bool?)null;
+
+                // ------------------------------------------------------------------
+                // IMPORTANT: GetPatientInsuranceX / GetToothX must themselves filter
+                // by PatientId / DoctorId internally when those params are present.
+                // If they currently ignore searchObj and always return the full
+                // table, that alone can dominate the runtime regardless of anything
+                // fixed below - check those two methods first.
+                // ------------------------------------------------------------------
+
+                JsonResponse<dynamic> resultData = GetPatientInsuranceX(searchObj);
+                if (resultData == null || resultData.Success != true || resultData.Data == null)
+                    throw new Exception("خطا در واکشی اطلاعات ");
+                var piiData = resultData.Data as IEnumerable<dynamic>;
+
+                // Dictionary instead of List -> O(1) lookup per patient instead of a
+                // linear scan buried inside the later join.
+                var insuranceByPatient = piiData
+                    .Select(i => new
+                    {
+                        PatientId = (long)i.PatientId,
+                        BasicInsurerId = (int)i.BI_InsurerId,
+                        BasicInsurerTitle = (string)i.BI_InsurerTitle,
+                        BasicInsurerPercent = (int)i.BI_Percent
+                    })
+                    // if a patient can have multiple insurance rows, keep first/last
+                    // per your original semantics (original join produced duplicates
+                    // downstream - GroupBy + First keeps that intent while dedup'ing)
+                    .GroupBy(i => i.PatientId)
+                    .ToDictionary(g => g.Key, g => g.First()); // Dictionary<long, ...>
+
+                resultData = GetToothX(searchObj);
+                if (resultData == null || resultData.Success == false || resultData.Data == null)
+                    throw new Exception("خطا در واکشی اطلاعات ");
+                var tthData = resultData.Data as IEnumerable<dynamic>;
+
+                // Dictionary instead of List -> the old code did
+                // resultTeethX.Where(...).Contains(...) once PER ROW, which is
+                // O(rows * teeth). This makes each tooth lookup O(1).
+                var teethById = tthData
+                    .Select(i => new
+                    {
+                        ToothId = (int)i.Id,
+                        ToothName = (string)i.ToothName,
+                        ToothTitle = (string)i.ToothTitle,
+                        ToothGroup = (int)i.ToothGroup,
+                        ToothImage = (byte[])i.ToothImage
+                    })
+                    .ToDictionary(t => t.ToothId, t => t);
+
+                using (var db = new DentalContext())
+                {
+                    IQueryable<PatientService> query = db.PatientServices
+                        .AsNoTracking() // read-only -> skip EF change tracking overhead
+                        .Where(ps => ps.IsDeleted != true)
+                        // Inner-join semantics preserved via null checks, same as the
+                        // original's implicit INNER JOINs - but WITHOUT .Include(),
+                        // since the projection below only needs specific columns and
+                        // Include would force EF to pull every column (including the
+                        // byte[] ToothImage on Teeth, if it were included) across the
+                        // wire for rows we don't need in full.
+                        .Where(ps => ps.Service != null
+                                  && ps.Service.ServiceGroup != null
+                                  && ps.CheckupType != null
+                                  && ps.Patient != null
+                                  && ps.Patient.Doctor != null
+                                  && ps.ProviderDoctor != null)
+                        .Where(ps => ps.Id != 0);
+
+                    if (PatientId != null)
+                        query = query.Where(ps => ps.PatientId == PatientId.Value);
+
+                    if (DoctorId != null)
+                        query = query.Where(ps => ps.Patient.DoctorId == DoctorId.Value);
+
+                    if (PatientServiceId != null)
+                        query = query.Where(ps => ps.Id == PatientServiceId.Value);
+
+                    // NOTE: preserved as a no-op exactly like the original (CheckupTypeId
+                    // always has a value due to the ?? 2 default above, so this filter
+                    // was never actually reachable as conditional). Confirm with the
+                    // original author whether this should actually be applied - if so,
+                    // uncomment:
+                    // query = query.Where(ps => ps.CheckupTypeId == CheckupTypeId);
+
+                    if (ServiceGroupId != null)
+                        query = query.Where(ps => ps.Service.ServiceGroupId == ServiceGroupId.Value);
+
+                    if (ServiceId != null)
+                        query = query.Where(ps => ps.ServiceId == ServiceId.Value);
+
+                    if (ProviderDoctorId != null)
+                        query = query.Where(ps => ps.ProviderDoctorId == ProviderDoctorId.Value);
+
+                    if (Date != null)
+                        query = query.Where(ps => ps.Date >= Date.Value.Date && ps.Date < Date.Value.Date.AddDays(1));
+
+                    if (FromDate != null)
+                        query = query.Where(ps => ps.Date >= FromDate.Value);
+
+                    if (ToDate != null)
+                        query = query.Where(ps => ps.Date <= ToDate.Value);
+
+                    // Same caveat as original re: ToothId == -1 / -2 branches being
+                    // dead code (ToothGroup doesn't exist on this derived shape) -
+                    // left as-is; confirm intended behavior separately.
+
+                    // Single projection straight from the DB - EF translates this to
+                    // one SQL query with only the needed columns/joins, no extra
+                    // round trip, no intermediate anonymous-object materialization
+                    // before the projection like the original's two-step
+                    // Select(...).ToList() then re-Select(...) did.
+                    var rows = query.Select(ps => new
+                    {
+                        PatientServiceId = ps.Id,
+                        ps.PatientId,
+                        PatientName = ps.Patient.FirstName + " " + ps.Patient.LastName,
+                        ps.Patient.NationalCode,
+                        ps.Patient.BirthDate,
+                        DoctorId = ps.Patient.DoctorId,
+                        DoctorTitle = ps.Patient.Doctor.FirstName + " " + ps.Patient.Doctor.LastName,
+
+                        ServiceGroupId = ps.Service.ServiceGroupId,
+                        ServiceGroupTitle = ps.Service.ServiceGroup.Title,
+                        CheckupTypeCode = ps.CheckupType.Code,
+                        ServiceId = ps.Service.Id,
+                        ServiceTitle = ps.Service.Title,
+                        ps.Date,
+                        ps.Comment,
+                        ps.IsHadMoreTooth,
+                        IsToothNumber = ps.Service.IsToothNumber,
+                        ps.IsDeleted,
+                        ps.ProviderDoctorId,
+                        ProviderDoctorTitle = ps.ProviderDoctor.FirstName + " " + ps.ProviderDoctor.LastName,
+
+                        ps.ActionPrice,
+                        ps.ServicePrice,
+                        ps.InsurerPrice,
+                        ps.InsurerShare,
+                        ps.FranchiseShare,
+                        ps.FreeShare,
+                        ps.ToothIds
+                    })
+                    .OrderByDescending(ps => ps.Date)
+                    .ToList();
+
+                    var finalResult = new List<dynamic>(rows.Count);
+
+                    foreach (var psItem in rows)
+                    {
+                        insuranceByPatient.TryGetValue(psItem.PatientId, out var piItem); // long, no cast needed
+
+                        var basicInsurerId = piItem != null ? piItem.BasicInsurerId : Constant.FreeInsurerId;
+                        var basicInsurerTitle = piItem != null ? piItem.BasicInsurerTitle : Constant.FreeInsurerTitle;
+                        var basicInsurerPercent = piItem != null ? piItem.BasicInsurerPercent : 0;
+
+                        // filter by BasicInsurerId inline instead of a second
+                        // Where().ToList() pass over the whole result set
+                        if (BasicInsurerId != null && basicInsurerId != BasicInsurerId.Value)
+                            continue;
+
+                        var toothIdList = string.IsNullOrEmpty(psItem.ToothIds)
+                            ? new List<int>()
+                            : psItem.ToothIds
+                                .Split(',')
+                                .Select(s => s.Trim())
+                                .Where(s => s.Length > 0)
+                                .Select(int.Parse)
+                                .ToList();
+
+                        // ToothId filter (only meaningful/positive values, same as original)
+                        if (ToothId != null && ToothId != 0 && ToothId != -1 && ToothId != -2
+                            && !toothIdList.Contains(ToothId.Value))
+                            continue;
+
+                        var freePrice = psItem.ServicePrice ?? 0;
+                        var insurerPrice = psItem.InsurerPrice ?? 0;
+                        var insurerServiceTarefe = new Class.InsurerServiceTarefe(freePrice, insurerPrice, basicInsurerPercent);
+
+                        var tooths = new List<dynamic>(toothIdList.Count);
+                        foreach (var tid in toothIdList)
+                        {
+                            if (teethById.TryGetValue(tid, out var th))
+                            {
+                                tooths.Add(new
+                                {
+                                    ToothId = th.ToothId,
+                                    ToothName = th.ToothName,
+                                    ToothTitle = th.ToothTitle,
+                                    ToothGroup = th.ToothGroup,
+                                    ToothImage = th.ToothImage
+                                });
+                            }
+                        }
+
+                        finalResult.Add(new
+                        {
+                            Id = psItem.PatientServiceId,
+                            psItem.PatientServiceId,
+                            psItem.PatientId,
+                            psItem.PatientName,
+                            psItem.NationalCode,
+                            Age = Publics.GetAge(psItem.BirthDate),
+                            psItem.DoctorId,
+                            psItem.DoctorTitle,
+
+                            BasicInsurerId = basicInsurerId,
+                            BasicInsurerTitle = basicInsurerTitle,
+
+                            psItem.ServiceGroupId,
+                            psItem.ServiceGroupTitle,
+                            psItem.ServiceId,
+                            psItem.ServiceTitle,
+                            psItem.IsHadMoreTooth,
+                            Date = Publics.GetDate(psItem.Date),
+                            SolarDate = Publics.GetSolarDate(psItem.Date),
+                            SolarDateTime = Publics.GetSolarDateTime(psItem.Date),
+                            psItem.Comment,
+                            psItem.CheckupTypeCode,
+                            ProviderDoctorId = psItem.ProviderDoctorId ?? 0,
+                            psItem.ProviderDoctorTitle,
+
+                            psItem.ActionPrice,
+                            ServicePrice = insurerServiceTarefe.ServicePrice,
+                            InsurerPrice = insurerServiceTarefe.InsurerPrice,
+                            InsurerShare = insurerServiceTarefe.InsurerShare,
+                            FranchiseShare = insurerServiceTarefe.FranchiseShare,
+                            FreeShare = insurerServiceTarefe.FreeShare,
+
+                            psItem.ToothIds,
+                            ToothCount = toothIdList.Count,
+                            Tooths = tooths
+                        });
+                    }
+
+                    return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message };
+            }
+        }
+
+
+
+        public static JsonResponse<dynamic> GetPatientServicesX2(dynamic searchObj) // از رده خارح و کند
         {
             try
             {

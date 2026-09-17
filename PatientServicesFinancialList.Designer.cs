@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -80,16 +80,15 @@
             this.groupBox1 = new Dentistry.UserControls.ExPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.FromDateTxt = new Dentistry.UserControls.PersianDateTimePicker();
-            this.doctorCbo = new System.Windows.Forms.ComboBox();
+            this.DoctorCbo = new System.Windows.Forms.ComboBox();
             this.ToDateTxt = new Dentistry.UserControls.PersianDateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
-            this.insurerCbo = new System.Windows.Forms.ComboBox();
+            this.InsurerCbo = new System.Windows.Forms.ComboBox();
             this.lblTaDate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbFilterSetting = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.cmbBarAsas = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -112,6 +111,8 @@
             this.ColumnCheckupTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnServiceGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDoctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ServiceGroupCbo = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.PanelX2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.serviceToothImg)).BeginInit();
@@ -570,18 +571,19 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.BorderColor = System.Drawing.Color.Silver;
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.ServiceGroupCbo);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.FromDateTxt);
-            this.groupBox1.Controls.Add(this.doctorCbo);
+            this.groupBox1.Controls.Add(this.DoctorCbo);
             this.groupBox1.Controls.Add(this.ToDateTxt);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.SearchBtn);
-            this.groupBox1.Controls.Add(this.insurerCbo);
+            this.groupBox1.Controls.Add(this.InsurerCbo);
             this.groupBox1.Controls.Add(this.lblTaDate);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cmbFilterSetting);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.cmbBarAsas);
             this.groupBox1.Controls.Add(this.label21);
@@ -598,7 +600,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.Font = new System.Drawing.Font("Vazir", 9.5F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(1057, 21);
+            this.label4.Location = new System.Drawing.Point(716, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.TabIndex = 38;
@@ -610,31 +612,31 @@
             this.FromDateTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FromDateTxt.BackColor = System.Drawing.Color.White;
             this.FromDateTxt.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FromDateTxt.Location = new System.Drawing.Point(521, 18);
+            this.FromDateTxt.Location = new System.Drawing.Point(278, 18);
             this.FromDateTxt.Name = "FromDateTxt";
             this.FromDateTxt.ShowTime = false;
             this.FromDateTxt.Size = new System.Drawing.Size(160, 25);
             this.FromDateTxt.TabIndex = 109;
             this.FromDateTxt.Text = "persianDateTimePicker1";
             // 
-            // doctorCbo
+            // DoctorCbo
             // 
-            this.doctorCbo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.doctorCbo.BackColor = System.Drawing.Color.White;
-            this.doctorCbo.Font = new System.Drawing.Font("Vazir", 9F);
-            this.doctorCbo.FormattingEnabled = true;
-            this.doctorCbo.Location = new System.Drawing.Point(849, 54);
-            this.doctorCbo.Name = "doctorCbo";
-            this.doctorCbo.Size = new System.Drawing.Size(205, 26);
-            this.doctorCbo.TabIndex = 113;
-            this.doctorCbo.SelectedIndexChanged += new System.EventHandler(this.DoctorCbo_SelectedIndexChanged);
+            this.DoctorCbo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DoctorCbo.BackColor = System.Drawing.Color.White;
+            this.DoctorCbo.Font = new System.Drawing.Font("Vazir", 9F);
+            this.DoctorCbo.FormattingEnabled = true;
+            this.DoctorCbo.Location = new System.Drawing.Point(508, 54);
+            this.DoctorCbo.Name = "DoctorCbo";
+            this.DoctorCbo.Size = new System.Drawing.Size(205, 26);
+            this.DoctorCbo.TabIndex = 113;
+           
             // 
             // ToDateTxt
             // 
             this.ToDateTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ToDateTxt.BackColor = System.Drawing.Color.White;
             this.ToDateTxt.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ToDateTxt.Location = new System.Drawing.Point(521, 53);
+            this.ToDateTxt.Location = new System.Drawing.Point(278, 53);
             this.ToDateTxt.Name = "ToDateTxt";
             this.ToDateTxt.ShowTime = false;
             this.ToDateTxt.Size = new System.Drawing.Size(160, 25);
@@ -646,7 +648,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Vazir", 9.5F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(1057, 58);
+            this.label5.Location = new System.Drawing.Point(716, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 20);
             this.label5.TabIndex = 114;
@@ -669,17 +671,16 @@
             this.SearchBtn.UseVisualStyleBackColor = false;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // insurerCbo
+            // InsurerCbo
             // 
-            this.insurerCbo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.insurerCbo.BackColor = System.Drawing.Color.White;
-            this.insurerCbo.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.insurerCbo.FormattingEnabled = true;
-            this.insurerCbo.Location = new System.Drawing.Point(849, 17);
-            this.insurerCbo.Name = "insurerCbo";
-            this.insurerCbo.Size = new System.Drawing.Size(205, 26);
-            this.insurerCbo.TabIndex = 37;
-            this.insurerCbo.SelectedIndexChanged += new System.EventHandler(this.InsurerCbo_SelectedIndexChanged);
+            this.InsurerCbo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.InsurerCbo.BackColor = System.Drawing.Color.White;
+            this.InsurerCbo.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InsurerCbo.FormattingEnabled = true;
+            this.InsurerCbo.Location = new System.Drawing.Point(508, 17);
+            this.InsurerCbo.Name = "InsurerCbo";
+            this.InsurerCbo.Size = new System.Drawing.Size(205, 26);
+            this.InsurerCbo.TabIndex = 37;
             // 
             // lblTaDate
             // 
@@ -687,7 +688,7 @@
             this.lblTaDate.AutoSize = true;
             this.lblTaDate.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTaDate.Location = new System.Drawing.Point(685, 55);
+            this.lblTaDate.Location = new System.Drawing.Point(442, 55);
             this.lblTaDate.Name = "lblTaDate";
             this.lblTaDate.Size = new System.Drawing.Size(42, 18);
             this.lblTaDate.TabIndex = 108;
@@ -699,7 +700,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(685, 20);
+            this.label3.Location = new System.Drawing.Point(442, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 18);
             this.label3.TabIndex = 112;
@@ -729,18 +730,6 @@
             this.label19.Size = new System.Drawing.Size(59, 13);
             this.label19.TabIndex = 8;
             this.label19.Text = "نوع نمایش :";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(732, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
-            this.label2.TabIndex = 111;
-            this.label2.Text = "تاریخ انجام :";
             // 
             // label20
             // 
@@ -813,15 +802,15 @@
             this.dgPatientServices.BackgroundColor = System.Drawing.Color.White;
             this.dgPatientServices.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgPatientServices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Vazir", 9.1F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgPatientServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Vazir", 9.1F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgPatientServices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgPatientServices.ColumnHeadersHeight = 30;
             this.dgPatientServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgPatientServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -841,14 +830,14 @@
             this.ColumnCheckupTypeId,
             this.ColumnServiceGroupId,
             this.ColumnDoctorId});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Vazir", 9.1F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgPatientServices.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Vazir", 9.1F);
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgPatientServices.DefaultCellStyle = dataGridViewCellStyle25;
             this.dgPatientServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgPatientServices.EnableHeadersVisualStyles = false;
             this.dgPatientServices.GridColor = System.Drawing.Color.White;
@@ -857,12 +846,12 @@
             this.dgPatientServices.Name = "dgPatientServices";
             this.dgPatientServices.ReadOnly = true;
             this.dgPatientServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Vazir", 9.1F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgPatientServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Vazir", 9.1F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgPatientServices.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dgPatientServices.RowHeadersVisible = false;
             this.dgPatientServices.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgPatientServices.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
@@ -876,8 +865,8 @@
             // ColumnProviderStaffTitle
             // 
             this.ColumnProviderStaffTitle.DataPropertyName = "ProviderStaffTitle";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnProviderStaffTitle.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnProviderStaffTitle.DefaultCellStyle = dataGridViewCellStyle15;
             this.ColumnProviderStaffTitle.HeaderText = "پزشک انجام دهنده";
             this.ColumnProviderStaffTitle.Name = "ColumnProviderStaffTitle";
             this.ColumnProviderStaffTitle.ReadOnly = true;
@@ -886,8 +875,8 @@
             // ColumnServiceSolarDate
             // 
             this.ColumnServiceSolarDate.DataPropertyName = "SolarDate";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnServiceSolarDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnServiceSolarDate.DefaultCellStyle = dataGridViewCellStyle16;
             this.ColumnServiceSolarDate.HeaderText = "تاریخ";
             this.ColumnServiceSolarDate.Name = "ColumnServiceSolarDate";
             this.ColumnServiceSolarDate.ReadOnly = true;
@@ -896,8 +885,8 @@
             // ColumnServiceGroupTitle
             // 
             this.ColumnServiceGroupTitle.DataPropertyName = "ServiceGroupTitle";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnServiceGroupTitle.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnServiceGroupTitle.DefaultCellStyle = dataGridViewCellStyle17;
             this.ColumnServiceGroupTitle.HeaderText = "گروه خدمت";
             this.ColumnServiceGroupTitle.Name = "ColumnServiceGroupTitle";
             this.ColumnServiceGroupTitle.ReadOnly = true;
@@ -905,8 +894,8 @@
             // ColumnServiceTite
             // 
             this.ColumnServiceTite.DataPropertyName = "ServiceTitle";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnServiceTite.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnServiceTite.DefaultCellStyle = dataGridViewCellStyle18;
             this.ColumnServiceTite.HeaderText = "عنوان خدمت";
             this.ColumnServiceTite.Name = "ColumnServiceTite";
             this.ColumnServiceTite.ReadOnly = true;
@@ -923,10 +912,10 @@
             // ColumnServicePrice
             // 
             this.ColumnServicePrice.DataPropertyName = "ServicePrice";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.ColumnServicePrice.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.Format = "N0";
+            dataGridViewCellStyle19.NullValue = null;
+            this.ColumnServicePrice.DefaultCellStyle = dataGridViewCellStyle19;
             this.ColumnServicePrice.HeaderText = "قیمت خدمت";
             this.ColumnServicePrice.Name = "ColumnServicePrice";
             this.ColumnServicePrice.ReadOnly = true;
@@ -936,10 +925,10 @@
             // ColumnInsurerPrice
             // 
             this.ColumnInsurerPrice.DataPropertyName = "InsurerPrice";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Format = "N0";
-            dataGridViewCellStyle7.NullValue = null;
-            this.ColumnInsurerPrice.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Format = "N0";
+            dataGridViewCellStyle20.NullValue = null;
+            this.ColumnInsurerPrice.DefaultCellStyle = dataGridViewCellStyle20;
             this.ColumnInsurerPrice.HeaderText = "قیمت بیمه";
             this.ColumnInsurerPrice.Name = "ColumnInsurerPrice";
             this.ColumnInsurerPrice.ReadOnly = true;
@@ -955,10 +944,10 @@
             // ColumnInsurerShare
             // 
             this.ColumnInsurerShare.DataPropertyName = "InsurerShare";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.ColumnInsurerShare.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.Format = "N0";
+            dataGridViewCellStyle21.NullValue = null;
+            this.ColumnInsurerShare.DefaultCellStyle = dataGridViewCellStyle21;
             this.ColumnInsurerShare.HeaderText = "سهم بیمه";
             this.ColumnInsurerShare.Name = "ColumnInsurerShare";
             this.ColumnInsurerShare.ReadOnly = true;
@@ -966,10 +955,10 @@
             // ColumnFranchiseShare
             // 
             this.ColumnFranchiseShare.DataPropertyName = "FranchiseShare";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "N0";
-            dataGridViewCellStyle9.NullValue = null;
-            this.ColumnFranchiseShare.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.Format = "N0";
+            dataGridViewCellStyle22.NullValue = null;
+            this.ColumnFranchiseShare.DefaultCellStyle = dataGridViewCellStyle22;
             this.ColumnFranchiseShare.HeaderText = "فرانشیز بیمار";
             this.ColumnFranchiseShare.Name = "ColumnFranchiseShare";
             this.ColumnFranchiseShare.ReadOnly = true;
@@ -977,9 +966,9 @@
             // ColumnFreeShare
             // 
             this.ColumnFreeShare.DataPropertyName = "FreeShare";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Format = "N0";
-            this.ColumnFreeShare.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.Format = "N0";
+            this.ColumnFreeShare.DefaultCellStyle = dataGridViewCellStyle23;
             this.ColumnFreeShare.HeaderText = "ماب التفاوت";
             this.ColumnFreeShare.Name = "ColumnFreeShare";
             this.ColumnFreeShare.ReadOnly = true;
@@ -988,8 +977,8 @@
             // 
             this.CommentColX.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CommentColX.DataPropertyName = "Comment";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.CommentColX.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.CommentColX.DefaultCellStyle = dataGridViewCellStyle24;
             this.CommentColX.HeaderText = "توضیحات";
             this.CommentColX.MinimumWidth = 200;
             this.CommentColX.Name = "CommentColX";
@@ -1028,7 +1017,30 @@
             this.ColumnDoctorId.ReadOnly = true;
             this.ColumnDoctorId.Visible = false;
             // 
-            // PatientsServices
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Font = new System.Drawing.Font("Vazir", 9.5F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(1029, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 20);
+            this.label2.TabIndex = 116;
+            this.label2.Text = "گروه خدمات :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ServiceGroupCbo
+            // 
+            this.ServiceGroupCbo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ServiceGroupCbo.BackColor = System.Drawing.Color.White;
+            this.ServiceGroupCbo.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ServiceGroupCbo.FormattingEnabled = true;
+            this.ServiceGroupCbo.Location = new System.Drawing.Point(820, 17);
+            this.ServiceGroupCbo.Name = "ServiceGroupCbo";
+            this.ServiceGroupCbo.Size = new System.Drawing.Size(205, 26);
+            this.ServiceGroupCbo.TabIndex = 115;
+            // 
+            // PatientServicesFinancialList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -1036,7 +1048,7 @@
             this.ClientSize = new System.Drawing.Size(1168, 597);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "PatientsServices";
+            this.Name = "PatientServicesFinancialList";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
@@ -1096,16 +1108,15 @@
         private UserControls.ExPanel groupBox1;
         private System.Windows.Forms.Label label4;
         private UserControls.PersianDateTimePicker FromDateTxt;
-        private System.Windows.Forms.ComboBox doctorCbo;
+        private System.Windows.Forms.ComboBox DoctorCbo;
         private UserControls.PersianDateTimePicker ToDateTxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button SearchBtn;
-        private System.Windows.Forms.ComboBox insurerCbo;
+        private System.Windows.Forms.ComboBox InsurerCbo;
         private System.Windows.Forms.Label lblTaDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbFilterSetting;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cmbBarAsas;
         private System.Windows.Forms.Label label21;
@@ -1128,5 +1139,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCheckupTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnServiceGroupId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDoctorId;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox ServiceGroupCbo;
     }
 }

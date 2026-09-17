@@ -14,7 +14,7 @@ namespace Dentistry
 {
     public partial class PatientServicesFinancialList : Form
     {
-        public int ServiceGroupId = -1;
+
         public PatientServicesFinancialList()
         {
             InitializeComponent();
@@ -43,15 +43,20 @@ namespace Dentistry
 
             var dd = (result.Data != null) ? result.Data : null;
                                    
-            IEnumerable<dynamic> list_ServiceGroup = dd.ServiceGroup != null && (Enumerable.Count(dd.ServiceGroup) > 0) ? (dd.ServiceGroup as IEnumerable<dynamic>).Select(i => i)
+            IEnumerable<dynamic> serviceGroupList = dd.ServiceGroup != null && (Enumerable.Count(dd.ServiceGroup) > 0) ? (dd.ServiceGroup as IEnumerable<dynamic>).Select(i => i)
                                                                                 .Select(i =>
                                                                                   new
                                                                                   {
-                                                                                      ServiceGroupId = (int)i.Id,
-                                                                                      ServiceGroupTitle = (string)i.Title,
+                                                                                      Id = (int)i.Id,
+                                                                                      Title = (string)i.Title,
 
                                                                                   }).ToList() : Enumerable.Empty<dynamic>();
 
+            var serviceGroups = Publics.AddDefaultItemToComboDynamicList(serviceGroupList);
+
+            this.ServiceGroupCbo.DataSource = serviceGroups;
+            this.ServiceGroupCbo.ValueMember = "Id";
+            this.ServiceGroupCbo.DisplayMember = "Title";
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,11 +76,9 @@ namespace Dentistry
 
             var doctors = Publics.AddDefaultItemToComboDynamicList(doctorList);
 
-            this.doctorCbo.SelectedIndexChanged -= new EventHandler(this.DoctorCbo_SelectedIndexChanged);
-            this.doctorCbo.DataSource = doctors;
-            this.doctorCbo.ValueMember = "Id";
-            this.doctorCbo.DisplayMember = "Title";
-            this.doctorCbo.SelectedIndexChanged += new EventHandler(this.DoctorCbo_SelectedIndexChanged);
+            this.DoctorCbo.DataSource = doctors;
+            this.DoctorCbo.ValueMember = "Id";
+            this.DoctorCbo.DisplayMember = "Title";
 
 
             ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,54 +98,14 @@ namespace Dentistry
 
             var list = Publics.AddDefaultItemToComboDynamicList(insurerList);
 
-            this.insurerCbo.SelectedIndexChanged -= new EventHandler(this.InsurerCbo_SelectedIndexChanged);
-            this.insurerCbo.DataSource = list;
-            this.insurerCbo.ValueMember = "Id";
-            this.insurerCbo.DisplayMember = "Title";
-            this.insurerCbo.SelectedIndexChanged += new EventHandler(this.InsurerCbo_SelectedIndexChanged);
+            this.InsurerCbo.DataSource = list;
+            this.InsurerCbo.ValueMember = "Id";
+            this.InsurerCbo.DisplayMember = "Title";
 
         }
         #endregion
 
-        private void FillDataGrid_dgService()
-        {
-            dynamic sObj = new
-            {
-                IsDeleted = false
-            };
-            var result = DataProvider.GetServicesX(sObj);
-            if (result == null || result.Success == false)
-                return;
-
-            var dd = result.Data;
-            IEnumerable<dynamic> list = dd != null && (Enumerable.Count(dd) > 0) ? (dd as IEnumerable<dynamic>).Select(i => i)
-                                                                          .Select(i =>
-                                                                            new
-                                                                            {
-                                                                                i.ServiceId,
-                                                                                i.ServiceCode,
-                                                                                i.ServiceTitle,
-                                                                                i.ServiceColor,
-                                                                                i.IsDeleted,
-                                                                                i.ServiceFreePrice,
-                                                                                i.PriceDefineDate
-
-                                                                            }).ToList() : Enumerable.Empty<dynamic>();
-
-            //IEnumerable<dynamic> list_Service = dd.Service != null ? (dd.Service as IEnumerable<dynamic>)
-            //                                                              .Where(i => Convert.ToInt32(i.Id) != 0)
-            //                                                              .Select(i =>
-            //                                                               new
-            //                                                               {
-            //                                                                   ServiceId = (int)i.Id,
-            //                                                                   ServiceTitle = string.Format("{0} - ({1})", (string)i.Title, (string)i.Code),
-            //                                                                   ServiceGroupId = (int)i.ServiceGroupId,
-            //                                                                   ServiceGroupTitle = list_ServiceGroup.Where(j => j.ServiceGroupId == i.ServiceGroupId).FirstOrDefault().ServiceGroupTitle,
-            //                                                                   IsCheck = true,
-            //                                                               }).ToList() : Enumerable.Empty<dynamic>();
-
-            //this.dgServices.DataSource = list;
-        }
+    
 
         private void dgPatientServices_ColumnOrder()
         {
@@ -172,14 +135,14 @@ namespace Dentistry
 
             sObj.CheckupTypeId = 2;
 
-            if (this.ServiceGroupId != -1)
-                sObj.ServiceGroupId = this.ServiceGroupId;
+            if (this.ServiceGroupCbo.SelectedIndex > 0)
+                sObj.ServiceGroupId = Convert.ToInt32(this.ServiceGroupCbo.SelectedValue);
 
-            if (this.insurerCbo.SelectedIndex > 0)
-                sObj.BasicInsurerId = Convert.ToInt32(this.insurerCbo.SelectedValue);
+            if (this.InsurerCbo.SelectedIndex > 0)
+                sObj.BasicInsurerId = Convert.ToInt32(this.InsurerCbo.SelectedValue);
 
-            if (this.doctorCbo.SelectedIndex > 0)
-                sObj.ProviderStaffId = Convert.ToInt32(this.insurerCbo.SelectedValue);
+            if (this.DoctorCbo.SelectedIndex > 0)
+                sObj.ProviderStaffId = Convert.ToInt32(this.InsurerCbo.SelectedValue);
 
 
             if ((this.FromDateTxt.Value.ToString() != string.Empty) && (Class.Date.IsValid(this.FromDateTxt.Value.ToString())))
@@ -292,15 +255,8 @@ namespace Dentistry
 
        
 
-        private void InsurerCbo_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void DoctorCbo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         
         private void SearchBtn_Click(object sender, EventArgs e)
