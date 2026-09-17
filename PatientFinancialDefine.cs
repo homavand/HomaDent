@@ -108,7 +108,7 @@ namespace Dentistry
                 sObj.PatientId = this.PatientId;
                 sObj.Id = id;
 
-                var data = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+                var data = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
                 var obj = data != null && data.Data != null && (Enumerable.Count(data.Data) > 0) ? data.Data[0] : null;
 
                 if (obj != null)
@@ -355,7 +355,7 @@ namespace Dentistry
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.Id = payId;            
             
-            var data = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+            var data = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
 
             fr_report.RunReport("rpt_PatientFish", param, value, data.Data);
             fr_report.ShowDialog();
@@ -437,18 +437,25 @@ namespace Dentistry
                     PatientId = patientId
                 };
 
-                var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj);
-
-                var dd = result != null && result.Data != null ? result.Data : null;
+                var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj);  // Patient  &  PatientInsurance
+                if (result == null || result.Success == false || result.Data == null)
+                    return;
+                var patient = result.Data;
               
-                if(dd != null && dd.Patient != null && dd.PatientFinancial != null )
+                sObj = new
                 {
-                    var patient = dd.Patient;
-                    var patientFinancial = dd.PatientFinancial;
-                    this.PatientId = Publics.GetPropertyValue<int>(patient, "PatientId");
-                    this.PatientNameTxt.Text =  Publics.GetPropertyValue<string>(patient, "PatientName") ;
-                    this.PatientRemianedTxt.Text = Publics.GetPropertyValue<string>(patientFinancial, "Total_Patient_Remianed"); 
-                }
+                    PatientId = patientId,
+                };
+                result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
+                if (result == null || result.Success == false || result.Data == null)
+                    return;
+                var patientFinancial = result.Data;
+
+                                    
+                this.PatientId = Publics.GetPropertyValue<int>(patient, "PatientId");
+                this.PatientNameTxt.Text =  Publics.GetPropertyValue<string>(patient, "PatientName") ;
+                this.PatientRemianedTxt.Text = Publics.GetPropertyValue<string>(patientFinancial, "Total_Patient_Remianed"); 
+                
             }
          
            

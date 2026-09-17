@@ -324,7 +324,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="userControls\PersianCalendar\PersianMonthCalendarEventArgs.cs" />
-    <Compile Include="class\Provider.cs" />
     <Compile Include="class\WorkTime.cs" />
     <Compile Include="class\PosBank.cs" />
     <Compile Include="PatientsList.cs">

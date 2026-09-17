@@ -34,7 +34,7 @@ namespace Dentistry
                 };
 
                                     
-                var result = Dentistry.DataProvider.GetListPatientInfoX(sObj);
+                var result = Dentistry.DataProvider.GetPatientsInfoX(sObj);
 
                 var dd = (result != null && result.Success != false && (Enumerable.Count(result.Data) > 0)) ? result.Data : null;
                 IEnumerable<dynamic> list = dd != null ? (dd as IEnumerable<dynamic>)

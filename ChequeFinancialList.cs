@@ -146,7 +146,7 @@ namespace Dentistry
             if (this.Cheque_Bargasht == true)
                 sObj.ChequeStatusId = 2;
 
-            var data1 = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+            var data1 = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
             var d1 = (data1 != null && data1.Data != null) ? data1.Data : null;         
 
             IEnumerable<dynamic> list1 = d1 != null && (Enumerable.Count(d1) > 0) ? (d1 as IEnumerable<dynamic>)

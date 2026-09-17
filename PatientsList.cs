@@ -150,7 +150,7 @@ namespace Dentistry
                 if (this.creditorPatientsChk.Checked == true)
                     sObj.IsCreditor = true;
 
-                JsonResponse<dynamic> result = Dentistry.DataProvider.GetListPatientInfoX(sObj);
+                JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientsInfoX(sObj);
                 if (result == null || result.Success == false)
                     return;
                 var data = result.Data;

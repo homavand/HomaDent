@@ -41,7 +41,7 @@ namespace Dentistry
                 sObj.IsDeleted = false;
 
           
-            JsonResponse<dynamic> result = Dentistry.DataProvider.GetListPatientInfoX(sObj);
+            JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientsInfoX(sObj);
             if (result.Success == false || result.Data == null)
             {
                 FarsiMessageBox.FMessageBox.Show("خطا در واکشی داده ها ", "خطا", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Error, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);
@@ -71,7 +71,7 @@ namespace Dentistry
                 sObj.IsDeleted = false;
 
          
-            JsonResponse<dynamic> result = Dentistry.DataProvider.GetListPatientInfoX(sObj);
+            JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientsInfoX(sObj);
             if (result.Success == false || result.Data == null)
             {
                 FarsiMessageBox.FMessageBox.Show("خطا در واکشی داده ها ", "خطا", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Error, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);

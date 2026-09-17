@@ -179,16 +179,13 @@ namespace Dentistry
             {
                 PatientId = this.PatientId,
             };
-            JsonResponse<dynamic> result = DataProvider.GetOnePatientInfoX(sObj);
+            JsonResponse<dynamic> result = DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
             if (result == null || result.Success == false || result.Data == null)
             {
                 FarsiMessageBox.FMessageBox.Show("خطا در واکشی داده ها ", "خطا", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Error, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);
                 return;
             }
             var dd = result.Data;
-
-            if (dd == null)
-                return;
 
             dynamic patient = new ExpandoObject();
             patient.PatientId = 0;
@@ -205,32 +202,19 @@ namespace Dentistry
             patient.DoctorTitle = "";
 
 
-            if (dd.Patient != null)
+            if (dd != null)
             {
-                patient = dd.Patient;
+                patient = dd;
 
                 if (patient == null)
                 {
                     return;
                 }
-                // GetPropertyExist
 
                 this.DoctorId = patient.DoctorId;
             }
 
-            dynamic patientInsurance = new ExpandoObject();
-            patientInsurance.BI_InsurerTitle = "";
-            patientInsurance.BI_ExpirationSolarDate = "";
-
-            if (dd.PatientInsurance != null)
-            {
-                patientInsurance = dd.PatientInsurance;
-
-                if (patientInsurance == null)
-                {
-                    return;
-                }
-            }
+           
 
             List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>()
             {
@@ -245,8 +229,8 @@ namespace Dentistry
                 new KeyValuePair<string, string>(" تلفن ثابت", Convert.ToString(patient.FixedPhone)),
                 new KeyValuePair<string, string>("تلفن همراه", Convert.ToString(patient.MobilePhone)),
                 new KeyValuePair<string, string>("آدرس", Convert.ToString(patient.Address)),
-                new KeyValuePair<string, string>("بیمه گر پایه", Convert.ToString(Convert.ToString(patientInsurance.BI_InsurerTitle))),
-                new KeyValuePair<string, string>("تاریخ انقضا",  Convert.ToString(patientInsurance.BI_ExpirationSolarDate)),
+                new KeyValuePair<string, string>("بیمه گر پایه", Convert.ToString(Convert.ToString(patient.BI_InsurerTitle))),
+                new KeyValuePair<string, string>("تاریخ انقضا",  Convert.ToString(patient.BI_ExpirationSolarDate)),
 
 
             };
@@ -283,7 +267,7 @@ namespace Dentistry
             if (dd == null)
                 return;
 
-            IEnumerable<dynamic> actionList = dd != null && (Enumerable.Count(dd) >= 0) ? (dd as IEnumerable<dynamic>)
+            IEnumerable<dynamic> patientServiceList = dd != null && (Enumerable.Count(dd) >= 0) ? (dd as IEnumerable<dynamic>)
                 .Select(i => new Class.PatientService(i))
                    .Select(i =>
                    new
@@ -309,7 +293,7 @@ namespace Dentistry
 
 
 
-            this.dgPatientServices.DataSource = actionList;
+            this.dgPatientServices.DataSource = patientServiceList;
             this.dgPatientServices.Refresh();
 
         }
@@ -496,15 +480,54 @@ namespace Dentistry
                 {
                     PatientId = this.PatientId,
                 };
-                var data = Dentistry.DataProvider.GetOnePatientInfoX(sObj);
+                var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
+                if (result == null || result.Success == false || result.Data == null)
+                    return;
+                var patient = result.Data;
+
+
+                sObj = new
+                {
+                    PatientId = patientId,
+                };
+                result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
+                if (result == null || result.Success == false || result.Data == null)
+                    return;
+                var patientFinancial = result.Data;
+
+                sObj = new
+                {
+                    PatientId = patientId,
+                };
+                result = Dentistry.DataProvider.GetPatientSpecialDrug(sObj);
+                if (result == null || result.Success == false || result.Data == null)
+                    return;
+                var patientSpecialDrug = (Enumerable.Count(result.Data) > 0) ? (result.Data as IEnumerable<dynamic>).Where(i => i.IsCheck == true).Select(i => i).ToList() : null;
+
+                sObj = new
+                {
+                    PatientId = patientId,
+                };
+                result = Dentistry.DataProvider.GetPatientSpecialDiseases(sObj);
+                if (result == null || result.Success == false || result.Data == null)
+                    return;
+                var patientSpecialDiseases = (Enumerable.Count(result.Data) > 0) ? (result.Data as IEnumerable<dynamic>).Where(i => i.IsCheck == true).Select(i => i).ToList() : null;
 
 
                 frm_Report fr_report = new frm_Report();
                 List<object> param = new List<object>();
                 List<object> value = new List<object>();
 
+                var data = new
+                {
+                    Patient = patient,
+                    PatientInsurance = patient,
+                    PatientFinancial = patientFinancial,
+                    PatientSpecialIllness = patientSpecialDiseases,
+                    PatientSpecialDrug = patientSpecialDrug,
+                };
 
-                fr_report.RunReport("rpt_PatientBaraat", param, value, data.Data);
+                fr_report.RunReport("rpt_PatientBaraat", param, value, data);
                 fr_report.ShowDialog();
             }
             catch (Exception exp)
@@ -873,7 +896,7 @@ namespace Dentistry
             if (this.PayTypeId != 0)
                 sObj.PayTypeId = this.PayTypeId;
 
-            var data = DataProvider.GetPatientFinancialsX(sObj);
+            var data = DataProvider.GetPatientTransactionsX(sObj);
             var dd = data != null && data.Data != null ? data.Data : null;
 
             Func<dynamic, string> GetComment = (dynamic obj) =>
@@ -1152,28 +1175,29 @@ namespace Dentistry
                 PatientId = this.PatientId,
                 CheckupTypeId = 2
             };
-            var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj);
-
+           
+            var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
             if (result == null || result.Success == false || result.Data == null)
                 return;
             var dd = result.Data;
 
-            if (dd == null)
+            var patient = dd;
+
+            sObj = new
+            {
+                PatientId = patientId,
+            };
+            result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
+            if (result == null || result.Success == false || result.Data == null)
                 return;
-
-            var patient = dd.Patient;
-            var patientInsurance = dd.PatientInsurance;
-            var patientFinancial = dd.PatientFinancial;
+            var patientFinancial = result.Data;
 
 
-            result = null;
-            dd = null;
 
             result = Dentistry.DataProvider.GetPatientServicesX(sObj);
-            dd = result.Data;
-
-            if (dd == null)
+            if (result == null || result.Success == false || result.Data == null)
                 return;
+            dd = result.Data;
 
             var patientServices = dd != null && (Enumerable.Count(dd) > 0) ? (dd as IEnumerable<dynamic>)
                                     .Select(i =>
@@ -1195,7 +1219,7 @@ namespace Dentistry
             var data = new
             {
                 Patient = patient,
-                PatientInsurance = patientInsurance,
+                PatientInsurance = patient,
                 patientFinancial = patientFinancial,
                 PatientServices = patientServices
             };
@@ -1222,7 +1246,7 @@ namespace Dentistry
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.Id = payId;
 
-            var data = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+            var data = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
 
             fr_report.RunReport("rpt_PatientFish", param, value, data.Data);
             fr_report.ShowDialog();
@@ -1453,19 +1477,28 @@ namespace Dentistry
             if (e.KeyCode == Keys.Enter)
             {
                 var patientId = Convert.ToInt32(((TextBox)sender).Text);
+
                 dynamic sObj = new
                 {
                     PatientId = patientId
-                };
+                };               
+                var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
+                if (result == null || result.Success == false || result.Data == null)
+                    return;
+                var dd = result.Data;
 
-                var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj);
+                var patient = dd.Patient;
 
-                var dd = result != null && result.Data != null ? result.Data : null;
-
-                if (dd != null && dd.Patient != null && dd.PatientFinancial != null)
+                sObj = new
                 {
-                    var patient = dd.Patient;
-                    var patientFinancial = dd.PatientFinancial;
+                    PatientId = patientId,
+                };
+                result = Dentistry.DataProvider.GetPatientTransactionsX(sObj); 
+                if (result == null || result.Success == false || result.Data == null)
+                    return;
+                var patientFinancial = result.Data;
+                if (patient != null )
+                {                   
                     this.PatientId = Publics.GetPropertyValue<int>(patient, "PatientId");
                     //var patientName = Publics.GetPropertyExist<string>(patient, "PatientName");
                     //this.PatientRemianedTxt.Text = Publics.GetPropertyExist<string>(patient, "patientFinancial");

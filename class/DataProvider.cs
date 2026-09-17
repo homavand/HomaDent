@@ -616,7 +616,7 @@ namespace Dentistry
                     PatientId = PatientId
                 };
 
-                JsonResponse<dynamic> result = DataProvider.GetListPatientInfoX(sObj);
+                JsonResponse<dynamic> result = DataProvider.GetPatientsInfoX(sObj);
                 if (result == null || result.Success == false)
                     return null;
                 var data = result.Data;
@@ -624,7 +624,7 @@ namespace Dentistry
                          ? data as IEnumerable<dynamic>
                          : Enumerable.Empty<dynamic>();
 
-                var patientResult = dd.Select(i =>
+                var finalResult = dd.Select(i =>
                     new
                     {
                         PatientId = (int)i.PatientId,
@@ -655,84 +655,17 @@ namespace Dentistry
                         DoctorMedicalCouncilCode = (string)i.DoctorMedicalCouncilCode,
                         HasSpecialComment = i.HasSpecialComment == null ? 0 : (int)i.HasSpecialComment,
 
+
+                        i.BI_PatientInsuranceId,
+                        i.BI_InsurerId ,
+                        i.BI_InsurerTitle ,
+                        i.BI_InsuredNumber ,
+                        i.BI_InsuranceBookletSerialNumber ,
+                        i.BI_ExpirationDate,
+                        i.BI_ExpirationSolarDate 
                     }).SingleOrDefault();
 
-                JsonResponse<dynamic> resultPatientInsuranceX = GetPatientInsuranceX(searchObj);
-                if (resultPatientInsuranceX == null || resultPatientInsuranceX.Success != true)
-                    throw new Exception("خطا در واکشی اطلاعات ");
-                var piData = resultPatientInsuranceX.Data != null ? resultPatientInsuranceX.Data as IEnumerable<dynamic> : Enumerable.Empty<dynamic>();
-
-                var patientInsuranceResult = piData.Select(i =>
-                    new
-                    {
-                        BI_PatientInsuranceId = (int?)i.BI_PatientInsuranceId,
-                        BI_InsurerId = (int?)i.BI_InsurerId,
-                        BI_InsurerTitle = (string)i.BI_InsurerTitle,
-                        BI_InsuredNumber = (string)i.BI_InsuredNumber,
-                        BI_InsuranceBookletSerialNumber = (string)i.BI_InsuranceBookletSerialNumber,
-                        BI_ExpirationDate = Publics.GetDate(i.BI_ExpirationDate),
-                        BI_ExpirationSolarDate = Publics.GetSolarDate(i.BI_ExpirationDate)
-
-                    }).SingleOrDefault();
-
-                dynamic sObj1 = new
-                {
-                    PatientId = PatientId,
-                    IsGetOnlyChecked = true
-                };
-                JsonResponse<dynamic> resultSpecialDiseasesX = GetPatientSpecialDiseases(sObj1);
-                if (resultSpecialDiseasesX == null || resultSpecialDiseasesX.Success != true)
-                    throw new Exception("خطا در واکشی اطلاعات ");
-                var psdiData = resultSpecialDiseasesX.Data != null ? resultSpecialDiseasesX.Data as IEnumerable<dynamic> : Enumerable.Empty<dynamic>();
-
-
-                var patientSpecialIllnessResult = psdiData.Select(i =>
-                    new
-                    {
-                        Id = (int)i.Id,
-                        Title = (string)i.Title,
-                    }).ToList();
-
-                dynamic sObj2 = new
-                {
-                    PatientId = PatientId,
-                    IsGetOnlyChecked = true
-                };
-                JsonResponse<dynamic> resultSpecialDrugX = GetPatientSpecialDrug(sObj2);
-                if (resultSpecialDrugX == null || resultSpecialDrugX.Success != true)
-                    throw new Exception("خطا در واکشی اطلاعات ");
-
-                var psdrData = resultSpecialDrugX.Data != null ? resultSpecialDrugX.Data as IEnumerable<dynamic> : Enumerable.Empty<dynamic>();
-
-                var patientSpecialDrugResult = psdrData.Select(i =>
-                    new
-                    {
-                        Id = (int)i.Id,
-                        Title = (string)i.Title,
-                    }).ToList();
-
-                JsonResponse<dynamic> resultData = GetPatientBillX(searchObj);
-                if (resultData == null || resultData.Success != true)
-                    throw new Exception("خطا در واکشی اطلاعات ");
-
-                var ff = resultData.Data != null ? resultData.Data as IEnumerable<dynamic> : Enumerable.Empty<dynamic>();
-
-                var patientFinancial = new
-                {
-                    Total_Patient_Charge = Publics.GetPropertyValue<int>(ff, "Total_Patient_Charge"),
-                    Total_Patient_Paid = Publics.GetPropertyValue<int>(ff, "Total_Patient_Paid"),
-                    Total_Patient_Discount = Publics.GetPropertyValue<int>(ff, "Total_Patient_Discount"),
-                    Total_Patient_Remianed = Publics.GetPropertyValue<int>(ff, "Total_Patient_Remianed"),
-                };
-
-                var finalResult = new
-                {
-                    Patient = patientResult,
-                    PatientInsurance = patientInsuranceResult,
-                    PatientFinancial = patientFinancial,
-                    PatientSpecialIllness = patientSpecialIllnessResult,
-                    PatientSpecialDrug = patientSpecialDrugResult,
-                };
+            
 
                 return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
             }
@@ -742,7 +675,7 @@ namespace Dentistry
             }
         }
 
-        public static JsonResponse<dynamic> GetListPatientInfoX(dynamic searchObj)
+        public static JsonResponse<dynamic> GetPatientsInfoX(dynamic searchObj)
         {
             try
             {
@@ -809,7 +742,7 @@ namespace Dentistry
 
                     }).ToList();
 
-                JsonResponse<dynamic> resultPatientFinancialsX = GetPatientFinancialsX(new { IsDeleted = false });
+                JsonResponse<dynamic> resultPatientFinancialsX = GetPatientTransactionsX(new { IsDeleted = false });
                 if (resultPatientFinancialsX == null || resultPatientFinancialsX.Success != true)
                     throw new Exception("خطا در واکشی اطلاعات ");
                 var pfData = resultPatientFinancialsX.Data != null ? resultPatientFinancialsX.Data as IEnumerable<dynamic> : Enumerable.Empty<dynamic>();
@@ -1283,7 +1216,7 @@ namespace Dentistry
                     PatientId = PatientId,
                     IsDeleted = false
                 };
-                var resultPatientFinancials = GetPatientFinancialsX(sObj);
+                var resultPatientFinancials = GetPatientTransactionsX(sObj);
                 if (resultPatientFinancials == null || resultPatientFinancials.Success != true)
                     throw new Exception("خطا در واکشی اطلاعات تراکنشات مالی بیمار ");
                 var dataPatientFinancials = resultPatientFinancials.Data as IEnumerable<dynamic>;
@@ -2034,6 +1967,163 @@ namespace Dentistry
             }
         }
 
+        public static JsonResponse<dynamic> GetPatientTransactionsX(dynamic searchObj)
+        {
+            try
+            {
+                var x = new RouteValueDictionary(searchObj);
+                var Id = x.HasValue("Id") ? x.GetValue<int>("Id") : (int?)null;
+                var PatientId = x.HasValue("PatientId") ? x.GetValue<int>("PatientId") : (int?)null;
+                var PayTypeId = x.HasValue("PayTypeId") ? x.GetValue<int>("PayTypeId") : (int?)null;
+                var PayTypeIds = x.HasValue("PayTypeIds")
+                    ? x.GetValue<IEnumerable>("PayTypeIds").OfType<object>().Select(i => int.Parse(Convert.ToString(i))).ToList()
+                    : null;
+                var FromDate = x.HasValue("FromDate") ? x.GetValue<DateTime>("FromDate") : (DateTime?)null;
+                var ToDate = x.HasValue("ToDate") ? x.GetValue<DateTime>("ToDate") : (DateTime?)null;
+                var FromAmount = x.HasValue("FromAmount") ? x.GetValue<double>("FromAmount") : (double?)null;
+                var ToAmount = x.HasValue("ToAmount") ? x.GetValue<double>("ToAmount") : (double?)null;
+                var IsDateOfIssuance = x.HasValue("IsDateOfIssuance") ? x.GetValue<bool>("IsDateOfIssuance") : (bool?)null;
+                var IsDateOfMaturity = x.HasValue("IsDateOfMaturity") ? x.GetValue<bool>("IsDateOfMaturity") : (bool?)null;
+                var IsDeleted = x.HasValue("IsDeleted") ? x.GetValue<bool>("IsDeleted") : (bool?)null;
+
+                using (var db = new DentalContext())
+                {
+                    // Bank/ChequeStatu عمداً Include نشدن: چون هر دو Optional (FK قابل
+                    // null) و زیرکلاس TPT از BaseCoding هستن، Include زدن روی این نوع
+                    // Navigation باعث میشه EF یه ساب‌کوئری تو در تو بسازه که موقع
+                    // Materialize کردن تو پروایدر SQLite خطای NullReferenceException میده.
+                    // PayType اجباریه (FK غیر nullable)، پس Include زدنش مشکلی نداره.
+                    IQueryable<PatientFinancial> query = db.PatientFinancials
+                        .Include(pf => pf.Patient)
+                        .Include(pf => pf.PayType)
+                        .Where(pf => pf.Patient != null && pf.PayType != null)
+                        .Where(pf => pf.PatientId != 0)
+                        // original compared the raw column with "<> 1" (no IFNULL
+                        // here, unlike GetPatientServicesX), so a NULL IsDeleted row
+                        // would NOT satisfy "<> 1" in SQL's three-valued logic and
+                        // gets excluded. "== false" reproduces that: NULL never
+                        // equals false either.
+                        .Where(pf => pf.IsDeleted == false);
+
+                    if (PatientId != null && PatientId != 0)
+                        query = query.Where(pf => pf.PatientId == PatientId.Value);
+
+                    if (Id != null)
+                        query = query.Where(pf => pf.Id == Id.Value);
+
+                    if (PayTypeId != null && PayTypeId != 0)
+                        query = query.Where(pf => pf.PayTypeId == PayTypeId.Value);
+
+                    if (PayTypeIds != null && PayTypeIds.Count > 0)
+                        query = query.Where(pf => PayTypeIds.Contains(pf.PayTypeId));
+
+                    if (FromAmount != null)
+                        query = query.Where(pf => pf.Amount >= (decimal)FromAmount.Value);
+
+                    if (ToAmount != null)
+                        query = query.Where(pf => pf.Amount <= (decimal)ToAmount.Value);
+
+                    var materialized = query.ToList();
+
+                    // دفاعی: رکوردهایی که PatientId/PayTypeIدشون به ردیف ناموجود اشاره
+                    // می‌کنه از فیلترهای بالا رد میشن (چون اون‌ها فقط null نبودن ستون
+                    // رو چک می‌کنن، نه وجود واقعی ردیف رو).
+                    materialized = materialized.Where(pf => pf.Patient != null && pf.PayType != null).ToList();
+
+                    // Bank و ChequeStatus جدا و ساده خونده میشن (نه با Include) تا از
+                    // باگ بالا دور بمونیم.
+                    var banks = db.Banks.ToList();
+                    var chequeStatuses = db.ChequeStatuses.ToList();
+
+                    // همون شاخه‌بندی مستقل (نه else-if) قبلی: اگه هم IsDateOfIssuance
+                    // و هم IsDateOfMaturity ست شده باشن، هر دو فیلتر بازه‌ی تاریخ با
+                    // هم اعمال میشن؛ فقط وقتی هیچ‌کدوم ست نشده، فیلتر ساده‌ی Date اجرا میشه.
+                    if (IsDateOfIssuance != null)
+                    {
+                        if (FromDate != null)
+                            materialized = materialized.Where(pf => pf.DateOfIssuance >= FromDate.Value).ToList();
+                        if (ToDate != null)
+                            materialized = materialized.Where(pf => pf.DateOfIssuance <= ToDate.Value).ToList();
+                    }
+
+                    if (IsDateOfMaturity != null)
+                    {
+                        if (FromDate != null)
+                            materialized = materialized.Where(pf => pf.DateOfMaturity >= FromDate.Value).ToList();
+                        if (ToDate != null)
+                            materialized = materialized.Where(pf => pf.DateOfMaturity <= ToDate.Value).ToList();
+                    }
+
+
+
+                    var rows = materialized.Select(pf => new
+                    {
+                        Id = pf.Id,
+                        PatientId = pf.PatientId,
+                        PatientName = pf.Patient.FirstName + " " + pf.Patient.LastName,
+                        Date = pf.Date,
+                        PayTypeId = pf.PayTypeId,
+                        PayTypeTitle = pf.PayType.Title,
+                        Amount = pf.Amount,
+                        TransactionCode = pf.TransactionCode,
+                        ChequeNumber = pf.ChequeNumber,
+                        BankId = pf.BankId,
+                        BankTitle = pf.BankId != null ? banks.FirstOrDefault(b => b.Id == pf.BankId.Value)?.Title : null,
+                        DateOfIssuance = pf.DateOfIssuance,
+                        DateOfMaturity = pf.DateOfMaturity,
+                        ChequeStatusId = pf.ChequeStatusId,
+                        ChequeStatusTitle = pf.ChequeStatusId != null ? chequeStatuses.FirstOrDefault(c => c.Id == pf.ChequeStatusId.Value)?.Title : null,
+                        Comment = pf.Comment,
+                        IsDeleted = pf.IsDeleted,
+                    }).ToList();
+
+                    // RowNumber reproduces "ROW_NUMBER() OVER (ORDER BY [Date])" from
+                    // the original: 1-based, ascending by Date, assigned AFTER all the
+                    // WHERE filters above (SQL window functions run post-filter).
+                    var withRowNumber = rows
+                        .OrderBy(i => i.Date)
+                        .Select((i, idx) => new
+                        {
+                            RowNumber = idx + 1,
+                            Id = i.Id,
+                            PatientFinancialId = i.Id,
+                            TransactionId = i.Id,
+                            PatientId = i.PatientId,
+                            Date = Publics.GetDate(i.Date),
+                            SolarDate = Publics.GetSolarDateTime(i.Date),
+                            Amount = (double)i.Amount,
+                            PatientName = i.PatientName,
+                            PayTypeId = i.PayTypeId,
+                            PayTypeTitle = i.PayTypeTitle,
+                            TransactionCode = i.TransactionCode,
+
+                            ChequeNumber = i.ChequeNumber,
+                            BankId = i.BankId,
+                            BankTitle = i.BankTitle,
+                            DateOfIssuance = Publics.GetDate(i.DateOfIssuance),
+                            SolarDateOfIssuance = Publics.GetSolarDate(i.DateOfIssuance),
+                            DateOfMaturity = Publics.GetDate(i.DateOfMaturity),
+                            SolarDateOfMaturity = Publics.GetSolarDate(i.DateOfMaturity),
+                            ChequeTypeId = 1, // برداشت
+                            ChequeTypeTitle = "برداشت",
+                            ChequeStatusId = i.ChequeStatusId,
+                            ChequeStatusTitle = i.ChequeStatusTitle,
+
+                            Comment = i.Comment,
+                            IsDeleted = i.IsDeleted ?? false,
+                        }).ToList();
+
+                    var finalResult = withRowNumber.OrderByDescending(i => i.Date).ToList();
+
+                    return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message, };
+            }
+        }
+
         public static JsonResponse<dynamic> GetPatientSpecialCommentsX(dynamic searchObj)
         {
             try
@@ -2542,7 +2632,7 @@ namespace Dentistry
                 //
                 // PatientFinancials
                 //
-                result = GetPatientFinancialsX(searchObj);
+                result = GetPatientTransactionsX(searchObj);
                 // NOTE: preserved as-is from the original - this uses "&&" where the
                 // first block above (correctly) uses "||". Since C#'s "&&" evaluates
                 // its right operand whenever the left one is true, "result == null &&
@@ -3012,7 +3102,7 @@ namespace Dentistry
         {
             try
             {
-                JsonResponse<dynamic> resultData = GetPatientFinancialsX(searchObj);
+                JsonResponse<dynamic> resultData = GetPatientTransactionsX(searchObj);
                 if (resultData == null && resultData.Success != true && resultData.Data == null)
                     throw new Exception("خطا در واکشی اطلاعات ");
 
@@ -3345,7 +3435,7 @@ namespace Dentistry
                     ToDate = ToDate,
                     IsDeleted = false
                 };
-                result = GetPatientFinancialsX(sObj);
+                result = GetPatientTransactionsX(sObj);
                 if (result == null || result.Success != true)
                     throw new Exception("خطا در واکشی اطلاعات تراکنشات مالی بیمار ");
                 data = result.Data as IEnumerable<dynamic>;

@@ -310,38 +310,32 @@ namespace Dentistry
                 PatientId = patientId
             };
 
-            var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj);
+            var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
 
-            var dd = result != null && result.Data != null ? result.Data : null;
-            
-            if (dd != null)
+            if (result == null || result.Success == false || result.Data == null)
+                return;
+            var patient = result.Data;
+
+          
+                
+            this.DoctorId = 0;
+            this.BasicInsurerId = Constant.FreeInsurerId;
+            this.BasicInsurerTitle = Constant.FreeInsurerTitle;
+
+            if (patient != null)
             {
-                
-                this.DoctorId = 0;
-                this.BasicInsurerId = Constant.FreeInsurerId;
-                this.BasicInsurerTitle = Constant.FreeInsurerTitle;
-
-                var patient = dd.Patient;
-                if (patient != null)
-                {
-                    this.DoctorId = Publics.GetPropertyValue<int>(patient, "DoctorId");
-                    this.patientNameTxt.Text = Publics.GetPropertyValue<string>(patient, "PatientName");
-                }
-
-                var patientInsurance = dd.PatientInsurance;
-                if (patientInsurance != null)
-                {
-                    
-                    this.BasicInsurerId = Publics.GetPropertyValue<int>(patientInsurance, "BI_InsurerId");
-                    this.BasicInsurerTitle = Publics.GetPropertyValue<string>(patientInsurance, "BI_InsurerTitle");
-                    this.patientInsuranceTxt.Text = this.BasicInsurerTitle;
-                    bool IsInsurerExpired = patientInsurance.BI_ExpirationDate != null ? 
-                                            (DateTime.Now <= patientInsurance.BI_ExpirationDate) ? false : true 
-                                            : true;
-                }
-                                             
-                
+                this.DoctorId = Publics.GetPropertyValue<int>(patient, "DoctorId");
+                this.patientNameTxt.Text = Publics.GetPropertyValue<string>(patient, "PatientName");
+                this.BasicInsurerId = Publics.GetPropertyValue<int>(patient, "BI_InsurerId");
+                this.BasicInsurerTitle = Publics.GetPropertyValue<string>(patient, "BI_InsurerTitle");
+                this.patientInsuranceTxt.Text = this.BasicInsurerTitle;
+                bool IsInsurerExpired = patient.BI_ExpirationDate != null ?
+                                        (DateTime.Now <= patient.BI_ExpirationDate) ? false : true
+                                        : true;
             }
+
+           
+            
         }
 
         public void GetPatientServiceInfo(int patientServiceId)

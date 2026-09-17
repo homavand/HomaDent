@@ -281,19 +281,11 @@ namespace Dentistry
             sObj.PatientId = patientId;
 
 
-            JsonResponse<dynamic> result = DataProvider.GetOnePatientInfoX(sObj);
+            JsonResponse<dynamic> result = DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
             if (result.Data != null)
             {
-                var dd = result.Data;
-
-                var patient = dd.Patient;
-                if (patient == null)
-                    return;
-
-                var patientInsurance = dd.PatientInsurance;
-                if (patientInsurance == null)
-                    return;
-
+                var patient = result.Data;
+               
                 this.Patient = patient;
 
                 if (patient.DoctorId != null)
@@ -356,12 +348,12 @@ namespace Dentistry
                     this.BirthDateTxt.Value = Publics.GetPropertyValue<DateTime>(patient, "BirthDate");
 
 
-                var insurerId = Publics.GetPropertyValue<int>(patientInsurance, "BI_InsurerId");
+                var insurerId = Publics.GetPropertyValue<int>(patient, "BI_InsurerId");
                 this.BasicInsurerCbo.SelectedIndex = Publics.GetComboIndex(this.BasicInsurerCbo, insurerId);
 
-                this.InsuredNumberTxt.Text = Publics.GetPropertyValue<string>(patientInsurance, "BI_InsuredNumber");              
+                this.InsuredNumberTxt.Text = Publics.GetPropertyValue<string>(patient, "BI_InsuredNumber");              
 
-                this.ExpirationDateTxt.Value = Publics.GetPropertyValue<DateTime>(patientInsurance, "BI_ExpirationDate");
+                this.ExpirationDateTxt.Value = Publics.GetPropertyValue<DateTime>(patient, "BI_ExpirationDate");
 
 
                 if (patient.Date != null)

@@ -43,7 +43,7 @@ namespace Dentistry
                 sObj.IsDateOfMaturity = true;
                       
 
-            JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+            JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
 
             if (result != null && (result.Success == false || result.Data == null))
             {

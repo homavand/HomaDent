@@ -84,7 +84,7 @@ namespace Dentistry
                 dynamic data = null;
 
                 if (isForPatient)
-                    data = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+                    data = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
                 if (isForCost)
                     data = Dentistry.DataProvider.GetCostFinancialsX(sObj);
 

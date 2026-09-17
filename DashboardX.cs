@@ -370,7 +370,7 @@ namespace Dentistry
             sObj.FromDate = fromDate;
             sObj.ToDate = toDate;
 
-            var result = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+            var result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
             var data = (result != null && result.Data != null && result.Data != null && (Enumerable.Count(result.Data) > 0)) ? result.Data : null;
 
             //IEnumerable<dynamic> list = data != null ? (data as IEnumerable<dynamic>)

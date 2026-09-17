@@ -292,7 +292,7 @@ namespace Dentistry
 
             }
 
-            JsonResponse<dynamic> result = DataProvider.GetPatientFinancialsX(sObj);
+            JsonResponse<dynamic> result = DataProvider.GetPatientTransactionsX(sObj);
             if (result == null || result.Success != true || result.Data == null)
                 return;
             var data = result.Data != null  ?  (result.Data as IEnumerable<dynamic>).Where(i => Convert.ToBoolean(i.IsDeleted) != true)
@@ -518,7 +518,7 @@ namespace Dentistry
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.Id = payId;
 
-            var data = Dentistry.DataProvider.GetPatientFinancialsX(sObj);
+            var data = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
 
             fr_report.RunReport("rpt_PatientFish", param, value, data.Data);
             fr_report.ShowDialog();
@@ -545,24 +545,26 @@ namespace Dentistry
                 PatientId = patientId,
                 CheckupTypeId = 2
             };
-            var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj);
-
+            var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
             if (result == null || result.Success == false || result.Data == null)
                 return;
-            var dd = result.Data;
+            var patient = result.Data;
 
-            if (dd == null)
+
+            sObj = new
+            {
+                PatientId = patientId,               
+            };
+            result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
+            if (result == null || result.Success == false || result.Data == null)
                 return;
+            var patientFinancial = result.Data;
 
-            var patient = dd.Patient;
-            var patientInsurance = dd.PatientInsurance;
-            var patientFinancial = dd.PatientFinancial;
 
-            result = null;
-            dd = null;
+
 
             result = Dentistry.DataProvider.GetPatientServicesX(sObj);
-            dd = result.Data;
+            var dd = result.Data;
 
             if (dd == null)
                 return;
@@ -589,7 +591,7 @@ namespace Dentistry
             var data = new
             {
                 Patient = patient,
-                PatientInsurance = patientInsurance,
+                PatientInsurance = patient,
                 patientFinancial = patientFinancial,
                 PatientServices = patientServices
             };
