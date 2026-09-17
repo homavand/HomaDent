@@ -21,6 +21,8 @@ namespace Dentistry
     public partial class PatientServiceDefine : Form
     {
         private bool _isSyncingSelection = false;
+        private bool _eventsSubscribed = false;
+
         PopupControl.Popup p;
         //---------------------------------------------------
         int patientId = 0;
@@ -156,9 +158,12 @@ namespace Dentistry
    
         private void PatientActionDefine_Load(object sender, EventArgs e)
         {
+
             
 
             this.LoadFormInit();
+
+           
 
             this.DefaultDoctorId = Dentistry.AppInfo.DefaultDoctorId;
 
@@ -173,10 +178,15 @@ namespace Dentistry
 
         private void PatientServiceDefine_Shown(object sender, EventArgs e)
         {
-            dgServiceGroup1.CellEnter += this.dgServiceGroup_CellEnter;
-            dgServiceGroup2.CellEnter += this.dgServiceGroup_CellEnter;
-            dgServiceGroup3.CellEnter += this.dgServiceGroup_CellEnter;
-            dgServices.CellEnter += this.dgServices_CellEnter;
+            if (!_eventsSubscribed)
+            {
+                dgServiceGroup1.CellEnter += this.dgServiceGroup_CellEnter;
+                dgServiceGroup2.CellEnter += this.dgServiceGroup_CellEnter;
+                dgServiceGroup3.CellEnter += this.dgServiceGroup_CellEnter;
+                dgServices.CellEnter += this.dgServices_CellEnter;
+                _eventsSubscribed = true;
+            }
+
             if (this.PatientServiceId > 0)
             {
                 GetPatientServiceInfo(this.PatientServiceId.Value);
@@ -423,7 +433,7 @@ namespace Dentistry
                 DataGridView[] groupGrids = { dgServiceGroup1, dgServiceGroup2, dgServiceGroup3 };
                 string[] idColumns = { "ColumnServiceGroupId1", "ColumnServiceGroupId2", "ColumnServiceGroupId3" };
 
-                DataGridView dg = null;
+                DataGridView dgServiceGroup = null;
                 int rowIndex = -1;
                 for (int g = 0; g < groupGrids.Length && rowIndex == -1; g++)
                 {
@@ -431,7 +441,7 @@ namespace Dentistry
                     {
                         if (Convert.ToInt32(row.Cells[idColumns[g]].Value) == serviceGroupId)
                         {
-                            dg = groupGrids[g];
+                            dgServiceGroup = groupGrids[g];
                             rowIndex = row.Index;
                             break;
                         }
@@ -444,7 +454,7 @@ namespace Dentistry
                 dgServiceGroup3.ClearSelection();
 
                 if (rowIndex != -1)
-                    dg.CurrentCell = dg.Rows[rowIndex].Cells[1];
+                    Publics.SafeSetCurrentCell(dgServiceGroup, rowIndex, 1);
 
                 var serviceId = Publics.GetPropertyValue<int>(this.PatientServiceInfo, "ServiceId");
 
@@ -458,7 +468,7 @@ namespace Dentistry
                     }
                 }
                 if (rowIndex != -1)
-                    dgServices.CurrentCell = dgServices.Rows[rowIndex].Cells[1];
+                    Publics.SafeSetCurrentCell(dgServices, rowIndex, 1);
 
                 if (this.PatientServiceInfo.ToothNumbers != null)
                 {
@@ -855,20 +865,17 @@ namespace Dentistry
             if (p == null)
             {
 
-                Panel panel = this.dgServiceFinancialsPnl;
-                this.dgServiceFinancialsPnl.Visible = true;
+                Panel panel = this.dgServiceFinancialsPnl;                
                 panel.Width = 400;
                 panel.Height = 400;
                 p = new PopupControl.Popup(panel);
                 p.Closed += new ToolStripDropDownClosedEventHandler(p_Closed);
                 p.RightToLeft = RightToLeft.Yes;
-
-                p.ShowingAnimation = p.HidingAnimation = PopupAnimations.Blend;
-
-               
-
-               
+                p.ShowingAnimation = p.HidingAnimation = PopupAnimations.Blend;                              
             }
+
+            this.dgServiceFinancialsPnl.Visible = true;
+
             Rectangle screen = Screen.PrimaryScreen.Bounds;
             Point location = new Point(
                 (screen.Width - this.dgServiceFinancialsPnl.Width) / 2,

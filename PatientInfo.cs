@@ -18,7 +18,7 @@ namespace Dentistry
 {
     public partial class PatientInfo : Form
     {
-        
+
         public int SelectedTabIndex = 0;
         private DataSet DataSet = new DataSet();
         PopupControl.Popup p1;
@@ -32,7 +32,7 @@ namespace Dentistry
             get { return this.patientId; }
             set
             {
-                if (value < 0) 
+                if (value < 0)
                     this.patientId = 0;
                 else
                     this.patientId = value;
@@ -44,17 +44,31 @@ namespace Dentistry
                 this.PatientCodeTxt.Text = this.PatientId.ToString();
                 this.PatientCbo.SelectedIndex = Publics.GetComboIndex(this.PatientCbo, this.patientId);
 
-                this.GetPatientInfo();
-                this.FillGrid_dgSpecialComment();
-                this.FillGrid_dgPatientSpecialDisease();
-                this.FillGrid_dgPatientSpecialDrugs();
-                this.tab0.Select();
-                this.tabControl_Selected(this, null);
-                
-            }            
+                this.Cursor = Cursors.WaitCursor;
+                try
+                {
+                    this.GetPatientInfo();
+                    this.FillGrid_dgSpecialComment();
+                    this.FillGrid_dgPatientSpecialDisease();
+                    this.FillGrid_dgPatientSpecialDrugs();
+
+                    // به‌جای this.tab0.Select() + this.tabControl_Selected(this, null)
+                    // (که باعث اجرای دوباره‌ی FillGrid_dgPatientServices می‌شد)،
+                    // تب رو صرفاً بصری فعال می‌کنیم و منطق لود رو صریح و یک‌بار صدا می‌زنیم
+                    this.tabControl.SelectedTab = this.tab0;
+                    this.SelectedTabIndex = 0;
+                    this.ActionTypeRdo2.Checked = true;
+                    this.FillGrid_dgPatientServices();
+                }
+                finally
+                {
+                    this.Cursor = Cursors.Default;
+                }
+
+            }
         }
 
-        
+
         public int PayTypeId
         {
             get { return this.payTypeId; }
@@ -66,7 +80,7 @@ namespace Dentistry
                 this.payTypeId = value;
             }
         }
-       
+
         public PatientInfo(int patientId)
         {
             InitializeComponent();
@@ -81,7 +95,7 @@ namespace Dentistry
 
             this.dgPatientFinancialTransactions.MouseWheel += new MouseEventHandler(dgPatientFinancialTransactions_MouseWheel);
 
-           
+
         }
 
         #region LoadFormInit
@@ -94,7 +108,7 @@ namespace Dentistry
             };
             var result = Dentistry.DataProvider.LoadFormInitInfo(sObj);
             var dd = result != null && result.Data != null ? result.Data : null;
-          
+
 
             this.ServiceGroupCbo.SelectedIndexChanged -= new EventHandler(this.ServiceGroupCbo_SelectedIndexChanged);
 
@@ -106,7 +120,8 @@ namespace Dentistry
 
 
             //
-            sObj = new {
+            sObj = new
+            {
                 IsDeleted = false
             };
             result = Dentistry.DataProvider.GetAllPatientsFullNamesX(sObj);
@@ -149,7 +164,7 @@ namespace Dentistry
             dgPatientServices.Columns["ColumnServiceTite"].DisplayIndex = 2;
             dgPatientServices.Columns["ColumnToothImage"].DisplayIndex = 3;
             dgPatientServices.Columns["ColumnProviderStaffTitle"].DisplayIndex = 4;
-            
+
             dgPatientServices.Columns["ColumnServicePrice"].DisplayIndex = 5;
             dgPatientServices.Columns["ColumnInsurerPrice"].DisplayIndex = 6;
             dgPatientServices.Columns["ColumnInsurerShare"].DisplayIndex = 7;
@@ -174,10 +189,10 @@ namespace Dentistry
             dgPatientDocs.Columns["ColumnDocumentTitle"].DisplayIndex = 1;
             dgPatientDocs.Columns["ColumnDocumentImage"].DisplayIndex = 2;
             dgPatientDocs.Columns["ColumnDocumentComment"].DisplayIndex = 3;
-            
+
         }
-  
-     
+
+
 
         #region LoadPatientAllInfo
         private void GetPatientInfo()
@@ -196,11 +211,11 @@ namespace Dentistry
                 return;
             }
             var dd = result.Data;
-           
+
             if (dd == null)
                 return;
 
-            dynamic patient = new ExpandoObject();            
+            dynamic patient = new ExpandoObject();
             patient.PatientId = 0;
             patient.DoctorId = 0;
             patient.PatientName = "";
@@ -211,20 +226,20 @@ namespace Dentistry
             patient.JobTitle = "";
             patient.FixedPhone = "";
             patient.MobilePhone = "";
-            patient.Address = "";           
+            patient.Address = "";
             patient.DoctorTitle = "";
-            
+
 
             if (dd.Patient != null)
             {
                 patient = dd.Patient;
 
                 if (patient == null)
-                {                    
+                {
                     return;
                 }
                 // GetPropertyExist
-               
+
                 this.DoctorId = patient.DoctorId;
             }
 
@@ -239,9 +254,9 @@ namespace Dentistry
                 if (patientInsurance == null)
                 {
                     return;
-                }               
+                }
             }
-            
+
             List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>()
             {
                 new KeyValuePair<string, string>("پزشک بیمار  ", Convert.ToString(patient.DoctorTitle)),
@@ -260,18 +275,17 @@ namespace Dentistry
 
 
             };
-              
+
             this.dgPatientInfo.DataSource = list;
             dgPatientInfo.CurrentCell = null;
             this.dgPatientInfo.Tag = patient;
 
-            
-            this.ActionTypeRdo2.Checked = true;
-
-          
+            // ActionTypeRdo2.Checked = true; به PatientId setter منتقل شد
+            // تا فقط یک‌بار ست بشه و رویداد CheckedChanged باعث فراخوانی اضافه‌ی
+            // FillGrid_dgPatientServices نشه.
         }
         #endregion
-        
+
         #region FillGrid_dgPatientServices
         private void FillGrid_dgPatientServices()
         {
@@ -279,8 +293,8 @@ namespace Dentistry
 
             var radio = this.panelActionTypes.Controls.OfType<RadioButton>()
                            .FirstOrDefault(n => n.Checked);
-            int checkupTypeId = radio == null || Convert.ToString(radio.Tag) == "" 
-                                ? 2 
+            int checkupTypeId = radio == null || Convert.ToString(radio.Tag) == ""
+                                ? 2
                                 : Convert.ToInt16(radio.Tag);
 
             dynamic sObj = new ExpandoObject();
@@ -316,7 +330,7 @@ namespace Dentistry
                        i.InsurerShare,
                        i.FranchiseShare,
                        i.FreeShare,
-               
+
 
                        i.SolarDateTime,
                        i.Comment,
@@ -351,7 +365,7 @@ namespace Dentistry
             var rdo = ((RadioButton)sender);
             if (rdo.Checked == false)
                 return;
-        
+
 
             this.FillGrid_dgPatientServices();
         }
@@ -361,12 +375,12 @@ namespace Dentistry
         private void linkLabelBaraat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-           
+
 
         }
 
-     
-        
+
+
         #endregion
 
         #region textBox_TextChanged
@@ -378,7 +392,7 @@ namespace Dentistry
 
 
 
-      
+
         private void PatientCbo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PatientCbo.SelectedValue == null || PatientCbo.SelectedValue == (object)-1)
@@ -401,9 +415,9 @@ namespace Dentistry
             if (this.PatientId != patientId)
                 this.PatientId = patientId;
 
-        }                   
+        }
 
-       
+
         private void dgActionX_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -411,7 +425,7 @@ namespace Dentistry
             this.ButtonEdit0_Click(this, null);
         }
 
-       
+
 
         #region ButtonNew0_Click
         private void ButtonNew0_Click(object sender, EventArgs e)
@@ -419,7 +433,7 @@ namespace Dentistry
             if (Dentistry.Publics.GetCurrentUserPermission1((int)Enums.AppActions.پرونده_عمومی_بیمار__درمان_های_انجام_شده_بیمار_جدید) == false)
                 return;
 
-            int patientId = Convert.ToInt32( this.PatientCbo.SelectedValue);
+            int patientId = Convert.ToInt32(this.PatientCbo.SelectedValue);
             if (patientId < 1)
                 return;
 
@@ -429,13 +443,13 @@ namespace Dentistry
                                 ? 2
                                 : Convert.ToInt16(radio.Tag);
 
-          
-            PatientServiceDefine form = new PatientServiceDefine(this.PatientId, checkupTypeId);         
+
+            PatientServiceDefine form = new PatientServiceDefine(this.PatientId, checkupTypeId);
             var result = form.ShowDialog(this);
             if (result == DialogResult.OK)
                 this.FillGrid_dgPatientServices();
             form.Dispose();
-            
+
         }
         #endregion
 
@@ -454,14 +468,14 @@ namespace Dentistry
                                 ? 2
                                 : Convert.ToInt16(radio.Tag);
 
-            var patientServiceId =  Convert.ToInt32(this.dgPatientServices["ColumnPatientServiceId", this.dgPatientServices.CurrentRow.Index].Value);                                  
+            var patientServiceId = Convert.ToInt32(this.dgPatientServices["ColumnPatientServiceId", this.dgPatientServices.CurrentRow.Index].Value);
 
-            PatientServiceDefine form = new PatientServiceDefine(this.PatientId, checkupTypeId, patientServiceId);            
+            PatientServiceDefine form = new PatientServiceDefine(this.PatientId, checkupTypeId, patientServiceId);
             var result = form.ShowDialog(this);
             if (result == DialogResult.OK)
                 this.FillGrid_dgPatientServices();
             form.Dispose();
-         
+
         }
         #endregion
 
@@ -488,7 +502,7 @@ namespace Dentistry
                     {
                         this.FillGrid_dgPatientServices();
                     }
-                                  
+
                 }
             }
             catch (System.Exception exp)
@@ -501,7 +515,7 @@ namespace Dentistry
         }
         #endregion
 
-       
+
 
         private void ServiceGroupCbo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -734,7 +748,7 @@ namespace Dentistry
         {
             dynamic sObj = new
             {
-                PatientId = this.PatientId,                
+                PatientId = this.PatientId,
             };
             var result = Dentistry.DataProvider.GetPatientSpecialDrug(sObj);
             var dd = result != null && result.Data != null ? result.Data : null;
@@ -744,7 +758,7 @@ namespace Dentistry
             dt.Columns.Add("Id", typeof(int));
             dt.Columns.Add("IsCheck", typeof(bool));
             dt.Columns.Add("Title", typeof(string));
-            
+
 
 
             foreach (var item in list)
@@ -909,7 +923,7 @@ namespace Dentistry
 
                 return;
             }
-          
+
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.PatientId = this.PatientId;
 
@@ -923,7 +937,7 @@ namespace Dentistry
                 sObj.PayTypeId = this.PayTypeId;
 
             var data = DataProvider.GetPatientFinancialsX(sObj);
-            var dd = data != null && data.Data != null ? data.Data : null;          
+            var dd = data != null && data.Data != null ? data.Data : null;
 
             Func<dynamic, string> GetComment = (dynamic obj) =>
             {
@@ -942,7 +956,7 @@ namespace Dentistry
                     case 3:
                         string chequeNumber = Publics.GetPropertyValue<string>(obj, "ChequeNumber");
                         string solarDateOfMaturity = Publics.GetPropertyValue<string>(obj, "SolarDateOfMaturity");
-                        commentX = string.Format("{0} ({1}: {2}  -  {3}: {4})", comment, "شماره چک" , chequeNumber , "تاریخ سررسید" , solarDateOfMaturity);
+                        commentX = string.Format("{0} ({1}: {2}  -  {3}: {4})", comment, "شماره چک", chequeNumber, "تاریخ سررسید", solarDateOfMaturity);
                         break;
                     case 4:
                         commentX = comment;
@@ -953,31 +967,31 @@ namespace Dentistry
                 return commentX;
             };
 
-            IEnumerable<dynamic> transactionList = dd != null && (Enumerable.Count(dd) >= 0) ? (dd as IEnumerable<dynamic>)              
+            IEnumerable<dynamic> transactionList = dd != null && (Enumerable.Count(dd) >= 0) ? (dd as IEnumerable<dynamic>)
                   .Select(i =>
                   new
                   {
                       PatientFinancialId = (int)i.PatientFinancialId,
                       PayTypeId = (int)i.PayTypeId,
                       SolarDate = (string)i.SolarDate,
-                      Amount = (decimal)i.Amount,                                          
+                      Amount = (decimal)i.Amount,
                       PayTypeTitle = (string)i.PayTypeTitle,
                       Comment = GetComment(i),
                   }).ToList() : Enumerable.Empty<dynamic>();
-           
 
-             
+
+
             this.dgPatientFinancialTransactions.DataSource = transactionList;
 
 
-            
+
             data = DataProvider.GetPatientBillX(sObj);
             var ff = data != null && data.Data != null ? data.Data : null;
-            
+
             this.TotalPriceTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Charge"));
-            this.TotalPayableTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Paid")) ;
-            this.TotalDiscountTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Discount")); 
-            this.TotalRemianedTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Remianed"));  
+            this.TotalPayableTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Paid"));
+            this.TotalDiscountTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Discount"));
+            this.TotalRemianedTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Remianed"));
 
 
 
@@ -1007,7 +1021,7 @@ namespace Dentistry
             {
                 this.ButtonEdit1.Enabled = false;
                 this.ButtonDelete1.Enabled = false;
-             
+
             }
 
         }
@@ -1031,7 +1045,7 @@ namespace Dentistry
         #region PayTypeRdo_CheckedChanged
         private void PayTypeRdo_CheckedChanged(object sender, EventArgs e)
         {
-          
+
             RadioButton rdoX = sender as RadioButton;
             if (rdoX == null || rdoX.Checked != true)
                 return;
@@ -1098,13 +1112,13 @@ namespace Dentistry
 
             try
             {
-                
+
                 PatientFinancialDefine form = new PatientFinancialDefine(this.PatientId);
                 var result = form.ShowDialog(this);
                 if (result == DialogResult.OK)
                     this.FillGrid_dgPatientFinancialTransactions();
                 form.Dispose();
-                
+
 
             }
             catch (System.Exception exp)
@@ -1123,7 +1137,7 @@ namespace Dentistry
 
             try
             {
-               
+
                 if (this.dgPatientFinancialTransactions.CurrentCell == null)
                     return;
 
@@ -1151,11 +1165,11 @@ namespace Dentistry
 
             if (this.dgPatientFinancialTransactions.CurrentCell == null)
                 return;
-           
+
             try
             {
 
-             
+
                 if (FMessageBox.Show(Dentistry.AppConfigs.strAreYouSure_Delete, Dentistry.AppConfigs.strExclamation, FMessageBoxButtons.YesNo, FMessageBoxIcons.Question) == DialogResult.Yes)
                 {
                     dynamic iObj = new ExpandoObject();
@@ -1179,7 +1193,7 @@ namespace Dentistry
 
             }
 
-          
+
         }
         #endregion
 
@@ -1325,7 +1339,7 @@ namespace Dentistry
                     }
                 ).ToList() : Enumerable.Empty<dynamic>();
 
-                
+
 
                 this.dgPatientDocs.DataSource = list;
             }
@@ -1378,7 +1392,7 @@ namespace Dentistry
             if (result == DialogResult.OK)
                 this.FillGrid_dgPatientDocs();
             form.Dispose();
-            
+
         }
 
         private void ButtonEdit2_Click(object sender, EventArgs e)
@@ -1475,11 +1489,11 @@ namespace Dentistry
             form.ShowDialog(this);
             form.Dispose();
 
-           
+
         }
         void p_Closed2(object sender, ToolStripDropDownClosedEventArgs e)
         {
-            
+
         }
 
 
@@ -1491,7 +1505,7 @@ namespace Dentistry
                 return;
 
             string patientName = PatientCbo.GetItemText(PatientCbo.SelectedItem);
-            PatientFollowUpDefine form = new PatientFollowUpDefine(this.PatientId,patientName, this.DoctorId);
+            PatientFollowUpDefine form = new PatientFollowUpDefine(this.PatientId, patientName, this.DoctorId);
             form.ShowDialog(this);
             form.Dispose();
         }
@@ -1510,7 +1524,7 @@ namespace Dentistry
                 var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj);
 
                 var dd = result != null && result.Data != null ? result.Data : null;
-              
+
                 if (dd != null && dd.Patient != null && dd.PatientFinancial != null)
                 {
                     var patient = dd.Patient;
@@ -1524,7 +1538,7 @@ namespace Dentistry
                 {
                     this.PatientId = 0;
                     FarsiMessageBox.FMessageBox.Show("این بیمار موجود نمی باشد ", "پیام", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Information, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);
-                                        
+
                 }
 
             }

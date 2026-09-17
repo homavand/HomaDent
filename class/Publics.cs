@@ -1085,5 +1085,34 @@ namespace Dentistry
 
             return list;
         }
+
+        public static void SafeSetCurrentCell(DataGridView dg, int rowIndex, int preferredColumnIndex)
+        {
+            if (dg == null || rowIndex < 0 || rowIndex >= dg.Rows.Count)
+                return;
+
+            var row = dg.Rows[rowIndex];
+            if (!row.Visible)
+                return;
+
+            // اگه ستون پیش‌فرض visible بود همون رو استفاده کن
+            if (preferredColumnIndex >= 0 && preferredColumnIndex < row.Cells.Count
+                && row.Cells[preferredColumnIndex].Visible)
+            {
+                dg.CurrentCell = row.Cells[preferredColumnIndex];
+                return;
+            }
+
+            // وگرنه اولین سلول قابل‌مشاهده‌ی همون ردیف رو پیدا کن
+            foreach (DataGridViewCell cell in row.Cells)
+            {
+                if (cell.Visible)
+                {
+                    dg.CurrentCell = cell;
+                    return;
+                }
+            }
+            // اگه هیچ سلولی visible نبود، کاری نکن (سکوت عمدی)
+        }
     }
 }
