@@ -464,7 +464,7 @@
             this.searchBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
             this.searchBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.searchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.searchBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
             this.searchBtn.Location = new System.Drawing.Point(16, 18);
             this.searchBtn.Name = "searchBtn";
@@ -759,7 +759,7 @@
             this.labelNoPas_label.TabIndex = 47;
             this.labelNoPas_label.Text = " جمع چک های پاس نشده :";
             // 
-            // ChequeFinancials
+            // ChequeFinancialList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -771,7 +771,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Name = "ChequeFinancials";
+            this.Name = "ChequeFinancialList";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Tag = "9";

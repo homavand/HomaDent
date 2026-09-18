@@ -32,6 +32,7 @@
             this.blackListBtn = new System.Windows.Forms.Button();
             this.patientRegisterBtn = new System.Windows.Forms.Button();
             this.dataRepeater1 = new Microsoft.VisualBasic.PowerPacks.DataRepeater();
+            this.sortingLbl = new System.Windows.Forms.Label();
             this.rxDoctorTxt = new System.Windows.Forms.Label();
             this.rxDoctorLbl = new System.Windows.Forms.Label();
             this.rxPatientGeneralDocLink = new System.Windows.Forms.LinkLabel();
@@ -113,6 +114,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.doctorCbo = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
+
             this.dataRepeater1.ItemTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rxPatientGenderImg)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -134,6 +136,25 @@
             this.panel3.Size = new System.Drawing.Size(1175, 44);
             this.panel3.TabIndex = 17;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
+
+
+
+            // 
+            // rxDoctorLbl
+            // 
+            this.sortingLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sortingLbl.AutoSize = true;
+            this.sortingLbl.BackColor = System.Drawing.Color.Transparent;
+            this.sortingLbl.Font = new System.Drawing.Font("Vazir", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sortingLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.sortingLbl.Location = new System.Drawing.Point(1180, 13);
+            this.sortingLbl.Name = "sortingLbl";
+            this.sortingLbl.TabIndex = 57;
+            this.sortingLbl.Text = "مرتب سازی براساس : ";
+            this.sortingLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+
+
+
 
             // 
             // blackListBtn
@@ -619,9 +640,10 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dataRepeater1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataRepeater1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 5);
+
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -1582,6 +1604,7 @@
         private System.Windows.Forms.Button patientRegisterBtn;
         private Microsoft.VisualBasic.PowerPacks.DataRepeater dataRepeater1;
         private System.Windows.Forms.LinkLabel rxPatientGeneralDocLink;
+        private System.Windows.Forms.Label sortingLbl;
         private System.Windows.Forms.Label rxPatientBasicInsurerTxt;
         private System.Windows.Forms.Label rxPatientBasicInsurerLbl;
         private System.Windows.Forms.LinkLabel rxPatientDeleteBtn;
@@ -1661,5 +1684,6 @@
         private System.Windows.Forms.Button btnF2;
         private System.Windows.Forms.Button btnF1;
         private Class.VerticalLabel rxPatientRegisterDateTxt;
+
     }
 }

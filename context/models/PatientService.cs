@@ -18,6 +18,11 @@ namespace Dentistry.Models
     // follow that rename, and the rename has been propagated through the
     // API-facing input/output field names in the corresponding Get/Define
     // functions as well.
+    //
+    // Money fields converted from decimal to long (whole Rial) - see chat
+    // for reasoning: Rial has no fractional subunit in practice, so an
+    // integer avoids both floating-point rounding (double) and the
+    // decimal<->SQLite TEXT serialization overhead, with zero precision loss.
     [Table("PatientServices")]
     public class PatientService
     {
@@ -26,12 +31,12 @@ namespace Dentistry.Models
         public int? Count { get; set; }
 
         public bool IsHadMoreTooth { get; set; }
-        public decimal ActionPrice { get; set; }
-        public decimal? ServicePrice { get; set; }
-        public decimal? InsurerPrice { get; set; }
-        public decimal? InsurerShare { get; set; }
-        public decimal? FranchiseShare { get; set; }
-        public decimal? FreeShare { get; set; }
+        public long ActionPrice { get; set; } // was decimal
+        public long? ServicePrice { get; set; } // was decimal?
+        public long? InsurerPrice { get; set; } // was decimal?
+        public long? InsurerShare { get; set; } // was decimal?
+        public long? FranchiseShare { get; set; } // was decimal?
+        public long? FreeShare { get; set; } // was decimal?
         public string ToothIds { get; set; }
         public string Comment { get; set; }
         public bool IsDeleted { get; set; }

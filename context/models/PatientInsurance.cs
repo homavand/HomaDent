@@ -18,7 +18,7 @@ namespace Dentistry.Models
         public DateTime? ExpirationDate { get; set; }
         public string PageNumber { get; set; }
         public int Percent { get; set; }
-        public double? MaxPay { get; set; }
+        public long? MaxPay { get; set; } // was double?
         public string IssuedPlaceCode { get; set; }
         public string InsurerAgentCode { get; set; }
         public string HID { get; set; }

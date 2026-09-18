@@ -70,8 +70,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tab0 = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.PatientTeethBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.bindingNavigator0 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.ButtonNew0 = new System.Windows.Forms.ToolStripButton();
+            this.ButtonEdit0 = new System.Windows.Forms.ToolStripButton();
+            this.ButtonDelete0 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.ButtonActionReport = new System.Windows.Forms.ToolStripButton();
             this.dgPatientServices = new System.Windows.Forms.DataGridView();
             this.ColumnProviderStaffTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnServiceSolarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,46 +93,8 @@
             this.ColumnCheckupTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnServiceGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDoctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingNavigator0 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.ButtonNew0 = new System.Windows.Forms.ToolStripButton();
-            this.ButtonEdit0 = new System.Windows.Forms.ToolStripButton();
-            this.ButtonDelete0 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ButtonActionReport = new System.Windows.Forms.ToolStripButton();
             this.tab1 = new System.Windows.Forms.TabPage();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.PayTypePnl = new System.Windows.Forms.Panel();
-            this.panel12 = new Dentistry.UserControls.ExPanel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.panel6 = new Dentistry.UserControls.ExPanel();
-            this.PayType6Rdo = new System.Windows.Forms.RadioButton();
-            this.panel9 = new Dentistry.UserControls.ExPanel();
-            this.PayType5Rdo = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel7 = new Dentistry.UserControls.ExPanel();
-            this.PayType1Rdo = new System.Windows.Forms.RadioButton();
-            this.panel11 = new Dentistry.UserControls.ExPanel();
-            this.PayType3Rdo = new System.Windows.Forms.RadioButton();
-            this.panel8 = new Dentistry.UserControls.ExPanel();
-            this.PayType4Rdo = new System.Windows.Forms.RadioButton();
-            this.panel10 = new Dentistry.UserControls.ExPanel();
-            this.PayType2Rdo = new System.Windows.Forms.RadioButton();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.dgPatientFinancialTransactions = new System.Windows.Forms.DataGridView();
-            this.ColumnTransactionSolarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTransactionAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPayTypeTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTransactionComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPatientFinancialId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingNavigatorFinancial = new System.Windows.Forms.BindingNavigator(this.components);
-            this.ButtonNew1 = new System.Windows.Forms.ToolStripButton();
-            this.ButtonEdit1 = new System.Windows.Forms.ToolStripButton();
-            this.ButtonDelete1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ButtonSuratHesab = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.BottonFish = new System.Windows.Forms.ToolStripButton();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.TotalRemianedTxt = new System.Windows.Forms.Label();
@@ -141,9 +108,29 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.TotalPriceTxt = new System.Windows.Forms.Label();
             this.TotalPriceLbl = new System.Windows.Forms.Label();
+            this.bindingNavigatorFinancial = new System.Windows.Forms.BindingNavigator(this.components);
+            this.ButtonNew1 = new System.Windows.Forms.ToolStripButton();
+            this.ButtonEdit1 = new System.Windows.Forms.ToolStripButton();
+            this.ButtonDelete1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ButtonSuratHesab = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.BottonFish = new System.Windows.Forms.ToolStripButton();
+            this.dgPatientFinancialTransactions = new System.Windows.Forms.DataGridView();
+            this.ColumnTransactionSolarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTransactionAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayTypeTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTransactionComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPatientFinancialId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPayTypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab2 = new System.Windows.Forms.TabPage();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.bindingNavigatorDocument = new System.Windows.Forms.BindingNavigator(this.components);
+            this.ButtonNew2 = new System.Windows.Forms.ToolStripButton();
+            this.ButtonEdit2 = new System.Windows.Forms.ToolStripButton();
+            this.ButtonDelete2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ButtonPictureViewer = new System.Windows.Forms.ToolStripButton();
             this.dgPatientDocs = new System.Windows.Forms.DataGridView();
             this.ColumnDocumentSolarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDocumentTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -151,17 +138,12 @@
             this.ColumnDocumentComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnImagePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPatientDocumentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingNavigatorDocument = new System.Windows.Forms.BindingNavigator(this.components);
-            this.ButtonNew2 = new System.Windows.Forms.ToolStripButton();
-            this.ButtonEdit2 = new System.Windows.Forms.ToolStripButton();
-            this.ButtonDelete2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ButtonPictureViewer = new System.Windows.Forms.ToolStripButton();
             this.miniToolStrip = new System.Windows.Forms.BindingNavigator(this.components);
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.PanelX1 = new Dentistry.UserControls.ExPanel();
+            this.PatientTeethBtn = new System.Windows.Forms.Button();
             this.BaraatBtn = new System.Windows.Forms.Button();
             this.btnFollowUp = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -197,45 +179,25 @@
             this.PatientSpecialDiseaseBtn = new System.Windows.Forms.ToolStripButton();
             this.tabControl.SuspendLayout();
             this.tab0.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPatientServices)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator0)).BeginInit();
             this.bindingNavigator0.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPatientServices)).BeginInit();
             this.tab1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.PayTypePnl.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPatientFinancialTransactions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorFinancial)).BeginInit();
-            this.bindingNavigatorFinancial.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorFinancial)).BeginInit();
+            this.bindingNavigatorFinancial.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPatientFinancialTransactions)).BeginInit();
             this.tab2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPatientDocs)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorDocument)).BeginInit();
             this.bindingNavigatorDocument.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPatientDocs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.miniToolStrip)).BeginInit();
             this.PanelX1.SuspendLayout();
             this.PanelX2.SuspendLayout();
@@ -276,55 +238,110 @@
             // tab0
             // 
             this.tab0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.tab0.Controls.Add(this.splitContainer1);
+            this.tab0.Controls.Add(this.tableLayoutPanel1);
             this.tab0.Font = new System.Drawing.Font("Vazir", 9.1F);
             this.tab0.Location = new System.Drawing.Point(4, 36);
             this.tab0.Name = "tab0";
-            this.tab0.Padding = new System.Windows.Forms.Padding(10);
+            this.tab0.Padding = new System.Windows.Forms.Padding(15);
             this.tab0.Size = new System.Drawing.Size(1533, 373);
             this.tab0.TabIndex = 2;
             this.tab0.Text = " درمان های انجام شده بیمار";
             this.tab0.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1
+            // tableLayoutPanel1
             // 
-            this.splitContainer1.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(10, 10);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.bindingNavigator0, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgPatientServices, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 15);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1503, 343);
+            this.tableLayoutPanel1.TabIndex = 9;
             // 
-            // splitContainer1.Panel1
+            // bindingNavigator0
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.bindingNavigator0.AddNewItem = null;
+            this.bindingNavigator0.AutoSize = false;
+            this.bindingNavigator0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.bindingNavigator0.CountItem = null;
+            this.bindingNavigator0.DeleteItem = null;
+            this.bindingNavigator0.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bindingNavigator0.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bindingNavigator0.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.bindingNavigator0.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ButtonNew0,
+            this.ButtonEdit0,
+            this.ButtonDelete0,
+            this.toolStripSeparator6,
+            this.ButtonActionReport});
+            this.bindingNavigator0.Location = new System.Drawing.Point(0, 303);
+            this.bindingNavigator0.MoveFirstItem = null;
+            this.bindingNavigator0.MoveLastItem = null;
+            this.bindingNavigator0.MoveNextItem = null;
+            this.bindingNavigator0.MovePreviousItem = null;
+            this.bindingNavigator0.Name = "bindingNavigator0";
+            this.bindingNavigator0.Padding = new System.Windows.Forms.Padding(5);
+            this.bindingNavigator0.PositionItem = null;
+            this.bindingNavigator0.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.bindingNavigator0.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.bindingNavigator0.Size = new System.Drawing.Size(1503, 40);
+            this.bindingNavigator0.TabIndex = 8;
+            this.bindingNavigator0.Text = "bindingNavigator1";
             // 
-            // splitContainer1.Panel2
+            // ButtonNew0
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dgPatientServices);
-            this.splitContainer1.Panel2.Controls.Add(this.bindingNavigator0);
-            this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainer1.Size = new System.Drawing.Size(1513, 353);
-            this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 8;
+            this.ButtonNew0.AutoSize = false;
+            this.ButtonNew0.Image = global::Dentistry.Properties.Resources.NewDocument;
+            this.ButtonNew0.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonNew0.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonNew0.Name = "ButtonNew0";
+            this.ButtonNew0.Size = new System.Drawing.Size(100, 27);
+            this.ButtonNew0.Text = "جدید";
+            this.ButtonNew0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonNew0.Click += new System.EventHandler(this.ButtonNew0_Click);
             // 
-            // PatientTeethBtn
+            // ButtonEdit0
             // 
-            this.PatientTeethBtn.BackColor = System.Drawing.Color.White;
-            this.PatientTeethBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
-            this.PatientTeethBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
-            this.PatientTeethBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PatientTeethBtn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold);
-            this.PatientTeethBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
-            this.PatientTeethBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.PatientTeethBtn.Location = new System.Drawing.Point(383, 10);
-            this.PatientTeethBtn.Name = "PatientTeethBtn";
-            this.PatientTeethBtn.Size = new System.Drawing.Size(191, 31);
-            this.PatientTeethBtn.TabIndex = 176;
-            this.PatientTeethBtn.Text = "وضعیت دهان بیمار";
-            this.PatientTeethBtn.UseVisualStyleBackColor = false;
-            this.PatientTeethBtn.Click += new System.EventHandler(this.PatientTeethBtn_Click);
+            this.ButtonEdit0.AutoSize = false;
+            this.ButtonEdit0.Image = global::Dentistry.Properties.Resources.pencil_005_16xLG;
+            this.ButtonEdit0.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonEdit0.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonEdit0.Name = "ButtonEdit0";
+            this.ButtonEdit0.Size = new System.Drawing.Size(100, 27);
+            this.ButtonEdit0.Text = "ویرایش";
+            this.ButtonEdit0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonEdit0.Click += new System.EventHandler(this.ButtonEdit0_Click);
+            // 
+            // ButtonDelete0
+            // 
+            this.ButtonDelete0.AutoSize = false;
+            this.ButtonDelete0.Image = global::Dentistry.Properties.Resources.Symbols_Critical_16xLG;
+            this.ButtonDelete0.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonDelete0.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonDelete0.Name = "ButtonDelete0";
+            this.ButtonDelete0.Size = new System.Drawing.Size(100, 27);
+            this.ButtonDelete0.Text = "حذف";
+            this.ButtonDelete0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonDelete0.Click += new System.EventHandler(this.ButtonDelete0_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 30);
+            // 
+            // ButtonActionReport
+            // 
+            this.ButtonActionReport.Image = global::Dentistry.Properties.Resources.R;
+            this.ButtonActionReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonActionReport.Name = "ButtonActionReport";
+            this.ButtonActionReport.Size = new System.Drawing.Size(339, 27);
+            this.ButtonActionReport.Text = "گزارش درمان های تشخیص داده شده در تاریخ انتخاب شده";
+            this.ButtonActionReport.Visible = false;
             // 
             // dgPatientServices
             // 
@@ -373,7 +390,7 @@
             this.dgPatientServices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgPatientServices.EnableHeadersVisualStyles = false;
             this.dgPatientServices.GridColor = System.Drawing.Color.White;
-            this.dgPatientServices.Location = new System.Drawing.Point(0, 0);
+            this.dgPatientServices.Location = new System.Drawing.Point(3, 3);
             this.dgPatientServices.MultiSelect = false;
             this.dgPatientServices.Name = "dgPatientServices";
             this.dgPatientServices.ReadOnly = true;
@@ -391,9 +408,9 @@
             this.dgPatientServices.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgPatientServices.RowTemplate.Height = 30;
             this.dgPatientServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPatientServices.Size = new System.Drawing.Size(1513, 262);
+            this.dgPatientServices.Size = new System.Drawing.Size(1497, 297);
             this.dgPatientServices.TabIndex = 9;
-            this.dgPatientServices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActionX_CellDoubleClick);
+            this.dgPatientServices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPatientServices_CellDoubleClick);
             // 
             // ColumnProviderStaffTitle
             // 
@@ -543,521 +560,203 @@
             this.ColumnDoctorId.ReadOnly = true;
             this.ColumnDoctorId.Visible = false;
             // 
-            // bindingNavigator0
-            // 
-            this.bindingNavigator0.AddNewItem = null;
-            this.bindingNavigator0.AutoSize = false;
-            this.bindingNavigator0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.bindingNavigator0.CountItem = null;
-            this.bindingNavigator0.DeleteItem = null;
-            this.bindingNavigator0.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bindingNavigator0.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bindingNavigator0.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.bindingNavigator0.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ButtonNew0,
-            this.ButtonEdit0,
-            this.ButtonDelete0,
-            this.toolStripSeparator6,
-            this.ButtonActionReport});
-            this.bindingNavigator0.Location = new System.Drawing.Point(0, 262);
-            this.bindingNavigator0.MoveFirstItem = null;
-            this.bindingNavigator0.MoveLastItem = null;
-            this.bindingNavigator0.MoveNextItem = null;
-            this.bindingNavigator0.MovePreviousItem = null;
-            this.bindingNavigator0.Name = "bindingNavigator0";
-            this.bindingNavigator0.Padding = new System.Windows.Forms.Padding(5);
-            this.bindingNavigator0.PositionItem = null;
-            this.bindingNavigator0.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.bindingNavigator0.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.bindingNavigator0.Size = new System.Drawing.Size(1513, 40);
-            this.bindingNavigator0.TabIndex = 8;
-            this.bindingNavigator0.Text = "bindingNavigator1";
-            // 
-            // ButtonNew0
-            // 
-            this.ButtonNew0.AutoSize = false;
-            this.ButtonNew0.Image = global::Dentistry.Properties.Resources.NewDocument;
-            this.ButtonNew0.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ButtonNew0.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButtonNew0.Name = "ButtonNew0";
-            this.ButtonNew0.Size = new System.Drawing.Size(100, 27);
-            this.ButtonNew0.Text = "جدید";
-            this.ButtonNew0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonNew0.Click += new System.EventHandler(this.ButtonNew0_Click);
-            // 
-            // ButtonEdit0
-            // 
-            this.ButtonEdit0.AutoSize = false;
-            this.ButtonEdit0.Image = global::Dentistry.Properties.Resources.pencil_005_16xLG;
-            this.ButtonEdit0.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ButtonEdit0.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButtonEdit0.Name = "ButtonEdit0";
-            this.ButtonEdit0.Size = new System.Drawing.Size(100, 27);
-            this.ButtonEdit0.Text = "ویرایش";
-            this.ButtonEdit0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonEdit0.Click += new System.EventHandler(this.ButtonEdit0_Click);
-            // 
-            // ButtonDelete0
-            // 
-            this.ButtonDelete0.AutoSize = false;
-            this.ButtonDelete0.Image = global::Dentistry.Properties.Resources.Symbols_Critical_16xLG;
-            this.ButtonDelete0.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ButtonDelete0.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButtonDelete0.Name = "ButtonDelete0";
-            this.ButtonDelete0.Size = new System.Drawing.Size(100, 27);
-            this.ButtonDelete0.Text = "حذف";
-            this.ButtonDelete0.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonDelete0.Click += new System.EventHandler(this.ButtonDelete0_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 30);
-            // 
-            // ButtonActionReport
-            // 
-            this.ButtonActionReport.Image = global::Dentistry.Properties.Resources.R;
-            this.ButtonActionReport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButtonActionReport.Name = "ButtonActionReport";
-            this.ButtonActionReport.Size = new System.Drawing.Size(339, 27);
-            this.ButtonActionReport.Text = "گزارش درمان های تشخیص داده شده در تاریخ انتخاب شده";
-            this.ButtonActionReport.Visible = false;
-            // 
             // tab1
             // 
-            this.tab1.Controls.Add(this.splitContainer2);
+            this.tab1.Controls.Add(this.tableLayoutPanel3);
             this.tab1.Font = new System.Drawing.Font("Vazir", 9.1F);
             this.tab1.Location = new System.Drawing.Point(4, 36);
             this.tab1.Name = "tab1";
-            this.tab1.Padding = new System.Windows.Forms.Padding(10);
+            this.tab1.Padding = new System.Windows.Forms.Padding(15);
             this.tab1.Size = new System.Drawing.Size(1533, 373);
             this.tab1.TabIndex = 4;
             this.tab1.Text = "تراکنش های مالی بیمار";
             this.tab1.UseVisualStyleBackColor = true;
             // 
-            // splitContainer2
+            // tableLayoutPanel3
             // 
-            this.splitContainer2.BackColor = System.Drawing.Color.White;
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Location = new System.Drawing.Point(10, 10);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.bindingNavigatorFinancial, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.dgPatientFinancialTransactions, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(15, 15);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1503, 343);
+            this.tableLayoutPanel3.TabIndex = 11;
             // 
-            // splitContainer2.Panel1
+            // panel3
             // 
-            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer2.Panel1.Controls.Add(this.PayTypePnl);
-            this.splitContainer2.Panel1.Padding = new System.Windows.Forms.Padding(2);
-            this.splitContainer2.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel3.Controls.Add(this.panel13);
+            this.panel3.Controls.Add(this.panel14);
+            this.panel3.Controls.Add(this.panel15);
+            this.panel3.Controls.Add(this.panel16);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(3, 246);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(5);
+            this.panel3.Size = new System.Drawing.Size(1497, 94);
+            this.panel3.TabIndex = 8;
             // 
-            // splitContainer2.Panel2
+            // panel13
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainer2.Size = new System.Drawing.Size(1513, 353);
-            this.splitContainer2.SplitterWidth = 1;
-            this.splitContainer2.TabIndex = 10;
+            this.panel13.Controls.Add(this.TotalRemianedTxt);
+            this.panel13.Controls.Add(this.TotalRemianedLbl);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel13.Location = new System.Drawing.Point(212, 5);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(320, 84);
+            this.panel13.TabIndex = 50;
             // 
-            // PayTypePnl
+            // TotalRemianedTxt
             // 
-            this.PayTypePnl.Controls.Add(this.panel12);
-            this.PayTypePnl.Controls.Add(this.panel6);
-            this.PayTypePnl.Controls.Add(this.panel9);
-            this.PayTypePnl.Controls.Add(this.label7);
-            this.PayTypePnl.Controls.Add(this.panel7);
-            this.PayTypePnl.Controls.Add(this.panel11);
-            this.PayTypePnl.Controls.Add(this.panel8);
-            this.PayTypePnl.Controls.Add(this.panel10);
-            this.PayTypePnl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PayTypePnl.Location = new System.Drawing.Point(654, 2);
-            this.PayTypePnl.Name = "PayTypePnl";
-            this.PayTypePnl.Size = new System.Drawing.Size(857, 46);
-            this.PayTypePnl.TabIndex = 71;
+            this.TotalRemianedTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalRemianedTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(40)))));
+            this.TotalRemianedTxt.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalRemianedTxt.ForeColor = System.Drawing.Color.DeepPink;
+            this.TotalRemianedTxt.Location = new System.Drawing.Point(22, 27);
+            this.TotalRemianedTxt.MaximumSize = new System.Drawing.Size(280, 40);
+            this.TotalRemianedTxt.MinimumSize = new System.Drawing.Size(280, 40);
+            this.TotalRemianedTxt.Name = "TotalRemianedTxt";
+            this.TotalRemianedTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.TotalRemianedTxt.Size = new System.Drawing.Size(280, 40);
+            this.TotalRemianedTxt.TabIndex = 49;
+            this.TotalRemianedTxt.Text = "0";
+            this.TotalRemianedTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TotalRemianedTxt.TextChanged += new System.EventHandler(this.labelstale_TextChanged);
             // 
-            // panel12
+            // TotalRemianedLbl
             // 
-            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel12.BackColor = System.Drawing.Color.White;
-            this.panel12.BorderBottomWidth = 3;
-            this.panel12.BorderColor = System.Drawing.Color.Silver;
-            this.panel12.BorderLeftWidth = 0;
-            this.panel12.BorderRightWidth = 0;
-            this.panel12.BorderTopWidth = 0;
-            this.panel12.Controls.Add(this.radioButton1);
-            this.panel12.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.panel12.Location = new System.Drawing.Point(665, 10);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(100, 30);
-            this.panel12.TabIndex = 130;
-            this.panel12.TabStop = false;
-            this.panel12.Tag = "4";
+            this.TotalRemianedLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalRemianedLbl.AutoSize = true;
+            this.TotalRemianedLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold);
+            this.TotalRemianedLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.TotalRemianedLbl.Location = new System.Drawing.Point(258, 4);
+            this.TotalRemianedLbl.Name = "TotalRemianedLbl";
+            this.TotalRemianedLbl.Size = new System.Drawing.Size(41, 20);
+            this.TotalRemianedLbl.TabIndex = 48;
+            this.TotalRemianedLbl.Text = "مانده ";
             // 
-            // radioButton1
+            // panel14
             // 
-            this.radioButton1.Checked = true;
-            this.radioButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton1.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(0, 0);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.radioButton1.Size = new System.Drawing.Size(100, 30);
-            this.radioButton1.TabIndex = 119;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Tag = "0";
-            this.radioButton1.Text = "همه";
-            this.radioButton1.UseVisualStyleBackColor = false;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.PayTypeRdo_CheckedChanged);
+            this.panel14.Controls.Add(this.TotalDiscountTxt);
+            this.panel14.Controls.Add(this.TotalDiscountLbl);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel14.Location = new System.Drawing.Point(532, 5);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(320, 84);
+            this.panel14.TabIndex = 51;
             // 
-            // panel6
+            // TotalDiscountTxt
             // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.BorderBottomWidth = 3;
-            this.panel6.BorderColor = System.Drawing.Color.DeepPink;
-            this.panel6.BorderLeftWidth = 0;
-            this.panel6.BorderRightWidth = 0;
-            this.panel6.BorderTopWidth = 0;
-            this.panel6.Controls.Add(this.PayType6Rdo);
-            this.panel6.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.panel6.Location = new System.Drawing.Point(22, 10);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(100, 30);
-            this.panel6.TabIndex = 129;
-            this.panel6.TabStop = false;
-            this.panel6.Tag = "4";
+            this.TotalDiscountTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalDiscountTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(40)))));
+            this.TotalDiscountTxt.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalDiscountTxt.ForeColor = System.Drawing.Color.Orange;
+            this.TotalDiscountTxt.Location = new System.Drawing.Point(22, 27);
+            this.TotalDiscountTxt.MaximumSize = new System.Drawing.Size(280, 40);
+            this.TotalDiscountTxt.MinimumSize = new System.Drawing.Size(280, 40);
+            this.TotalDiscountTxt.Name = "TotalDiscountTxt";
+            this.TotalDiscountTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.TotalDiscountTxt.Size = new System.Drawing.Size(280, 40);
+            this.TotalDiscountTxt.TabIndex = 47;
+            this.TotalDiscountTxt.Text = "0";
+            this.TotalDiscountTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PayType6Rdo
+            // TotalDiscountLbl
             // 
-            this.PayType6Rdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PayType6Rdo.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayType6Rdo.Location = new System.Drawing.Point(0, 0);
-            this.PayType6Rdo.Name = "PayType6Rdo";
-            this.PayType6Rdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.PayType6Rdo.Size = new System.Drawing.Size(100, 30);
-            this.PayType6Rdo.TabIndex = 119;
-            this.PayType6Rdo.TabStop = true;
-            this.PayType6Rdo.Tag = "6";
-            this.PayType6Rdo.Text = "تخفیف";
-            this.PayType6Rdo.UseVisualStyleBackColor = false;
-            this.PayType6Rdo.CheckedChanged += new System.EventHandler(this.PayTypeRdo_CheckedChanged);
+            this.TotalDiscountLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalDiscountLbl.AutoSize = true;
+            this.TotalDiscountLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold);
+            this.TotalDiscountLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.TotalDiscountLbl.Location = new System.Drawing.Point(228, 4);
+            this.TotalDiscountLbl.Name = "TotalDiscountLbl";
+            this.TotalDiscountLbl.Size = new System.Drawing.Size(71, 20);
+            this.TotalDiscountLbl.TabIndex = 46;
+            this.TotalDiscountLbl.Text = "کل تخفیف ";
             // 
-            // panel9
+            // panel15
             // 
-            this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.BorderBottomWidth = 3;
-            this.panel9.BorderColor = System.Drawing.Color.DeepPink;
-            this.panel9.BorderLeftWidth = 0;
-            this.panel9.BorderRightWidth = 0;
-            this.panel9.BorderTopWidth = 0;
-            this.panel9.Controls.Add(this.PayType5Rdo);
-            this.panel9.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.panel9.Location = new System.Drawing.Point(129, 10);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(100, 30);
-            this.panel9.TabIndex = 128;
-            this.panel9.TabStop = false;
-            this.panel9.Tag = "4";
+            this.panel15.Controls.Add(this.TotalPayableTxt);
+            this.panel15.Controls.Add(this.TotalPayableLbl);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel15.Location = new System.Drawing.Point(852, 5);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(320, 84);
+            this.panel15.TabIndex = 52;
             // 
-            // PayType5Rdo
+            // TotalPayableTxt
             // 
-            this.PayType5Rdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PayType5Rdo.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayType5Rdo.Location = new System.Drawing.Point(0, 0);
-            this.PayType5Rdo.Name = "PayType5Rdo";
-            this.PayType5Rdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.PayType5Rdo.Size = new System.Drawing.Size(100, 30);
-            this.PayType5Rdo.TabIndex = 119;
-            this.PayType5Rdo.TabStop = true;
-            this.PayType5Rdo.Tag = "5";
-            this.PayType5Rdo.Text = "بازپرداخت";
-            this.PayType5Rdo.UseVisualStyleBackColor = false;
-            this.PayType5Rdo.CheckedChanged += new System.EventHandler(this.PayTypeRdo_CheckedChanged);
+            this.TotalPayableTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalPayableTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(40)))));
+            this.TotalPayableTxt.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalPayableTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.TotalPayableTxt.Location = new System.Drawing.Point(24, 27);
+            this.TotalPayableTxt.MaximumSize = new System.Drawing.Size(280, 40);
+            this.TotalPayableTxt.MinimumSize = new System.Drawing.Size(280, 40);
+            this.TotalPayableTxt.Name = "TotalPayableTxt";
+            this.TotalPayableTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.TotalPayableTxt.Size = new System.Drawing.Size(280, 40);
+            this.TotalPayableTxt.TabIndex = 45;
+            this.TotalPayableTxt.Text = "0";
+            this.TotalPayableTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // TotalPayableLbl
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(767, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 18);
-            this.label7.TabIndex = 66;
-            this.label7.Text = "نحوه پرداخت :";
+            this.TotalPayableLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalPayableLbl.AutoSize = true;
+            this.TotalPayableLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalPayableLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.TotalPayableLbl.Location = new System.Drawing.Point(227, 4);
+            this.TotalPayableLbl.Name = "TotalPayableLbl";
+            this.TotalPayableLbl.Size = new System.Drawing.Size(74, 20);
+            this.TotalPayableLbl.TabIndex = 44;
+            this.TotalPayableLbl.Text = "کل پرداختی ";
             // 
-            // panel7
+            // panel16
             // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.BackColor = System.Drawing.Color.White;
-            this.panel7.BorderBottomWidth = 3;
-            this.panel7.BorderColor = System.Drawing.Color.LimeGreen;
-            this.panel7.BorderLeftWidth = 0;
-            this.panel7.BorderRightWidth = 0;
-            this.panel7.BorderTopWidth = 0;
-            this.panel7.Controls.Add(this.PayType1Rdo);
-            this.panel7.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.panel7.Location = new System.Drawing.Point(558, 10);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(100, 30);
-            this.panel7.TabIndex = 125;
-            this.panel7.TabStop = false;
-            this.panel7.Tag = "4";
+            this.panel16.Controls.Add(this.TotalPriceTxt);
+            this.panel16.Controls.Add(this.TotalPriceLbl);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel16.Location = new System.Drawing.Point(1172, 5);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(320, 84);
+            this.panel16.TabIndex = 51;
             // 
-            // PayType1Rdo
+            // TotalPriceTxt
             // 
-            this.PayType1Rdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PayType1Rdo.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayType1Rdo.Location = new System.Drawing.Point(0, 0);
-            this.PayType1Rdo.Name = "PayType1Rdo";
-            this.PayType1Rdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.PayType1Rdo.Size = new System.Drawing.Size(100, 30);
-            this.PayType1Rdo.TabIndex = 119;
-            this.PayType1Rdo.TabStop = true;
-            this.PayType1Rdo.Tag = "1";
-            this.PayType1Rdo.Text = " نقدی";
-            this.PayType1Rdo.UseVisualStyleBackColor = false;
-            this.PayType1Rdo.CheckedChanged += new System.EventHandler(this.PayTypeRdo_CheckedChanged);
+            this.TotalPriceTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalPriceTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(40)))));
+            this.TotalPriceTxt.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalPriceTxt.ForeColor = System.Drawing.Color.White;
+            this.TotalPriceTxt.Location = new System.Drawing.Point(26, 27);
+            this.TotalPriceTxt.MaximumSize = new System.Drawing.Size(280, 40);
+            this.TotalPriceTxt.MinimumSize = new System.Drawing.Size(280, 40);
+            this.TotalPriceTxt.Name = "TotalPriceTxt";
+            this.TotalPriceTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.TotalPriceTxt.Size = new System.Drawing.Size(280, 40);
+            this.TotalPriceTxt.TabIndex = 43;
+            this.TotalPriceTxt.Tag = "";
+            this.TotalPriceTxt.Text = "0";
+            this.TotalPriceTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel11
+            // TotalPriceLbl
             // 
-            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel11.BackColor = System.Drawing.Color.White;
-            this.panel11.BorderBottomWidth = 3;
-            this.panel11.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.panel11.BorderLeftWidth = 0;
-            this.panel11.BorderRightWidth = 0;
-            this.panel11.BorderTopWidth = 0;
-            this.panel11.Controls.Add(this.PayType3Rdo);
-            this.panel11.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.panel11.Location = new System.Drawing.Point(344, 10);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(100, 30);
-            this.panel11.TabIndex = 126;
-            this.panel11.TabStop = false;
-            this.panel11.Tag = "4";
-            // 
-            // PayType3Rdo
-            // 
-            this.PayType3Rdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PayType3Rdo.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayType3Rdo.Location = new System.Drawing.Point(0, 0);
-            this.PayType3Rdo.Name = "PayType3Rdo";
-            this.PayType3Rdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.PayType3Rdo.Size = new System.Drawing.Size(100, 30);
-            this.PayType3Rdo.TabIndex = 119;
-            this.PayType3Rdo.TabStop = true;
-            this.PayType3Rdo.Tag = "3";
-            this.PayType3Rdo.Text = " چک";
-            this.PayType3Rdo.UseVisualStyleBackColor = false;
-            this.PayType3Rdo.CheckedChanged += new System.EventHandler(this.PayTypeRdo_CheckedChanged);
-            // 
-            // panel8
-            // 
-            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.BackColor = System.Drawing.Color.White;
-            this.panel8.BorderBottomWidth = 3;
-            this.panel8.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.panel8.BorderLeftWidth = 0;
-            this.panel8.BorderRightWidth = 0;
-            this.panel8.BorderTopWidth = 0;
-            this.panel8.Controls.Add(this.PayType4Rdo);
-            this.panel8.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.panel8.Location = new System.Drawing.Point(237, 10);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(100, 30);
-            this.panel8.TabIndex = 127;
-            this.panel8.TabStop = false;
-            this.panel8.Tag = "4";
-            // 
-            // PayType4Rdo
-            // 
-            this.PayType4Rdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PayType4Rdo.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayType4Rdo.Location = new System.Drawing.Point(0, 0);
-            this.PayType4Rdo.Name = "PayType4Rdo";
-            this.PayType4Rdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.PayType4Rdo.Size = new System.Drawing.Size(100, 30);
-            this.PayType4Rdo.TabIndex = 119;
-            this.PayType4Rdo.TabStop = true;
-            this.PayType4Rdo.Tag = "4";
-            this.PayType4Rdo.Text = "ثبت فاکتور";
-            this.PayType4Rdo.UseVisualStyleBackColor = false;
-            this.PayType4Rdo.CheckedChanged += new System.EventHandler(this.PayTypeRdo_CheckedChanged);
-            // 
-            // panel10
-            // 
-            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel10.BackColor = System.Drawing.Color.White;
-            this.panel10.BorderBottomWidth = 3;
-            this.panel10.BorderColor = System.Drawing.Color.LimeGreen;
-            this.panel10.BorderLeftWidth = 0;
-            this.panel10.BorderRightWidth = 0;
-            this.panel10.BorderTopWidth = 0;
-            this.panel10.Controls.Add(this.PayType2Rdo);
-            this.panel10.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.panel10.Location = new System.Drawing.Point(451, 10);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(100, 30);
-            this.panel10.TabIndex = 124;
-            this.panel10.TabStop = false;
-            this.panel10.Tag = "4";
-            // 
-            // PayType2Rdo
-            // 
-            this.PayType2Rdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PayType2Rdo.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayType2Rdo.Location = new System.Drawing.Point(0, 0);
-            this.PayType2Rdo.Name = "PayType2Rdo";
-            this.PayType2Rdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.PayType2Rdo.Size = new System.Drawing.Size(100, 30);
-            this.PayType2Rdo.TabIndex = 119;
-            this.PayType2Rdo.TabStop = true;
-            this.PayType2Rdo.Tag = "2";
-            this.PayType2Rdo.Text = "کارت خوان";
-            this.PayType2Rdo.UseVisualStyleBackColor = false;
-            this.PayType2Rdo.CheckedChanged += new System.EventHandler(this.PayTypeRdo_CheckedChanged);
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.BackColor = System.Drawing.Color.White;
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.dgPatientFinancialTransactions);
-            this.splitContainer3.Panel1.Controls.Add(this.bindingNavigatorFinancial);
-            this.splitContainer3.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.panel3);
-            this.splitContainer3.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainer3.Size = new System.Drawing.Size(1513, 302);
-            this.splitContainer3.SplitterDistance = 203;
-            this.splitContainer3.SplitterWidth = 5;
-            this.splitContainer3.TabIndex = 11;
-            // 
-            // dgPatientFinancialTransactions
-            // 
-            this.dgPatientFinancialTransactions.AllowUserToAddRows = false;
-            this.dgPatientFinancialTransactions.AllowUserToDeleteRows = false;
-            this.dgPatientFinancialTransactions.AllowUserToResizeColumns = false;
-            this.dgPatientFinancialTransactions.AllowUserToResizeRows = false;
-            this.dgPatientFinancialTransactions.BackgroundColor = System.Drawing.Color.White;
-            this.dgPatientFinancialTransactions.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgPatientFinancialTransactions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Vazir", 9.1F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgPatientFinancialTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.dgPatientFinancialTransactions.ColumnHeadersHeight = 30;
-            this.dgPatientFinancialTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgPatientFinancialTransactions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnTransactionSolarDate,
-            this.ColumnTransactionAmount,
-            this.ColumnPayTypeTitle,
-            this.ColumnTransactionComment,
-            this.ColumnPatientFinancialId,
-            this.ColumnPayTypeId});
-            this.dgPatientFinancialTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgPatientFinancialTransactions.EnableHeadersVisualStyles = false;
-            this.dgPatientFinancialTransactions.GridColor = System.Drawing.Color.White;
-            this.dgPatientFinancialTransactions.Location = new System.Drawing.Point(0, 0);
-            this.dgPatientFinancialTransactions.MultiSelect = false;
-            this.dgPatientFinancialTransactions.Name = "dgPatientFinancialTransactions";
-            this.dgPatientFinancialTransactions.ReadOnly = true;
-            this.dgPatientFinancialTransactions.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Vazir", 9.1F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgPatientFinancialTransactions.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.dgPatientFinancialTransactions.RowHeadersVisible = false;
-            this.dgPatientFinancialTransactions.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgPatientFinancialTransactions.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.dgPatientFinancialTransactions.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgPatientFinancialTransactions.RowTemplate.Height = 30;
-            this.dgPatientFinancialTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPatientFinancialTransactions.Size = new System.Drawing.Size(1513, 163);
-            this.dgPatientFinancialTransactions.TabIndex = 9;
-            this.dgPatientFinancialTransactions.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPatientFinancialTransactions_CellDoubleClick);
-            this.dgPatientFinancialTransactions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgPatientFinancialTransactions_CellFormatting);
-            this.dgPatientFinancialTransactions.SelectionChanged += new System.EventHandler(this.dgPatientFinancialTransactions_SelectionChanged);
-            // 
-            // ColumnTransactionSolarDate
-            // 
-            this.ColumnTransactionSolarDate.DataPropertyName = "SolarDate";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnTransactionSolarDate.DefaultCellStyle = dataGridViewCellStyle15;
-            this.ColumnTransactionSolarDate.HeaderText = "تاریخ ";
-            this.ColumnTransactionSolarDate.Name = "ColumnTransactionSolarDate";
-            this.ColumnTransactionSolarDate.ReadOnly = true;
-            this.ColumnTransactionSolarDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnTransactionSolarDate.Width = 150;
-            // 
-            // ColumnTransactionAmount
-            // 
-            this.ColumnTransactionAmount.DataPropertyName = "Amount";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.Format = "N0";
-            dataGridViewCellStyle16.NullValue = null;
-            this.ColumnTransactionAmount.DefaultCellStyle = dataGridViewCellStyle16;
-            this.ColumnTransactionAmount.HeaderText = "مبلغ پرداختی";
-            this.ColumnTransactionAmount.Name = "ColumnTransactionAmount";
-            this.ColumnTransactionAmount.ReadOnly = true;
-            this.ColumnTransactionAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnTransactionAmount.Width = 200;
-            // 
-            // ColumnPayTypeTitle
-            // 
-            this.ColumnPayTypeTitle.DataPropertyName = "PayTypeTitle";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnPayTypeTitle.DefaultCellStyle = dataGridViewCellStyle17;
-            this.ColumnPayTypeTitle.HeaderText = "نوع تراکنش";
-            this.ColumnPayTypeTitle.Name = "ColumnPayTypeTitle";
-            this.ColumnPayTypeTitle.ReadOnly = true;
-            this.ColumnPayTypeTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnPayTypeTitle.Width = 150;
-            // 
-            // ColumnTransactionComment
-            // 
-            this.ColumnTransactionComment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnTransactionComment.DataPropertyName = "Comment";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ColumnTransactionComment.DefaultCellStyle = dataGridViewCellStyle18;
-            this.ColumnTransactionComment.HeaderText = "توضیحات";
-            this.ColumnTransactionComment.Name = "ColumnTransactionComment";
-            this.ColumnTransactionComment.ReadOnly = true;
-            this.ColumnTransactionComment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnPatientFinancialId
-            // 
-            this.ColumnPatientFinancialId.DataPropertyName = "PatientFinancialId";
-            this.ColumnPatientFinancialId.HeaderText = "PatientFinancialId";
-            this.ColumnPatientFinancialId.Name = "ColumnPatientFinancialId";
-            this.ColumnPatientFinancialId.ReadOnly = true;
-            this.ColumnPatientFinancialId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColumnPatientFinancialId.Visible = false;
-            // 
-            // ColumnPayTypeId
-            // 
-            this.ColumnPayTypeId.DataPropertyName = "PayTypeId";
-            this.ColumnPayTypeId.HeaderText = "PayTypeId";
-            this.ColumnPayTypeId.Name = "ColumnPayTypeId";
-            this.ColumnPayTypeId.ReadOnly = true;
-            this.ColumnPayTypeId.Visible = false;
+            this.TotalPriceLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TotalPriceLbl.AutoSize = true;
+            this.TotalPriceLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalPriceLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.TotalPriceLbl.Location = new System.Drawing.Point(245, 4);
+            this.TotalPriceLbl.Name = "TotalPriceLbl";
+            this.TotalPriceLbl.Size = new System.Drawing.Size(58, 20);
+            this.TotalPriceLbl.TabIndex = 42;
+            this.TotalPriceLbl.Text = "کل مبلغ ";
             // 
             // bindingNavigatorFinancial
             // 
@@ -1066,7 +765,7 @@
             this.bindingNavigatorFinancial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.bindingNavigatorFinancial.CountItem = null;
             this.bindingNavigatorFinancial.DeleteItem = null;
-            this.bindingNavigatorFinancial.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bindingNavigatorFinancial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bindingNavigatorFinancial.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bindingNavigatorFinancial.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.bindingNavigatorFinancial.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1077,7 +776,7 @@
             this.ButtonSuratHesab,
             this.toolStripSeparator4,
             this.BottonFish});
-            this.bindingNavigatorFinancial.Location = new System.Drawing.Point(0, 163);
+            this.bindingNavigatorFinancial.Location = new System.Drawing.Point(0, 203);
             this.bindingNavigatorFinancial.MoveFirstItem = null;
             this.bindingNavigatorFinancial.MoveLastItem = null;
             this.bindingNavigatorFinancial.MoveNextItem = null;
@@ -1087,7 +786,7 @@
             this.bindingNavigatorFinancial.PositionItem = null;
             this.bindingNavigatorFinancial.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.bindingNavigatorFinancial.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.bindingNavigatorFinancial.Size = new System.Drawing.Size(1513, 40);
+            this.bindingNavigatorFinancial.Size = new System.Drawing.Size(1503, 40);
             this.bindingNavigatorFinancial.TabIndex = 10;
             this.bindingNavigatorFinancial.Text = "bindingNavigator1";
             // 
@@ -1162,217 +861,234 @@
             this.BottonFish.ToolTipText = "چاپ مجدد فیش";
             this.BottonFish.Click += new System.EventHandler(this.BottonFish_Click);
             // 
-            // panel3
+            // dgPatientFinancialTransactions
             // 
-            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel3.Controls.Add(this.panel13);
-            this.panel3.Controls.Add(this.panel14);
-            this.panel3.Controls.Add(this.panel15);
-            this.panel3.Controls.Add(this.panel16);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(1513, 94);
-            this.panel3.TabIndex = 8;
+            this.dgPatientFinancialTransactions.AllowUserToAddRows = false;
+            this.dgPatientFinancialTransactions.AllowUserToDeleteRows = false;
+            this.dgPatientFinancialTransactions.AllowUserToResizeColumns = false;
+            this.dgPatientFinancialTransactions.AllowUserToResizeRows = false;
+            this.dgPatientFinancialTransactions.BackgroundColor = System.Drawing.Color.White;
+            this.dgPatientFinancialTransactions.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgPatientFinancialTransactions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Vazir", 9.1F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgPatientFinancialTransactions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgPatientFinancialTransactions.ColumnHeadersHeight = 30;
+            this.dgPatientFinancialTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgPatientFinancialTransactions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnTransactionSolarDate,
+            this.ColumnTransactionAmount,
+            this.ColumnPayTypeTitle,
+            this.ColumnTransactionComment,
+            this.ColumnPatientFinancialId,
+            this.ColumnPayTypeId});
+            this.dgPatientFinancialTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgPatientFinancialTransactions.EnableHeadersVisualStyles = false;
+            this.dgPatientFinancialTransactions.GridColor = System.Drawing.Color.White;
+            this.dgPatientFinancialTransactions.Location = new System.Drawing.Point(3, 3);
+            this.dgPatientFinancialTransactions.MultiSelect = false;
+            this.dgPatientFinancialTransactions.Name = "dgPatientFinancialTransactions";
+            this.dgPatientFinancialTransactions.ReadOnly = true;
+            this.dgPatientFinancialTransactions.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Vazir", 9.1F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgPatientFinancialTransactions.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dgPatientFinancialTransactions.RowHeadersVisible = false;
+            this.dgPatientFinancialTransactions.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgPatientFinancialTransactions.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.dgPatientFinancialTransactions.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgPatientFinancialTransactions.RowTemplate.Height = 30;
+            this.dgPatientFinancialTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgPatientFinancialTransactions.Size = new System.Drawing.Size(1497, 197);
+            this.dgPatientFinancialTransactions.TabIndex = 9;
+            this.dgPatientFinancialTransactions.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPatientFinancialTransactions_CellDoubleClick);
+            this.dgPatientFinancialTransactions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgPatientFinancialTransactions_CellFormatting);
+            this.dgPatientFinancialTransactions.SelectionChanged += new System.EventHandler(this.dgPatientFinancialTransactions_SelectionChanged);
             // 
-            // panel13
+            // ColumnTransactionSolarDate
             // 
-            this.panel13.Controls.Add(this.TotalRemianedTxt);
-            this.panel13.Controls.Add(this.TotalRemianedLbl);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel13.Location = new System.Drawing.Point(228, 5);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(320, 84);
-            this.panel13.TabIndex = 50;
+            this.ColumnTransactionSolarDate.DataPropertyName = "SolarDate";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnTransactionSolarDate.DefaultCellStyle = dataGridViewCellStyle15;
+            this.ColumnTransactionSolarDate.HeaderText = "تاریخ ";
+            this.ColumnTransactionSolarDate.Name = "ColumnTransactionSolarDate";
+            this.ColumnTransactionSolarDate.ReadOnly = true;
+            this.ColumnTransactionSolarDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnTransactionSolarDate.Width = 150;
             // 
-            // TotalRemianedTxt
+            // ColumnTransactionAmount
             // 
-            this.TotalRemianedTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalRemianedTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(40)))));
-            this.TotalRemianedTxt.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalRemianedTxt.ForeColor = System.Drawing.Color.DeepPink;
-            this.TotalRemianedTxt.Location = new System.Drawing.Point(22, 27);
-            this.TotalRemianedTxt.MaximumSize = new System.Drawing.Size(280, 40);
-            this.TotalRemianedTxt.MinimumSize = new System.Drawing.Size(280, 40);
-            this.TotalRemianedTxt.Name = "TotalRemianedTxt";
-            this.TotalRemianedTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TotalRemianedTxt.Size = new System.Drawing.Size(280, 40);
-            this.TotalRemianedTxt.TabIndex = 49;
-            this.TotalRemianedTxt.Text = "0";
-            this.TotalRemianedTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.TotalRemianedTxt.TextChanged += new System.EventHandler(this.labelstale_TextChanged);
+            this.ColumnTransactionAmount.DataPropertyName = "Amount";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.ColumnTransactionAmount.DefaultCellStyle = dataGridViewCellStyle16;
+            this.ColumnTransactionAmount.HeaderText = "مبلغ پرداختی";
+            this.ColumnTransactionAmount.Name = "ColumnTransactionAmount";
+            this.ColumnTransactionAmount.ReadOnly = true;
+            this.ColumnTransactionAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnTransactionAmount.Width = 200;
             // 
-            // TotalRemianedLbl
+            // ColumnPayTypeTitle
             // 
-            this.TotalRemianedLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalRemianedLbl.AutoSize = true;
-            this.TotalRemianedLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold);
-            this.TotalRemianedLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.TotalRemianedLbl.Location = new System.Drawing.Point(258, 4);
-            this.TotalRemianedLbl.Name = "TotalRemianedLbl";
-            this.TotalRemianedLbl.Size = new System.Drawing.Size(41, 20);
-            this.TotalRemianedLbl.TabIndex = 48;
-            this.TotalRemianedLbl.Text = "مانده ";
+            this.ColumnPayTypeTitle.DataPropertyName = "PayTypeTitle";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnPayTypeTitle.DefaultCellStyle = dataGridViewCellStyle17;
+            this.ColumnPayTypeTitle.HeaderText = "نوع تراکنش";
+            this.ColumnPayTypeTitle.Name = "ColumnPayTypeTitle";
+            this.ColumnPayTypeTitle.ReadOnly = true;
+            this.ColumnPayTypeTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnPayTypeTitle.Width = 150;
             // 
-            // panel14
+            // ColumnTransactionComment
             // 
-            this.panel14.Controls.Add(this.TotalDiscountTxt);
-            this.panel14.Controls.Add(this.TotalDiscountLbl);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel14.Location = new System.Drawing.Point(548, 5);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(320, 84);
-            this.panel14.TabIndex = 51;
+            this.ColumnTransactionComment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnTransactionComment.DataPropertyName = "Comment";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ColumnTransactionComment.DefaultCellStyle = dataGridViewCellStyle18;
+            this.ColumnTransactionComment.HeaderText = "توضیحات";
+            this.ColumnTransactionComment.Name = "ColumnTransactionComment";
+            this.ColumnTransactionComment.ReadOnly = true;
+            this.ColumnTransactionComment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // TotalDiscountTxt
+            // ColumnPatientFinancialId
             // 
-            this.TotalDiscountTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalDiscountTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(40)))));
-            this.TotalDiscountTxt.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalDiscountTxt.ForeColor = System.Drawing.Color.Orange;
-            this.TotalDiscountTxt.Location = new System.Drawing.Point(22, 27);
-            this.TotalDiscountTxt.MaximumSize = new System.Drawing.Size(280, 40);
-            this.TotalDiscountTxt.MinimumSize = new System.Drawing.Size(280, 40);
-            this.TotalDiscountTxt.Name = "TotalDiscountTxt";
-            this.TotalDiscountTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TotalDiscountTxt.Size = new System.Drawing.Size(280, 40);
-            this.TotalDiscountTxt.TabIndex = 47;
-            this.TotalDiscountTxt.Text = "0";
-            this.TotalDiscountTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ColumnPatientFinancialId.DataPropertyName = "PatientFinancialId";
+            this.ColumnPatientFinancialId.HeaderText = "PatientFinancialId";
+            this.ColumnPatientFinancialId.Name = "ColumnPatientFinancialId";
+            this.ColumnPatientFinancialId.ReadOnly = true;
+            this.ColumnPatientFinancialId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnPatientFinancialId.Visible = false;
             // 
-            // TotalDiscountLbl
+            // ColumnPayTypeId
             // 
-            this.TotalDiscountLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalDiscountLbl.AutoSize = true;
-            this.TotalDiscountLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold);
-            this.TotalDiscountLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.TotalDiscountLbl.Location = new System.Drawing.Point(228, 4);
-            this.TotalDiscountLbl.Name = "TotalDiscountLbl";
-            this.TotalDiscountLbl.Size = new System.Drawing.Size(71, 20);
-            this.TotalDiscountLbl.TabIndex = 46;
-            this.TotalDiscountLbl.Text = "کل تخفیف ";
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.TotalPayableTxt);
-            this.panel15.Controls.Add(this.TotalPayableLbl);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel15.Location = new System.Drawing.Point(868, 5);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(320, 84);
-            this.panel15.TabIndex = 52;
-            // 
-            // TotalPayableTxt
-            // 
-            this.TotalPayableTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalPayableTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(40)))));
-            this.TotalPayableTxt.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalPayableTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.TotalPayableTxt.Location = new System.Drawing.Point(24, 27);
-            this.TotalPayableTxt.MaximumSize = new System.Drawing.Size(280, 40);
-            this.TotalPayableTxt.MinimumSize = new System.Drawing.Size(280, 40);
-            this.TotalPayableTxt.Name = "TotalPayableTxt";
-            this.TotalPayableTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TotalPayableTxt.Size = new System.Drawing.Size(280, 40);
-            this.TotalPayableTxt.TabIndex = 45;
-            this.TotalPayableTxt.Text = "0";
-            this.TotalPayableTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TotalPayableLbl
-            // 
-            this.TotalPayableLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalPayableLbl.AutoSize = true;
-            this.TotalPayableLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalPayableLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.TotalPayableLbl.Location = new System.Drawing.Point(227, 4);
-            this.TotalPayableLbl.Name = "TotalPayableLbl";
-            this.TotalPayableLbl.Size = new System.Drawing.Size(74, 20);
-            this.TotalPayableLbl.TabIndex = 44;
-            this.TotalPayableLbl.Text = "کل پرداختی ";
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.TotalPriceTxt);
-            this.panel16.Controls.Add(this.TotalPriceLbl);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel16.Location = new System.Drawing.Point(1188, 5);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(320, 84);
-            this.panel16.TabIndex = 51;
-            // 
-            // TotalPriceTxt
-            // 
-            this.TotalPriceTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalPriceTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(26)))), ((int)(((byte)(40)))));
-            this.TotalPriceTxt.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalPriceTxt.ForeColor = System.Drawing.Color.White;
-            this.TotalPriceTxt.Location = new System.Drawing.Point(26, 27);
-            this.TotalPriceTxt.MaximumSize = new System.Drawing.Size(280, 40);
-            this.TotalPriceTxt.MinimumSize = new System.Drawing.Size(280, 40);
-            this.TotalPriceTxt.Name = "TotalPriceTxt";
-            this.TotalPriceTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TotalPriceTxt.Size = new System.Drawing.Size(280, 40);
-            this.TotalPriceTxt.TabIndex = 43;
-            this.TotalPriceTxt.Tag = "";
-            this.TotalPriceTxt.Text = "0";
-            this.TotalPriceTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TotalPriceLbl
-            // 
-            this.TotalPriceLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalPriceLbl.AutoSize = true;
-            this.TotalPriceLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalPriceLbl.ForeColor = System.Drawing.Color.DimGray;
-            this.TotalPriceLbl.Location = new System.Drawing.Point(245, 4);
-            this.TotalPriceLbl.Name = "TotalPriceLbl";
-            this.TotalPriceLbl.Size = new System.Drawing.Size(58, 20);
-            this.TotalPriceLbl.TabIndex = 42;
-            this.TotalPriceLbl.Text = "کل مبلغ ";
+            this.ColumnPayTypeId.DataPropertyName = "PayTypeId";
+            this.ColumnPayTypeId.HeaderText = "PayTypeId";
+            this.ColumnPayTypeId.Name = "ColumnPayTypeId";
+            this.ColumnPayTypeId.ReadOnly = true;
+            this.ColumnPayTypeId.Visible = false;
             // 
             // tab2
             // 
-            this.tab2.Controls.Add(this.splitContainer4);
+            this.tab2.Controls.Add(this.tableLayoutPanel2);
             this.tab2.Location = new System.Drawing.Point(4, 36);
             this.tab2.Name = "tab2";
-            this.tab2.Padding = new System.Windows.Forms.Padding(10);
+            this.tab2.Padding = new System.Windows.Forms.Padding(15);
             this.tab2.Size = new System.Drawing.Size(1533, 373);
             this.tab2.TabIndex = 5;
             this.tab2.Text = "اسناد پزشکی بیمار";
             this.tab2.UseVisualStyleBackColor = true;
             // 
-            // splitContainer4
+            // tableLayoutPanel2
             // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer4.Location = new System.Drawing.Point(10, 10);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.bindingNavigatorDocument, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.dgPatientDocs, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(15, 15);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1503, 343);
+            this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // splitContainer4.Panel1
+            // bindingNavigatorDocument
             // 
-            this.splitContainer4.Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer4.Panel1.Controls.Add(this.panel4);
-            this.splitContainer4.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.bindingNavigatorDocument.AddNewItem = null;
+            this.bindingNavigatorDocument.AutoSize = false;
+            this.bindingNavigatorDocument.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.bindingNavigatorDocument.CountItem = null;
+            this.bindingNavigatorDocument.DeleteItem = null;
+            this.bindingNavigatorDocument.Dock = System.Windows.Forms.DockStyle.None;
+            this.bindingNavigatorDocument.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.bindingNavigatorDocument.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.bindingNavigatorDocument.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ButtonNew2,
+            this.ButtonEdit2,
+            this.ButtonDelete2,
+            this.toolStripSeparator1,
+            this.ButtonPictureViewer});
+            this.bindingNavigatorDocument.Location = new System.Drawing.Point(0, 303);
+            this.bindingNavigatorDocument.MoveFirstItem = null;
+            this.bindingNavigatorDocument.MoveLastItem = null;
+            this.bindingNavigatorDocument.MoveNextItem = null;
+            this.bindingNavigatorDocument.MovePreviousItem = null;
+            this.bindingNavigatorDocument.Name = "bindingNavigatorDocument";
+            this.bindingNavigatorDocument.Padding = new System.Windows.Forms.Padding(5);
+            this.bindingNavigatorDocument.PositionItem = null;
+            this.bindingNavigatorDocument.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.bindingNavigatorDocument.Size = new System.Drawing.Size(1503, 40);
+            this.bindingNavigatorDocument.TabIndex = 11;
+            this.bindingNavigatorDocument.Text = "bindingNavigator1";
             // 
-            // splitContainer4.Panel2
+            // ButtonNew2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.dgPatientDocs);
-            this.splitContainer4.Panel2.Controls.Add(this.bindingNavigatorDocument);
-            this.splitContainer4.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.splitContainer4.Size = new System.Drawing.Size(1513, 353);
-            this.splitContainer4.SplitterWidth = 1;
-            this.splitContainer4.TabIndex = 0;
+            this.ButtonNew2.AutoSize = false;
+            this.ButtonNew2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonNew2.Image = global::Dentistry.Properties.Resources.NewDocument;
+            this.ButtonNew2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonNew2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonNew2.Name = "ButtonNew2";
+            this.ButtonNew2.Size = new System.Drawing.Size(100, 28);
+            this.ButtonNew2.Text = "جدید";
+            this.ButtonNew2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonNew2.Click += new System.EventHandler(this.ButtonNew2_Click);
             // 
-            // panel4
+            // ButtonEdit2
             // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(150)))), ((int)(((byte)(157)))));
-            this.panel4.Location = new System.Drawing.Point(775, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(738, 50);
-            this.panel4.TabIndex = 0;
+            this.ButtonEdit2.AutoSize = false;
+            this.ButtonEdit2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonEdit2.Image = global::Dentistry.Properties.Resources.pencil_005_16xLG;
+            this.ButtonEdit2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonEdit2.ImageTransparentColor = System.Drawing.Color.BlueViolet;
+            this.ButtonEdit2.Name = "ButtonEdit2";
+            this.ButtonEdit2.Size = new System.Drawing.Size(100, 27);
+            this.ButtonEdit2.Text = "ویرایش";
+            this.ButtonEdit2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonEdit2.Click += new System.EventHandler(this.ButtonEdit2_Click);
+            // 
+            // ButtonDelete2
+            // 
+            this.ButtonDelete2.AutoSize = false;
+            this.ButtonDelete2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDelete2.Image = global::Dentistry.Properties.Resources.Symbols_Critical_16xLG;
+            this.ButtonDelete2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonDelete2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonDelete2.Name = "ButtonDelete2";
+            this.ButtonDelete2.Size = new System.Drawing.Size(100, 27);
+            this.ButtonDelete2.Text = "حذف";
+            this.ButtonDelete2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonDelete2.Click += new System.EventHandler(this.ButtonDelete2_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
+            // 
+            // ButtonPictureViewer
+            // 
+            this.ButtonPictureViewer.AutoSize = false;
+            this.ButtonPictureViewer.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonPictureViewer.Image = global::Dentistry.Properties.Resources.resource_32xMD;
+            this.ButtonPictureViewer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonPictureViewer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonPictureViewer.Name = "ButtonPictureViewer";
+            this.ButtonPictureViewer.Size = new System.Drawing.Size(200, 27);
+            this.ButtonPictureViewer.Text = "مشاهده تصویر در PictureViewer";
+            this.ButtonPictureViewer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonPictureViewer.Click += new System.EventHandler(this.ButtonPictureViewer_Click);
             // 
             // dgPatientDocs
             // 
@@ -1404,7 +1120,7 @@
             this.dgPatientDocs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgPatientDocs.EnableHeadersVisualStyles = false;
             this.dgPatientDocs.GridColor = System.Drawing.Color.White;
-            this.dgPatientDocs.Location = new System.Drawing.Point(0, 0);
+            this.dgPatientDocs.Location = new System.Drawing.Point(3, 3);
             this.dgPatientDocs.MultiSelect = false;
             this.dgPatientDocs.Name = "dgPatientDocs";
             this.dgPatientDocs.ReadOnly = true;
@@ -1423,7 +1139,7 @@
             this.dgPatientDocs.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgPatientDocs.RowTemplate.Height = 80;
             this.dgPatientDocs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPatientDocs.Size = new System.Drawing.Size(1513, 262);
+            this.dgPatientDocs.Size = new System.Drawing.Size(1497, 297);
             this.dgPatientDocs.TabIndex = 12;
             this.dgPatientDocs.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPatientDocs_CellDoubleClick);
             this.dgPatientDocs.SelectionChanged += new System.EventHandler(this.dgPatientDocs_SelectionChanged);
@@ -1491,92 +1207,6 @@
             this.ColumnPatientDocumentId.Name = "ColumnPatientDocumentId";
             this.ColumnPatientDocumentId.ReadOnly = true;
             this.ColumnPatientDocumentId.Visible = false;
-            // 
-            // bindingNavigatorDocument
-            // 
-            this.bindingNavigatorDocument.AddNewItem = null;
-            this.bindingNavigatorDocument.AutoSize = false;
-            this.bindingNavigatorDocument.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.bindingNavigatorDocument.CountItem = null;
-            this.bindingNavigatorDocument.DeleteItem = null;
-            this.bindingNavigatorDocument.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bindingNavigatorDocument.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.bindingNavigatorDocument.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.bindingNavigatorDocument.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ButtonNew2,
-            this.ButtonEdit2,
-            this.ButtonDelete2,
-            this.toolStripSeparator1,
-            this.ButtonPictureViewer});
-            this.bindingNavigatorDocument.Location = new System.Drawing.Point(0, 262);
-            this.bindingNavigatorDocument.MoveFirstItem = null;
-            this.bindingNavigatorDocument.MoveLastItem = null;
-            this.bindingNavigatorDocument.MoveNextItem = null;
-            this.bindingNavigatorDocument.MovePreviousItem = null;
-            this.bindingNavigatorDocument.Name = "bindingNavigatorDocument";
-            this.bindingNavigatorDocument.Padding = new System.Windows.Forms.Padding(5);
-            this.bindingNavigatorDocument.PositionItem = null;
-            this.bindingNavigatorDocument.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.bindingNavigatorDocument.Size = new System.Drawing.Size(1513, 40);
-            this.bindingNavigatorDocument.TabIndex = 11;
-            this.bindingNavigatorDocument.Text = "bindingNavigator1";
-            // 
-            // ButtonNew2
-            // 
-            this.ButtonNew2.AutoSize = false;
-            this.ButtonNew2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonNew2.Image = global::Dentistry.Properties.Resources.NewDocument;
-            this.ButtonNew2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ButtonNew2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButtonNew2.Name = "ButtonNew2";
-            this.ButtonNew2.Size = new System.Drawing.Size(100, 28);
-            this.ButtonNew2.Text = "جدید";
-            this.ButtonNew2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonNew2.Click += new System.EventHandler(this.ButtonNew2_Click);
-            // 
-            // ButtonEdit2
-            // 
-            this.ButtonEdit2.AutoSize = false;
-            this.ButtonEdit2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonEdit2.Image = global::Dentistry.Properties.Resources.pencil_005_16xLG;
-            this.ButtonEdit2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ButtonEdit2.ImageTransparentColor = System.Drawing.Color.BlueViolet;
-            this.ButtonEdit2.Name = "ButtonEdit2";
-            this.ButtonEdit2.Size = new System.Drawing.Size(100, 27);
-            this.ButtonEdit2.Text = "ویرایش";
-            this.ButtonEdit2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonEdit2.Click += new System.EventHandler(this.ButtonEdit2_Click);
-            // 
-            // ButtonDelete2
-            // 
-            this.ButtonDelete2.AutoSize = false;
-            this.ButtonDelete2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonDelete2.Image = global::Dentistry.Properties.Resources.Symbols_Critical_16xLG;
-            this.ButtonDelete2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ButtonDelete2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButtonDelete2.Name = "ButtonDelete2";
-            this.ButtonDelete2.Size = new System.Drawing.Size(100, 27);
-            this.ButtonDelete2.Text = "حذف";
-            this.ButtonDelete2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonDelete2.Click += new System.EventHandler(this.ButtonDelete2_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
-            // 
-            // ButtonPictureViewer
-            // 
-            this.ButtonPictureViewer.AutoSize = false;
-            this.ButtonPictureViewer.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonPictureViewer.Image = global::Dentistry.Properties.Resources.resource_32xMD;
-            this.ButtonPictureViewer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ButtonPictureViewer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ButtonPictureViewer.Name = "ButtonPictureViewer";
-            this.ButtonPictureViewer.Size = new System.Drawing.Size(200, 27);
-            this.ButtonPictureViewer.Text = "مشاهده تصویر در PictureViewer";
-            this.ButtonPictureViewer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonPictureViewer.Click += new System.EventHandler(this.ButtonPictureViewer_Click);
             // 
             // miniToolStrip
             // 
@@ -1654,13 +1284,30 @@
             this.PanelX1.TabIndex = 13;
             this.PanelX1.TabStop = false;
             // 
+            // PatientTeethBtn
+            // 
+            this.PatientTeethBtn.BackColor = System.Drawing.Color.White;
+            this.PatientTeethBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
+            this.PatientTeethBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
+            this.PatientTeethBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PatientTeethBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientTeethBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
+            this.PatientTeethBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.PatientTeethBtn.Location = new System.Drawing.Point(383, 10);
+            this.PatientTeethBtn.Name = "PatientTeethBtn";
+            this.PatientTeethBtn.Size = new System.Drawing.Size(191, 31);
+            this.PatientTeethBtn.TabIndex = 176;
+            this.PatientTeethBtn.Text = "وضعیت دهان بیمار";
+            this.PatientTeethBtn.UseVisualStyleBackColor = false;
+            this.PatientTeethBtn.Click += new System.EventHandler(this.PatientTeethBtn_Click);
+            // 
             // BaraatBtn
             // 
             this.BaraatBtn.BackColor = System.Drawing.Color.White;
             this.BaraatBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
             this.BaraatBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.BaraatBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BaraatBtn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BaraatBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BaraatBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
             this.BaraatBtn.Location = new System.Drawing.Point(204, 10);
             this.BaraatBtn.Name = "BaraatBtn";
@@ -1676,7 +1323,7 @@
             this.btnFollowUp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
             this.btnFollowUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(234)))), ((int)(((byte)(234)))));
             this.btnFollowUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFollowUp.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFollowUp.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFollowUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
             this.btnFollowUp.Location = new System.Drawing.Point(26, 10);
             this.btnFollowUp.Name = "btnFollowUp";
@@ -1843,10 +1490,10 @@
             this.dgSpecialComment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgSpecialComment.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgSpecialComment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
@@ -1858,7 +1505,7 @@
             this.ColumnId});
             dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Vazir", 9.75F);
             dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1917,7 +1564,7 @@
             // 
             this.bindingNavigatorComment.AddNewItem = null;
             this.bindingNavigatorComment.AutoSize = false;
-            this.bindingNavigatorComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.bindingNavigatorComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.bindingNavigatorComment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bindingNavigatorComment.CountItem = null;
             this.bindingNavigatorComment.DeleteItem = null;
@@ -2002,10 +1649,10 @@
             this.dgPatientSpecialDrugs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgPatientSpecialDrugs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle33.Font = new System.Drawing.Font("Vazir", 9.75F);
             dataGridViewCellStyle33.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgPatientSpecialDrugs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
@@ -2075,7 +1722,7 @@
             // 
             this.bindingNavigator4.AddNewItem = null;
             this.bindingNavigator4.AutoSize = false;
-            this.bindingNavigator4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.bindingNavigator4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.bindingNavigator4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bindingNavigator4.CountItem = null;
             this.bindingNavigator4.DeleteItem = null;
@@ -2132,10 +1779,10 @@
             this.dgPatientSpecialDisease.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgPatientSpecialDisease.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle36.Font = new System.Drawing.Font("Vazir", 9.75F);
             dataGridViewCellStyle36.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgPatientSpecialDisease.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle36;
@@ -2208,7 +1855,7 @@
             // 
             this.bindingNavigator1.AddNewItem = null;
             this.bindingNavigator1.AutoSize = false;
-            this.bindingNavigator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.bindingNavigator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.bindingNavigator1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bindingNavigator1.CountItem = null;
             this.bindingNavigator1.DeleteItem = null;
@@ -2263,35 +1910,13 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PatientInfo_KeyDown);
             this.tabControl.ResumeLayout(false);
             this.tab0.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgPatientServices)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator0)).EndInit();
             this.bindingNavigator0.ResumeLayout(false);
             this.bindingNavigator0.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPatientServices)).EndInit();
             this.tab1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.PayTypePnl.ResumeLayout(false);
-            this.PayTypePnl.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel11.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgPatientFinancialTransactions)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorFinancial)).EndInit();
-            this.bindingNavigatorFinancial.ResumeLayout(false);
-            this.bindingNavigatorFinancial.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
@@ -2301,15 +1926,16 @@
             this.panel15.PerformLayout();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorFinancial)).EndInit();
+            this.bindingNavigatorFinancial.ResumeLayout(false);
+            this.bindingNavigatorFinancial.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPatientFinancialTransactions)).EndInit();
             this.tab2.ResumeLayout(false);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgPatientDocs)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorDocument)).EndInit();
             this.bindingNavigatorDocument.ResumeLayout(false);
             this.bindingNavigatorDocument.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPatientDocs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.miniToolStrip)).EndInit();
             this.PanelX1.ResumeLayout(false);
             this.PanelX1.PerformLayout();
@@ -2351,7 +1977,6 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TabPage tab2;
         private System.Windows.Forms.BindingNavigator bindingNavigator0;
         private System.Windows.Forms.ToolStripButton ButtonNew0;
@@ -2361,12 +1986,8 @@
         private System.Windows.Forms.DataGridView dgPatientServices;
         private System.Windows.Forms.Button btnFollowUp;
         private System.Windows.Forms.Button BaraatBtn;
-        private System.Windows.Forms.SplitContainer splitContainer2;
 
         private System.Windows.Forms.BindingNavigator miniToolStrip;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.Panel PayTypePnl;
-        private System.Windows.Forms.Label label7;
         public System.Windows.Forms.DataGridView dgPatientFinancialTransactions;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label TotalRemianedTxt;
@@ -2385,8 +2006,6 @@
         private System.Windows.Forms.ToolStripButton ButtonSuratHesab;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton BottonFish;
-        private System.Windows.Forms.SplitContainer splitContainer4;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridView dgPatientDocs;
         private System.Windows.Forms.BindingNavigator bindingNavigatorDocument;
         private System.Windows.Forms.ToolStripButton ButtonNew2;
@@ -2394,20 +2013,6 @@
         private System.Windows.Forms.ToolStripButton ButtonDelete2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton ButtonPictureViewer;
-        private UserControls.ExPanel panel6;
-        private System.Windows.Forms.RadioButton PayType6Rdo;
-        private UserControls.ExPanel panel9;
-        private System.Windows.Forms.RadioButton PayType5Rdo;
-        private UserControls.ExPanel panel7;
-        private System.Windows.Forms.RadioButton PayType1Rdo;
-        private UserControls.ExPanel panel11;
-        private System.Windows.Forms.RadioButton PayType3Rdo;
-        private UserControls.ExPanel panel8;
-        private System.Windows.Forms.RadioButton PayType4Rdo;
-        private UserControls.ExPanel panel10;
-        private System.Windows.Forms.RadioButton PayType2Rdo;
-        private UserControls.ExPanel panel12;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button PatientTeethBtn;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel16;
@@ -2464,5 +2069,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTransactionComment;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPatientFinancialId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPayTypeId;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

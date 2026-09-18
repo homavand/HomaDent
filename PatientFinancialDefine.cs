@@ -17,7 +17,7 @@ namespace Dentistry
     public partial class PatientFinancialDefine : Form
     {
         
-        frm_Report fr_report;
+        ReportForm fr_report;
         List<object> param;
         List<object> value;
         string EditOrNewFlag;
@@ -344,7 +344,7 @@ namespace Dentistry
         private void PrintFish(int payId)
         {
 
-            fr_report = new frm_Report();
+            fr_report = new ReportForm();
             param = new List<object>();
             value = new List<object>();
 

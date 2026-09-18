@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panelSorting = new System.Windows.Forms.Panel();
             this.blackListBtn = new System.Windows.Forms.Button();
             this.patientRegisterBtn = new System.Windows.Forms.Button();
             this.dataRepeater1 = new Microsoft.VisualBasic.PowerPacks.DataRepeater();
@@ -114,10 +113,8 @@
             this.PresenterTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.doctorCbo = new System.Windows.Forms.ComboBox();
-            this.sortByNameRdo = new System.Windows.Forms.RadioButton();
-            this.sortByCodeRdo = new System.Windows.Forms.RadioButton();
             this.panel3.SuspendLayout();
-            this.panelSorting.SuspendLayout();
+
             this.dataRepeater1.ItemTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rxPatientGenderImg)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -140,19 +137,7 @@
             this.panel3.TabIndex = 17;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
 
-            // 
-            // panelSorting
-            // 
-            this.panelSorting.BackColor = System.Drawing.Color.White;
-            this.panelSorting.Controls.Add(this.sortingLbl);
-            this.panelSorting.Controls.Add(this.sortByCodeRdo);
-            this.panelSorting.Controls.Add(this.sortByNameRdo);            
-            //this.panelSorting.Controls.Add(this.patientRegisterBtn);
-            this.panelSorting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSorting.Location = new System.Drawing.Point(3, 530);
-            this.panelSorting.Name = "panelSorting";
-            this.panelSorting.Size = new System.Drawing.Size(1175, 44);            
-            this.panelSorting.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
+           
 
             // 
             // rxDoctorLbl
@@ -167,31 +152,8 @@
             this.sortingLbl.TabIndex = 57;
             this.sortingLbl.Text = "مرتب سازی براساس : ";
             this.sortingLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // sortByCodeRdo
-            //             
-            this.sortByCodeRdo.Font = new System.Drawing.Font("Vazir", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sortByCodeRdo.Location = new System.Drawing.Point(1020, 10);
-            this.sortByCodeRdo.Name = "sortByCodeRdo";
-            this.sortByCodeRdo.Size = new System.Drawing.Size(120, 30);
-            this.sortByCodeRdo.Tag = "1";
-            this.sortByCodeRdo.Text = "کد بیمار";
-            this.sortByCodeRdo.UseVisualStyleBackColor = false;
-            //this.sortByCodeRdo.CheckedChanged += new System.EventHandler(this.viewSortRdo_CheckedChanged);
+ 
 
-            // 
-            // sortByNameRdo
-            //             
-            this.sortByNameRdo.Font = new System.Drawing.Font("Vazir", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sortByNameRdo.Location = new System.Drawing.Point(900, 10);
-            this.sortByNameRdo.Name = "sortByNameRdo";
-            this.sortByNameRdo.Size = new System.Drawing.Size(120, 30);
-            this.sortByNameRdo.Tag = "2";
-            this.sortByNameRdo.Text = "نام خانوادگی";
-            this.sortByNameRdo.UseVisualStyleBackColor = false;
-            //this.sortByNameRdo.CheckedChanged += new System.EventHandler(this.viewSortRdo_CheckedChanged);
-
-            
             
 
             // 
@@ -679,9 +641,8 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panelSorting, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dataRepeater1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dataRepeater1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 4);
             
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
@@ -689,7 +650,6 @@
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -1640,7 +1600,6 @@
         #endregion
         //private Microsoft.VisualBasic.PowerPacks.DataRepeaterItem ItemTemplate;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panelSorting;
         private System.Windows.Forms.Button blackListBtn;
         private System.Windows.Forms.Button patientRegisterBtn;
         private Microsoft.VisualBasic.PowerPacks.DataRepeater dataRepeater1;
@@ -1726,7 +1685,5 @@
         private System.Windows.Forms.Button btnF1;
         private Class.VerticalLabel rxPatientRegisterDateTxt;
 
-        private System.Windows.Forms.RadioButton sortByNameRdo ;
-        private System.Windows.Forms.RadioButton sortByCodeRdo ;
     }
 }

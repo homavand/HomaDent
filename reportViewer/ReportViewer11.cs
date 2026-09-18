@@ -14,7 +14,7 @@ namespace Dentistry
     public partial class ReportViewer11 : Form
     {
         string reportName;
-        frm_Report fr_report;
+        ReportForm fr_report;
         List<object> param;
         List<object> value;
 
@@ -27,7 +27,7 @@ namespace Dentistry
             MinDate.Value = (Dentistry.UserControls.PersianDate)persianCalendar.ToDateTime(persianCalendar.GetYear((DateTime)DateTime.Now), persianCalendar.GetMonth((DateTime)DateTime.Now), 1, 0, 0, 0, 0);
             MaxDate.Value = (Dentistry.UserControls.PersianDate)DateTime.Now;
             this.reportName = reportName;
-            fr_report = new frm_Report();
+            fr_report = new ReportForm();
             this.ReportPnl.Controls.Add(fr_report.panel_Report);
         }
 

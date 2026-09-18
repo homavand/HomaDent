@@ -18,8 +18,8 @@ namespace Dentistry.Models
         // InsurerPrice and UserId is always NULL, but the non-nullable
         // declaration that was here before would have blocked replicating
         // that insert.
-        public decimal? FreePrice { get; set; }
-        public decimal? InsurerPrice { get; set; }
+        public long? FreePrice { get; set; } // was decimal?
+        public long? InsurerPrice { get; set; } // was decimal?
 
         public int InsurerId { get; set; }
         public virtual Insurer Insurer { get; set; }

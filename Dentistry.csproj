@@ -553,11 +553,11 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="reportViewer\frm_Report.cs">
+    <Compile Include="reportViewer\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="reportViewer\frm_Report.Designer.cs">
-      <DependentUpon>frm_Report.cs</DependentUpon>
+    <Compile Include="reportViewer\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SpecialDiseaseList.cs">
       <SubType>Form</SubType>
@@ -792,8 +792,8 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="reportViewer\frm_Report.resx">
-      <DependentUpon>frm_Report.cs</DependentUpon>
+    <EmbeddedResource Include="reportViewer\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpecialDiseaseList.resx">
       <DependentUpon>SpecialDiseaseList.cs</DependentUpon>

@@ -22,8 +22,8 @@ namespace Dentistry.Models
             set => DateRaw = value.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        public decimal Amount { get; set; }
-        public decimal? Discount { get; set; }
+        public long Amount { get; set; } // was decimal
+        public long? Discount { get; set; } // was decimal?
         public string TransactionCode { get; set; }
         public string ChequeNumber { get; set; }
 

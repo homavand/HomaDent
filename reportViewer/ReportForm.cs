@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace Dentistry
 {
-    public partial class frm_Report : Form
+    public partial class ReportForm : Form
     {
         StiReport myReport = new StiReport();
-        public frm_Report()
+        public ReportForm()
         {
             InitializeComponent();
             

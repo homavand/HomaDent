@@ -65,7 +65,6 @@ D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ReportList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.OfficeSetting.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.BackupRestore.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.Dashboard.resources
-D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.frm_Report.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.SpecialDiseaseList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.SelectSpecialDrugList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ServiceList.resources
@@ -90,3 +89,4 @@ D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.exe
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.pdb
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.csproj.AssemblyReference.cache
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.DashboardX.resources
+D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ReportForm.resources

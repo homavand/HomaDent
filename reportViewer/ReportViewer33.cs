@@ -13,7 +13,7 @@ namespace Dentistry
     public partial class ReportViewer33 : Form
     {
         string reportName;
-        frm_Report fr_report;
+        ReportForm fr_report;
         List<object> param;
         List<object> value;
         string query;
@@ -24,7 +24,7 @@ namespace Dentistry
 
             this.reportName = reportName;
 
-            fr_report = new frm_Report();
+            fr_report = new ReportForm();
             this.ReportPnl.Controls.Add(fr_report.panel_Report);
         }
 

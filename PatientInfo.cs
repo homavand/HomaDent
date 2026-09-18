@@ -88,8 +88,13 @@ namespace Dentistry
         }
 
         private void PatientInfo_Load(object sender, EventArgs e)
-        {            
+        {
+            this.dgPatientInfo.AutoGenerateColumns = false;
+            this.dgPatientServices.AutoGenerateColumns = false;
+            this.dgPatientFinancialTransactions.AutoGenerateColumns = false;
+            this.dgPatientDocs.AutoGenerateColumns = false;
             this.dgPatientFinancialTransactions.MouseWheel += new MouseEventHandler(dgPatientFinancialTransactions_MouseWheel);
+            FillGrid_dgPatientInfo();
         }
 
         #region LoadFormInit
@@ -187,6 +192,14 @@ namespace Dentistry
             }
             var dd = result.Data;
 
+            FillGrid_dgPatientInfo(dd);
+            
+        }
+
+        #endregion
+        #region FillGrid_dgPatientInfo
+        private void FillGrid_dgPatientInfo(dynamic data = null)
+        {            
             dynamic patient = new ExpandoObject();
             patient.PatientId = 0;
             patient.DoctorId = 0;
@@ -200,11 +213,12 @@ namespace Dentistry
             patient.MobilePhone = "";
             patient.Address = "";
             patient.DoctorTitle = "";
+            patient.BI_InsurerTitle = "";
+            patient.BI_ExpirationSolarDate = "";
 
-
-            if (dd != null)
+            if (data != null)
             {
-                patient = dd;
+                patient = data;
 
                 if (patient == null)
                 {
@@ -213,8 +227,6 @@ namespace Dentistry
 
                 this.DoctorId = patient.DoctorId;
             }
-
-           
 
             List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>()
             {
@@ -244,14 +256,13 @@ namespace Dentistry
             // FillGrid_dgPatientServices نشه.
         }
         #endregion
-
         #region FillGrid_dgPatientServices
         private void FillGrid_dgPatientServices()
         {
             var swTotal = System.Diagnostics.Stopwatch.StartNew();
             var log = new System.Text.StringBuilder();
 
-            this.dgPatientServices_ColumnOrder();
+            //this.dgPatientServices_ColumnOrder();
 
             int checkupTypeId = 2;
 
@@ -320,7 +331,7 @@ namespace Dentistry
         }
         private void FillGrid_dgPatientServices2()
         {
-            this.dgPatientServices_ColumnOrder();
+            //this.dgPatientServices_ColumnOrder();
 
 
             int checkupTypeId = 2;
@@ -369,17 +380,6 @@ namespace Dentistry
         #endregion
 
 
-        #region linkLabelBaraat_LinkClicked
-        private void linkLabelBaraat_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-
-
-        }
-
-
-
-        #endregion
 
         #region textBox_TextChanged
         private void textBox_TextChanged(object sender, EventArgs e)
@@ -416,7 +416,7 @@ namespace Dentistry
         }
 
 
-        private void dgActionX_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgPatientServices_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
                 return;
@@ -508,11 +508,6 @@ namespace Dentistry
 
 
 
-        private void ServiceGroupCbo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.FillGrid_dgPatientServices();
-        }
-
         private void tabControl_Selected(object sender, TabControlEventArgs e)
         {
             if (tabControl.SelectedTab.Name.ToString() == "tab0")
@@ -583,7 +578,7 @@ namespace Dentistry
                 var patientSpecialDiseases = (Enumerable.Count(result.Data) > 0) ? (result.Data as IEnumerable<dynamic>).Where(i => i.IsCheck == true).Select(i => i).ToList() : null;
 
 
-                frm_Report fr_report = new frm_Report();
+                ReportForm fr_report = new ReportForm();
                 List<object> param = new List<object>();
                 List<object> value = new List<object>();
 
@@ -788,8 +783,6 @@ namespace Dentistry
             dt.Columns.Add("IsCheck", typeof(bool));
             dt.Columns.Add("Title", typeof(string));
 
-
-
             foreach (var item in list)
                 dt.Rows.Add(
                     item.Id,
@@ -799,7 +792,6 @@ namespace Dentistry
 
             this.dgPatientSpecialDrugs.DataSource = dt;
             this.dgPatientSpecialDrugs.CurrentCell = null;
-
 
         }
         #endregion
@@ -881,7 +873,6 @@ namespace Dentistry
             this.dgPatientSpecialDisease.DataSource = dt;
             this.dgPatientSpecialDisease.CurrentCell = null;
 
-
         }
         #endregion
 
@@ -909,9 +900,6 @@ namespace Dentistry
             p2.Hide();
             p2.Show(MousePosition.X, MousePosition.Y - y1 / 2);
             p2 = null;
-
-
-
 
         }
 
@@ -941,7 +929,7 @@ namespace Dentistry
         #region FillGrid_dgPatientFinancialTransactions
         private void FillGrid_dgPatientFinancialTransactions()
         {
-            this.dgPatientFinancialTransactions_ColumnOrder();
+            //this.dgPatientFinancialTransactions_ColumnOrder();
 
             if (this.PatientId == 0)
             {
@@ -955,12 +943,6 @@ namespace Dentistry
 
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.PatientId = this.PatientId;
-
-            //if ((this.FromDateTxt.Value.ToString() != string.Empty) && (Class.Date.IsValid(this.FromDateTxt.Value.ToString())))
-            //    sObj.FromDate = Class.Date.ToChristianByTime(this.FromDateTxt.Value.ToString());
-
-            //if ((this.ToDateTxt.Value.ToString() != string.Empty) && (Class.Date.IsValid(this.ToDateTxt.Value.ToString())))
-            //    sObj.ToDate = Class.Date.ToChristianByTime(this.ToDateTxt.Value.ToString());
 
             if (this.PayTypeId != 0)
                 sObj.PayTypeId = this.PayTypeId;
@@ -1008,11 +990,7 @@ namespace Dentistry
                       Comment = GetComment(i),
                   }).ToList() : Enumerable.Empty<dynamic>();
 
-
-
             this.dgPatientFinancialTransactions.DataSource = transactionList;
-
-
 
             data = DataProvider.GetPatientBillX(sObj);
             var ff = data != null && data.Data != null ? data.Data : null;
@@ -1021,9 +999,6 @@ namespace Dentistry
             this.TotalPayableTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Paid"));
             this.TotalDiscountTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Discount"));
             this.TotalRemianedTxt.Text = Publics.ToRial(Publics.GetPropertyValue<int>(ff, "Total_Patient_Remianed"));
-
-
-
 
         }
         #endregion
@@ -1050,7 +1025,6 @@ namespace Dentistry
             {
                 this.ButtonEdit1.Enabled = false;
                 this.ButtonDelete1.Enabled = false;
-
             }
 
         }
@@ -1070,68 +1044,6 @@ namespace Dentistry
                 SendKeys.Send("{Down}");
         }
         #endregion
-
-        #region PayTypeRdo_CheckedChanged
-        private void PayTypeRdo_CheckedChanged(object sender, EventArgs e)
-        {
-
-            RadioButton rdoX = sender as RadioButton;
-            if (rdoX == null || rdoX.Checked != true)
-                return;
-
-            var pnlList = this.PayTypePnl.Controls.OfType<UserControls.ExPanel>().ToList();
-
-            foreach (var pnl in pnlList)
-            {
-                if (pnl != null)
-                {
-                    RadioButton rdo = pnl.Controls.OfType<RadioButton>().FirstOrDefault();
-
-                    if (rdo != null && rdo != rdoX)
-                        rdo.Checked = false;
-                }
-            }
-
-            object tag = rdoX.Tag;
-            if (tag == null)
-                return;
-
-            int val = Convert.ToInt32(tag);
-
-            switch (val)
-            {
-                case 0:
-                    this.PayTypeId = 0;
-                    break;
-                case 1:
-                    this.PayTypeId = 1;
-                    break;
-                case 2:
-                    this.PayTypeId = 2;
-                    break;
-                case 3:
-                    this.PayTypeId = 3;
-                    break;
-                case 4:
-                    this.PayTypeId = 4;
-                    break;
-                case 5:
-                    this.PayTypeId = 4;
-                    break;
-                case 6:
-                    this.PayTypeId = 4;
-                    break;
-                default:
-                    this.PayTypeId = 5;
-                    break;
-            }
-
-
-            this.FillGrid_dgPatientFinancialTransactions();
-
-        }
-        #endregion
-
 
         #region ButtonNew1_Click
         private void ButtonNew1_Click(object sender, EventArgs e)
@@ -1230,7 +1142,7 @@ namespace Dentistry
         private void ButtonSuratHesab_Click(object sender, EventArgs e)
         {
 
-            frm_Report fr_report = new frm_Report();
+            ReportForm fr_report = new ReportForm();
             List<object> param = new List<object>();
             List<object> value = new List<object>();
 
@@ -1259,9 +1171,16 @@ namespace Dentistry
             result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
             if (result == null || result.Success == false || result.Data == null)
                 return;
+            var patientTransactions = result.Data;
+
+            sObj = new
+            {
+                PatientId = patientId,
+            };
+            result = Dentistry.DataProvider.GetPatientBillX(sObj);
+            if (result == null || result.Success == false || result.Data == null)
+                return;
             var patientFinancial = result.Data;
-
-
 
             result = Dentistry.DataProvider.GetPatientServicesX(sObj);
             if (result == null || result.Success == false || result.Data == null)
@@ -1284,7 +1203,6 @@ namespace Dentistry
                                         }).ToList() : null;
 
 
-
             var data = new
             {
                 Patient = patient,
@@ -1304,7 +1222,7 @@ namespace Dentistry
 
             var payId = Convert.ToInt32(this.dgPatientFinancialTransactions["ColumnPatientFinancialId", this.dgPatientFinancialTransactions.CurrentRow.Index].Value);
 
-            frm_Report fr_report = new frm_Report();
+            ReportForm fr_report = new ReportForm();
             List<object> param = new List<object>();
             List<object> value = new List<object>();
 
@@ -1346,7 +1264,7 @@ namespace Dentistry
             try
             {
 
-                this.dgPatientDocs_ColumnOrder();
+                //this.dgPatientDocs_ColumnOrder();
                 dynamic sObj = new System.Dynamic.ExpandoObject();
                 sObj.PatientId = this.PatientId != 0 ? this.PatientId : (int?)null;
 
@@ -1521,11 +1439,7 @@ namespace Dentistry
 
 
         }
-        void p_Closed2(object sender, ToolStripDropDownClosedEventArgs e)
-        {
-
-        }
-
+      
 
         #endregion
 

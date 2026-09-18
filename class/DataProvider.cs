@@ -1382,7 +1382,7 @@ namespace Dentistry
                                 {
                                     PatientId = (int)i.PatientId,
                                     PatientName = (string)i.PatientName,
-                                    ServicePrice = (decimal)i.ServicePrice,
+                                    ServicePrice = (double)i.ServicePrice,
                                 };
                             }).ToList();
 

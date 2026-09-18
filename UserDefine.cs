@@ -375,10 +375,10 @@ namespace Dentistry
 
             var userIdObj = row.Cells["ColumnUserId"].Value;
             int userId = Convert.ToInt32(userIdObj);
-            if (userId > 0 && userId != this.UserId)
-                this.staffTxt.BackColor = Color.LavenderBlush;
-            else
-                this.staffTxt.BackColor = Color.Honeydew;
+            //if (userId > 0 && userId != this.UserId)
+            //    this.staffTxt.BackColor = Color.LavenderBlush;
+            //else
+            //    this.staffTxt.BackColor = Color.Honeydew;
 
         }
 

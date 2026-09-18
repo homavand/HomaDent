@@ -12,11 +12,11 @@ namespace Dentistry.Class
         {
         }
 
-        public InsurerServiceTarefe(decimal freePrice, decimal insurerPrice, int insurerPercent)
+        public InsurerServiceTarefe(long freePrice, long insurerPrice, int insurerPercent)
         {
-            this.FreePrice = freePrice ;
-            this.InsurerPrice = insurerPrice ;
-            this.InsurerPercent = insurerPercent ;
+            this.FreePrice = freePrice;
+            this.InsurerPrice = insurerPrice;
+            this.InsurerPercent = insurerPercent;
         }
 
 
@@ -25,43 +25,56 @@ namespace Dentistry.Class
         public int? ServiceId { get; set; }
         public string InsurerTitle { get; set; }
         public int InsurerPercent { get; set; }
-        public decimal FreePrice { get; set; }
-        public decimal InsurerPrice { get; set; }
-        public decimal ServicePrice
+        public long FreePrice { get; set; }
+        public long InsurerPrice { get; set; }
+        public long ServicePrice
         {
             get { return FreePrice; }
         }
-        public decimal InsurerShare
+        public long InsurerShare
         {
             get
             {
-                var insurerShare = (InsurerPrice) * (InsurerPercent) / 100;
-                return Math.Ceiling(insurerShare);
+                // IMPORTANT: this used to be decimal * int / int, which divides
+                // with fractional precision automatically. Now that both
+                // operands are integral (long/int), doing the division directly
+                // would be an INTEGER division and silently truncate before
+                // Math.Ceiling ever got a chance to round anything (e.g.
+                // 1000 * 30 / 100 is fine, but the truncation risk shows up the
+                // moment the true result isn't a whole number, like
+                // 1000 * 33 / 100 = 330 vs. a case that would have rounded up).
+                // Casting to double first restores fractional division, then
+                // Ceiling + cast back to long gives the correct rounded-up
+                // whole-Rial amount.
+                var insurerShare = (double)InsurerPrice * InsurerPercent / 100.0;
+                return (long)Math.Ceiling(insurerShare);
             }
 
         }
 
-        public decimal FranchiseShare
+        public long FranchiseShare
         {
             get
             {
-                var franchiseShare = (InsurerPrice) * (100 - InsurerPercent) / 100;
-                return Math.Ceiling(franchiseShare);
+                var franchiseShare = (double)InsurerPrice * (100 - InsurerPercent) / 100;
+                return (long)Math.Ceiling(franchiseShare);
             }
 
         }
 
-        public decimal FreeShare
+        public long FreeShare
         {
             get
             {
+                // Plain subtraction of two whole-Rial values - already
+                // integral, no division involved, so no precision concern here.
                 var freeShare = (FreePrice - InsurerPrice);
-                return Math.Ceiling(freeShare);
+                return freeShare;
             }
 
         }
 
-        public decimal PatientShare
+        public long PatientShare
         {
             get
             {
@@ -75,23 +88,25 @@ namespace Dentistry.Class
 
         public DateTime? DefineDate { get; set; }
         public DateTime? RunDate { get; set; }
-        public string SolarDefineDate {
+        public string SolarDefineDate
+        {
             get
             {
                 string date = "";
                 if (this.DefineDate != null)
-                    date =  new PersianDateTime(this.DefineDate.Value).ToString("yyyy/MM/dd");
+                    date = new PersianDateTime(this.DefineDate.Value).ToString("yyyy/MM/dd");
                 return date;
             }
         }
-        public string SolarRunDate {
+        public string SolarRunDate
+        {
             get
             {
                 string date = "";
                 if (this.RunDate != null)
                     date = new PersianDateTime(this.RunDate.Value).ToString("yyyy/MM/dd");
                 return date;
-              
+
             }
         }
         public bool IsCheck { get; set; }

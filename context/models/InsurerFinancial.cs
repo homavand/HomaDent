@@ -14,10 +14,10 @@ namespace Dentistry.Models
         public DateTime Date { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }
-        public decimal RequestedValue { get; set; }
-        public decimal? ReceivedValue { get; set; }
-        public decimal? DeductionValue { get; set; }
-        public decimal? RemainPrice { get; set; }
+        public long RequestedValue { get; set; } // was decimal
+        public long? ReceivedValue { get; set; } // was decimal?
+        public long? DeductionValue { get; set; } // was decimal?
+        public long? RemainPrice { get; set; } // was decimal?
         public bool? IsSendToInsurer { get; set; }
         public bool? IsPrimaryCheck { get; set; }
         public bool IsFinalCheck { get; set; }

@@ -11,7 +11,7 @@ namespace Dentistry.Models
         public int Id { get; set; }
 
         [Required] public string Title { get; set; }
-        public decimal Amount { get; set; }
+        public long Amount { get; set; } // was decimal - money now stored as whole Rial
         public string FactorNumber { get; set; }
         public string ChequeNumber { get; set; }
         public DateTime Date { get; set; }

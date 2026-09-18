@@ -26,7 +26,7 @@ namespace Dentistry
 
         private void PatientsGrid_Load(object sender, EventArgs e)
         {
-            this.sortByCodeRdo.Checked = true;
+          
 
             this.FillDataGridView();
             this.FirstNameTxt.GotFocus += new EventHandler(this.FirstNameTxt_GotFocus);
@@ -182,14 +182,9 @@ namespace Dentistry
                                                                                           totalDiscount = (double)i.Total_Patient_Discount,
                                                                                           totalRemianed = (double)i.Total_Patient_Remianed,
 
-                                                                                      }).ToList() : Enumerable.Empty<dynamic>();
+                                                                                      }).OrderBy(i => i.PatientName).ToList() : Enumerable.Empty<dynamic>();
 
-                if (this.sortByCodeRdo.Checked == true)
-                    list = list.OrderBy(i => i.PatientId).ToList();
-
-                if (this.sortByNameRdo.Checked == true)
-                    list = list.OrderBy(i => i.PatientName).ToList();
-
+                
                 if (this.rxPatientNameTxt.DataBindings["Tag"] == null)
                     this.rxPatientNameTxt.DataBindings.Add("Tag", list, "PatientId");
                 if (this.rxPatientNameTxt.DataBindings["Text"] == null)

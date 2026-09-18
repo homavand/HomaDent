@@ -37,14 +37,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Error_UserNameTxt = new System.Windows.Forms.Label();
             this.staffTxt = new System.Windows.Forms.Label();
-            this.UserNameTxt = new Dentistry.UserControls.ExtendedTextBox();
             this.IsActiveChk = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.IsDeActiveChk = new System.Windows.Forms.RadioButton();
             this.Error_UserPassTxt = new System.Windows.Forms.Label();
-            this.UserPassTxt = new Dentistry.UserControls.ExtendedTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.okBtn = new System.Windows.Forms.Button();
@@ -150,6 +148,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.addUserPermissions = new System.Windows.Forms.Button();
             this.ItemTemplate = new Microsoft.VisualBasic.PowerPacks.DataRepeaterItem();
+            this.UserNameTxt = new Dentistry.UserControls.ExtendedTextBox();
+            this.UserPassTxt = new Dentistry.UserControls.ExtendedTextBox();
             this.personnelPnl.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -215,7 +215,7 @@
             // staffTxt
             // 
             this.staffTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.staffTxt.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.staffTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.staffTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.staffTxt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.staffTxt.Location = new System.Drawing.Point(31, 33);
@@ -224,23 +224,6 @@
             this.staffTxt.Size = new System.Drawing.Size(331, 30);
             this.staffTxt.TabIndex = 169;
             this.staffTxt.Text = "...";
-            // 
-            // UserNameTxt
-            // 
-            this.UserNameTxt.AllowExtendedCharacters = true;
-            this.UserNameTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UserNameTxt.BackColor = System.Drawing.Color.White;
-            this.UserNameTxt.ExtendedTextBoxLanguage = Dentistry.UserControls.ExtendedTextBox.ExtendedTextBoxLanguages.English;
-            this.UserNameTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserNameTxt.Location = new System.Drawing.Point(158, 96);
-            this.UserNameTxt.MaxLength = 50;
-            this.UserNameTxt.MinLength = 0;
-            this.UserNameTxt.MoveToNextOnEnterKey = true;
-            this.UserNameTxt.Name = "UserNameTxt";
-            this.UserNameTxt.ShowToolTip = true;
-            this.UserNameTxt.Size = new System.Drawing.Size(200, 28);
-            this.UserNameTxt.TabIndex = 3;
-            this.UserNameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // IsActiveChk
             // 
@@ -319,24 +302,6 @@
             this.Error_UserPassTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Error_UserPassTxt.Visible = false;
             // 
-            // UserPassTxt
-            // 
-            this.UserPassTxt.AllowExtendedCharacters = true;
-            this.UserPassTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UserPassTxt.BackColor = System.Drawing.Color.White;
-            this.UserPassTxt.ExtendedTextBoxLanguage = Dentistry.UserControls.ExtendedTextBox.ExtendedTextBoxLanguages.English;
-            this.UserPassTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserPassTxt.Location = new System.Drawing.Point(158, 141);
-            this.UserPassTxt.MaxLength = 50;
-            this.UserPassTxt.MinLength = 0;
-            this.UserPassTxt.MoveToNextOnEnterKey = true;
-            this.UserPassTxt.Name = "UserPassTxt";
-            this.UserPassTxt.PasswordChar = '*';
-            this.UserPassTxt.ShowToolTip = true;
-            this.UserPassTxt.Size = new System.Drawing.Size(200, 28);
-            this.UserPassTxt.TabIndex = 4;
-            this.UserPassTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -350,7 +315,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.panel2.Controls.Add(this.okBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(10, 440);
@@ -438,7 +403,7 @@
             this.dgStaffs.RowHeadersVisible = false;
             this.dgStaffs.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Vazir", 9.5F);
             this.dgStaffs.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgStaffs.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.dgStaffs.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.dgStaffs.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgStaffs.RowTemplate.Height = 30;
             this.dgStaffs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1532,7 +1497,7 @@
             this.label34.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label34.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.White;
-            this.label34.Location = new System.Drawing.Point(575, 4041);
+            this.label34.Location = new System.Drawing.Point(558, 4041);
             this.label34.Name = "label34";
             this.label34.Padding = new System.Windows.Forms.Padding(3);
             this.label34.Size = new System.Drawing.Size(253, 26);
@@ -1545,7 +1510,7 @@
             this.label32.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label32.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(575, 3741);
+            this.label32.Location = new System.Drawing.Point(558, 3741);
             this.label32.Name = "label32";
             this.label32.Padding = new System.Windows.Forms.Padding(3);
             this.label32.Size = new System.Drawing.Size(253, 26);
@@ -1558,7 +1523,7 @@
             this.label30.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label30.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(575, 3455);
+            this.label30.Location = new System.Drawing.Point(558, 3455);
             this.label30.Name = "label30";
             this.label30.Padding = new System.Windows.Forms.Padding(3);
             this.label30.Size = new System.Drawing.Size(253, 26);
@@ -1571,7 +1536,7 @@
             this.label26.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label26.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(575, 3175);
+            this.label26.Location = new System.Drawing.Point(558, 3175);
             this.label26.Name = "label26";
             this.label26.Padding = new System.Windows.Forms.Padding(3);
             this.label26.Size = new System.Drawing.Size(253, 26);
@@ -1584,7 +1549,7 @@
             this.label22.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label22.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(575, 2908);
+            this.label22.Location = new System.Drawing.Point(558, 2908);
             this.label22.Name = "label22";
             this.label22.Padding = new System.Windows.Forms.Padding(3);
             this.label22.Size = new System.Drawing.Size(253, 26);
@@ -1605,7 +1570,7 @@
             this.label28.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label28.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(575, 2695);
+            this.label28.Location = new System.Drawing.Point(558, 2695);
             this.label28.Name = "label28";
             this.label28.Padding = new System.Windows.Forms.Padding(3);
             this.label28.Size = new System.Drawing.Size(253, 26);
@@ -1618,7 +1583,7 @@
             this.label20.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label20.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(575, 1757);
+            this.label20.Location = new System.Drawing.Point(558, 1757);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(2);
             this.label20.Size = new System.Drawing.Size(253, 26);
@@ -1631,7 +1596,7 @@
             this.label18.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label18.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(575, 1484);
+            this.label18.Location = new System.Drawing.Point(558, 1484);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(3);
             this.label18.Size = new System.Drawing.Size(253, 26);
@@ -1644,7 +1609,7 @@
             this.label24.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label24.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(575, 1269);
+            this.label24.Location = new System.Drawing.Point(558, 1269);
             this.label24.Name = "label24";
             this.label24.Padding = new System.Windows.Forms.Padding(3);
             this.label24.Size = new System.Drawing.Size(253, 26);
@@ -1657,7 +1622,7 @@
             this.FormTitleTxt.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.FormTitleTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormTitleTxt.ForeColor = System.Drawing.Color.White;
-            this.FormTitleTxt.Location = new System.Drawing.Point(575, 24);
+            this.FormTitleTxt.Location = new System.Drawing.Point(558, 24);
             this.FormTitleTxt.Name = "FormTitleTxt";
             this.FormTitleTxt.Padding = new System.Windows.Forms.Padding(3);
             this.FormTitleTxt.Size = new System.Drawing.Size(253, 26);
@@ -1693,6 +1658,41 @@
             // ItemTemplate
             // 
             this.ItemTemplate.Size = new System.Drawing.Size(825, 100);
+            // 
+            // UserNameTxt
+            // 
+            this.UserNameTxt.AllowExtendedCharacters = true;
+            this.UserNameTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserNameTxt.BackColor = System.Drawing.Color.White;
+            this.UserNameTxt.ExtendedTextBoxLanguage = Dentistry.UserControls.ExtendedTextBox.ExtendedTextBoxLanguages.English;
+            this.UserNameTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameTxt.Location = new System.Drawing.Point(158, 96);
+            this.UserNameTxt.MaxLength = 50;
+            this.UserNameTxt.MinLength = 0;
+            this.UserNameTxt.MoveToNextOnEnterKey = true;
+            this.UserNameTxt.Name = "UserNameTxt";
+            this.UserNameTxt.ShowToolTip = true;
+            this.UserNameTxt.Size = new System.Drawing.Size(200, 28);
+            this.UserNameTxt.TabIndex = 3;
+            this.UserNameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // UserPassTxt
+            // 
+            this.UserPassTxt.AllowExtendedCharacters = true;
+            this.UserPassTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserPassTxt.BackColor = System.Drawing.Color.White;
+            this.UserPassTxt.ExtendedTextBoxLanguage = Dentistry.UserControls.ExtendedTextBox.ExtendedTextBoxLanguages.English;
+            this.UserPassTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserPassTxt.Location = new System.Drawing.Point(158, 141);
+            this.UserPassTxt.MaxLength = 50;
+            this.UserPassTxt.MinLength = 0;
+            this.UserPassTxt.MoveToNextOnEnterKey = true;
+            this.UserPassTxt.Name = "UserPassTxt";
+            this.UserPassTxt.PasswordChar = '*';
+            this.UserPassTxt.ShowToolTip = true;
+            this.UserPassTxt.Size = new System.Drawing.Size(200, 28);
+            this.UserPassTxt.TabIndex = 4;
+            this.UserPassTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UserDefine
             // 

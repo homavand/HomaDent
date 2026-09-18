@@ -1,6 +1,6 @@
 ﻿namespace Dentistry
 {
-    partial class frm_Report
+    partial class ReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -64,14 +64,14 @@
             this.panel_Report.Size = new System.Drawing.Size(833, 483);
             this.panel_Report.TabIndex = 1;
             // 
-            // frm_Report
+            // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(833, 483);
             this.Controls.Add(this.panel_Report);
-            this.Name = "frm_Report";
-            this.Text = "frm_Report";
+            this.Name = "ReportForm";
+            this.Text = "Report";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel_Report.ResumeLayout(false);
             this.ResumeLayout(false);

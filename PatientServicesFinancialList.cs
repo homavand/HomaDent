@@ -160,47 +160,40 @@ namespace Dentistry
                 return;
             var dd = result.Data;
 
-            if (dd == null)
-                return;
+            var rawList = (dd as IEnumerable<dynamic>).ToList();
+            var patientServiceObjs = rawList.Select(i => new Class.PatientService(i)).ToList();
 
-            IEnumerable<dynamic> list = dd != null && (Enumerable.Count(dd) >= 0) ? (dd as IEnumerable<dynamic>)
-                .Select(i => new Class.PatientService(i))
-                   .Select(i =>
-                   new
-                   {
-                       PatientServiceId = (int)i.Id,
-                       PatientId = (int)i.PatientId,
-                       PatientName = (string)i.PatientName,
-                       ServiceGroupTitle = (string)i.ServiceGroupTitle,
-                       ServiceTitle = string.Format("{0} ({1})", i.ServiceTitle, i.ServiceGroupTitle),
-                       ServiceCount = (int)i.ServiceCount,
-                       SolarDate = (string)i.SolarDate,
-                       BasicInsurerTitle = (string)i.BasicInsurerTitle,
-                       DoctorTitle = (string)i.DoctorTitle,
-                       ProviderStaffTitle = (string)i.ProviderStaffTitle,
+            var list = patientServiceObjs
+                       .Select(i =>
+                       new
+                       {
+                           PatientServiceId = (int)i.Id,
+                           i.PatientId ,
+                           i.PatientName,
+                           i.ServiceGroupTitle,
+                           ServiceTitle = string.Format("{0} ({1})", i.ServiceTitle, i.ServiceGroupTitle),
+                           i.ServiceCount,
+                           i.SolarDate ,
+                           i.BasicInsurerTitle ,
+                           i.DoctorTitle ,
+                           i.ProviderStaffTitle ,
                        
-                       ServicePrice = (double)i.ServicePrice,
-                       InsurerPrice = (double)i.InsurerPrice,
-                       InsurerShare = (double)i.InsurerShare,
-                       FranchiseShare = (double)i.FranchiseShare,
-                       FreeShare = (double)i.FreeShare,
-                       PatientShare = (double)i.PatientShare,                       
-                                                                     
-                       CheckupTypeId = (int)i.CheckupTypeId,
-                       i.ToothImage,
+                           i.ServicePrice ,
+                           i.InsurerPrice ,
+                           i.InsurerShare ,
+                           i.FranchiseShare ,
+                           i.FreeShare ,
+                           i.PatientShare ,                                                                                            
+                           i.CheckupTypeId ,
+                           i.ToothImage,
                        
-                   }).Where(i => i.CheckupTypeId == 2).ToList() : Enumerable.Empty<dynamic>();
-
-
+                       }).ToList() ;
 
 
             if (list == null)
                 return;
 
-
-
-
-            this.dgPatientServices.DataSource = list.Where(i => Convert.ToInt32(i.CheckupTypeId) == 2).ToList();
+            this.dgPatientServices.DataSource = list;
 
 
 

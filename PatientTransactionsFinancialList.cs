@@ -260,16 +260,11 @@ namespace Dentistry
 
         #region FillGrid_dgPatientFinancialTransactions
         private void FillGrid_dgPatientFinancialTransactions()
-        {
-
-            
-
-
+        {            
             this.PayType3Txt.Text = string.Empty;
             this.PayType5Txt.Text = string.Empty;
             this.PayType1Txt.Text = string.Empty;
             this.PayType2Txt.Text = string.Empty;
-
 
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.PatientId = this.PatientId;
@@ -508,7 +503,7 @@ namespace Dentistry
                 return;
             int payId = Convert.ToInt32(this.dgPatientFinancialTransactions["ColumnTransactionId", dgPatientFinancialTransactions.CurrentRow.Index].Value);
 
-            frm_Report fr_report = new frm_Report();
+            ReportForm fr_report = new ReportForm();
             List<object> param = new List<object>();
             List<object> value = new List<object>();
 
@@ -528,7 +523,7 @@ namespace Dentistry
         #region buttonSuratHesab_Click
         private void PrintSourathesab()
         {
-            frm_Report fr_report = new frm_Report();
+            ReportForm fr_report = new ReportForm();
             List<object> param = new List<object>();
             List<object> value = new List<object>();
 
