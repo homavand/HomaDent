@@ -3516,12 +3516,12 @@ namespace Dentistry
                                     SolarDate = (string)i.SolarDate,
                                     Comment = (string)i.Comment,
 
-                                    ActionPrice = (decimal)i.ActionPrice,
-                                    ServicePrice = (decimal)i.ServicePrice,
-                                    InsurerPrice = (decimal)i.InsurerPrice,
-                                    InsurerShare = (decimal)i.InsurerShare,
-                                    FranchiseShare = (decimal)i.FranchiseShare,
-                                    FreeShare = (decimal)i.FreeShare,
+                                    ActionPrice = (long)i.ActionPrice,
+                                    ServicePrice = (long)i.ServicePrice,
+                                    InsurerPrice = (long)i.InsurerPrice,
+                                    InsurerShare = (long)i.InsurerShare,
+                                    FranchiseShare = (long)i.FranchiseShare,
+                                    FreeShare = (long)i.FreeShare,
                                 };
                             }).ToList();
 
@@ -4421,8 +4421,8 @@ namespace Dentistry
                             i.Id,
                             i.ServiceId,
                             i.InsurerId,
-                            FreePrice = (decimal)(i.FreePrice ?? 0),
-                            InsurerPrice = (decimal)(i.InsurerPrice ?? 0),
+                            FreePrice = (long)(i.FreePrice ?? 0),
+                            InsurerPrice = (long)(i.InsurerPrice ?? 0),
                             DefineDate = Publics.GetDate(i.DefineDate),
                             SolarDefineDate = Publics.GetSolarDate(i.DefineDate),
                             RunDate = Publics.GetDate(i.RunDate),
@@ -4834,11 +4834,11 @@ namespace Dentistry
                     var IsHadMoreTooth = x.HasValue("IsHadMoreTooth") ? x.GetValue<bool>("IsHadMoreTooth") : (bool?)null;
                     var InsurerServiceTarefeChangeId = x.HasValue("InsurerServiceTarefeChangeId") ? x.GetValue<int>("InsurerServiceTarefeChangeId") : (int?)null;
                     var IsDeleted = x.HasValue("IsDeleted") ? x.GetValue<bool>("IsDeleted") : (bool?)null;
-                    var ServicePrice = x.HasValue("ServicePrice") ? x.GetValue<double>("ServicePrice") : (double?)null;
-                    var InsurerPrice = x.HasValue("InsurerPrice") ? x.GetValue<double>("InsurerPrice") : (double?)null;
-                    var InsurerShare = x.HasValue("InsurerShare") ? x.GetValue<double>("InsurerShare") : (double?)null;
-                    var FranchiseShare = x.HasValue("FranchiseShare") ? x.GetValue<double>("FranchiseShare") : (double?)null;
-                    var FreeShare = x.HasValue("FreeShare") ? x.GetValue<double>("FreeShare") : (double?)null;
+                    var ServicePrice = x.HasValue("ServicePrice") ? x.GetValue<long>("ServicePrice") : (long?)null;
+                    var InsurerPrice = x.HasValue("InsurerPrice") ? x.GetValue<long>("InsurerPrice") : (long?)null;
+                    var InsurerShare = x.HasValue("InsurerShare") ? x.GetValue<long>("InsurerShare") : (long?)null;
+                    var FranchiseShare = x.HasValue("FranchiseShare") ? x.GetValue<long>("FranchiseShare") : (long?)null;
+                    var FreeShare = x.HasValue("FreeShare") ? x.GetValue<long>("FreeShare") : (long?)null;
 
                     var ToothList = x.HasValue("ToothIds")
                         ? string.Join(" , ", x.GetValue<IEnumerable>("ToothIds").OfType<object>().Select(i => i).ToArray())
@@ -4891,12 +4891,12 @@ namespace Dentistry
                             IsDeleted = false,
                             // original bound ActionPrice to the same @ServicePrice
                             // parameter as ServicePrice itself - preserved as-is.
-                            ActionPrice = (decimal)(ServicePrice ?? 0),
-                            ServicePrice = (decimal?)ServicePrice,
-                            InsurerPrice = (decimal?)InsurerPrice,
-                            InsurerShare = (decimal?)InsurerShare,
-                            FranchiseShare = (decimal?)FranchiseShare,
-                            FreeShare = (decimal?)FreeShare
+                            ActionPrice = (ServicePrice ?? 0),
+                            ServicePrice = ServicePrice,
+                            InsurerPrice = InsurerPrice,
+                            InsurerShare = InsurerShare,
+                            FranchiseShare = FranchiseShare,
+                            FreeShare = FreeShare
                         };
                         db.PatientServices.Add(newService);
                         db.SaveChanges();
@@ -5389,8 +5389,8 @@ namespace Dentistry
                         ServiceId = ServiceId.Value,
                         DefineDate = DefineDate,
                         RunDate = RunDate,
-                        FreePrice = (decimal?)FreePrice,
-                        InsurerPrice = (decimal?)InsurerPrice,
+                        FreePrice = (long?)FreePrice,
+                        InsurerPrice = (long?)InsurerPrice,
                         UserId = null
                     };
                     db.InsurerServiceTarefeChanges.Add(tarefe);
@@ -5898,7 +5898,7 @@ namespace Dentistry
                             CostTypeId = CostTypeId ?? 0,
                             BargainSideId = BargainSideId,
                             PayTypeId = PayTypeId ?? 0,
-                            Amount = (decimal)(Amount ?? 0),
+                            Amount = (long)(Amount ?? 0),
                             Title = CostTitle,
                             FactorNumber = FactorNumber,
                             Date = Date ?? DateTime.Now,
@@ -5995,7 +5995,7 @@ namespace Dentistry
                         {
                             PatientId = PatientId ?? 0,
                             PayTypeId = PayTypeId ?? 0,
-                            Amount = (decimal)(Amount ?? 0),
+                            Amount = (long)(Amount ?? 0),
                             Date = Date ?? DateTime.Now,
                             ChequeNumber = ChequeNumber,
                             BankId = BankId,
@@ -6119,10 +6119,10 @@ namespace Dentistry
                     var x = new RouteValueDictionary(searchObj);
                     var Id = x.HasValue("Id") ? x.GetValue<int>("Id") : (int?)null;
                     var InsurerId = x.HasValue("InsurerId") ? x.GetValue<int>("InsurerId") : (int?)null;
-                    var RequestedValue = x.HasValue("RequestedValue") ? x.GetValue<double>("RequestedValue") : (double?)null;
-                    var ReceivedValue = x.HasValue("ReceivedValue") ? x.GetValue<double>("ReceivedValue") : (double?)null;
-                    var DeductionValue = x.HasValue("DeductionValue") ? x.GetValue<double>("DeductionValue") : (double?)null;
-                    var RemainPrice = x.HasValue("RemainPrice") ? x.GetValue<double>("RemainPrice") : (double?)null;
+                    var RequestedValue = x.HasValue("RequestedValue") ? x.GetValue<long>("RequestedValue") : (long?)null;
+                    var ReceivedValue = x.HasValue("ReceivedValue") ? x.GetValue<long>("ReceivedValue") : (long?)null;
+                    var DeductionValue = x.HasValue("DeductionValue") ? x.GetValue<long>("DeductionValue") : (long?)null;
+                    var RemainPrice = x.HasValue("RemainPrice") ? x.GetValue<long>("RemainPrice") : (long?)null;
                     var Date = x.HasValue("Date") ? x.GetValue<DateTime>("Date") : (DateTime?)null;
                     var FromDate = x.HasValue("FromDate") ? x.GetValue<DateTime>("FromDate") : (DateTime?)null;
                     var ToDate = x.HasValue("ToDate") ? x.GetValue<DateTime>("ToDate") : (DateTime?)null;
@@ -6138,10 +6138,10 @@ namespace Dentistry
                             throw new Exception("InsurerFinancial not found");
 
                         if (InsurerId != null) financial.InsurerId = InsurerId.Value;
-                        if (RequestedValue != null) financial.RequestedValue = (decimal)RequestedValue.Value;
-                        if (ReceivedValue != null) financial.ReceivedValue = (decimal)ReceivedValue.Value;
-                        if (DeductionValue != null) financial.DeductionValue = (decimal)DeductionValue.Value;
-                        if (RemainPrice != null) financial.RemainPrice = (decimal)RemainPrice.Value;
+                        if (RequestedValue != null) financial.RequestedValue = RequestedValue.Value;
+                        if (ReceivedValue != null) financial.ReceivedValue = ReceivedValue.Value;
+                        if (DeductionValue != null) financial.DeductionValue = DeductionValue.Value;
+                        if (RemainPrice != null) financial.RemainPrice = RemainPrice.Value;
                         if (Date != null) financial.Date = Date.Value;
                         if (FromDate != null) financial.FromDate = FromDate;
                         if (ToDate != null) financial.ToDate = ToDate;
@@ -6156,10 +6156,10 @@ namespace Dentistry
                         var financial = new InsurerFinancial
                         {
                             InsurerId = InsurerId ?? 0,
-                            RequestedValue = (decimal)(RequestedValue ?? 0),
-                            ReceivedValue = (decimal?)ReceivedValue,
-                            DeductionValue = (decimal?)DeductionValue,
-                            RemainPrice = (decimal?)RemainPrice,
+                            RequestedValue = (RequestedValue ?? 0),
+                            ReceivedValue = ReceivedValue,
+                            DeductionValue = DeductionValue,
+                            RemainPrice = RemainPrice,
                             Date = Date ?? DateTime.Now,
                             FromDate = FromDate,
                             ToDate = ToDate,
@@ -6340,7 +6340,7 @@ namespace Dentistry
                     var InsuredNumber = x.HasValue("InsuredNumber") ? x.GetValue<string>("InsuredNumber") : null;
                     var InsuranceBookletSerialNumber = x.HasValue("InsuranceBookletSerialNumber") ? x.GetValue<string>("InsuranceBookletSerialNumber") : null;
                     var Percent = x.HasValue("Percent") ? x.GetValue<float>("Percent") : (float?)null;
-                    var MaxPay = x.HasValue("MaxPay") ? x.GetValue<float>("MaxPay") : (float?)null;
+                    var MaxPay = x.HasValue("MaxPay") ? x.GetValue<long>("MaxPay") : (long?)null;
                     var IsDeleted = x.HasValue("IsDeleted") ? x.GetValue<bool>("IsDeleted") : (bool?)false;
 
                     if (PatientId != null)
@@ -6360,7 +6360,7 @@ namespace Dentistry
                         ExpirationDate = ExpirationDate,
                         // Percent is non-nullable int on the model.
                         Percent = (int)(Percent ?? 0),
-                        MaxPay = (double?)MaxPay,
+                        MaxPay = MaxPay,
                         IsDeleted = IsDeleted ?? false
                     };
                     db.PatientInsurances.Add(insurance);

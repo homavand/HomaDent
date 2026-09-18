@@ -1103,10 +1103,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>1/24/2025 1:19:54 AM</ReportChanged>
+  <ReportChanged>9/18/2026 2:38:46 PM</ReportChanged>
   <ReportCreated>2/24/2016 4:34:01 PM</ReportCreated>
-  <ReportFile>D:\Dental-SQLite\Dentistry\Reports\rpt_PatientBill.mrt</ReportFile>
-  <ReportGuid>8fd9350bffb54a3da6660533745027ff</ReportGuid>
+  <ReportFile>D:\Dental-EF-SQLite\Dentistry\reports\rpt_PatientBill.mrt</ReportFile>
+  <ReportGuid>4bc3df8718ef492d8d24428fd988cccc</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Inches</ReportUnit>
   <ReportVersion>2023.1.1.0</ReportVersion>
