@@ -611,6 +611,141 @@ namespace Dentistry
                 if (PatientId == null)
                     throw new Exception("بیمار مشخص نشده است");
 
+                using (var db = new DentalContext())
+                {
+                    // ------------------------------------------------------------
+                    // IMPORTANT FINDING: the original GetOnePatientInfoX (via
+                    // GetPatientsInfoX) also computed Total_Patient_Charge/Paid/
+                    // Refund/Discount/Remianed by pulling ALL of this patient's
+                    // services and financial transactions - but its finalResult
+                    // never included those fields, and PatientInfo.cs pulls the
+                    // totals from GetPatientBillX instead. So that work was pure
+                    // waste for this code path. This rewrite drops it entirely:
+                    // only Patient + Gender + Doctor + one active insurance row
+                    // are needed. If you ever DO want totals returned from here
+                    // too, add them back as DB-side Sum() calls (see the version
+                    // from the previous message) rather than re-fetching full
+                    // row lists.
+                    // ------------------------------------------------------------
+
+                    var patientRow = db.Patients
+                        .AsNoTracking()
+                        .Where(p => p.Id == PatientId.Value && p.Gender != null)
+                        .Select(p => new
+                        {
+                            PatientId = p.Id,
+                            p.FirstName,
+                            p.LastName,
+                            p.FatherName,
+                            p.Date,
+                            p.BirthDate,
+                            p.NationalCode,
+                            GenderId = (int?)p.GenderId,
+                            GenderTitle = p.Gender.Title,
+                            JobId = (int?)p.JobId,
+                            JobTitle = p.JobId != null ? p.Job.Title : "",
+                            p.Presenter,
+                            p.MaritalStatusId,
+                            p.EducationLevelId,
+                            p.NationalityId,
+                            p.FixedPhone,
+                            p.MobilePhone,
+                            p.Address,
+                            p.IsDeleted,
+                            p.DoctorId,
+                            DoctorTitle = p.Doctor != null ? (p.Doctor.FirstName + " " + p.Doctor.LastName) : null,
+                            DoctorMedicalCouncilCode = p.Doctor != null ? p.Doctor.MedicalCouncilCode : null,
+                            HasSpecialComment = p.PatientSpecialComments.Count()
+                        })
+                        .SingleOrDefault();
+
+                    if (patientRow == null)
+                        // patient not found / doesn't satisfy the Gender != null
+                        // condition - same "no row" outcome the original SingleOrDefault()
+                        // produced.
+                        return new JsonResponse<dynamic>() { Success = true, Data = null };
+
+                    // Only ONE active insurance record is needed here - filtered and
+                    // projected straight from the DB instead of going through
+                    // GetPatientInsuranceX (which fetches Insurer/PersonRelationType/
+                    // InsuranceBookletType Include()s and ~20 fields we don't use).
+                    var insuranceRow = db.PatientInsurances
+                        .AsNoTracking()
+                        .Where(pi => pi.PatientId == PatientId.Value
+                                  && pi.InsuranceTypeId == 1
+                                  && pi.IsDeleted == false)
+                        .Select(pi => new
+                        {
+                            BI_PatientInsuranceId = (int?)pi.Id,
+                            BI_InsurerId = (int?)pi.InsurerId,
+                            BI_InsurerTitle = pi.Insurer.Title,
+                            BI_InsuredNumber = pi.InsuredNumber,
+                            BI_InsuranceBookletSerialNumber = pi.InsuranceBookletSerialNumber,
+                            BI_ExpirationDate = pi.ExpirationDate
+                        })
+                        .FirstOrDefault(); // no ORDER BY in the original either - same "first match" semantics
+
+                    var finalResult = new
+                    {
+                        PatientId = patientRow.PatientId,
+                        patientRow.FirstName,
+                        patientRow.LastName,
+                        PatientName = Convert.ToString(patientRow.FirstName) + " " + Convert.ToString(patientRow.LastName),
+                        patientRow.FatherName,
+                        Date = Publics.GetDate(patientRow.Date),
+                        SolarDate = Publics.GetSolarDate(patientRow.Date),
+                        BirthDate = Publics.GetDate(patientRow.BirthDate),
+                        SolarBirthDate = Publics.GetSolarDate(patientRow.BirthDate),
+                        patientRow.NationalCode,
+                        Age = Publics.GetAge(patientRow.BirthDate),
+                        patientRow.GenderId,
+                        patientRow.GenderTitle,
+                        patientRow.JobId,
+                        patientRow.JobTitle,
+                        patientRow.Presenter,
+                        patientRow.MaritalStatusId,
+                        patientRow.EducationLevelId,
+                        patientRow.NationalityId,
+                        patientRow.FixedPhone,
+                        patientRow.MobilePhone,
+                        patientRow.Address,
+                        IsDeleted = Convert.ToBoolean(patientRow.IsDeleted),
+                        DoctorId = patientRow.DoctorId,
+                        patientRow.DoctorTitle,
+                        patientRow.DoctorMedicalCouncilCode,
+                        patientRow.HasSpecialComment,
+
+                        // ("آزاد" / 0 / empty strings when the patient has no
+                        // active insurance record), reproduced directly here.
+                        BI_PatientInsuranceId = insuranceRow != null ? insuranceRow.BI_PatientInsuranceId : 0,
+                        BI_InsurerId = insuranceRow != null ? insuranceRow.BI_InsurerId : 0,
+                        BI_InsurerTitle = insuranceRow != null ? insuranceRow.BI_InsurerTitle : "آزاد",
+                        BI_InsuredNumber = insuranceRow != null ? insuranceRow.BI_InsuredNumber : "",
+                        BI_InsuranceBookletSerialNumber = insuranceRow != null ? insuranceRow.BI_InsuranceBookletSerialNumber : "",
+                        BI_ExpirationDate = insuranceRow != null ? Publics.GetDate(insuranceRow.BI_ExpirationDate) : (DateTime?)null,
+                        BI_ExpirationSolarDate = insuranceRow != null ? Publics.GetSolarDate(insuranceRow.BI_ExpirationDate) : "",
+                    };
+
+                    return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message, };
+            }
+        }
+
+
+        public static JsonResponse<dynamic> GetOnePatientInfoXX(dynamic searchObj)
+        {
+            try
+            {
+                var x = new RouteValueDictionary(searchObj);
+                var PatientId = x.HasValue("PatientId") ? x.GetValue<int>("PatientId") : (int?)null;
+
+                if (PatientId == null)
+                    throw new Exception("بیمار مشخص نشده است");
+
                 dynamic sObj = new
                 {
                     PatientId = PatientId
@@ -703,9 +838,20 @@ namespace Dentistry
                 var IsDebtor = x.HasValue("IsDebtor") ? x.GetValue<bool>("IsDebtor") : (bool?)null;
                 var IsCreditor = x.HasValue("IsCreditor") ? x.GetValue<bool>("IsCreditor") : (bool?)null;
 
-                // --- Pull in the 3 supporting datasets, same as the original ---
+                // --------------------------------------------------------------
+                // Pull in the 3 supporting datasets, scoped to PatientId whenever
+                // it's known. THIS WAS THE MAIN BUG: previously these 3 calls
+                // always fetched every patient's insurance/services/financial
+                // rows regardless of PatientId - so GetOnePatientInfoX (which
+                // always has a PatientId) was paying the cost of a full
+                // "all patients" fetch just to show one record.
+                // --------------------------------------------------------------
 
-                JsonResponse<dynamic> resultPatientInsuranceX = GetPatientInsuranceX(new { IsDeleted = false });
+                dynamic insuranceFilter = new ExpandoObject();
+                insuranceFilter.IsDeleted = false;
+                if (PatientId != null) insuranceFilter.PatientId = PatientId.Value;
+
+                JsonResponse<dynamic> resultPatientInsuranceX = GetPatientInsuranceX(insuranceFilter);
                 if (resultPatientInsuranceX == null || resultPatientInsuranceX.Success != true)
                     throw new Exception("خطا در واکشی اطلاعات ");
                 var piData = resultPatientInsuranceX.Data != null ? resultPatientInsuranceX.Data as IEnumerable<dynamic> : Enumerable.Empty<dynamic>();
@@ -724,12 +870,17 @@ namespace Dentistry
 
                     }).ToList();
 
+                dynamic servicesFilter = new ExpandoObject();
+                servicesFilter.CheckupTypeId = 2;
+                servicesFilter.IsDeleted = false;
+                if (PatientId != null) servicesFilter.PatientId = PatientId.Value;
+
                 // NOTE: GetPatientServicesX / GetPatientFinancialsX are not part of
                 // this conversion batch - called exactly as before (still Dapper
                 // internally for now). Nothing about this orchestration layer needs
                 // to change once they're converted too, since the JsonResponse
                 // contract stays the same.
-                JsonResponse<dynamic> resultPatientServicesX = GetPatientServicesX(new { CheckupTypeId = 2, IsDeleted = false });
+                JsonResponse<dynamic> resultPatientServicesX = GetPatientServicesX(servicesFilter);
                 if (resultPatientServicesX == null || resultPatientServicesX.Success != true)
                     throw new Exception("خطا در واکشی اطلاعات ");
                 var psData = resultPatientServicesX.Data != null ? resultPatientServicesX.Data as IEnumerable<dynamic> : Enumerable.Empty<dynamic>();
@@ -742,7 +893,11 @@ namespace Dentistry
 
                     }).ToList();
 
-                JsonResponse<dynamic> resultPatientFinancialsX = GetPatientTransactionsX(new { IsDeleted = false });
+                dynamic financialFilter = new ExpandoObject();
+                financialFilter.IsDeleted = false;
+                if (PatientId != null) financialFilter.PatientId = PatientId.Value;
+
+                JsonResponse<dynamic> resultPatientFinancialsX = GetPatientTransactionsX(financialFilter);
                 if (resultPatientFinancialsX == null || resultPatientFinancialsX.Success != true)
                     throw new Exception("خطا در واکشی اطلاعات ");
                 var pfData = resultPatientFinancialsX.Data != null ? resultPatientFinancialsX.Data as IEnumerable<dynamic> : Enumerable.Empty<dynamic>();
@@ -756,15 +911,39 @@ namespace Dentistry
 
                     }).ToList();
 
+                // Index the 3 supporting datasets ONCE, instead of re-scanning each
+                // full list with a LINQ .Where() for every single patient row below.
+                // - Insurance is one-per-patient -> Dictionary (O(1) lookup).
+                // - Services/financials are many-per-patient -> ToLookup (grouped
+                //   once, O(1) access to that patient's group, Sum only runs over
+                //   that patient's own rows instead of the whole table).
+                // For the single-patient case (GetOnePatientInfoX) this barely
+                // matters since the lists are already tiny after the PatientId
+                // filter above: the real win there was the filter itself. This
+                // indexing mainly protects the "list all patients" case from
+                // becoming O(patients * total rows).
+                var insuranceByPatient = patientInsuranceResult
+                    .Where(j => j.PatientId != null)
+                    .GroupBy(j => j.PatientId.Value)
+                    .ToDictionary(g => g.Key, g => g.First());
+
+                var servicesByPatient = patientServicesResult.ToLookup(j => j.PatientId ?? 0);
+                var financialByPatient = patientFinancialResult.ToLookup(j => j.PatientId ?? 0);
+
                 // --- Main patient query, converted from the raw derived-table SQL ---
 
                 using (var db = new DentalContext())
                 {
                     IQueryable<Patient> query = db.Patients
-                        .Include(p => p.Gender)
-                        .Include(p => p.Doctor)
-                        // original used an INNER JOIN to BaseCoding_Genders
+                        .AsNoTracking() // read-only -> skip EF change tracking overhead
+                                        // original used an INNER JOIN to BaseCoding_Genders
                         .Where(p => p.Id > 0 && p.Gender != null);
+                    // .Include() removed on purpose: the Select() below only
+                    // pulls specific scalar columns via navigation properties,
+                    // so EF generates one efficient SQL query with just those
+                    // columns instead of joining in every column of Gender/
+                    // Doctor (Include forces that even though Select doesn't
+                    // need it).
 
                     if (PatientId != null)
                         query = query.Where(p => p.Id == PatientId.Value);
@@ -878,21 +1057,22 @@ namespace Dentistry
                     }).ToList();
 
                     // --- Join with the 3 supporting datasets + compute financial totals ---
-                    // (pure in-memory LINQ, unchanged from the original)
+                    // Same math as the original, but reading from the pre-built
+                    // dictionary/lookups above instead of re-scanning the full list
+                    // for every patient.
 
-                    var finalResult = patientResult.Select(i =>
+                    var result = patientResult.Select(i =>
                     {
-                        var piItem = patientInsuranceResult.Where(j => j.PatientId == i.PatientId).Select(j => j).FirstOrDefault();
-                        var totalCharge = patientServicesResult.Where(j => j.PatientId == i.PatientId).Select(j => j).Sum(j => j.ServicePrice);
-                        var totalPaid = patientFinancialResult.Where(j => j.PatientId == i.PatientId)
-                                                              .Where(j => j.PayTypeId == 1 || j.PayTypeId == 2 || j.PayTypeId == 3)
-                                                              .Select(j => j).Sum(j => j.Amount);
-                        var totalRefund = patientFinancialResult.Where(j => j.PatientId == i.PatientId)
-                                                              .Where(j => j.PayTypeId == 5)
-                                                              .Select(j => j).Sum(j => j.Amount);
-                        var totalDiscount = patientFinancialResult.Where(j => j.PatientId == i.PatientId)
-                                                              .Where(j => j.PayTypeId == 6)
-                                                              .Select(j => j).Sum(j => j.Amount);
+                        insuranceByPatient.TryGetValue(i.PatientId, out var piItem);
+
+                        var services = servicesByPatient[i.PatientId];
+                        var totalCharge = services.Sum(j => j.ServicePrice);
+
+                        var financials = financialByPatient[i.PatientId];
+                        var totalPaid = financials.Where(j => j.PayTypeId == 1 || j.PayTypeId == 2 || j.PayTypeId == 3).Sum(j => j.Amount);
+                        var totalRefund = financials.Where(j => j.PayTypeId == 5).Sum(j => j.Amount);
+                        var totalDiscount = financials.Where(j => j.PayTypeId == 6).Sum(j => j.Amount);
+
                         return new
                         {
                             i.PatientId,
@@ -940,20 +1120,26 @@ namespace Dentistry
                         };
                     }).ToList();
 
+                    // Combine all post-computation filters into a single pass instead
+                    // of re-materializing a new List on every single condition.
+                    IEnumerable<dynamic> filtered = result;
+
                     if (InsurerId != null)
-                        finalResult = finalResult.Where(i => i.BI_InsurerId == InsurerId).ToList();
+                        filtered = filtered.Where(i => i.BI_InsurerId == InsurerId);
 
                     if (FromRemianed != null)
-                        finalResult = finalResult.Where(i => i.Total_Patient_Remianed > FromRemianed).ToList();
+                        filtered = filtered.Where(i => i.Total_Patient_Remianed > FromRemianed);
 
                     if (ToRemianed != null)
-                        finalResult = finalResult.Where(i => i.Total_Patient_Remianed < ToRemianed).ToList();
+                        filtered = filtered.Where(i => i.Total_Patient_Remianed < ToRemianed);
 
                     if (IsDebtor == true)
-                        finalResult = finalResult.Where(i => i.Total_Patient_Remianed > 0).ToList();
+                        filtered = filtered.Where(i => i.Total_Patient_Remianed > 0);
 
                     if (IsCreditor == true)
-                        finalResult = finalResult.Where(i => i.Total_Patient_Remianed < 0).ToList();
+                        filtered = filtered.Where(i => i.Total_Patient_Remianed < 0);
+
+                    var finalResult = filtered.ToList();
 
                     return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
                 }
@@ -963,6 +1149,7 @@ namespace Dentistry
                 return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message, };
             }
         }
+
 
 
         public static JsonResponse<dynamic> GetPatientInsuranceX(dynamic searchObj)
@@ -1195,7 +1382,7 @@ namespace Dentistry
                                 {
                                     PatientId = (int)i.PatientId,
                                     PatientName = (string)i.PatientName,
-                                    ServicePrice = (double)i.ServicePrice,
+                                    ServicePrice = (decimal)i.ServicePrice,
                                 };
                             }).ToList();
 
@@ -1270,6 +1457,9 @@ namespace Dentistry
                 return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message, };
             }
         }
+
+       
+
         public static JsonResponse<dynamic> GetPatientServicesX(dynamic searchObj)
         {
             try
@@ -3326,12 +3516,12 @@ namespace Dentistry
                                     SolarDate = (string)i.SolarDate,
                                     Comment = (string)i.Comment,
 
-                                    ActionPrice = (double)i.ActionPrice,
-                                    ServicePrice = (double)i.ServicePrice,
-                                    InsurerPrice = (double)i.InsurerPrice,
-                                    InsurerShare = (double)i.InsurerShare,
-                                    FranchiseShare = (double)i.FranchiseShare,
-                                    FreeShare = (double)i.FreeShare,
+                                    ActionPrice = (decimal)i.ActionPrice,
+                                    ServicePrice = (decimal)i.ServicePrice,
+                                    InsurerPrice = (decimal)i.InsurerPrice,
+                                    InsurerShare = (decimal)i.InsurerShare,
+                                    FranchiseShare = (decimal)i.FranchiseShare,
+                                    FreeShare = (decimal)i.FreeShare,
                                 };
                             }).ToList();
 
