@@ -1,6 +1,6 @@
 ﻿namespace Dentistry
 {
-    partial class PatientFinancialDefine
+    partial class PatientTransactionDefine
     {
         /// <summary>
         /// Required designer variable.

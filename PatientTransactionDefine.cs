@@ -14,7 +14,7 @@ using DNTPersianUtils.Core;
 
 namespace Dentistry
 {
-    public partial class PatientFinancialDefine : Form
+    public partial class PatientTransactionDefine : Form
     {
         
         ReportForm fr_report;
@@ -37,7 +37,7 @@ namespace Dentistry
         }
 
         #region PatientFinancialDefine
-        public PatientFinancialDefine(int PatientId)
+        public PatientTransactionDefine(int PatientId)
         {
             InitializeComponent();
            
@@ -49,7 +49,7 @@ namespace Dentistry
 
 
         
-        public PatientFinancialDefine(int patientId , int patientFinancialId)
+        public PatientTransactionDefine(int patientId , int patientFinancialId)
         {
          
             InitializeComponent();

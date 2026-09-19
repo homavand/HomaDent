@@ -400,7 +400,7 @@ namespace Dentistry
                 if (patientId <= 0)
                     return;
 
-                PatientFinancialDefine form = new PatientFinancialDefine(this.PatientId);
+                PatientTransactionDefine form = new PatientTransactionDefine(this.PatientId);
                 var result = form.ShowDialog(this);
                 if (result == DialogResult.OK)
                 {
@@ -432,7 +432,7 @@ namespace Dentistry
                 if(this.dgPatientFinancialTransactions.CurrentCell == null)
                     return;
 
-                PatientFinancialDefine form = new PatientFinancialDefine(this.PatientId,int.Parse(this.dgPatientFinancialTransactions["ColumnTransactionId", this.dgPatientFinancialTransactions.CurrentRow.Index].Value.ToString()));
+                PatientTransactionDefine form = new PatientTransactionDefine(this.PatientId,int.Parse(this.dgPatientFinancialTransactions["ColumnTransactionId", this.dgPatientFinancialTransactions.CurrentRow.Index].Value.ToString()));
                 var result = form.ShowDialog(this);
                 if (result == DialogResult.OK)
                 {

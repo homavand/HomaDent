@@ -475,11 +475,11 @@
     <Compile Include="PatientDocDefine.Designer.cs">
       <DependentUpon>PatientDocDefine.cs</DependentUpon>
     </Compile>
-    <Compile Include="PatientTransactionsFinancialList.cs">
+    <Compile Include="PatientTransactionList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatientTransactionsFinancialList.designer.cs">
-      <DependentUpon>PatientTransactionsFinancialList.cs</DependentUpon>
+    <Compile Include="PatientTransactionList.designer.cs">
+      <DependentUpon>PatientTransactionList.cs</DependentUpon>
     </Compile>
     <Compile Include="PatientInfo.cs">
       <SubType>Form</SubType>
@@ -487,11 +487,11 @@
     <Compile Include="PatientInfo.designer.cs">
       <DependentUpon>PatientInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="PatientFinancialDefine.cs">
+    <Compile Include="PatientTransactionDefine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatientFinancialDefine.designer.cs">
-      <DependentUpon>PatientFinancialDefine.cs</DependentUpon>
+    <Compile Include="PatientTransactionDefine.designer.cs">
+      <DependentUpon>PatientTransactionDefine.cs</DependentUpon>
     </Compile>
     <Compile Include="InsuranceFinancialList.cs">
       <SubType>Form</SubType>
@@ -740,16 +740,16 @@
       <DependentUpon>PatientDocDefine.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="PatientTransactionsFinancialList.resx">
-      <DependentUpon>PatientTransactionsFinancialList.cs</DependentUpon>
+    <EmbeddedResource Include="PatientTransactionList.resx">
+      <DependentUpon>PatientTransactionList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientInfo.resx">
       <DependentUpon>PatientInfo.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="PatientFinancialDefine.resx">
-      <DependentUpon>PatientFinancialDefine.cs</DependentUpon>
+    <EmbeddedResource Include="PatientTransactionDefine.resx">
+      <DependentUpon>PatientTransactionDefine.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="InsuranceFinancialList.resx">

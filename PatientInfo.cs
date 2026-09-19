@@ -981,7 +981,7 @@ namespace Dentistry
             try
             {
 
-                PatientFinancialDefine form = new PatientFinancialDefine(this.PatientId);
+                PatientTransactionDefine form = new PatientTransactionDefine(this.PatientId);
                 var result = form.ShowDialog(this);
                 if (result == DialogResult.OK)
                     this.FillGrid_dgPatientFinancialTransactions();
@@ -1009,7 +1009,7 @@ namespace Dentistry
                 if (this.dgPatientFinancialTransactions.CurrentCell == null)
                     return;
 
-                PatientFinancialDefine form = new PatientFinancialDefine(this.PatientId, Convert.ToInt32(this.dgPatientFinancialTransactions["ColumnPatientFinancialId", this.dgPatientFinancialTransactions.CurrentRow.Index].Value));
+                PatientTransactionDefine form = new PatientTransactionDefine(this.PatientId, Convert.ToInt32(this.dgPatientFinancialTransactions["ColumnPatientFinancialId", this.dgPatientFinancialTransactions.CurrentRow.Index].Value));
                 var result = form.ShowDialog(this);
                 if (result == DialogResult.OK)
                     this.FillGrid_dgPatientFinancialTransactions();
