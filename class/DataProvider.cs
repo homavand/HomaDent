@@ -792,15 +792,15 @@ namespace Dentistry
 
 
                         i.BI_PatientInsuranceId,
-                        i.BI_InsurerId ,
-                        i.BI_InsurerTitle ,
-                        i.BI_InsuredNumber ,
-                        i.BI_InsuranceBookletSerialNumber ,
+                        i.BI_InsurerId,
+                        i.BI_InsurerTitle,
+                        i.BI_InsuredNumber,
+                        i.BI_InsuranceBookletSerialNumber,
                         i.BI_ExpirationDate,
-                        i.BI_ExpirationSolarDate 
+                        i.BI_ExpirationSolarDate
                     }).SingleOrDefault();
 
-            
+
 
                 return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
             }
@@ -833,8 +833,8 @@ namespace Dentistry
                 var ToDateBirth = x.HasValue("ToDateBirth") ? x.GetValue<DateTime>("ToDateBirth") : (DateTime?)null;
                 var IsDeleted = x.HasValue("IsDeleted") ? x.GetValue<bool>("IsDeleted") : (bool?)null;
 
-                var FromRemianed = x.HasValue("FromRemianed") ? x.GetValue<double>("FromRemianed") : (double?)null;
-                var ToRemianed = x.HasValue("ToRemianed") ? x.GetValue<double>("ToRemianed") : (double?)null;
+                var FromRemianed = x.HasValue("FromRemianed") ? x.GetValue<long>("FromRemianed") : (long?)null;
+                var ToRemianed = x.HasValue("ToRemianed") ? x.GetValue<long>("ToRemianed") : (long?)null;
                 var IsDebtor = x.HasValue("IsDebtor") ? x.GetValue<bool>("IsDebtor") : (bool?)null;
                 var IsCreditor = x.HasValue("IsCreditor") ? x.GetValue<bool>("IsCreditor") : (bool?)null;
 
@@ -1357,100 +1357,77 @@ namespace Dentistry
                 if (PatientId < 1)
                     return null;
 
-                dynamic sObj = new
+                using (var db = new DentalContext())
                 {
-                    PatientId = PatientId,
-                    CheckupTypeId = 2,
-                    IsDeleted = false
-                };
-                // NOTE: original called GetPatientServicesX(searchObj) here, NOT
-                // GetPatientServicesX(sObj) - the sObj built just above (with
-                // CheckupTypeId/IsDeleted) is unused; the caller's raw searchObj
-                // is passed straight through instead. Preserved exactly as-is -
-                // confirm whether this was intentional.
-                var resultPatientServices = GetPatientServicesX(searchObj);
-                if (resultPatientServices == null || resultPatientServices.Success != true)
-                    throw new Exception("خطا در واکشی اطلاعات سرویسهای بیمار ");
+                    // --------------------------------------------------------------
+                    // Only what this function actually needs (patient name, service
+                    // count, total charged) computed directly in the database -
+                    // instead of going through GetPatientServicesX, which also
+                    // fetches every active insurance record, the entire Teeth
+                    // reference table, builds ~5 joined title strings per row, and
+                    // decodes tooth image byte[] blobs - none of which
+                    // GetPatientBillX ever reads.
+                    // --------------------------------------------------------------
+                    var serviceSummary = db.PatientServices
+                        .AsNoTracking()
+                        .Where(ps => ps.PatientId == PatientId.Value && ps.IsDeleted != true)
+                        .GroupBy(ps => ps.PatientId)
+                        .Select(g => new
+                        {
+                            ServiceCount = g.Count(),
+                            Total_Patient_Charge = g.Sum(ps => (long?)ps.ServicePrice) ?? 0
+                        })
+                        .FirstOrDefault();
 
-                var dataPatientServices = resultPatientServices.Data as IEnumerable<dynamic>;
+                    var patientName = db.Patients
+                        .AsNoTracking()
+                        .Where(p => p.Id == PatientId.Value)
+                        .Select(p => p.FirstName + " " + p.LastName)
+                        .FirstOrDefault();
 
-                var patientServicesResult =
-                            dataPatientServices
-                            .Select(i =>
-                            {
-                                return new
-                                {
-                                    PatientId = (int)i.PatientId,
-                                    PatientName = (string)i.PatientName,
-                                    ServicePrice = (double)i.ServicePrice,
-                                };
-                            }).ToList();
-
-                var patientServicesGroupByPatientResult =
-                                    (from item in patientServicesResult
-                                     group item by new { item.PatientId } into gItem
-
-                                     select new
-                                     {
-                                         PatientId = gItem.Key,
-                                         PatientName = gItem.First().PatientName,
-                                         ServiceCount = gItem.Count(),
-                                         Total_Patient_Charge = gItem.Sum(i => i.ServicePrice)
-                                     }).ToList();
-
-                sObj = new
-                {
-                    PatientId = PatientId,
-                    IsDeleted = false
-                };
-                var resultPatientFinancials = GetPatientTransactionsX(sObj);
-                if (resultPatientFinancials == null || resultPatientFinancials.Success != true)
-                    throw new Exception("خطا در واکشی اطلاعات تراکنشات مالی بیمار ");
-                var dataPatientFinancials = resultPatientFinancials.Data as IEnumerable<dynamic>;
-
-                var patientFinancialsResult =
-                           dataPatientFinancials
-                           .Select(i =>
-                           {
-                               return new
-                               {
-                                   PatientId = (int)i.PatientId,
-                                   PatientName = (string)i.PatientName,
-                                   Amount = (double)i.Amount,
-                                   PayTypeId = (int)i.PayTypeId
-                               };
-                           }).ToList();
-
-                var patientFinancialsGroupByPatientResult =
-                                    (from item in patientFinancialsResult
-                                     group item by new { item.PatientId } into gItem
-
-                                     select new
-                                     {
-                                         PatientId = gItem.Key,
-                                         Total_Patient_Paid = gItem.Where(i => i.PayTypeId == 1 || i.PayTypeId == 2 || i.PayTypeId == 3).Sum(i => i.Amount),
-                                         Total_Patient_Refund = gItem.Where(i => i.PayTypeId == 5).Sum(i => i.Amount),
-                                         Total_Patient_Discount = gItem.Where(i => i.PayTypeId == 6).Sum(i => i.Amount)
-                                     }).ToList();
-
-                var a = patientServicesGroupByPatientResult.FirstOrDefault();
-                var b = patientFinancialsGroupByPatientResult.FirstOrDefault();
-                var finalResult = (
-                    new
+                    // Financial totals still go through GetPatientTransactionsX for
+                    // now (left unchanged - out of scope for this pass). Note it
+                    // also has some unrelated overhead of its own (it loads the
+                    // ENTIRE Banks and ChequeStatuses tables on every call,
+                    // regardless of PatientId) - worth the same treatment later if
+                    // this function is called often.
+                    dynamic sObj = new
                     {
                         PatientId = PatientId,
-                        PatientName = a != null ? a.PatientName : "",
-                        Total_Patient_Charge = a != null ? a.Total_Patient_Charge : 0,
-                        Total_Patient_Paid = b != null ? b.Total_Patient_Paid : 0,
-                        Total_Patient_Refund = b != null ? b.Total_Patient_Refund : 0,
-                        Total_Patient_Discount = b != null ? b.Total_Patient_Discount : 0,
-                        Total_Patient_Remianed = (a != null && b != null) ? (a.Total_Patient_Charge
-                                                 - ((b.Total_Patient_Paid - b.Total_Patient_Refund)
-                                                 + b.Total_Patient_Discount)) : 0,
+                        IsDeleted = false
+                    };
+                    var resultPatientFinancials = GetPatientTransactionsX(sObj);
+                    if (resultPatientFinancials == null || resultPatientFinancials.Success != true)
+                        throw new Exception("خطا در واکشی اطلاعات تراکنشات مالی بیمار ");
+                    var dataPatientFinancials = resultPatientFinancials.Data as IEnumerable<dynamic>;
 
-                    });
+                    var patientFinancialsResult =
+                               dataPatientFinancials
+                               .Select(i => new
+                               {
+                                   Amount = (long)i.Amount,
+                                   PayTypeId = (int)i.PayTypeId
+                               }).ToList();
 
-                return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
+                    var totalPaid = patientFinancialsResult.Where(i => i.PayTypeId == 1 || i.PayTypeId == 2 || i.PayTypeId == 3).Sum(i => i.Amount);
+                    var totalRefund = patientFinancialsResult.Where(i => i.PayTypeId == 5).Sum(i => i.Amount);
+                    var totalDiscount = patientFinancialsResult.Where(i => i.PayTypeId == 6).Sum(i => i.Amount);
+
+                    var totalCharge = serviceSummary != null ? serviceSummary.Total_Patient_Charge : 0;
+
+                    var finalResult = new
+                    {
+                        PatientId = PatientId,
+                        PatientName = patientName ?? "",
+                        Total_Patient_Charge = totalCharge,
+                        Total_Patient_Paid = totalPaid,
+                        Total_Patient_Refund = totalRefund,
+                        Total_Patient_Discount = totalDiscount,
+                        Total_Patient_Remianed = totalCharge - ((totalPaid - totalRefund) + totalDiscount),
+                    };
+
+                    return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
+                }
             }
             catch (Exception ex)
             {
@@ -1458,7 +1435,8 @@ namespace Dentistry
             }
         }
 
-       
+
+
 
         public static JsonResponse<dynamic> GetPatientServicesX(dynamic searchObj)
         {
@@ -2013,8 +1991,8 @@ namespace Dentistry
                     : null;
                 var FromDate = x.HasValue("FromDate") ? x.GetValue<DateTime>("FromDate") : (DateTime?)null;
                 var ToDate = x.HasValue("ToDate") ? x.GetValue<DateTime>("ToDate") : (DateTime?)null;
-                var FromAmount = x.HasValue("FromAmount") ? x.GetValue<double>("FromAmount") : (double?)null;
-                var ToAmount = x.HasValue("ToAmount") ? x.GetValue<double>("ToAmount") : (double?)null;
+                var FromAmount = x.HasValue("FromAmount") ? x.GetValue<long>("FromAmount") : (long?)null;
+                var ToAmount = x.HasValue("ToAmount") ? x.GetValue<long>("ToAmount") : (long?)null;
                 var IsDateOfIssuance = x.HasValue("IsDateOfIssuance") ? x.GetValue<bool>("IsDateOfIssuance") : (bool?)null;
                 var IsDateOfMaturity = x.HasValue("IsDateOfMaturity") ? x.GetValue<bool>("IsDateOfMaturity") : (bool?)null;
                 var IsDeleted = x.HasValue("IsDeleted") ? x.GetValue<bool>("IsDeleted") : (bool?)null;
@@ -2051,10 +2029,10 @@ namespace Dentistry
                         query = query.Where(pf => PayTypeIds.Contains(pf.PayTypeId));
 
                     if (FromAmount != null)
-                        query = query.Where(pf => pf.Amount >= (decimal)FromAmount.Value);
+                        query = query.Where(pf => pf.Amount >= FromAmount.Value);
 
                     if (ToAmount != null)
-                        query = query.Where(pf => pf.Amount <= (decimal)ToAmount.Value);
+                        query = query.Where(pf => pf.Amount <= ToAmount.Value);
 
                     var materialized = query.ToList();
 
@@ -2124,7 +2102,7 @@ namespace Dentistry
                             PatientId = i.PatientId,
                             Date = Publics.GetDate(i.Date),
                             SolarDate = Publics.GetSolarDateTime(i.Date),
-                            Amount = (double)i.Amount,
+                            Amount = (long)i.Amount,
                             PatientName = i.PatientName,
                             PayTypeId = i.PayTypeId,
                             PayTypeTitle = i.PayTypeTitle,
@@ -2170,8 +2148,8 @@ namespace Dentistry
                     : null;
                 var FromDate = x.HasValue("FromDate") ? x.GetValue<DateTime>("FromDate") : (DateTime?)null;
                 var ToDate = x.HasValue("ToDate") ? x.GetValue<DateTime>("ToDate") : (DateTime?)null;
-                var FromAmount = x.HasValue("FromAmount") ? x.GetValue<double>("FromAmount") : (double?)null;
-                var ToAmount = x.HasValue("ToAmount") ? x.GetValue<double>("ToAmount") : (double?)null;
+                var FromAmount = x.HasValue("FromAmount") ? x.GetValue<long>("FromAmount") : (long?)null;
+                var ToAmount = x.HasValue("ToAmount") ? x.GetValue<long>("ToAmount") : (long?)null;
                 var IsDateOfIssuance = x.HasValue("IsDateOfIssuance") ? x.GetValue<bool>("IsDateOfIssuance") : (bool?)null;
                 var IsDateOfMaturity = x.HasValue("IsDateOfMaturity") ? x.GetValue<bool>("IsDateOfMaturity") : (bool?)null;
                 var IsDeleted = x.HasValue("IsDeleted") ? x.GetValue<bool>("IsDeleted") : (bool?)null;
@@ -2208,10 +2186,10 @@ namespace Dentistry
                         query = query.Where(pf => PayTypeIds.Contains(pf.PayTypeId));
 
                     if (FromAmount != null)
-                        query = query.Where(pf => pf.Amount >= (decimal)FromAmount.Value);
+                        query = query.Where(pf => pf.Amount >= FromAmount.Value);
 
                     if (ToAmount != null)
-                        query = query.Where(pf => pf.Amount <= (decimal)ToAmount.Value);
+                        query = query.Where(pf => pf.Amount <= ToAmount.Value);
 
                     var materialized = query.ToList();
 
@@ -2281,7 +2259,7 @@ namespace Dentistry
                             PatientId = i.PatientId,
                             Date = Publics.GetDate(i.Date),
                             SolarDate = Publics.GetSolarDateTime(i.Date),
-                            Amount = (double)i.Amount,
+                            Amount = (long)i.Amount,
                             PatientName = i.PatientName,
                             PayTypeId = i.PayTypeId,
                             PayTypeTitle = i.PayTypeTitle,
@@ -2799,11 +2777,11 @@ namespace Dentistry
                                     ServiceGroupId = (int)i.ServiceGroupId,
                                     ServiceGroupTitle = (string)i.ServiceGroupTitle,
                                     ServiceTitle = (string)i.ServiceTitle,
-                                    ServicePrice = (double)i.ServicePrice,
-                                    InsurerPrice = (double)i.InsurerPrice,
-                                    InsurerShare = (double)i.InsurerShare,
-                                    FranchiseShare = (double)i.FranchiseShare,
-                                    FreeShare = (double)i.FreeShare,
+                                    ServicePrice = (long)i.ServicePrice,
+                                    InsurerPrice = (long)i.InsurerPrice,
+                                    InsurerShare = (long)i.InsurerShare,
+                                    FranchiseShare = (long)i.FranchiseShare,
+                                    FreeShare = (long)i.FreeShare,
                                 };
                             }).ToList();
 
@@ -2816,7 +2794,7 @@ namespace Dentistry
                                          TitleX = gItem.First().ServiceGroupTitle,
                                          NumberX = gItem.Count(),
                                          TotalX = gItem.Sum(i => i.ServicePrice),
-                                         PercentX = (gItem.Sum(i => i.ServicePrice) / patientServicesResult.Sum(i => i.ServicePrice)) * 100,
+                                         PercentX = ((double)gItem.Sum(i => i.ServicePrice) / patientServicesResult.Sum(i => i.ServicePrice)) * 100,
                                      }).OrderByDescending(i => i.TitleX).ToList();
 
                 //
@@ -2843,7 +2821,7 @@ namespace Dentistry
                                 return new
                                 {
                                     PatientFinancialId = (int)i.PatientFinancialId,
-                                    Amount = (decimal)i.Amount,
+                                    Amount = (long)i.Amount,
                                     PatientName = (string)i.PatientName,
                                     PayTypeId = (int?)i.PayTypeId,
                                     PayTypeTitle = (string)i.PayTypeTitle,
@@ -2860,7 +2838,7 @@ namespace Dentistry
                                          TitleX = gItem.First().PayTypeTitle,
                                          NumberX = gItem.Count(),
                                          TotalX = gItem.Sum(i => i.Amount),
-                                         PercentX = (gItem.Sum(i => i.Amount) / patientPaymentsResult.Sum(i => i.Amount)) * 100,
+                                         PercentX = ((double)gItem.Sum(i => i.Amount) / patientPaymentsResult.Sum(i => i.Amount)) * 100,
                                      }).OrderByDescending(i => i.TitleX).ToList();
 
                 //
@@ -2881,10 +2859,10 @@ namespace Dentistry
                                     InsuranceId = (int)i.InsuranceId,
                                     InsurerId = (int)i.InsurerId,
                                     InsurerTitle = (string)i.InsurerTitle,
-                                    RequestedValue = (double)i.RequestedValue,
-                                    ReceivedValue = (double)i.ReceivedValue,
-                                    DeductionValue = (double)i.DeductionValue,
-                                    RemainPrice = (double)i.RemainPrice,
+                                    RequestedValue = (long)i.RequestedValue,
+                                    ReceivedValue = (long)i.ReceivedValue,
+                                    DeductionValue = (long)i.DeductionValue,
+                                    RemainPrice = (long)i.RemainPrice,
                                     Comment = (string)i.Comment,
                                 };
                             }).Where(i => i.InsurerId != 0).ToList();
@@ -2898,7 +2876,7 @@ namespace Dentistry
                                          TitleX = gItem.First().InsurerTitle,
                                          NumberX = gItem.Count(),
                                          TotalX = gItem.Sum(i => i.ReceivedValue),
-                                         PercentX = (gItem.Sum(i => i.ReceivedValue) / insurerFinancialResult.Sum(i => i.ReceivedValue)) * 100,
+                                         PercentX = ((double)gItem.Sum(i => i.ReceivedValue) / insurerFinancialResult.Sum(i => i.ReceivedValue)) * 100,
                                      }).OrderByDescending(i => i.TitleX).ToList();
 
                 //
@@ -2919,7 +2897,7 @@ namespace Dentistry
                                     CostTitle = (string)i.CostTitle,
                                     CostTypeId = (int?)i.CostTypeId,
                                     CostTypeTitle = (string)i.CostTypeTitle,
-                                    Amount = (double)i.Amount,
+                                    Amount = (long)i.Amount,
                                     BargainSideId = (int?)i.BargainSideId,
                                     BargainSideTitle = (string)i.BargainSideTitle,
                                     PayTypeId = (int?)i.PayTypeId,
@@ -2937,7 +2915,7 @@ namespace Dentistry
                                          TitleX = gItem.First().CostTitle,
                                          NumberX = gItem.Count(),
                                          TotalX = gItem.Sum(i => i.Amount),
-                                         PercentX = (gItem.Sum(i => i.Amount) / totalAmount) * 100,
+                                         PercentX = ((double)gItem.Sum(i => i.Amount) / totalAmount) * 100,
                                      }).OrderByDescending(i => i.TitleX).ToList();
 
                 var finalResult = new
@@ -2979,7 +2957,7 @@ namespace Dentistry
                                     CostTitle = (string)i.CostTitle,
                                     CostTypeId = (int?)i.CostTypeId,
                                     CostTypeTitle = (string)i.CostTypeTitle,
-                                    Amount = (double)i.Amount,
+                                    Amount = (long)i.Amount,
 
                                     PayTypeId = (int?)i.PayTypeId,
                                     PayTypeTitle = (string)i.PayTypeTitle,
@@ -2999,7 +2977,7 @@ namespace Dentistry
                                          TitleX = gItem.First().CostTitle,
                                          NumberX = gItem.Count(),
                                          TotalX = gItem.Sum(i => i.Amount),
-                                         PercentX = totalAmount == 0 ? 0 : (gItem.Sum(i => i.Amount) / totalAmount) * 100,
+                                         PercentX = totalAmount == 0 ? 0 : ((double)gItem.Sum(i => i.Amount) / totalAmount) * 100,
                                      }).OrderByDescending(i => i.TitleX).ToList();
 
                 var finalResult = new
@@ -3039,10 +3017,10 @@ namespace Dentistry
                                     SolarDate = (string)i.SolarDate,
                                     FromSolarDate = (string)i.FromSolarDate,
                                     ToSolarDate = (string)i.ToSolarDate,
-                                    RequestedValue = (double)i.RequestedValue,
-                                    ReceivedValue = (double)i.ReceivedValue,
-                                    DeductionValue = (double)i.DeductionValue,
-                                    RemainPrice = (double)i.RemainPrice,
+                                    RequestedValue = (long)i.RequestedValue,
+                                    ReceivedValue = (long)i.ReceivedValue,
+                                    DeductionValue = (long)i.DeductionValue,
+                                    RemainPrice = (long)i.RemainPrice,
                                     Comment = (string)i.Comment,
                                 };
                             }).Where(i => i.InsurerId != 0).ToList();
@@ -3057,7 +3035,7 @@ namespace Dentistry
                                          TitleX = gItem.First().InsurerTitle,
                                          NumberX = gItem.Count(),
                                          TotalX = gItem.Sum(i => i.ReceivedValue),
-                                         PercentX = totalReceived == 0 ? 0 : (gItem.Sum(i => i.ReceivedValue) / totalReceived) * 100,
+                                         PercentX = totalReceived == 0 ? 0 : ((double)gItem.Sum(i => i.ReceivedValue) / totalReceived) * 100,
                                      }).OrderByDescending(i => i.TitleX).ToList();
 
                 var finalResult = new
@@ -3141,10 +3119,10 @@ namespace Dentistry
                             FromSolarDate = Publics.GetSolarDate(i.FromDate),
                             ToDate = Publics.GetDate(i.ToDate),
                             ToSolarDate = Publics.GetSolarDate(i.ToDate),
-                            RequestedValue = (double)i.RequestedValue,
-                            ReceivedValue = (double)i.ReceivedValue,
-                            DeductionValue = (double)i.DeductionValue,
-                            RemainPrice = (double)i.RemainPrice,
+                            RequestedValue = (long)i.RequestedValue,
+                            ReceivedValue = (long)i.ReceivedValue,
+                            DeductionValue = (long)i.DeductionValue,
+                            RemainPrice = (long)i.RemainPrice,
                             i.Comment,
                             i.IsDeleted
                         })
@@ -3254,7 +3232,7 @@ namespace Dentistry
                             i.CostTitle,
                             CostTypeId = (int?)i.CostTypeId,
                             i.CostTypeTitle,
-                            Amount = (double)i.Amount,
+                            Amount = (long)i.Amount,
                             i.BargainSideId,
                             i.BargainSideTitle,
                             i.PayTypeId,
@@ -3307,7 +3285,7 @@ namespace Dentistry
                                     PatientFinancialId = (int)i.PatientFinancialId,
                                     Date = (DateTime?)i.Date,
                                     SolarDate = (string)i.SolarDate,
-                                    Amount = (decimal)i.Amount,
+                                    Amount = (long)i.Amount,
                                     PatientName = (string)i.PatientName,
                                     PayTypeId = (int?)i.PayTypeId,
                                     PayTypeTitle = (string)i.PayTypeTitle,
@@ -3328,7 +3306,7 @@ namespace Dentistry
                                         TitleX = gItem.First().PayTypeTitle,
                                         NumberX = gItem.Count(),
                                         TotalX = gItem.Sum(i => i.Amount),
-                                        PercentX = totalAmount == 0 ? 0 : (gItem.Sum(i => i.Amount) / totalAmount) * 100,
+                                        PercentX = totalAmount == 0 ? 0 : ((double)gItem.Sum(i => i.Amount) / totalAmount) * 100,
                                     }).ToList();
 
                 var finalResult = new
@@ -3444,8 +3422,8 @@ namespace Dentistry
                             i.Id,
                             i.ServiceId,
                             i.InsurerId,
-                            FreePrice = (double)(i.FreePrice ?? 0),
-                            InsurerPrice = (double)(i.InsurerPrice ?? 0),
+                            FreePrice = (long)(i.FreePrice ?? 0),
+                            InsurerPrice = (long)(i.InsurerPrice ?? 0),
                             DefineDate = Publics.GetDate(i.DefineDate),
                             SolarDefineDate = Publics.GetSolarDate(i.DefineDate),
                             RunDate = Publics.GetDate(i.RunDate),
@@ -3534,7 +3512,7 @@ namespace Dentistry
                                        TitleX = gItem.First().ServiceGroupTitle,
                                        NumberX = gItem.Count(),
                                        TotalX = gItem.Sum(a => a.ActionPrice),
-                                       PercentX = (gItem.Sum(a => a.ActionPrice) / FullSum) * 100,
+                                       PercentX = ((double)gItem.Sum(a => a.ActionPrice) / FullSum) * 100,
 
                                    }).ToList();
 
@@ -3555,7 +3533,7 @@ namespace Dentistry
                         ServiceTitle = (string)i.ServiceTitle,
                         SolarDate = (string)i.SolarDate,
                         ToothNumbers = (string)i.ToothIds,
-                        ActionPrice = (decimal)i.ActionPrice,
+                        ActionPrice = (long)i.ActionPrice,
                     }).ToList();
 
                 var finalResult = new
@@ -3636,7 +3614,7 @@ namespace Dentistry
                            {
                                return new
                                {
-                                   Amount = (double)i.Amount,
+                                   Amount = (long)i.Amount,
                                    PayTypeId = (int)i.PayTypeId,
                                    PayTypeTitle = (string)i.PayTypeTitle
                                };
@@ -3672,7 +3650,7 @@ namespace Dentistry
                            {
                                return new
                                {
-                                   Amount = (double)i.Amount,
+                                   Amount = (long)i.Amount,
                                    CostTypeId = (int)i.PayTypeId,
                                    CostTypeTitle = (string)i.PayTypeTitle
                                };
@@ -4713,7 +4691,7 @@ namespace Dentistry
                     var DefineDate = DateTime.Now;
                     var ModifiedDate = (DateTime?)DateTime.Now;
                     var Comment = x.HasValue("Comment") ? x.GetValue<string>("Comment") : null;
-                    var ServiceFreePrice = x.HasValue("ServiceFreePrice") ? x.GetValue<double>("ServiceFreePrice") : (double?)null;
+                    var ServiceFreePrice = x.HasValue("ServiceFreePrice") ? x.GetValue<long>("ServiceFreePrice") : (long?)null;
 
                     int? serviceId;
 
@@ -5362,8 +5340,8 @@ namespace Dentistry
                 var x = new RouteValueDictionary(searchObj);
                 var ServiceId = x.HasValue("ServiceId") ? x.GetValue<int>("ServiceId") : (int?)null;
                 var InsurerIds = x.HasValue("InsurerIds") ? x.GetValue<IEnumerable>("InsurerIds").OfType<object>().Select(i => Convert.ToInt32(i)).ToArray() : null;
-                var FreePrice = x.HasValue("FreePrice") ? x.GetValue<double>("FreePrice") : (double?)null;
-                var InsurerPrice = x.HasValue("InsurerPrice") ? x.GetValue<double>("InsurerPrice") : (double?)null;
+                var FreePrice = x.HasValue("FreePrice") ? x.GetValue<long>("FreePrice") : (long?)null;
+                var InsurerPrice = x.HasValue("InsurerPrice") ? x.GetValue<long>("InsurerPrice") : (long?)null;
                 var DefineDate = x.HasValue("DefineDate") ? x.GetValue<DateTime>("DefineDate") : DateTime.Now;
                 var RunDate = x.HasValue("RunDate") ? x.GetValue<DateTime>("RunDate") : DateTime.Now;
 
@@ -5860,7 +5838,7 @@ namespace Dentistry
                     var CostTypeId = x.HasValue("CostTypeId") ? x.GetValue<int>("CostTypeId") : (int?)null;
                     var BargainSideId = x.HasValue("BargainSideId") ? x.GetValue<int>("BargainSideId") : (int?)null;
                     var PayTypeId = x.HasValue("PayTypeId") ? x.GetValue<int>("PayTypeId") : (int?)null;
-                    var Amount = x.HasValue("Amount") ? x.GetValue<double>("Amount") : (double?)null;
+                    var Amount = x.HasValue("Amount") ? x.GetValue<long>("Amount") : (long?)null;
                     var CostTitle = x.HasValue("CostTitle") ? x.GetValue<string>("CostTitle") : null;
                     var FactorNumber = x.HasValue("FactorNumber") ? x.GetValue<string>("FactorNumber") : null;
                     var Date = x.HasValue("Date") ? x.GetValue<DateTime>("Date") : (DateTime?)null;
@@ -5966,7 +5944,7 @@ namespace Dentistry
                     var Id = x.HasValue("Id") ? x.GetValue<int>("Id") : (int?)null;
                     var PatientId = x.HasValue("PatientId") ? x.GetValue<int>("PatientId") : (int?)null;
                     var PayTypeId = x.HasValue("PayTypeId") ? x.GetValue<int>("PayTypeId") : (int?)null;
-                    var Amount = x.HasValue("Amount") ? x.GetValue<double>("Amount") : (double?)null;
+                    var Amount = x.HasValue("Amount") ? x.GetValue<long>("Amount") : (long?)null;
                     var Date = x.HasValue("Date") ? x.GetValue<DateTime>("Date") : (DateTime?)null;
                     var ChequeNumber = x.HasValue("ChequeNumber") ? x.GetValue<string>("ChequeNumber") : null;
                     var BankId = x.HasValue("BankId") ? x.GetValue<int>("BankId") : (int?)null;

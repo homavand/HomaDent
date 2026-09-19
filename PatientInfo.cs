@@ -258,10 +258,7 @@ namespace Dentistry
         #endregion
         #region FillGrid_dgPatientServices
         private void FillGrid_dgPatientServices()
-        {
-            var swTotal = System.Diagnostics.Stopwatch.StartNew();
-            var log = new System.Text.StringBuilder();
-
+        {          
             //this.dgPatientServices_ColumnOrder();
 
             int checkupTypeId = 2;
@@ -269,27 +266,17 @@ namespace Dentistry
             dynamic sObj = new ExpandoObject();
             sObj.PatientId = this.PatientId;
             sObj.CheckupTypeId = checkupTypeId;
-
-            var sw = System.Diagnostics.Stopwatch.StartNew();
+            
             JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientServicesX(sObj);
-            log.AppendLine("A. GetPatientServicesX() call: " + sw.ElapsedMilliseconds + " ms");
-
-            if (result == null || result.Success == false)
+           
+            if (result == null || result.Success == false || result.Data == null)
                 return;
             var dd = result.Data;
 
-            if (dd == null)
-                return;
-
-            sw.Restart();
             var rawList = (dd as IEnumerable<dynamic>).ToList();
-            log.AppendLine("B. Materialize dd to List (" + rawList.Count + " rows): " + sw.ElapsedMilliseconds + " ms");
-
-            sw.Restart();
+          
             var patientServiceObjs = rawList.Select(i => new Class.PatientService(i)).ToList();
-            log.AppendLine("C. new Class.PatientService(i) for all rows: " + sw.ElapsedMilliseconds + " ms");
-
-            sw.Restart();
+         
             var patientServiceList = patientServiceObjs
                 .Select(i =>
                 new
@@ -309,74 +296,14 @@ namespace Dentistry
                     i.Comment,
                     i.CheckupTypeCode,
                     i.ToothImage,   // <-- suspect: decodes/resizes an image per row, no caching
-        }).ToList();
-            log.AppendLine("D. Project incl. .ToothImage (image decode) for all rows: " + sw.ElapsedMilliseconds + " ms");
+            }).ToList();
+           
+            this.dgPatientServices.DataSource = patientServiceList;         
+            this.dgPatientServices.Refresh();         
 
-            sw.Restart();
-            this.dgPatientServices.DataSource = patientServiceList;
-            log.AppendLine("E. Set DataSource: " + sw.ElapsedMilliseconds + " ms");
-
-            sw.Restart();
-            this.dgPatientServices.Refresh();
-            log.AppendLine("F. dgPatientServices.Refresh(): " + sw.ElapsedMilliseconds + " ms");
-
-            log.AppendLine("TOTAL: " + swTotal.ElapsedMilliseconds + " ms");
-
-            try
-            {
-                System.IO.File.AppendAllText(@"C:\temp\perf_log_grid.txt",
-                    "==== " + DateTime.Now.ToString("HH:mm:ss.fff") + " ====\r\n" + log.ToString() + "\r\n");
-            }
-            catch { /* ignore logging failures */ }
+          
         }
-        private void FillGrid_dgPatientServices2()
-        {
-            //this.dgPatientServices_ColumnOrder();
-
-
-            int checkupTypeId = 2;
-
-            dynamic sObj = new ExpandoObject();
-            sObj.PatientId = this.PatientId;
-            sObj.CheckupTypeId = checkupTypeId;
-
-            JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientServicesX(sObj);
-
-            if (result == null || result.Success == false || result.Data == null)
-                return;
-            var dd = result.Data;
-
-            
-            IEnumerable<dynamic> patientServiceList = dd != null && (Enumerable.Count(dd) >= 0) ? (dd as IEnumerable<dynamic>)
-                .Select(i => new Class.PatientService(i))
-                   .Select(i =>
-                   new
-                   {
-                       i.Id,
-                       i.DoctorId,
-                       i.ServiceGroupId,
-                       i.ServiceGroupTitle,
-                       i.ServiceTitle,
-                       i.ProviderStaffTitle,
-                       i.ServicePrice,
-                       i.InsurerPrice,
-                       i.InsurerShare,
-                       i.FranchiseShare,
-                       i.FreeShare,
-
-
-                       i.SolarDateTime,
-                       i.Comment,
-                       i.CheckupTypeCode,
-                       i.ToothImage,
-                   }).ToList() : Enumerable.Empty<dynamic>();
-
-
-
-            this.dgPatientServices.DataSource = patientServiceList;
-            this.dgPatientServices.Refresh();
-
-        }
+        
         #endregion
 
 
