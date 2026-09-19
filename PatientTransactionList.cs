@@ -14,7 +14,7 @@ using DNTPersianUtils.Core;
 
 namespace Dentistry
 {
-    public partial class PatientTransactionsFinancialList : Form
+    public partial class PatientTransactionList : Form
     {
         int patientId = 0;   
         PopupControl.Popup p;
@@ -38,7 +38,7 @@ namespace Dentistry
         }
 
         #region PatientFinancials
-        public PatientTransactionsFinancialList()
+        public PatientTransactionList()
         {
             InitializeComponent();                     
             this.PatientId = Dentistry.AppConfigs.SelectedPatientId;

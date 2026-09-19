@@ -322,7 +322,7 @@ namespace Dentistry
                 case "PatientsFinancials":
                     if (Dentistry.Publics.GetCurrentUserPermission1((int)Enums.AppActions.مدیریت_تراکنش_ها_مشاهده) == false)
                         return;
-                    form = new PatientTransactionsFinancialList();
+                    form = new PatientTransactionList();
                     if (form != null)
                     {
                         this.FormShow(form);
