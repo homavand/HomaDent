@@ -1086,7 +1086,7 @@
             this.ButtonPictureViewer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonPictureViewer.Name = "ButtonPictureViewer";
             this.ButtonPictureViewer.Size = new System.Drawing.Size(200, 27);
-            this.ButtonPictureViewer.Text = "مشاهده تصویر در PictureViewer";
+            this.ButtonPictureViewer.Text = "مشاهده تصویر";
             this.ButtonPictureViewer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ButtonPictureViewer.Click += new System.EventHandler(this.ButtonPictureViewer_Click);
             // 
@@ -1491,7 +1491,7 @@
             this.dgSpecialComment.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black;
@@ -1505,7 +1505,7 @@
             this.ColumnId});
             dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Vazir", 9.75F);
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Tahoma", 8.25F);
             dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;

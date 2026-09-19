@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rdoFemale = new System.Windows.Forms.RadioButton();
             this.rdoMale = new System.Windows.Forms.RadioButton();
             this.NationalCodeTxt = new System.Windows.Forms.TextBox();
@@ -61,6 +61,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.InfoPnl = new System.Windows.Forms.GroupBox();
             this.personalityInfoPnl = new System.Windows.Forms.Panel();
+            this.JobCbo = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.DoctorCbo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -110,7 +111,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.InsuredNumberTxt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.JobCbo = new System.Windows.Forms.ComboBox();
             this.InfoPnl.SuspendLayout();
             this.personalityInfoPnl.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -213,7 +213,7 @@
             this.MobilePhoneTxt.MaxLength = 11;
             this.MobilePhoneTxt.Name = "MobilePhoneTxt";
             this.MobilePhoneTxt.Size = new System.Drawing.Size(160, 28);
-            this.MobilePhoneTxt.TabIndex = 15;
+            this.MobilePhoneTxt.TabIndex = 16;
             this.MobilePhoneTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FixedPhoneTxt
@@ -225,7 +225,7 @@
             this.FixedPhoneTxt.MaxLength = 11;
             this.FixedPhoneTxt.Name = "FixedPhoneTxt";
             this.FixedPhoneTxt.Size = new System.Drawing.Size(160, 28);
-            this.FixedPhoneTxt.TabIndex = 14;
+            this.FixedPhoneTxt.TabIndex = 15;
             this.FixedPhoneTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
@@ -350,7 +350,7 @@
             this.AddressTxt.MaxLength = 500;
             this.AddressTxt.Name = "AddressTxt";
             this.AddressTxt.Size = new System.Drawing.Size(847, 28);
-            this.AddressTxt.TabIndex = 17;
+            this.AddressTxt.TabIndex = 18;
             // 
             // LastNameTxt
             // 
@@ -530,6 +530,16 @@
             this.personalityInfoPnl.Size = new System.Drawing.Size(1062, 299);
             this.personalityInfoPnl.TabIndex = 181;
             // 
+            // JobCbo
+            // 
+            this.JobCbo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.JobCbo.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.JobCbo.FormattingEnabled = true;
+            this.JobCbo.Location = new System.Drawing.Point(104, 50);
+            this.JobCbo.Name = "JobCbo";
+            this.JobCbo.Size = new System.Drawing.Size(160, 28);
+            this.JobCbo.TabIndex = 6;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -553,7 +563,7 @@
             this.DoctorCbo.Location = new System.Drawing.Point(453, 12);
             this.DoctorCbo.Name = "DoctorCbo";
             this.DoctorCbo.Size = new System.Drawing.Size(500, 28);
-            this.DoctorCbo.TabIndex = 25;
+            this.DoctorCbo.TabIndex = 19;
             this.DoctorCbo.SelectedIndexChanged += new System.EventHandler(this.DoctorCbo_SelectedIndexChanged);
             // 
             // label10
@@ -634,7 +644,7 @@
             this.rdoNone.Name = "rdoNone";
             this.rdoNone.Padding = new System.Windows.Forms.Padding(2);
             this.rdoNone.Size = new System.Drawing.Size(88, 25);
-            this.rdoNone.TabIndex = 179;
+            this.rdoNone.TabIndex = 9;
             this.rdoNone.TabStop = true;
             this.rdoNone.Tag = "3";
             this.rdoNone.Text = "نامشخص";
@@ -662,7 +672,7 @@
             this.BirthDateTxt.Name = "BirthDateTxt";
             this.BirthDateTxt.ShowTime = false;
             this.BirthDateTxt.Size = new System.Drawing.Size(160, 25);
-            this.BirthDateTxt.TabIndex = 9;
+            this.BirthDateTxt.TabIndex = 10;
             this.BirthDateTxt.Text = "persianDateTimePicker1";
             // 
             // NationalityCbo
@@ -673,7 +683,7 @@
             this.NationalityCbo.Location = new System.Drawing.Point(104, 126);
             this.NationalityCbo.Name = "NationalityCbo";
             this.NationalityCbo.Size = new System.Drawing.Size(160, 28);
-            this.NationalityCbo.TabIndex = 13;
+            this.NationalityCbo.TabIndex = 14;
             // 
             // label26
             // 
@@ -697,7 +707,7 @@
             this.MaritalStatusCbo.Location = new System.Drawing.Point(791, 126);
             this.MaritalStatusCbo.Name = "MaritalStatusCbo";
             this.MaritalStatusCbo.Size = new System.Drawing.Size(160, 28);
-            this.MaritalStatusCbo.TabIndex = 11;
+            this.MaritalStatusCbo.TabIndex = 12;
             // 
             // label25
             // 
@@ -720,7 +730,7 @@
             this.EducationLevelCbo.Location = new System.Drawing.Point(451, 126);
             this.EducationLevelCbo.Name = "EducationLevelCbo";
             this.EducationLevelCbo.Size = new System.Drawing.Size(160, 28);
-            this.EducationLevelCbo.TabIndex = 12;
+            this.EducationLevelCbo.TabIndex = 13;
             // 
             // textBox1
             // 
@@ -729,7 +739,7 @@
             this.textBox1.Location = new System.Drawing.Point(104, 165);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(160, 28);
-            this.textBox1.TabIndex = 16;
+            this.textBox1.TabIndex = 17;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // RecruitmentDateTxt
@@ -741,7 +751,7 @@
             this.RecruitmentDateTxt.Name = "RecruitmentDateTxt";
             this.RecruitmentDateTxt.ShowTime = false;
             this.RecruitmentDateTxt.Size = new System.Drawing.Size(160, 25);
-            this.RecruitmentDateTxt.TabIndex = 10;
+            this.RecruitmentDateTxt.TabIndex = 11;
             this.RecruitmentDateTxt.Text = "persianDateTimePicker1";
             // 
             // label24
@@ -808,9 +818,9 @@
             this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
             this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Vazir", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.btnSearch.Location = new System.Drawing.Point(114, 28);
+            this.btnSearch.Location = new System.Drawing.Point(114, 27);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(160, 38);
             this.btnSearch.TabIndex = 104;
@@ -898,15 +908,15 @@
             this.dgSearchPatients.BackgroundColor = System.Drawing.Color.White;
             this.dgSearchPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgSearchPatients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgSearchPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSearchPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgSearchPatients.ColumnHeadersHeight = 30;
             this.dgSearchPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgSearchPatients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -922,12 +932,12 @@
             this.dgSearchPatients.Name = "dgSearchPatients";
             this.dgSearchPatients.ReadOnly = true;
             this.dgSearchPatients.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgSearchPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSearchPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgSearchPatients.RowHeadersVisible = false;
             this.dgSearchPatients.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgSearchPatients.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -951,8 +961,8 @@
             // 
             this.PatientNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PatientNameColumn.DataPropertyName = "PatientName";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PatientNameColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientNameColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.PatientNameColumn.HeaderText = "نام بیمار";
             this.PatientNameColumn.Name = "PatientNameColumn";
             this.PatientNameColumn.ReadOnly = true;
@@ -960,8 +970,8 @@
             // NationalCodeColumn
             // 
             this.NationalCodeColumn.DataPropertyName = "NationalCode";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NationalCodeColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NationalCodeColumn.DefaultCellStyle = dataGridViewCellStyle13;
             this.NationalCodeColumn.HeaderText = "کد ملی";
             this.NationalCodeColumn.Name = "NationalCodeColumn";
             this.NationalCodeColumn.ReadOnly = true;
@@ -970,8 +980,8 @@
             // FatherNameColumn
             // 
             this.FatherNameColumn.DataPropertyName = "FatherName";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FatherNameColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FatherNameColumn.DefaultCellStyle = dataGridViewCellStyle14;
             this.FatherNameColumn.HeaderText = "نام پدر";
             this.FatherNameColumn.Name = "FatherNameColumn";
             this.FatherNameColumn.ReadOnly = true;
@@ -984,13 +994,13 @@
             this.SaveBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
             this.SaveBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
             this.SaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
             this.SaveBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveBtn.Location = new System.Drawing.Point(937, 610);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(160, 30);
-            this.SaveBtn.TabIndex = 26;
+            this.SaveBtn.TabIndex = 24;
             this.SaveBtn.Text = "ذخیره اطلاعات پذیرش";
             this.SaveBtn.UseVisualStyleBackColor = false;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
@@ -1050,7 +1060,7 @@
             this.InsuranceBookletTypeCbo.Location = new System.Drawing.Point(104, 12);
             this.InsuranceBookletTypeCbo.Name = "InsuranceBookletTypeCbo";
             this.InsuranceBookletTypeCbo.Size = new System.Drawing.Size(160, 28);
-            this.InsuranceBookletTypeCbo.TabIndex = 19;
+            this.InsuranceBookletTypeCbo.TabIndex = 21;
             // 
             // label20
             // 
@@ -1115,7 +1125,7 @@
             this.BasicInsurerCbo.Location = new System.Drawing.Point(451, 12);
             this.BasicInsurerCbo.Name = "BasicInsurerCbo";
             this.BasicInsurerCbo.Size = new System.Drawing.Size(500, 28);
-            this.BasicInsurerCbo.TabIndex = 18;
+            this.BasicInsurerCbo.TabIndex = 20;
             // 
             // label12
             // 
@@ -1177,7 +1187,7 @@
             this.InsuredNumberTxt.MaxLength = 50;
             this.InsuredNumberTxt.Name = "InsuredNumberTxt";
             this.InsuredNumberTxt.Size = new System.Drawing.Size(160, 28);
-            this.InsuredNumberTxt.TabIndex = 20;
+            this.InsuredNumberTxt.TabIndex = 21;
             this.InsuredNumberTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
@@ -1191,16 +1201,6 @@
             this.groupBox1.TabIndex = 174;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "  اطلاعات بیمه ی بیمار  ";
-            // 
-            // JobCbo
-            // 
-            this.JobCbo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.JobCbo.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JobCbo.FormattingEnabled = true;
-            this.JobCbo.Location = new System.Drawing.Point(104, 50);
-            this.JobCbo.Name = "JobCbo";
-            this.JobCbo.Size = new System.Drawing.Size(160, 28);
-            this.JobCbo.TabIndex = 184;
             // 
             // PatientAdmission
             // 

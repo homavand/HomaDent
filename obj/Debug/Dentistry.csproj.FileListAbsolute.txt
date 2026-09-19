@@ -52,9 +52,7 @@ D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.CostFinancialList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.CostFinancialDefine.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientDelete.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientDocDefine.resources
-D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientTransactionsFinancialList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientInfo.resources
-D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientFinancialDefine.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.InsuranceFinancialList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.InsuranceFinancialDefine.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.MainForm.resources
@@ -90,3 +88,5 @@ D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.pdb
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.csproj.AssemblyReference.cache
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.DashboardX.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ReportForm.resources
+D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientTransactionList.resources
+D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientTransactionDefine.resources

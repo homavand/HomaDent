@@ -28,21 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.personnelPnl = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Error_UserNameTxt = new System.Windows.Forms.Label();
             this.staffTxt = new System.Windows.Forms.Label();
+            this.UserNameTxt = new Dentistry.UserControls.ExtendedTextBox();
             this.IsActiveChk = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.IsDeActiveChk = new System.Windows.Forms.RadioButton();
             this.Error_UserPassTxt = new System.Windows.Forms.Label();
+            this.UserPassTxt = new Dentistry.UserControls.ExtendedTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.okBtn = new System.Windows.Forms.Button();
@@ -148,8 +150,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.addUserPermissions = new System.Windows.Forms.Button();
             this.ItemTemplate = new Microsoft.VisualBasic.PowerPacks.DataRepeaterItem();
-            this.UserNameTxt = new Dentistry.UserControls.ExtendedTextBox();
-            this.UserPassTxt = new Dentistry.UserControls.ExtendedTextBox();
             this.personnelPnl.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -170,7 +170,7 @@
             this.personnelPnl.Controls.Add(this.label5);
             this.personnelPnl.Controls.Add(this.dgStaffs);
             this.personnelPnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.personnelPnl.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.personnelPnl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.personnelPnl.Location = new System.Drawing.Point(10, 10);
             this.personnelPnl.Name = "personnelPnl";
             this.personnelPnl.Padding = new System.Windows.Forms.Padding(10);
@@ -224,6 +224,23 @@
             this.staffTxt.Size = new System.Drawing.Size(331, 30);
             this.staffTxt.TabIndex = 169;
             this.staffTxt.Text = "...";
+            // 
+            // UserNameTxt
+            // 
+            this.UserNameTxt.AllowExtendedCharacters = true;
+            this.UserNameTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserNameTxt.BackColor = System.Drawing.Color.White;
+            this.UserNameTxt.ExtendedTextBoxLanguage = Dentistry.UserControls.ExtendedTextBox.ExtendedTextBoxLanguages.English;
+            this.UserNameTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameTxt.Location = new System.Drawing.Point(158, 96);
+            this.UserNameTxt.MaxLength = 50;
+            this.UserNameTxt.MinLength = 0;
+            this.UserNameTxt.MoveToNextOnEnterKey = true;
+            this.UserNameTxt.Name = "UserNameTxt";
+            this.UserNameTxt.ShowToolTip = true;
+            this.UserNameTxt.Size = new System.Drawing.Size(200, 28);
+            this.UserNameTxt.TabIndex = 3;
+            this.UserNameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // IsActiveChk
             // 
@@ -302,6 +319,24 @@
             this.Error_UserPassTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Error_UserPassTxt.Visible = false;
             // 
+            // UserPassTxt
+            // 
+            this.UserPassTxt.AllowExtendedCharacters = true;
+            this.UserPassTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserPassTxt.BackColor = System.Drawing.Color.White;
+            this.UserPassTxt.ExtendedTextBoxLanguage = Dentistry.UserControls.ExtendedTextBox.ExtendedTextBoxLanguages.English;
+            this.UserPassTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserPassTxt.Location = new System.Drawing.Point(158, 141);
+            this.UserPassTxt.MaxLength = 50;
+            this.UserPassTxt.MinLength = 0;
+            this.UserPassTxt.MoveToNextOnEnterKey = true;
+            this.UserPassTxt.Name = "UserPassTxt";
+            this.UserPassTxt.PasswordChar = '*';
+            this.UserPassTxt.ShowToolTip = true;
+            this.UserPassTxt.Size = new System.Drawing.Size(200, 28);
+            this.UserPassTxt.TabIndex = 4;
+            this.UserPassTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -331,7 +366,7 @@
             this.okBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
             this.okBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.okBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.okBtn.Font = new System.Drawing.Font("Vazir", 9.5F, System.Drawing.FontStyle.Bold);
+            this.okBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.okBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
             this.okBtn.Location = new System.Drawing.Point(15, 12);
             this.okBtn.Name = "okBtn";
@@ -363,14 +398,14 @@
             this.dgStaffs.BackgroundColor = System.Drawing.Color.GhostWhite;
             this.dgStaffs.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgStaffs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgStaffs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgStaffs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgStaffs.ColumnHeadersHeight = 30;
             this.dgStaffs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgStaffs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -379,27 +414,27 @@
             this.ColumnStaffTitle,
             this.ColumnUserName,
             this.ColumnIsDeleted});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgStaffs.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgStaffs.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgStaffs.EnableHeadersVisualStyles = false;
             this.dgStaffs.GridColor = System.Drawing.Color.Gainsboro;
             this.dgStaffs.Location = new System.Drawing.Point(492, 42);
             this.dgStaffs.MultiSelect = false;
             this.dgStaffs.Name = "dgStaffs";
             this.dgStaffs.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgStaffs.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgStaffs.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgStaffs.RowHeadersVisible = false;
             this.dgStaffs.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Vazir", 9.5F);
             this.dgStaffs.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -415,9 +450,9 @@
             // ColumnStaffId
             // 
             this.ColumnStaffId.DataPropertyName = "StaffId";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColumnStaffId.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnStaffId.DefaultCellStyle = dataGridViewCellStyle7;
             this.ColumnStaffId.HeaderText = "StaffId";
             this.ColumnStaffId.Name = "ColumnStaffId";
             this.ColumnStaffId.ReadOnly = true;
@@ -436,8 +471,8 @@
             // 
             this.ColumnStaffTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnStaffTitle.DataPropertyName = "StaffTitle";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColumnStaffTitle.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnStaffTitle.DefaultCellStyle = dataGridViewCellStyle8;
             this.ColumnStaffTitle.HeaderText = "نام کارمند";
             this.ColumnStaffTitle.Name = "ColumnStaffTitle";
             this.ColumnStaffTitle.ReadOnly = true;
@@ -1497,7 +1532,7 @@
             this.label34.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label34.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.ForeColor = System.Drawing.Color.White;
-            this.label34.Location = new System.Drawing.Point(558, 4041);
+            this.label34.Location = new System.Drawing.Point(541, 4041);
             this.label34.Name = "label34";
             this.label34.Padding = new System.Windows.Forms.Padding(3);
             this.label34.Size = new System.Drawing.Size(253, 26);
@@ -1510,7 +1545,7 @@
             this.label32.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label32.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(558, 3741);
+            this.label32.Location = new System.Drawing.Point(541, 3741);
             this.label32.Name = "label32";
             this.label32.Padding = new System.Windows.Forms.Padding(3);
             this.label32.Size = new System.Drawing.Size(253, 26);
@@ -1523,7 +1558,7 @@
             this.label30.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label30.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(558, 3455);
+            this.label30.Location = new System.Drawing.Point(541, 3455);
             this.label30.Name = "label30";
             this.label30.Padding = new System.Windows.Forms.Padding(3);
             this.label30.Size = new System.Drawing.Size(253, 26);
@@ -1536,7 +1571,7 @@
             this.label26.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label26.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(558, 3175);
+            this.label26.Location = new System.Drawing.Point(541, 3175);
             this.label26.Name = "label26";
             this.label26.Padding = new System.Windows.Forms.Padding(3);
             this.label26.Size = new System.Drawing.Size(253, 26);
@@ -1549,7 +1584,7 @@
             this.label22.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label22.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(558, 2908);
+            this.label22.Location = new System.Drawing.Point(541, 2908);
             this.label22.Name = "label22";
             this.label22.Padding = new System.Windows.Forms.Padding(3);
             this.label22.Size = new System.Drawing.Size(253, 26);
@@ -1570,7 +1605,7 @@
             this.label28.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label28.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(558, 2695);
+            this.label28.Location = new System.Drawing.Point(541, 2695);
             this.label28.Name = "label28";
             this.label28.Padding = new System.Windows.Forms.Padding(3);
             this.label28.Size = new System.Drawing.Size(253, 26);
@@ -1583,7 +1618,7 @@
             this.label20.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label20.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(558, 1757);
+            this.label20.Location = new System.Drawing.Point(541, 1757);
             this.label20.Name = "label20";
             this.label20.Padding = new System.Windows.Forms.Padding(2);
             this.label20.Size = new System.Drawing.Size(253, 26);
@@ -1596,7 +1631,7 @@
             this.label18.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label18.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(558, 1484);
+            this.label18.Location = new System.Drawing.Point(541, 1484);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(3);
             this.label18.Size = new System.Drawing.Size(253, 26);
@@ -1609,7 +1644,7 @@
             this.label24.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.label24.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(558, 1269);
+            this.label24.Location = new System.Drawing.Point(541, 1269);
             this.label24.Name = "label24";
             this.label24.Padding = new System.Windows.Forms.Padding(3);
             this.label24.Size = new System.Drawing.Size(253, 26);
@@ -1622,7 +1657,7 @@
             this.FormTitleTxt.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.FormTitleTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormTitleTxt.ForeColor = System.Drawing.Color.White;
-            this.FormTitleTxt.Location = new System.Drawing.Point(558, 24);
+            this.FormTitleTxt.Location = new System.Drawing.Point(541, 24);
             this.FormTitleTxt.Name = "FormTitleTxt";
             this.FormTitleTxt.Padding = new System.Windows.Forms.Padding(3);
             this.FormTitleTxt.Size = new System.Drawing.Size(253, 26);
@@ -1659,41 +1694,6 @@
             // 
             this.ItemTemplate.Size = new System.Drawing.Size(825, 100);
             // 
-            // UserNameTxt
-            // 
-            this.UserNameTxt.AllowExtendedCharacters = true;
-            this.UserNameTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UserNameTxt.BackColor = System.Drawing.Color.White;
-            this.UserNameTxt.ExtendedTextBoxLanguage = Dentistry.UserControls.ExtendedTextBox.ExtendedTextBoxLanguages.English;
-            this.UserNameTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserNameTxt.Location = new System.Drawing.Point(158, 96);
-            this.UserNameTxt.MaxLength = 50;
-            this.UserNameTxt.MinLength = 0;
-            this.UserNameTxt.MoveToNextOnEnterKey = true;
-            this.UserNameTxt.Name = "UserNameTxt";
-            this.UserNameTxt.ShowToolTip = true;
-            this.UserNameTxt.Size = new System.Drawing.Size(200, 28);
-            this.UserNameTxt.TabIndex = 3;
-            this.UserNameTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // UserPassTxt
-            // 
-            this.UserPassTxt.AllowExtendedCharacters = true;
-            this.UserPassTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UserPassTxt.BackColor = System.Drawing.Color.White;
-            this.UserPassTxt.ExtendedTextBoxLanguage = Dentistry.UserControls.ExtendedTextBox.ExtendedTextBoxLanguages.English;
-            this.UserPassTxt.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserPassTxt.Location = new System.Drawing.Point(158, 141);
-            this.UserPassTxt.MaxLength = 50;
-            this.UserPassTxt.MinLength = 0;
-            this.UserPassTxt.MoveToNextOnEnterKey = true;
-            this.UserPassTxt.Name = "UserPassTxt";
-            this.UserPassTxt.PasswordChar = '*';
-            this.UserPassTxt.ShowToolTip = true;
-            this.UserPassTxt.Size = new System.Drawing.Size(200, 28);
-            this.UserPassTxt.TabIndex = 4;
-            this.UserPassTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // UserDefine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1701,7 +1701,7 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(984, 582);
             this.Controls.Add(this.tabControl1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(1000, 621);
             this.MinimumSize = new System.Drawing.Size(1000, 621);

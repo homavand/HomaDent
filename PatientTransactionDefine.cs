@@ -64,11 +64,10 @@ namespace Dentistry
         #region PatientFinancialDefine_Load
         private void PatientFinancialDefine_Load(object sender, EventArgs e)
         {
-           
 
+            this.GetPatientName();
             this.LoadFormInit();           
             this.TransactionDateTxt.Value = (Dentistry.UserControls.PersianDate)DateTime.Now;
-            this.GetPatientFinancial_remiand(this.PatientId);
 
             if (this.EditOrNewFlag == "Edit")
                 FetchEntityInfo(this.PatientFinancialId);
@@ -77,24 +76,36 @@ namespace Dentistry
 
         }
         #endregion
-    
-        private void GetPatientFinancial_remiand(int patientId)
-        {
-            dynamic sObj = new System.Dynamic.ExpandoObject();
-            sObj.PatientId = patientId;
 
-            JsonResponse<dynamic> result = DataProvider.GetPatientBillX(sObj);
-            if (result == null || result.Success == false || result.Data == null)
+        #region LoadPatientInfo
+        private void GetPatientName()
+        {
+            if (this.PatientId < 1)
                 return;
-          
-       
-            var ff = result.Data;
-            this.PatientCodeTxt.Text = Publics.GetPropertyValue<string>(ff, "PatientId");
-            this.PatientNameTxt.Text = Publics.GetPropertyValue<string>(ff, "PatientName");
-            this.PatientRemianed = Publics.GetPropertyValue<int>(ff, "Total_Patient_Remianed");
-            this.PatientRemianedTxt.Text = Publics.ToRial(this.PatientRemianed);
+
+            dynamic sObj = new
+            {
+                PatientId = this.PatientId,
+            };
+            JsonResponse<dynamic> result = DataProvider.GetPatientsFullNameX(sObj); 
+            if (result == null || result.Success == false || result.Data == null)
+            {
+                FarsiMessageBox.FMessageBox.Show("خطا در واکشی داده ها ", "خطا", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Error, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);
+                return;
+            }
+            var dd = result.Data;
+            var patient = (Enumerable.Count(dd) > 0) ? (dd as IEnumerable<dynamic>).Select(i => i).FirstOrDefault() : null;
+            if (patient == null)
+                return;
+            if (patient.PatientId != null)
+                PatientCodeTxt.Text = Convert.ToString(patient.PatientId);
+            if (patient.PatientName != null)
+                PatientNameTxt.Text = Convert.ToString(patient.PatientName);
+           
 
         }
+
+        #endregion
 
         #region FetchEntityInfo
         private void FetchEntityInfo(int? id)
@@ -361,18 +372,6 @@ namespace Dentistry
             fr_report.ShowDialog();
         }
 
-        private void RemianedLbl_TextChanged(object sender, EventArgs e)
-        {
-            if (this.PatientRemianedTxt.Text.Trim() != string.Empty)
-                if (this.PatientRemianedTxt.Text.Trim().StartsWith("-"))
-                {
-                    this.PatientRemianedTxt.Text = this.PatientRemianedTxt.Text.TrimStart('-');
-                    this.PatientRemianedTxt.ForeColor = Color.DeepSkyBlue;
-                }
-                else
-                    this.PatientRemianedTxt.ForeColor = Color.DeepPink;
-        }
-
         private void PayTypeRdo_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rdoX = sender as RadioButton;
@@ -426,42 +425,6 @@ namespace Dentistry
             }
         }
 
-      
-        private void PatientCodeTxt_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                var patientId = Convert.ToInt32(((TextBox)sender).Text);
-                dynamic sObj = new
-                {
-                    PatientId = patientId
-                };
-
-                var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj);  // Patient  &  PatientInsurance
-                if (result == null || result.Success == false || result.Data == null)
-                    return;
-                var patient = result.Data;
-              
-                sObj = new
-                {
-                    PatientId = patientId,
-                };
-                result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
-                if (result == null || result.Success == false || result.Data == null)
-                    return;
-                var patientFinancial = result.Data;
-
-                                    
-                this.PatientId = Publics.GetPropertyValue<int>(patient, "PatientId");
-                this.PatientNameTxt.Text =  Publics.GetPropertyValue<string>(patient, "PatientName") ;
-                this.PatientRemianedTxt.Text = Publics.GetPropertyValue<string>(patientFinancial, "Total_Patient_Remianed"); 
-                
-            }
-         
-           
-
-        }
-    
 
         private void btn_Connect_Click(object sender, EventArgs e)
         {

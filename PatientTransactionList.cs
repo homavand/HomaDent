@@ -86,7 +86,7 @@ namespace Dentistry
             {
                 IsDeleted = false
             };
-            var result = Dentistry.DataProvider.GetAllPatientsFullNamesX(sObj);
+            var result = Dentistry.DataProvider.GetPatientsFullNameX(sObj);
             var dd = result != null && result.Data != null ? result.Data : null;
             var patientList = (dd as IEnumerable<dynamic>)
                  .Select(i =>

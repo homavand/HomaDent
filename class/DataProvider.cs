@@ -401,17 +401,21 @@ namespace Dentistry
                 return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message };
             }
         }
-        public static JsonResponse<dynamic> GetAllPatientsFullNamesX(dynamic searchObj)
+        public static JsonResponse<dynamic> GetPatientsFullNameX(dynamic searchObj)
         {
             try
             {
                 var x = new RouteValueDictionary(searchObj);
+                var PatientId = x.HasValue("PatientId") ? x.GetValue<int>("PatientId") : (int?)null;
                 var IsDeleted = x.HasValue("IsDeleted") ? x.GetValue<bool>("IsDeleted") : (bool?)null;
 
                 using (var db = new DentalContext())
                 {
                     IQueryable<Patient> query = db.Patients
                         .Where(p => p.Id > 0);
+
+                    if (PatientId != null)
+                        query = query.Where(p => p.Id == PatientId.Value);
 
                     if (IsDeleted != null)
                         query = query.Where(p => p.IsDeleted == IsDeleted.Value);
@@ -2515,6 +2519,166 @@ namespace Dentistry
             }
         }
 
+        public static JsonResponse<dynamic> GetPatientTeethInfos_diagnostic(dynamic searchObj)
+        {
+            var log = new System.Text.StringBuilder();
+            var swTotal = System.Diagnostics.Stopwatch.StartNew();
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+
+            try
+            {
+                var x = new RouteValueDictionary(searchObj);
+                var PatientServiceToothId = x.HasValue("PatientServiceToothId") ? x.GetValue<int>("PatientServiceToothId") : (int?)null;
+                var PatientId = x.HasValue("PatientId") ? x.GetValue<int>("PatientId") : (int?)null;
+                var ToothId = x.HasValue("ToothId") ? x.GetValue<int>("ToothId") : (int?)null;
+                log.AppendLine("1. Parse searchObj: " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
+                using (var db = new DentalContext())
+                {
+                    log.AppendLine("2. new DentalContext(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
+                    IQueryable<PatientTooth> query = db.PatientTeeth
+                        .Where(thi => thi.IsDeleted != true);
+
+                    if (PatientServiceToothId != null)
+                        query = query.Where(thi => thi.Id == PatientServiceToothId.Value);
+
+                    if (PatientId != null)
+                        query = query.Where(thi => thi.PatientId == PatientId.Value);
+
+                    if (ToothId != null)
+                        query = query.Where(thi => thi.ToothId == ToothId.Value);
+
+                    log.AppendLine("3. Build IQueryable (no execution yet): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
+                    var projected = query
+                        .Select(thi => new
+                        {
+                            thi.PatientId,
+                            ToothId = thi.ToothId ?? 0,
+                            Visible = thi.Visible ?? false,
+                            Rotate = thi.Rotate ?? 0,
+                            TipB = thi.TipB ?? 0,
+                            TipM = thi.TipM ?? 0,
+                            ShiftM = thi.ShiftM ?? 0,
+                            ShiftO = thi.ShiftO ?? 0,
+                            ShiftB = thi.ShiftB ?? 0,
+                            IsRCT = thi.IsRCT ?? false,
+                            ColorRCT = thi.ColorRCT ?? 0,
+                            IsBU = thi.IsBU ?? false,
+                            ColorBU = thi.ColorBU ?? 0,
+                            IsImplant = thi.IsImplant ?? false,
+                            ColorImplant = thi.ColorImplant ?? 0,
+                            IsCrown = thi.IsCrown ?? false,
+                            IsPontic = thi.IsPontic ?? false,
+                            IsSealant = thi.IsSealant ?? false,
+                            ColorSealant = thi.ColorSealant ?? 0,
+                            Surface = thi.Surface ?? "",
+                            SurfaceColor = thi.SurfaceColor ?? 0,
+                            Surface_B = thi.Surface_B ?? false,
+                            Surface_B_Color = thi.Surface_B_Color ?? 0,
+                            Surface_F = thi.Surface_F ?? false,
+                            Surface_F_Color = thi.Surface_F_Color ?? 0,
+                            Surface_C = thi.Surface_C ?? false,
+                            Surface_C_Color = thi.Surface_C_Color ?? 0,
+                            Surface_D = thi.Surface_D ?? false,
+                            Surface_D_Color = thi.Surface_D_Color ?? 0,
+                            Surface_E = thi.Surface_E ?? false,
+                            Surface_E_Color = thi.Surface_E_Color ?? 0,
+                            Surface_L = thi.Surface_L ?? false,
+                            Surface_L_Color = thi.Surface_L_Color ?? 0,
+                            Surface_M = thi.Surface_M ?? false,
+                            Surface_M_Color = thi.Surface_M_Color ?? 0,
+                            Surface_O = thi.Surface_O ?? false,
+                            Surface_O_Color = thi.Surface_O_Color ?? 0,
+                            Surface_I = thi.Surface_I ?? false,
+                            Surface_I_Color = thi.Surface_I_Color ?? 0,
+                            Surface_V = thi.Surface_V ?? false,
+                            Surface_V_Color = thi.Surface_V_Color ?? 0,
+                            Description = thi.Description ?? "",
+                        });
+                    log.AppendLine("4. Build .Select() projection (no execution yet): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
+                    // Log the actual generated SQL BEFORE executing it - this alone
+                    // can be very revealing (e.g. if it shows a query against a
+                    // completely different/unexpected table, or an absurd number of
+                    // UNION/JOIN clauses).
+                    string generatedSql = "";
+                    try { generatedSql = projected.ToString(); } catch (Exception exSql) { generatedSql = "<ToString failed: " + exSql.Message + ">"; }
+                    log.AppendLine("5. Get generated SQL text (ToString()): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
+                    var resultX = projected.ToList();
+                    log.AppendLine("6. Execute + materialize .ToList() (" + resultX.Count + " rows): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
+                    var finalResult = (from item in resultX
+                                       group item by new { item.ToothId } into gItem
+                                       select new
+                                       {
+                                           ToothId = gItem.Key.ToothId,
+                                           Visible = gItem.Select(t => t.Visible).First(),
+                                           Rotate = gItem.Sum(t => t.Rotate),
+                                           TipB = gItem.Sum(t => t.TipB),
+                                           TipM = gItem.Sum(t => t.TipM),
+                                           ShiftM = gItem.Sum(t => t.ShiftM),
+                                           ShiftO = gItem.Sum(t => t.ShiftO),
+                                           ShiftB = gItem.Sum(t => t.ShiftB),
+                                           IsRCT = gItem.Select(t => t.IsRCT).First(),
+                                           ColorRCT = gItem.Select(t => t.ColorRCT).First(),
+                                           IsBU = gItem.Select(t => t.IsBU).First(),
+                                           ColorBU = gItem.Select(t => t.ColorBU).First(),
+                                           IsImplant = gItem.Select(t => t.IsImplant).First(),
+                                           ColorImplant = gItem.Select(t => t.ColorImplant).First(),
+                                           IsCrown = gItem.Select(t => t.IsCrown).First(),
+                                           IsPontic = gItem.Select(t => t.IsPontic).First(),
+                                           IsSealant = gItem.Select(t => t.IsSealant).First(),
+                                           ColorSealant = gItem.Select(t => t.ColorSealant).First(),
+                                           SurfaceColor = gItem.Select(t => t.SurfaceColor).First(),
+                                           Surface = gItem.Select(t => t.Surface).First(),
+                                           Surface_B = gItem.Select(t => t.Surface_B).First(),
+                                           Surface_B_Color = gItem.Select(t => t.Surface_B_Color).First(),
+                                           Surface_F = gItem.Select(t => t.Surface_F).First(),
+                                           Surface_F_Color = gItem.Select(t => t.Surface_F_Color).First(),
+                                           Surface_C = gItem.Select(t => t.Surface_C).First(),
+                                           Surface_C_Color = gItem.Select(t => t.Surface_C_Color).First(),
+                                           Surface_D = gItem.Select(t => t.Surface_D).First(),
+                                           Surface_D_Color = gItem.Select(t => t.Surface_D_Color).First(),
+                                           Surface_E = gItem.Select(t => t.Surface_E).First(),
+                                           Surface_E_Color = gItem.Select(t => t.Surface_E_Color).First(),
+                                           Surface_L = gItem.Select(t => t.Surface_L).First(),
+                                           Surface_L_Color = gItem.Select(t => t.Surface_L_Color).First(),
+                                           Surface_M = gItem.Select(t => t.Surface_M).First(),
+                                           Surface_M_Color = gItem.Select(t => t.Surface_M_Color).First(),
+                                           Surface_O = gItem.Select(t => t.Surface_O).First(),
+                                           Surface_O_Color = gItem.Select(t => t.Surface_O_Color).First(),
+                                           Surface_I = gItem.Select(t => t.Surface_I).First(),
+                                           Surface_I_Color = gItem.Select(t => t.Surface_I_Color).First(),
+                                           Surface_V = gItem.Select(t => t.Surface_V).First(),
+                                           Surface_V_Color = gItem.Select(t => t.Surface_V_Color).First(),
+                                           Description = gItem.Select(t => t.Description).First(),
+                                       }).ToList();
+                    log.AppendLine("7. In-memory GroupBy/Sum/First (" + finalResult.Count + " groups): " + sw.ElapsedMilliseconds + " ms");
+                    log.AppendLine("TOTAL: " + swTotal.ElapsedMilliseconds + " ms");
+                    log.AppendLine("---- Generated SQL ----");
+                    log.AppendLine(generatedSql);
+
+                    try
+                    {
+                        System.IO.File.AppendAllText(@"C:\temp\perf_log_teeth_deep.txt",
+                            "==== " + DateTime.Now.ToString("HH:mm:ss.fff") + " ====\r\n" + log.ToString() + "\r\n\r\n");
+                    }
+                    catch { /* ignore logging failures */ }
+
+                    return new JsonResponse<dynamic>() { Success = true, Data = finalResult };
+                }
+            }
+            catch (Exception ex)
+            {
+                try { System.IO.File.AppendAllText(@"C:\temp\perf_log_teeth_deep.txt", log.ToString() + "EXCEPTION: " + ex.Message + "\r\n\r\n"); } catch { }
+                return new JsonResponse<dynamic>() { Success = false, Data = null, Message = ex.Message, };
+            }
+        }
+
+
         public static JsonResponse<dynamic> GetPatientTeethInfos(dynamic searchObj)
         {
             try
@@ -3764,7 +3928,7 @@ namespace Dentistry
                             // just returns that string unchanged, so despite the name
                             // this never actually joins anything. Reproduced exactly
                             // (equivalent to plain string.Format).
-                            Tooth = string.Join("  -  ", string.Format("({0}) {1}", i.ToothName, i.ToothTitle)),
+                            Tooth = string.Format("({0}) {1}", i.ToothName, i.ToothTitle),
                             i.ToothGroup,
                             i.ToothImage,
                             i.ToothRegion,

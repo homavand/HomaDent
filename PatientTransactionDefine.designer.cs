@@ -67,14 +67,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.BankCbo = new System.Windows.Forms.ComboBox();
             this.OkBtn = new System.Windows.Forms.Button();
-            this.panel3 = new Dentistry.UserControls.ExPanel();
             this.PatientNameTxt = new System.Windows.Forms.TextBox();
             this.PatientCodeTxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.PanelX1 = new Dentistry.UserControls.ExPanel();
-            this.PatientRemianedTxt = new Dentistry.UserControls.MoneyLabel();
-            this.label12 = new System.Windows.Forms.Label();
             this.PosPanel.SuspendLayout();
             this.TransactionPanel.SuspendLayout();
             this.PayTypePnl.SuspendLayout();
@@ -85,7 +82,6 @@
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.ChequePanel.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.PanelX1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +93,7 @@
             this.PosPanel.Controls.Add(this.ChooseBankCbo);
             this.PosPanel.Controls.Add(this.label11);
             this.PosPanel.Enabled = false;
-            this.PosPanel.Location = new System.Drawing.Point(11, 420);
+            this.PosPanel.Location = new System.Drawing.Point(11, 404);
             this.PosPanel.Name = "PosPanel";
             this.PosPanel.Size = new System.Drawing.Size(837, 47);
             this.PosPanel.TabIndex = 95;
@@ -227,7 +223,7 @@
             this.TransactionPanel.Controls.Add(this.label2);
             this.TransactionPanel.Controls.Add(this.amountTxt);
             this.TransactionPanel.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.TransactionPanel.Location = new System.Drawing.Point(12, 112);
+            this.TransactionPanel.Location = new System.Drawing.Point(12, 78);
             this.TransactionPanel.Name = "TransactionPanel";
             this.TransactionPanel.Size = new System.Drawing.Size(836, 203);
             this.TransactionPanel.TabIndex = 95;
@@ -502,7 +498,7 @@
             this.ChequePanel.Controls.Add(this.label5);
             this.ChequePanel.Controls.Add(this.BankCbo);
             this.ChequePanel.Enabled = false;
-            this.ChequePanel.Location = new System.Drawing.Point(12, 322);
+            this.ChequePanel.Location = new System.Drawing.Point(12, 298);
             this.ChequePanel.Name = "ChequePanel";
             this.ChequePanel.Size = new System.Drawing.Size(836, 90);
             this.ChequePanel.TabIndex = 96;
@@ -637,7 +633,7 @@
             this.OkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OkBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OkBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
-            this.OkBtn.Location = new System.Drawing.Point(698, 477);
+            this.OkBtn.Location = new System.Drawing.Point(698, 469);
             this.OkBtn.Name = "OkBtn";
             this.OkBtn.Size = new System.Drawing.Size(150, 30);
             this.OkBtn.TabIndex = 6;
@@ -645,25 +641,12 @@
             this.OkBtn.UseVisualStyleBackColor = false;
             this.OkBtn.Click += new System.EventHandler(this.buttonOk_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.panel3.Controls.Add(this.PatientNameTxt);
-            this.panel3.Controls.Add(this.PatientCodeTxt);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Location = new System.Drawing.Point(11, 15);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(837, 40);
-            this.panel3.TabIndex = 96;
-            this.panel3.TabStop = false;
-            // 
             // PatientNameTxt
             // 
+            this.PatientNameTxt.BackColor = System.Drawing.Color.WhiteSmoke;
             this.PatientNameTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PatientNameTxt.Font = new System.Drawing.Font("Vazir", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PatientNameTxt.Location = new System.Drawing.Point(56, 8);
+            this.PatientNameTxt.Location = new System.Drawing.Point(69, 15);
             this.PatientNameTxt.Name = "PatientNameTxt";
             this.PatientNameTxt.ReadOnly = true;
             this.PatientNameTxt.Size = new System.Drawing.Size(343, 22);
@@ -671,22 +654,23 @@
             // 
             // PatientCodeTxt
             // 
+            this.PatientCodeTxt.BackColor = System.Drawing.Color.WhiteSmoke;
             this.PatientCodeTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PatientCodeTxt.Font = new System.Drawing.Font("Vazir", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PatientCodeTxt.Location = new System.Drawing.Point(492, 9);
+            this.PatientCodeTxt.Location = new System.Drawing.Point(505, 16);
             this.PatientCodeTxt.Name = "PatientCodeTxt";
             this.PatientCodeTxt.ReadOnly = true;
             this.PatientCodeTxt.Size = new System.Drawing.Size(233, 22);
             this.PatientCodeTxt.TabIndex = 22;
-
             // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.DimGray;
-            this.label10.Location = new System.Drawing.Point(409, 10);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(422, 17);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 20);
             this.label10.TabIndex = 21;
@@ -696,9 +680,10 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(731, 10);
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(744, 17);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 20);
             this.label7.TabIndex = 20;
@@ -706,65 +691,37 @@
             // 
             // PanelX1
             // 
-            this.PanelX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(45)))), ((int)(((byte)(73)))));
+            this.PanelX1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.PanelX1.BorderBottomWidth = 0;
             this.PanelX1.BorderColor = System.Drawing.Color.Silver;
             this.PanelX1.BorderLeftWidth = 0;
             this.PanelX1.BorderRightWidth = 0;
             this.PanelX1.BorderTopWidth = 0;
-            this.PanelX1.Controls.Add(this.PatientRemianedTxt);
-            this.PanelX1.Controls.Add(this.label12);
-            this.PanelX1.Location = new System.Drawing.Point(12, 56);
+            this.PanelX1.Controls.Add(this.PatientNameTxt);
+            this.PanelX1.Controls.Add(this.label10);
+            this.PanelX1.Controls.Add(this.PatientCodeTxt);
+            this.PanelX1.Controls.Add(this.label7);
+            this.PanelX1.Location = new System.Drawing.Point(12, 13);
             this.PanelX1.Name = "PanelX1";
             this.PanelX1.Size = new System.Drawing.Size(836, 50);
             this.PanelX1.TabIndex = 26;
             this.PanelX1.TabStop = false;
             // 
-            // PatientRemianedTxt
-            // 
-            this.PatientRemianedTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PatientRemianedTxt.BackColor = System.Drawing.Color.Transparent;
-            this.PatientRemianedTxt.CurrencyGroupSeparator = ",";
-            this.PatientRemianedTxt.CurrencySymbol = "  ریال ";
-            this.PatientRemianedTxt.Font = new System.Drawing.Font("Vazir FD", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PatientRemianedTxt.ForeColor = System.Drawing.Color.DeepPink;
-            this.PatientRemianedTxt.Location = new System.Drawing.Point(357, 10);
-            this.PatientRemianedTxt.Name = "PatientRemianedTxt";
-            this.PatientRemianedTxt.Padding = new System.Windows.Forms.Padding(5);
-            this.PatientRemianedTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.PatientRemianedTxt.Size = new System.Drawing.Size(367, 30);
-            this.PatientRemianedTxt.TabIndex = 50;
-            this.PatientRemianedTxt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PatientRemianedTxt.TextChanged += new System.EventHandler(this.RemianedLbl_TextChanged);
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(175)))), ((int)(((byte)(171)))), ((int)(((byte)(194)))));
-            this.label12.Location = new System.Drawing.Point(730, 15);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 20);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "مانده بدهی :";
-            // 
-            // PatientFinancialDefine
+            // PatientTransactionDefine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(860, 516);
+            this.ClientSize = new System.Drawing.Size(860, 509);
             this.Controls.Add(this.OkBtn);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.TransactionPanel);
             this.Controls.Add(this.PanelX1);
             this.Controls.Add(this.ChequePanel);
             this.Controls.Add(this.PosPanel);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "PatientFinancialDefine";
+            this.Name = "PatientTransactionDefine";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -783,8 +740,6 @@
             this.panel7.ResumeLayout(false);
             this.ChequePanel.ResumeLayout(false);
             this.ChequePanel.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.PanelX1.ResumeLayout(false);
             this.PanelX1.PerformLayout();
             this.ResumeLayout(false);
@@ -806,8 +761,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btn_Connect;
         private UserControls.ExPanel PanelX1;
-        private System.Windows.Forms.Label label12;
-        private UserControls.MoneyLabel PatientRemianedTxt;
         private System.Windows.Forms.Panel TransactionPanel;
         private System.Windows.Forms.Panel ChequePanel;
         private UserControls.ExPanel panel4;
@@ -823,7 +776,6 @@
         private System.Windows.Forms.RadioButton PayType3Rdo;
         private UserControls.ExPanel panel1;
         private System.Windows.Forms.RadioButton PayType6Rdo;
-        private UserControls.ExPanel panel3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox PatientNameTxt;

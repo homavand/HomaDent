@@ -26,6 +26,12 @@ namespace Dentistry
 
         private string ToothName;
 
+        // Guards against NumericBtn_ValueChanged firing (and calling
+        // TeethChart.MoveTooth) when we are only programmatically syncing
+        // the spinner controls to a newly-selected tooth's stored values in
+        // SetSelectedTooth - not responding to an actual user edit.
+        private bool _isSyncingSelectedToothUI = false;
+
         public int? PatientId = null;
         public int? DoctorId = null;
 
@@ -44,7 +50,7 @@ namespace Dentistry
 
             this.PatientId = patientId;
             this.DoctorId = doctorId;
-            this.Text = string.Format(" {0} ",  patientName);
+            this.Text = string.Format(" {0} ", patientName);
         }
 
         private void PatientTeethView_Load(object sender, EventArgs e)
@@ -52,17 +58,42 @@ namespace Dentistry
 
             //waitForm.Show(this);
 
+            var swTotal = System.Diagnostics.Stopwatch.StartNew();
+            var log = new System.Text.StringBuilder();
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+
             if (this.PatientId != null)
             {
                 this.GetTeethData();
+                log.AppendLine("1. GetTeethData(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
                 this.GetPatientTeethInfos(this.PatientId.Value);
+                log.AppendLine("2. GetPatientTeethInfos(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
                 this.GetPatientServices(this.PatientId.Value);
+                log.AppendLine("3. GetPatientServices(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
                 this.GetToothServices();
+                log.AppendLine("4. GetToothServices(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
                 this.chkAtfal_CheckedChanged(this, null);
+                log.AppendLine("5. chkAtfal_CheckedChanged(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+
                 this.CheckTeethDescriptions();
+                log.AppendLine("6. CheckTeethDescriptions(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
             }
 
             this.SetToolTip();
+            log.AppendLine("7. SetToolTip(): " + sw.ElapsedMilliseconds + " ms");
+            log.AppendLine("TOTAL: " + swTotal.ElapsedMilliseconds + " ms");
+
+            try
+            {
+                System.IO.File.AppendAllText(@"C:\temp\perf_log_teeth.txt",
+                    "==== " + DateTime.Now.ToString("HH:mm:ss.fff") + " ====\r\n" + log.ToString() + "\r\n");
+            }
+            catch { /* ignore logging failures */ }
+
             //waitForm.Close();
         }
 
@@ -74,7 +105,8 @@ namespace Dentistry
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.PatientId = patientId;
 
-            JsonResponse<dynamic> result = DataProvider.GetPatientTeethInfos(sObj);
+            //JsonResponse<dynamic> result = DataProvider.GetPatientTeethInfos(sObj);
+            JsonResponse<dynamic> result = DataProvider.GetPatientTeethInfos_diagnostic(sObj);
             if (result == null || result.Success == false || result.Data == null)
                 return;
             var list = result.Data as IEnumerable<dynamic>;
@@ -104,7 +136,7 @@ namespace Dentistry
         private void GetTeethData()
         {
             dynamic sObj = new System.Dynamic.ExpandoObject();
-           
+
             JsonResponse<dynamic> result = DataProvider.GetToothX(sObj);
             if (result == null || result.Success == false || result.Data == null)
                 return;
@@ -114,16 +146,16 @@ namespace Dentistry
                                                             .Select(i =>
                                                                 new
                                                                 {
-                                                                    i.Id,                                                                    
-                                                                    Tooth = string.Join("  -  ", string.Format("({0}) {1}", i.ToothName, i.ToothTitle)),                                                             
+                                                                    i.Id,
+                                                                    Tooth = string.Join("  -  ", string.Format("({0}) {1}", i.ToothName, i.ToothTitle)),
                                                                     i.ToothImage,
 
                                                                 }).ToList() : Enumerable.Empty<dynamic>();
 
-       
+
             if (result == null || result.Success == false || result.Data == null)
                 return;
-                    
+
 
             System.Collections.ArrayList arrayList = new System.Collections.ArrayList();
 
@@ -137,7 +169,7 @@ namespace Dentistry
                     item.Tooth,
                     item.ToothImage
                 });
-                
+
             }
 
             this.TeethList = arrayList;
@@ -184,21 +216,21 @@ namespace Dentistry
                     });
                 }
             }
-         
+
             this.PatientServices = serviceList;
-            
+
         }
 
         public void GetToothServices(int toothId = 0)
         {
-            
+
 
             foreach (DataGridViewRow row in this.dgToothServices.Rows)
             {
                 row.Selected = false;
             }
 
-            IEnumerable<dynamic> list = this.PatientServices.Count > 0 ? (this.PatientServices.Cast<dynamic>().GetEnumerator() as IEnumerable<dynamic>)
+            IEnumerable<dynamic> list = this.PatientServices.Count > 0 ? this.PatientServices.Cast<dynamic>()
                    .Select(i =>
                    new
                    {
@@ -224,7 +256,7 @@ namespace Dentistry
             this.dgToothServices.Refresh();
 
         }
-      
+
         private void SetPatientTeeth(TeethType teethType)
         {
             TeethChart.ResetTeeth();
@@ -236,9 +268,9 @@ namespace Dentistry
                 var list = PatientTeeth.Select(x => x)
                                        .Where(x => x.ToothId >= 33 && x.ToothId <= 52)
                                        .ToList();
-                
+
                 foreach (dynamic toothInfo in list)
-                {                   
+                {
                     this.MakeTooth(toothInfo);
                 }
 
@@ -268,19 +300,19 @@ namespace Dentistry
             var toothName = ToothInfoClass.ToothIdToToothName(toothInfo.ToothId);
             ToothGraphic tooth = TeethChart.GetToothInfo(toothName);
 
-            tooth.Visible    = toothInfo.Visible;
-            tooth.Rotate     = toothInfo.Rotate;
-            tooth.TipB       = toothInfo.TipB;
-            tooth.TipM       = toothInfo.TipM;
-            tooth.ShiftM     = toothInfo.ShiftM;
-            tooth.ShiftO     = toothInfo.ShiftO;
-            tooth.ShiftB     = toothInfo.ShiftB;
-            tooth.IsRCT      = toothInfo.IsRCT;
-            tooth.IsBU       = toothInfo.IsBU;
-            tooth.IsImplant  = toothInfo.IsImplant;
-            tooth.IsCrown    = toothInfo.IsCrown;
-            tooth.IsPontic   = toothInfo.IsPontic;
-            tooth.IsSealant  = toothInfo.IsSealant;
+            tooth.Visible = toothInfo.Visible;
+            tooth.Rotate = toothInfo.Rotate;
+            tooth.TipB = toothInfo.TipB;
+            tooth.TipM = toothInfo.TipM;
+            tooth.ShiftM = toothInfo.ShiftM;
+            tooth.ShiftO = toothInfo.ShiftO;
+            tooth.ShiftB = toothInfo.ShiftB;
+            tooth.IsRCT = toothInfo.IsRCT;
+            tooth.IsBU = toothInfo.IsBU;
+            tooth.IsImplant = toothInfo.IsImplant;
+            tooth.IsCrown = toothInfo.IsCrown;
+            tooth.IsPontic = toothInfo.IsPontic;
+            tooth.IsSealant = toothInfo.IsSealant;
 
             tooth.Description = toothInfo.Description;
 
@@ -344,8 +376,8 @@ namespace Dentistry
             string surface = "";
             surface = toothInfo.Surface;
             tooth.Surface = surface;
-         
-            
+
+
 
             if (tooth.IsImplant)
             {
@@ -372,8 +404,8 @@ namespace Dentistry
         }
 
         public void GetToothData(int toothId)
-        {                        
-            var tooth = this.TeethList.Count > 0 ? (this.TeethList.Cast<dynamic>().GetEnumerator() as IEnumerable<dynamic>)
+        {
+            var tooth = this.TeethList.Count > 0 ? this.TeethList.Cast<dynamic>()
                                       .Where(i => i.Id == toothId)
                                       .Select(i =>
                                         new
@@ -424,7 +456,7 @@ namespace Dentistry
             this.ResetButton();
             var toothName = e.ToothId;
             int toothId = ToothInfoClass.ToothNameToToothId(toothName);
-            
+
             this.SetSelectedTooth(toothName);
 
             this.GetToothData(toothId);
@@ -440,14 +472,32 @@ namespace Dentistry
 
             ToothGraphic tooth = TeethChart.GetToothInfo(toothName);
 
-            this.RotateBtn.Value = Convert.ToDecimal(tooth.Rotate);
-            this.TipMxBtn.Value = Convert.ToDecimal(tooth.TipM);
-            this.TipBxBtn.Value = Convert.ToDecimal(tooth.TipB);
-            this.ShiftMxBtn.Value = Convert.ToDecimal(tooth.ShiftM);
-            this.ShiftOxBtn.Value = Convert.ToDecimal(tooth.ShiftO);
-            this.ShiftBxBtn.Value = Convert.ToDecimal(tooth.ShiftB);
+            _isSyncingSelectedToothUI = true;
+            try
+            {
+                this.RotateBtn.Value = Convert.ToDecimal(tooth.Rotate);
+                this.TipMxBtn.Value = Convert.ToDecimal(tooth.TipM);
+                this.TipBxBtn.Value = Convert.ToDecimal(tooth.TipB);
+                this.ShiftMxBtn.Value = Convert.ToDecimal(tooth.ShiftM);
+                this.ShiftOxBtn.Value = Convert.ToDecimal(tooth.ShiftO);
+                this.ShiftBxBtn.Value = Convert.ToDecimal(tooth.ShiftB);
+            }
+            finally
+            {
+                _isSyncingSelectedToothUI = false;
+            }
 
-
+            // Keep Tag ("previous value" used by NumericBtn_ValueChanged to
+            // detect increment direction) in sync with this tooth's real
+            // values - otherwise the first real user edit on this tooth
+            // computes its direction against the previous tooth's leftover
+            // value.
+            this.RotateBtn.Tag = this.RotateBtn.Value;
+            this.TipMxBtn.Tag = this.TipMxBtn.Value;
+            this.TipBxBtn.Tag = this.TipBxBtn.Value;
+            this.ShiftMxBtn.Tag = this.ShiftMxBtn.Value;
+            this.ShiftOxBtn.Tag = this.ShiftOxBtn.Value;
+            this.ShiftBxBtn.Tag = this.ShiftBxBtn.Value;
 
             var toothGroups = tooth.Groups;
 
@@ -619,6 +669,9 @@ namespace Dentistry
 
         private void NumericBtn_ValueChanged(object sender, EventArgs e)
         {
+            if (_isSyncingSelectedToothUI)
+                return;
+
             if (!checkValidate_Teeth())
                 return;
 
@@ -1369,13 +1422,13 @@ namespace Dentistry
             //    return;
             //}
 
-           
+
             int patientServiceToothId = 0;
 
             try
             {
                 List<dynamic> toothList = new List<dynamic>();
-           
+
                 var start = 1;
                 var end = 32;
                 if (this.chkAtfal.Checked)
@@ -1387,11 +1440,11 @@ namespace Dentistry
                 int counter = 0;
                 for (int i = start; i <= end; i++)
                 {
-                    string toothNum    = ToothInfoClass.ToothIdToToothName(i);
-                    ToothGraphic tooth = TeethChart.GetToothInfo(toothNum);                 
-                    int toothId        = ToothInfoClass.ToothNameToToothId(tooth.ToothId);
+                    string toothNum = ToothInfoClass.ToothIdToToothName(i);
+                    ToothGraphic tooth = TeethChart.GetToothInfo(toothNum);
+                    int toothId = ToothInfoClass.ToothNameToToothId(tooth.ToothId);
 
-                    Class.ToothInfo toothInfo_empty = new Class.ToothInfo(); 
+                    Class.ToothInfo toothInfo_empty = new Class.ToothInfo();
                     Class.ToothInfo toothInfo_base = Convert_ToothGraphic_To_ToothInfo(tooth);
                     Class.ToothInfo toothInfo_db = PatientTeeth.Select(x => x).Where(x => x.ToothId == toothId).SingleOrDefault();
 
@@ -1399,34 +1452,34 @@ namespace Dentistry
                         continue;
                     if (toothInfo_base.Equals(toothInfo_db))
                         continue;
-                    
-                    
+
+
                     dynamic iObj = new ExpandoObject();
 
                     iObj.PatientId = this.PatientId;
                     iObj.PatientServiceToothId = patientServiceToothId != 0 ? patientServiceToothId : (int?)null;
-                    iObj.PatientServiceId      = 0;
-                    iObj.Date                  = Publics.ConvertDateTimeToString(DateTime.Now);
-                    iObj.ToothId               = toothInfo_base.ToothId;
-                    iObj.Visible               = toothInfo_base.Visible;
-                    iObj.Rotate                = toothInfo_base.Rotate;
-                    iObj.TipB                  = toothInfo_base.TipB;
-                    iObj.TipM                  = toothInfo_base.TipM;
-                    iObj.ShiftM                = toothInfo_base.ShiftM;
-                    iObj.ShiftO                = toothInfo_base.ShiftO;
-                    iObj.ShiftB                = toothInfo_base.ShiftB;
-                    iObj.IsRCT                 = toothInfo_base.IsRCT;
-                    iObj.ColorRCT              = toothInfo_base.ColorRCT;
-                    iObj.IsBU                  = toothInfo_base.IsBU;
-                    iObj.ColorBU               = toothInfo_base.ColorBU;
-                    iObj.IsImplant             = toothInfo_base.IsImplant;
-                    iObj.ColorImplant          = toothInfo_base.ColorImplant;
-                    iObj.IsCrown               = toothInfo_base.IsCrown;
-                    iObj.IsPontic              = toothInfo_base.IsPontic;
-                    iObj.IsSealant             = toothInfo_base.IsSealant;
-                    iObj.ColorSealant          = toothInfo_base.ColorSealant;
-                    
-                    iObj.Surface               = toothInfo_base.Surface;
+                    iObj.PatientServiceId = 0;
+                    iObj.Date = Publics.ConvertDateTimeToString(DateTime.Now);
+                    iObj.ToothId = toothInfo_base.ToothId;
+                    iObj.Visible = toothInfo_base.Visible;
+                    iObj.Rotate = toothInfo_base.Rotate;
+                    iObj.TipB = toothInfo_base.TipB;
+                    iObj.TipM = toothInfo_base.TipM;
+                    iObj.ShiftM = toothInfo_base.ShiftM;
+                    iObj.ShiftO = toothInfo_base.ShiftO;
+                    iObj.ShiftB = toothInfo_base.ShiftB;
+                    iObj.IsRCT = toothInfo_base.IsRCT;
+                    iObj.ColorRCT = toothInfo_base.ColorRCT;
+                    iObj.IsBU = toothInfo_base.IsBU;
+                    iObj.ColorBU = toothInfo_base.ColorBU;
+                    iObj.IsImplant = toothInfo_base.IsImplant;
+                    iObj.ColorImplant = toothInfo_base.ColorImplant;
+                    iObj.IsCrown = toothInfo_base.IsCrown;
+                    iObj.IsPontic = toothInfo_base.IsPontic;
+                    iObj.IsSealant = toothInfo_base.IsSealant;
+                    iObj.ColorSealant = toothInfo_base.ColorSealant;
+
+                    iObj.Surface = toothInfo_base.Surface;
                     iObj.SurfaceColor = toothInfo_base.SurfaceColor;
 
                     iObj.Surface_B = toothInfo_base.Surface_B;
@@ -1457,14 +1510,14 @@ namespace Dentistry
                     iObj.Surface_I_Color = toothInfo_base.Surface_I_Color;
 
                     iObj.Surface_V = toothInfo_base.Surface_V;
-                    iObj.Surface_V_Color = toothInfo_base.Surface_V_Color;                   
+                    iObj.Surface_V_Color = toothInfo_base.Surface_V_Color;
 
                     iObj.Description = tooth.Description;
 
                     JsonResponse<dynamic> result = Dentistry.DataProvider.DefinePatientTeethX(iObj);
                     if (result != null && result.Success == true)
                     {
-                        counter++;                                             
+                        counter++;
                     }
                     else
                     {
@@ -1473,13 +1526,13 @@ namespace Dentistry
 
                 }
 
-                if(counter > 0)
+                if (counter > 0)
                 {
                     string msg = string.Format("{1} {0}", counter, "مورد با موفقیت ثبت شد");
                     FarsiMessageBox.FMessageBox.Show(msg, "پیام", FarsiMessageBox.FMessageBoxButtons.OK, FarsiMessageBox.FMessageBoxIcons.Information, FarsiMessageBox.FMessageBoxDefaultButtons.Button1);
                     this.Close();
                 }
-                
+
             }
             catch (Exception exp)
             {
@@ -1491,24 +1544,47 @@ namespace Dentistry
 
         }
 
+        // Built once (see EnsureToothDescLabelCache) instead of walking the
+        // whole control tree with Controls.Find("lt" + id, true) for every
+        // tooth, every time CheckTeethDescriptions runs. With 286 controls
+        // on this form and ~52 teeth, that was ~15,000 name comparisons per
+        // call - and it's called more than once (Load + after edits).
+        private Dictionary<string, Control> _toothDescLabelCache;
+
+        private void EnsureToothDescLabelCache()
+        {
+            if (_toothDescLabelCache != null)
+                return;
+
+            _toothDescLabelCache = new Dictionary<string, Control>();
+            foreach (ToothGraphic tooth in TeethChart.AllTeeth)
+            {
+                string key = "lt" + tooth.ToothId;
+                if (_toothDescLabelCache.ContainsKey(key))
+                    continue;
+
+                var ctrs = this.Controls.Find(key, true);
+                if (ctrs.Length > 0)
+                    _toothDescLabelCache[key] = ctrs[0];
+            }
+        }
+
         private void CheckTeethDescriptions()
         {
+            EnsureToothDescLabelCache();
+
             foreach (ToothGraphic tooth in TeethChart.AllTeeth)
             {
                 string toothId = tooth.ToothId;
-                var ctrs = this.Controls.Find("lt" + toothId, true);
-                if(ctrs.Length > 0)
-                {
-                    var lbl = ctrs[0];
-                    lbl.ForeColor = Color.Gray;
+                if (!_toothDescLabelCache.TryGetValue("lt" + toothId, out var lbl))
+                    continue;
 
-                    if (!string.IsNullOrEmpty(tooth.Description))
-                    {
-                        if (lbl != null)
-                            lbl.ForeColor = ColorTranslator.FromHtml("#dbb2ff");
-                    }
+                lbl.ForeColor = Color.Gray;
+
+                if (!string.IsNullOrEmpty(tooth.Description))
+                {
+                    lbl.ForeColor = ColorTranslator.FromHtml("#dbb2ff");
                 }
-                
             }
         }
 
@@ -1530,7 +1606,7 @@ namespace Dentistry
             ToothGraphic tooth = TeethChart.GetToothInfo(toothId.ToString());
             this.ToothDescriptionTxt.Text = tooth.Description;
             TeethChart.SetSelected(tooth.ToothId, true);
-            
+
 
             int x1 = 0, y1 = 0;
             if (pp == null)
@@ -1538,17 +1614,17 @@ namespace Dentistry
                 this.ToothDescriptionPnl.BackColor = Color.FromArgb(58, 45, 73);
                 this.ToothDescriptionPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.ToothDescriptionPnl_Paint);
                 pp = new PopupControl.Popup(this.ToothDescriptionPnl);
-                pp.Closed += new ToolStripDropDownClosedEventHandler((sender1, e1) => pp_Closed(sender1, e1, toothId, this.ToothDescriptionTxt.Text) );
-                
+                pp.Closed += new ToolStripDropDownClosedEventHandler((sender1, e1) => pp_Closed(sender1, e1, toothId, this.ToothDescriptionTxt.Text));
+
                 x1 = this.ToothDescriptionPnl.Width;
                 y1 = this.ToothDescriptionPnl.Height;
                 pp.ShowingAnimation = pp.HidingAnimation = PopupAnimations.None;
 
             }
             pp.Hide();
-            if ((toothId >= 1 && toothId <= 16) || (toothId >= 33 && toothId <= 42) )
+            if ((toothId >= 1 && toothId <= 16) || (toothId >= 33 && toothId <= 42))
                 pp.Show(MousePosition.X - (x1 / 2), MousePosition.Y + 15);
-            if (( toothId >= 17 && toothId <= 32) || (toothId >= 43 && toothId <= 52))
+            if ((toothId >= 17 && toothId <= 32) || (toothId >= 43 && toothId <= 52))
                 pp.Show(MousePosition.X - (x1 / 2), MousePosition.Y - y1 - 15);
             //pp = null;
         }
@@ -1563,8 +1639,8 @@ namespace Dentistry
             this.CheckTeethDescriptions();
         }
 
-      
-       
+
+
 
         private void ToothDescSaveBtn_Click(object sender, EventArgs e)
         {
@@ -1576,7 +1652,7 @@ namespace Dentistry
         {
             Class.ToothInfo toothInfo = new Class.ToothInfo();
 
-            toothInfo.ToothId = ToothInfoClass.ToothNameToToothId(toothGraphic.ToothId);  
+            toothInfo.ToothId = ToothInfoClass.ToothNameToToothId(toothGraphic.ToothId);
             toothInfo.Visible = toothGraphic.Visible;
             toothInfo.Rotate = toothGraphic.Rotate;
             toothInfo.TipB = toothGraphic.TipB;
@@ -1598,7 +1674,7 @@ namespace Dentistry
             toothInfo.Surface = toothGraphic.Surface != null ? toothGraphic.Surface : "";
             toothInfo.SurfaceColor = toothGraphic.SurfaceColor.ToArgb();
 
-                      
+
             char[] surfaceArr = toothInfo.Surface.ToCharArray();
 
             if (surfaceArr.Contains('B'))
@@ -1691,12 +1767,12 @@ namespace Dentistry
                     toothInfo.Surface_V_Color = color.Value.ToArgb();
 
             }
-            
+
             toothInfo.Description = toothGraphic.Description;
 
             return toothInfo;
         }
 
-       
+
     }
 }

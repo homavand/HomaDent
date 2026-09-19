@@ -104,7 +104,7 @@ namespace Dentistry
             {
                 IsDeleted = false
             };
-            var result = Dentistry.DataProvider.GetAllPatientsFullNamesX(sObj);
+            var result = Dentistry.DataProvider.GetPatientsFullNameX(sObj);
             var dd = result != null && result.Data != null ? result.Data : null;
 
             var patientList = (dd as IEnumerable<dynamic>)
@@ -174,7 +174,7 @@ namespace Dentistry
 
 
 
-        #region LoadPatientAllInfo
+        #region LoadPatientInfo
         private void GetPatientInfo()
         {
             if (this.PatientId < 1)
@@ -197,6 +197,7 @@ namespace Dentistry
         }
 
         #endregion
+
         #region FillGrid_dgPatientInfo
         private void FillGrid_dgPatientInfo(dynamic data = null)
         {            
@@ -493,7 +494,8 @@ namespace Dentistry
                 result = Dentistry.DataProvider.GetPatientSpecialDrug(sObj);
                 if (result == null || result.Success == false || result.Data == null)
                     return;
-                var patientSpecialDrug = (Enumerable.Count(result.Data) > 0) ? (result.Data as IEnumerable<dynamic>).Where(i => i.IsCheck == true).Select(i => i).ToList() : null;
+                var dd = result.Data;
+                var patientSpecialDrug = (Enumerable.Count(dd) > 0) ? (dd as IEnumerable<dynamic>).Where(i => i.IsCheck == true).Select(i => i).ToList() : null;
 
                 sObj = new
                 {

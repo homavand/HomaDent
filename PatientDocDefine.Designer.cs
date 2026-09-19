@@ -70,7 +70,7 @@
             this.ComboDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboDate.BackColor = System.Drawing.Color.White;
             this.ComboDate.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboDate.Location = new System.Drawing.Point(619, 94);
+            this.ComboDate.Location = new System.Drawing.Point(619, 124);
             this.ComboDate.Name = "ComboDate";
             this.ComboDate.ShowTime = false;
             this.ComboDate.Size = new System.Drawing.Size(155, 25);
@@ -83,7 +83,7 @@
             this.Error_textBoxDocName.AutoSize = true;
             this.Error_textBoxDocName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Error_textBoxDocName.ForeColor = System.Drawing.Color.Red;
-            this.Error_textBoxDocName.Location = new System.Drawing.Point(512, 64);
+            this.Error_textBoxDocName.Location = new System.Drawing.Point(512, 85);
             this.Error_textBoxDocName.Name = "Error_textBoxDocName";
             this.Error_textBoxDocName.Size = new System.Drawing.Size(13, 13);
             this.Error_textBoxDocName.TabIndex = 95;
@@ -97,7 +97,7 @@
             this.Error_textBoxDate.AutoSize = true;
             this.Error_textBoxDate.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Error_textBoxDate.ForeColor = System.Drawing.Color.Red;
-            this.Error_textBoxDate.Location = new System.Drawing.Point(602, 102);
+            this.Error_textBoxDate.Location = new System.Drawing.Point(602, 132);
             this.Error_textBoxDate.Name = "Error_textBoxDate";
             this.Error_textBoxDate.Size = new System.Drawing.Size(13, 13);
             this.Error_textBoxDate.TabIndex = 94;
@@ -110,7 +110,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(780, 98);
+            this.label2.Location = new System.Drawing.Point(780, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 18);
             this.label2.TabIndex = 13;
@@ -120,7 +120,7 @@
             // 
             this.textBoxDocName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDocName.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDocName.Location = new System.Drawing.Point(528, 57);
+            this.textBoxDocName.Location = new System.Drawing.Point(528, 78);
             this.textBoxDocName.Name = "textBoxDocName";
             this.textBoxDocName.Size = new System.Drawing.Size(246, 26);
             this.textBoxDocName.TabIndex = 1;
@@ -131,7 +131,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(780, 61);
+            this.label3.Location = new System.Drawing.Point(780, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 18);
             this.label3.TabIndex = 0;
@@ -152,18 +152,18 @@
             this.panel1.Controls.Add(this.Error_textBoxDate);
             this.panel1.Location = new System.Drawing.Point(14, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(843, 329);
+            this.panel1.Size = new System.Drawing.Size(843, 345);
             this.panel1.TabIndex = 64;
             // 
             // PatientNameLbl
             // 
-            this.PatientNameLbl.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.PatientNameLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.PatientNameLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PatientNameLbl.ForeColor = System.Drawing.Color.White;
+            this.PatientNameLbl.ForeColor = System.Drawing.Color.Black;
             this.PatientNameLbl.Location = new System.Drawing.Point(528, 15);
             this.PatientNameLbl.Name = "PatientNameLbl";
             this.PatientNameLbl.Padding = new System.Windows.Forms.Padding(3);
-            this.PatientNameLbl.Size = new System.Drawing.Size(292, 25);
+            this.PatientNameLbl.Size = new System.Drawing.Size(292, 35);
             this.PatientNameLbl.TabIndex = 101;
             this.PatientNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -298,7 +298,7 @@
             this.panelComment.BorderColor = System.Drawing.Color.LightGray;
             this.panelComment.Controls.Add(this.textBoxComment);
             this.panelComment.Controls.Add(this.panelCommentHeader);
-            this.panelComment.Location = new System.Drawing.Point(528, 132);
+            this.panelComment.Location = new System.Drawing.Point(528, 171);
             this.panelComment.Name = "panelComment";
             this.panelComment.Size = new System.Drawing.Size(292, 143);
             this.panelComment.TabIndex = 24;
@@ -314,7 +314,7 @@
             // 
             // panelCommentHeader
             // 
-            this.panelCommentHeader.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelCommentHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.panelCommentHeader.BorderColor = System.Drawing.Color.LightGray;
             this.panelCommentHeader.Controls.Add(this.label4);
             this.panelCommentHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -350,7 +350,7 @@
             this.OkBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OkBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OkBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
-            this.OkBtn.Location = new System.Drawing.Point(707, 357);
+            this.OkBtn.Location = new System.Drawing.Point(707, 376);
             this.OkBtn.Name = "OkBtn";
             this.OkBtn.Size = new System.Drawing.Size(150, 30);
             this.OkBtn.TabIndex = 65;
@@ -363,7 +363,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(869, 399);
+            this.ClientSize = new System.Drawing.Size(869, 420);
             this.Controls.Add(this.OkBtn);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
