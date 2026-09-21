@@ -46,11 +46,35 @@ namespace Dentistry
         }
         public PatientTeethView(int patientId, string patientName, int doctorId)
         {
+            _startupStopwatch = System.Diagnostics.Stopwatch.StartNew();
+            _startupLog = new System.Text.StringBuilder();
+            _startupLog.AppendLine("==== " + DateTime.Now.ToString("HH:mm:ss.fff") + " (new run) ====");
+
             InitializeComponent();
+            _startupLog.AppendLine("A. Constructor: InitializeComponent() done at: " + _startupStopwatch.ElapsedMilliseconds + " ms");
 
             this.PatientId = patientId;
             this.DoctorId = doctorId;
             this.Text = string.Format(" {0} ", patientName);
+
+            this.Shown += PatientTeethView_Shown;
+        }
+
+        // Shared across the constructor, Load, and Shown so all checkpoints
+        // land on one timeline instead of separate per-method stopwatches -
+        // this is what actually answers "how long until the form is fully
+        // visible", which spans more than just the Load event body.
+        private System.Diagnostics.Stopwatch _startupStopwatch;
+        private System.Text.StringBuilder _startupLog;
+
+        private void PatientTeethView_Shown(object sender, EventArgs e)
+        {
+            _startupLog.AppendLine("Z. Shown event (form fully rendered): " + _startupStopwatch.ElapsedMilliseconds + " ms");
+            try
+            {
+                System.IO.File.AppendAllText(@"C:\temp\perf_log_teeth_startup.txt", _startupLog.ToString() + "\r\n");
+            }
+            catch { /* ignore logging failures */ }
         }
 
         private void PatientTeethView_Load(object sender, EventArgs e)
@@ -58,41 +82,33 @@ namespace Dentistry
 
             //waitForm.Show(this);
 
-            var swTotal = System.Diagnostics.Stopwatch.StartNew();
-            var log = new System.Text.StringBuilder();
+            _startupLog.AppendLine("B. Load event starts at: " + _startupStopwatch.ElapsedMilliseconds + " ms");
             var sw = System.Diagnostics.Stopwatch.StartNew();
 
             if (this.PatientId != null)
             {
                 this.GetTeethData();
-                log.AppendLine("1. GetTeethData(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+                _startupLog.AppendLine("   1. GetTeethData(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
 
                 this.GetPatientTeethInfos(this.PatientId.Value);
-                log.AppendLine("2. GetPatientTeethInfos(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+                _startupLog.AppendLine("   2. GetPatientTeethInfos(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
 
                 this.GetPatientServices(this.PatientId.Value);
-                log.AppendLine("3. GetPatientServices(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+                _startupLog.AppendLine("   3. GetPatientServices(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
 
                 this.GetToothServices();
-                log.AppendLine("4. GetToothServices(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+                _startupLog.AppendLine("   4. GetToothServices(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
 
                 this.chkAtfal_CheckedChanged(this, null);
-                log.AppendLine("5. chkAtfal_CheckedChanged(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+                _startupLog.AppendLine("   5. chkAtfal_CheckedChanged(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
 
                 this.CheckTeethDescriptions();
-                log.AppendLine("6. CheckTeethDescriptions(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
+                _startupLog.AppendLine("   6. CheckTeethDescriptions(): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
             }
 
             this.SetToolTip();
-            log.AppendLine("7. SetToolTip(): " + sw.ElapsedMilliseconds + " ms");
-            log.AppendLine("TOTAL: " + swTotal.ElapsedMilliseconds + " ms");
-
-            try
-            {
-                System.IO.File.AppendAllText(@"C:\temp\perf_log_teeth.txt",
-                    "==== " + DateTime.Now.ToString("HH:mm:ss.fff") + " ====\r\n" + log.ToString() + "\r\n");
-            }
-            catch { /* ignore logging failures */ }
+            _startupLog.AppendLine("   7. SetToolTip(): " + sw.ElapsedMilliseconds + " ms");
+            _startupLog.AppendLine("C. Load event ends at: " + _startupStopwatch.ElapsedMilliseconds + " ms");
 
             //waitForm.Close();
         }
@@ -105,8 +121,7 @@ namespace Dentistry
             dynamic sObj = new System.Dynamic.ExpandoObject();
             sObj.PatientId = patientId;
 
-            //JsonResponse<dynamic> result = DataProvider.GetPatientTeethInfos(sObj);
-            JsonResponse<dynamic> result = DataProvider.GetPatientTeethInfos_diagnostic(sObj);
+            JsonResponse<dynamic> result = DataProvider.GetPatientTeethInfos(sObj);
             if (result == null || result.Success == false || result.Data == null)
                 return;
             var list = result.Data as IEnumerable<dynamic>;

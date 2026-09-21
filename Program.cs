@@ -42,6 +42,25 @@ namespace Dentistry
         [STAThread]
         static void Main()
         {
+            // TEMPORARY DIAGNOSTIC - logs every exception thrown anywhere in
+            // the process (even ones caught internally and never shown to
+            // the user) with a timestamp and stack trace, to
+            // C:\temp\firstchance_exceptions.txt. Remove once done
+            // diagnosing the startup slowness - this adds real overhead per
+            // exception and is not meant to ship.
+            AppDomain.CurrentDomain.FirstChanceException += (sender, e) =>
+            {
+                try
+                {
+                    File.AppendAllText(@"C:\temp\firstchance_exceptions.txt",
+                        DateTime.Now.ToString("HH:mm:ss.fff") + " | " +
+                        e.Exception.GetType().FullName + " | " +
+                        e.Exception.Message + "\r\n" +
+                        e.Exception.StackTrace + "\r\n\r\n");
+                }
+                catch { /* never let logging itself crash the app */ }
+            };
+
             bool instanceCountOne = false;
             using (System.Threading.Mutex Mutex = new System.Threading.Mutex(true, "Mutex", out instanceCountOne))
             {
