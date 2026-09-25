@@ -36,7 +36,7 @@ namespace Dentistry.Models
         public int DoctorId { get; set; }
         public virtual Doctor Doctor { get; set; }
 
-        public long PatientId { get; set; }
+        public int PatientId { get; set; }
         public virtual Patient Patient { get; set; }
 
         public int? ServiceGroupId { get; set; }

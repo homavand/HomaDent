@@ -143,8 +143,7 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="SparksToothChart, Version=4.4.17.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="SparksToothChart">
       <HintPath>..\..\Dental.SparksToothChart\bin\Debug\SparksToothChart.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Base, Version=2016.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
@@ -248,6 +247,8 @@
     <Compile Include="class\Converts.cs" />
     <Compile Include="class\DataProvider.cs" />
     <Compile Include="class\DatePattern.cs" />
+    <Compile Include="class\PatientChequeRow.cs" />
+    <Compile Include="class\PatientVisitRow.cs" />
     <Compile Include="class\ToothInfo.cs" />
     <Compile Include="class\WaitFormFunc.cs" />
     <Compile Include="context\DentalContext.cs" />

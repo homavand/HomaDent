@@ -9,7 +9,8 @@ namespace Dentistry.Class
 {
     public class ToothInfo : IEquatable<ToothInfo>
     {
-        public ToothInfo() {
+        public ToothInfo()
+        {
             this.ToothId = 0;
             this.Visible = true;
             this.Rotate = 0;
@@ -18,14 +19,14 @@ namespace Dentistry.Class
             this.ShiftM = 0;
             this.ShiftO = 0;
             this.ShiftB = 0;
-            this.IsRCT =  false;
+            this.IsRCT = false;
             this.ColorRCT = 0;
             this.IsBU = false;
             this.ColorBU = 0;
             this.IsImplant = false;
             this.ColorImplant = 0;
             this.IsCrown = false;
-            this.IsPontic = false;             
+            this.IsPontic = false;
             this.IsSealant = false;
             this.ColorSealant = 0;
             this.SurfaceColor = 0;
@@ -51,11 +52,15 @@ namespace Dentistry.Class
             this.Surface_I_Color = 0;
             this.Surface_V = false;
             this.Surface_V_Color = 0;
+            this.Mobility = 0;
+            this.ColorMobility = 0;
+            this.Fracture = 0;
+            this.ColorFracture = 0;
             this.Description = "";
             this.IsDeleted = false;
             this.IsChanged = false;
         }
-        public ToothInfo(dynamic obj): this()
+        public ToothInfo(dynamic obj) : this()
         {
             ToothInfo tooth = new ToothInfo();
             var x = new RouteValueDictionary(obj);
@@ -66,21 +71,21 @@ namespace Dentistry.Class
                 this.PatientId = x.GetValue<int>("PatientId");
             if (x.HasValue("ToothId"))
                 this.ToothId = x.GetValue<int>("ToothId");
-           
+
             if (x.HasValue("Visible"))
                 this.Visible = x.GetValue<bool>("Visible");
             if (x.HasValue("Rotate"))
-                this.Rotate = x.GetValue<float>("Rotate");
+                this.Rotate = x.GetValue<int>("Rotate");
             if (x.HasValue("TipB"))
-                this.TipB = x.GetValue<float>("TipB");
+                this.TipB = x.GetValue<int>("TipB");
             if (x.HasValue("TipM"))
-                this.TipM = x.GetValue<float>("TipM");
+                this.TipM = x.GetValue<int>("TipM");
             if (x.HasValue("ShiftM"))
-                this.ShiftM = x.GetValue<float>("ShiftM");
+                this.ShiftM = x.GetValue<int>("ShiftM");
             if (x.HasValue("ShiftO"))
-                this.ShiftO = x.GetValue<float>("ShiftO");
+                this.ShiftO = x.GetValue<int>("ShiftO");
             if (x.HasValue("ShiftB"))
-                this.ShiftB = x.GetValue<float>("ShiftB");
+                this.ShiftB = x.GetValue<int>("ShiftB");
             if (x.HasValue("IsRCT"))
                 this.IsRCT = x.GetValue<bool>("IsRCT");
             if (x.HasValue("ColorRCT"))
@@ -96,7 +101,7 @@ namespace Dentistry.Class
             if (x.HasValue("IsCrown"))
                 this.IsCrown = x.GetValue<bool>("IsCrown");
             if (x.HasValue("IsPontic"))
-                this.IsPontic = x.GetValue<bool>("IsPontic");           
+                this.IsPontic = x.GetValue<bool>("IsPontic");
             if (x.HasValue("IsSealant"))
                 this.IsSealant = x.GetValue<bool>("IsSealant");
             if (x.HasValue("ColorSealant"))
@@ -108,7 +113,7 @@ namespace Dentistry.Class
                 this.Surface = x.GetValue<string>("Surface");
             if (x.HasValue("SurfaceColor"))
                 this.SurfaceColor = x.GetValue<int>("SurfaceColor");
-           
+
 
 
             if (x.HasValue("Surface_B"))
@@ -151,8 +156,16 @@ namespace Dentistry.Class
                 this.Surface_V = x.GetValue<bool>("Surface_V");
             if (x.HasValue("Surface_V_Color"))
                 this.Surface_V_Color = x.GetValue<int>("Surface_V_Color");
+            if (x.HasValue("Mobility"))
+                this.Mobility = x.GetValue<int>("Mobility");
+            if (x.HasValue("ColorMobility"))
+                this.ColorMobility = x.GetValue<int>("ColorMobility");
+            if (x.HasValue("Fracture"))
+                this.Fracture = x.GetValue<int>("Fracture");
+            if (x.HasValue("ColorFracture"))
+                this.ColorFracture = x.GetValue<int>("ColorFracture");
 
-            
+
             if (x.HasValue("Description"))
                 this.Description = x.GetValue<string>("Description");
             if (x.HasValue("IsDeleted"))
@@ -165,12 +178,12 @@ namespace Dentistry.Class
         public int PatientId { get; set; }
         public int ToothId { get; set; }
         public bool Visible { get; set; }
-        public float Rotate { get; set; }
-        public float TipB { get; set; }
-        public float TipM { get; set; }
-        public float ShiftM { get; set; }
-        public float ShiftO { get; set; }
-        public float ShiftB { get; set; }
+        public int Rotate { get; set; }
+        public int TipB { get; set; }
+        public int TipM { get; set; }
+        public int ShiftM { get; set; }
+        public int ShiftO { get; set; }
+        public int ShiftB { get; set; }
         public bool IsRCT { get; set; }
         public int ColorRCT { get; set; }
         public bool IsBU { get; set; }
@@ -178,7 +191,7 @@ namespace Dentistry.Class
         public bool IsImplant { get; set; }
         public int ColorImplant { get; set; }
         public bool IsCrown { get; set; }
-        public bool IsPontic { get; set; }      
+        public bool IsPontic { get; set; }
         public bool IsSealant { get; set; }
         public int ColorSealant { get; set; }
         public int SurfaceColor { get; set; }
@@ -206,7 +219,12 @@ namespace Dentistry.Class
         public int Surface_I_Color { get; set; }
         public bool Surface_V { get; set; }
         public int Surface_V_Color { get; set; }
-      
+
+        public int Mobility { get; set; }
+        public int ColorMobility { get; set; }
+        public int Fracture { get; set; }
+        public int ColorFracture { get; set; }
+
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsChanged { get; set; }
@@ -221,7 +239,7 @@ namespace Dentistry.Class
 
             //if (this.ToothId != other.ToothId) isEquals = false;
             if (this.Visible != other.Visible) isEquals = false;
-            else if (this.Rotate != other.Rotate)   isEquals = false;
+            else if (this.Rotate != other.Rotate) isEquals = false;
             else if (this.TipB != other.TipB) isEquals = false;
             else if (this.TipM != other.TipM) isEquals = false;
             else if (this.ShiftM != other.ShiftM) isEquals = false;
@@ -260,6 +278,10 @@ namespace Dentistry.Class
             else if (this.Surface_I_Color != other.Surface_I_Color) isEquals = false;
             else if (this.Surface_V != other.Surface_V) isEquals = false;
             else if (this.Surface_V_Color != other.Surface_V_Color) isEquals = false;
+            else if (this.Mobility != other.Mobility) isEquals = false;
+            else if (this.ColorMobility != other.ColorMobility) isEquals = false;
+            else if (this.Fracture != other.Fracture) isEquals = false;
+            else if (this.ColorFracture != other.ColorFracture) isEquals = false;
             else if (this.Description != other.Description) isEquals = false;
             else if (this.IsDeleted != other.IsDeleted) isEquals = false;
 

@@ -25,7 +25,9 @@ D:\Dental-EF-SQLite\Dentistry\bin\Debug\DNTPersianUtils.Core.xml
 D:\Dental-EF-SQLite\Dentistry\bin\Debug\EntityFramework.xml
 D:\Dental-EF-SQLite\Dentistry\bin\Debug\EntityFramework.SqlServer.xml
 D:\Dental-EF-SQLite\Dentistry\bin\Debug\SparksToothChart.pdb
+D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.csproj.AssemblyReference.cache
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.csproj.SuggestedBindingRedirects.cache
+D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.DashboardX.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientsList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientSpecialCommentDefine.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ServiceInsurersPriceDefine.resources
@@ -52,7 +54,9 @@ D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.CostFinancialList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.CostFinancialDefine.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientDelete.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientDocDefine.resources
+D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientTransactionList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientInfo.resources
+D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientTransactionDefine.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.InsuranceFinancialList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.InsuranceFinancialDefine.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.MainForm.resources
@@ -63,6 +67,7 @@ D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ReportList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.OfficeSetting.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.BackupRestore.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.Dashboard.resources
+D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ReportForm.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.SpecialDiseaseList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.SelectSpecialDrugList.resources
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ServiceList.resources
@@ -85,8 +90,3 @@ D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.csproj.CoreCompileInputs.cache
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.csproj.CopyComplete
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.exe
 D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.pdb
-D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.DashboardX.resources
-D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.ReportForm.resources
-D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientTransactionList.resources
-D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.PatientTransactionDefine.resources
-D:\Dental-EF-SQLite\Dentistry\obj\Debug\Dentistry.csproj.AssemblyReference.cache

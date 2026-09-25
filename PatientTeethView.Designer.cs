@@ -31,40 +31,39 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientTeethView));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.SaveActionBtn = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.exPanel1 = new Dentistry.UserControls.ExPanel();
             this.ShiftBxBtn = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.TipBxBtn = new System.Windows.Forms.NumericUpDown();
-            this.ShiftOxBtn = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.TipMxBtn = new System.Windows.Forms.NumericUpDown();
             this.ShiftMxBtn = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.RotateBtn = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.RotateBtn = new System.Windows.Forms.NumericUpDown();
+            this.ShiftOxBtn = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.exPanel2 = new Dentistry.UserControls.ExPanel();
             this.panel42 = new System.Windows.Forms.Panel();
+            this.btnMobility = new System.Windows.Forms.Button();
+            this.btnFracture = new System.Windows.Forms.Button();
             this.btnCrown = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
             this.btnX = new System.Windows.Forms.Button();
             this.btnImplant = new System.Windows.Forms.Button();
             this.btnBuildup = new System.Windows.Forms.Button();
             this.btnExtract = new System.Windows.Forms.Button();
             this.btnRCT = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.panel44 = new System.Windows.Forms.Panel();
             this.btnDrawBigX = new System.Windows.Forms.Button();
-            this.panel28 = new System.Windows.Forms.Panel();
-            this.colorLbl = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.ExBtn = new System.Windows.Forms.Button();
             this.BFxBtn = new System.Windows.Forms.Button();
@@ -74,6 +73,8 @@
             this.LxBtn = new System.Windows.Forms.Button();
             this.VxBtn = new System.Windows.Forms.Button();
             this.MxBtn = new System.Windows.Forms.Button();
+            this.panel28 = new System.Windows.Forms.Panel();
+            this.colorLbl = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.chkAtfal = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -89,6 +90,15 @@
             this.ToothServicesTxt = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.toothTxt = new System.Windows.Forms.Label();
+            this.MobilityPnl = new Dentistry.UserControls.ExPanel();
+            this.Mobility3Btn = new System.Windows.Forms.Button();
+            this.MobilityLbl = new System.Windows.Forms.Label();
+            this.Mobility2Btn = new System.Windows.Forms.Button();
+            this.Mobility1Btn = new System.Windows.Forms.Button();
+            this.FracturePnl = new Dentistry.UserControls.ExPanel();
+            this.FractureRootBtn = new System.Windows.Forms.Button();
+            this.FractureLbl = new System.Windows.Forms.Label();
+            this.FractureCrownBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PrimaryBotThPnl = new System.Windows.Forms.TableLayoutPanel();
             this.pnlBL2 = new System.Windows.Forms.Panel();
@@ -216,24 +226,26 @@
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.exPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShiftBxBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipBxBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ShiftOxBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipMxBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShiftMxBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RotateBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShiftOxBtn)).BeginInit();
             this.panel6.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.exPanel2.SuspendLayout();
             this.panel42.SuspendLayout();
             this.panel44.SuspendLayout();
-            this.panel28.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel28.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel1.SuspendLayout();
             this.ToothDescriptionPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toothImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgToothServices)).BeginInit();
+            this.MobilityPnl.SuspendLayout();
+            this.FracturePnl.SuspendLayout();
             this.panel2.SuspendLayout();
             this.PrimaryBotThPnl.SuspendLayout();
             this.pnlBL2.SuspendLayout();
@@ -340,7 +352,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(45)))), ((int)(((byte)(73)))));
             this.panel5.Controls.Add(this.SaveActionBtn);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(5, 665);
+            this.panel5.Location = new System.Drawing.Point(5, 691);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(210, 98);
             this.panel5.TabIndex = 2;
@@ -364,44 +376,40 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.groupBox4);
+            this.panel7.Controls.Add(this.exPanel1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(5, 419);
+            this.panel7.Location = new System.Drawing.Point(5, 469);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(5);
-            this.panel7.Size = new System.Drawing.Size(210, 246);
+            this.panel7.Size = new System.Drawing.Size(210, 222);
             this.panel7.TabIndex = 1;
             // 
-            // groupBox4
+            // exPanel1
             // 
-            this.groupBox4.Controls.Add(this.ShiftBxBtn);
-            this.groupBox4.Controls.Add(this.TipBxBtn);
-            this.groupBox4.Controls.Add(this.ShiftOxBtn);
-            this.groupBox4.Controls.Add(this.TipMxBtn);
-            this.groupBox4.Controls.Add(this.ShiftMxBtn);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.RotateBtn);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.groupBox4.Location = new System.Drawing.Point(5, 5);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox4.Size = new System.Drawing.Size(200, 236);
-            this.groupBox4.TabIndex = 39;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "  چرخش / کج کردن  و انتقال  ";
+            this.exPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.exPanel1.BorderColor = System.Drawing.Color.Thistle;
+            this.exPanel1.Controls.Add(this.ShiftBxBtn);
+            this.exPanel1.Controls.Add(this.label8);
+            this.exPanel1.Controls.Add(this.TipBxBtn);
+            this.exPanel1.Controls.Add(this.label10);
+            this.exPanel1.Controls.Add(this.label12);
+            this.exPanel1.Controls.Add(this.TipMxBtn);
+            this.exPanel1.Controls.Add(this.ShiftMxBtn);
+            this.exPanel1.Controls.Add(this.label11);
+            this.exPanel1.Controls.Add(this.label9);
+            this.exPanel1.Controls.Add(this.RotateBtn);
+            this.exPanel1.Controls.Add(this.ShiftOxBtn);
+            this.exPanel1.Controls.Add(this.label15);
+            this.exPanel1.Location = new System.Drawing.Point(5, 10);
+            this.exPanel1.Name = "exPanel1";
+            this.exPanel1.Size = new System.Drawing.Size(200, 205);
+            this.exPanel1.TabIndex = 0;
             // 
             // ShiftBxBtn
             // 
             this.ShiftBxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShiftBxBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(241)))), ((int)(((byte)(248)))));
-            this.ShiftBxBtn.Location = new System.Drawing.Point(18, 181);
+            this.ShiftBxBtn.Location = new System.Drawing.Point(20, 161);
             this.ShiftBxBtn.Maximum = new decimal(new int[] {
             360,
             0,
@@ -413,10 +421,23 @@
             0,
             -2147483648});
             this.ShiftBxBtn.Name = "ShiftBxBtn";
-            this.ShiftBxBtn.Size = new System.Drawing.Size(55, 26);
+            this.ShiftBxBtn.Size = new System.Drawing.Size(55, 20);
             this.ShiftBxBtn.TabIndex = 122;
             this.ShiftBxBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ShiftBxBtn.ValueChanged += new System.EventHandler(this.NumericBtn_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.Font = new System.Drawing.Font("Vazir", 9.5F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.label8.Location = new System.Drawing.Point(81, 106);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label8.Size = new System.Drawing.Size(113, 18);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "انتقال (ShiftM) :";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TipBxBtn
             // 
@@ -427,7 +448,7 @@
             0,
             0,
             0});
-            this.TipBxBtn.Location = new System.Drawing.Point(18, 93);
+            this.TipBxBtn.Location = new System.Drawing.Point(20, 73);
             this.TipBxBtn.Maximum = new decimal(new int[] {
             360,
             0,
@@ -439,31 +460,35 @@
             0,
             -2147483648});
             this.TipBxBtn.Name = "TipBxBtn";
-            this.TipBxBtn.Size = new System.Drawing.Size(55, 26);
+            this.TipBxBtn.Size = new System.Drawing.Size(55, 20);
             this.TipBxBtn.TabIndex = 119;
             this.TipBxBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TipBxBtn.ValueChanged += new System.EventHandler(this.NumericBtn_ValueChanged);
             // 
-            // ShiftOxBtn
+            // label10
             // 
-            this.ShiftOxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ShiftOxBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(241)))), ((int)(((byte)(248)))));
-            this.ShiftOxBtn.Location = new System.Drawing.Point(18, 152);
-            this.ShiftOxBtn.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.ShiftOxBtn.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.ShiftOxBtn.Name = "ShiftOxBtn";
-            this.ShiftOxBtn.Size = new System.Drawing.Size(55, 26);
-            this.ShiftOxBtn.TabIndex = 121;
-            this.ShiftOxBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ShiftOxBtn.ValueChanged += new System.EventHandler(this.NumericBtn_ValueChanged);
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.Font = new System.Drawing.Font("Vazir", 9.5F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.label10.Location = new System.Drawing.Point(81, 164);
+            this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label10.Size = new System.Drawing.Size(113, 18);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "انتقال (ShiftB) :";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.Font = new System.Drawing.Font("Vazir", 9.5F);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.label12.Location = new System.Drawing.Point(81, 47);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(113, 18);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "کج کردن (TipM) :";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TipMxBtn
             // 
@@ -474,7 +499,7 @@
             0,
             0,
             0});
-            this.TipMxBtn.Location = new System.Drawing.Point(18, 64);
+            this.TipMxBtn.Location = new System.Drawing.Point(20, 44);
             this.TipMxBtn.Maximum = new decimal(new int[] {
             360,
             0,
@@ -486,7 +511,7 @@
             0,
             -2147483648});
             this.TipMxBtn.Name = "TipMxBtn";
-            this.TipMxBtn.Size = new System.Drawing.Size(55, 26);
+            this.TipMxBtn.Size = new System.Drawing.Size(55, 20);
             this.TipMxBtn.TabIndex = 118;
             this.TipMxBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TipMxBtn.ValueChanged += new System.EventHandler(this.NumericBtn_ValueChanged);
@@ -495,7 +520,7 @@
             // 
             this.ShiftMxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShiftMxBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(241)))), ((int)(((byte)(248)))));
-            this.ShiftMxBtn.Location = new System.Drawing.Point(18, 123);
+            this.ShiftMxBtn.Location = new System.Drawing.Point(20, 103);
             this.ShiftMxBtn.Maximum = new decimal(new int[] {
             360,
             0,
@@ -507,23 +532,36 @@
             0,
             -2147483648});
             this.ShiftMxBtn.Name = "ShiftMxBtn";
-            this.ShiftMxBtn.Size = new System.Drawing.Size(55, 26);
+            this.ShiftMxBtn.Size = new System.Drawing.Size(55, 20);
             this.ShiftMxBtn.TabIndex = 120;
             this.ShiftMxBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ShiftMxBtn.ValueChanged += new System.EventHandler(this.NumericBtn_ValueChanged);
             // 
-            // label10
+            // label11
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.Font = new System.Drawing.Font("Vazir", 9.5F);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.label10.Location = new System.Drawing.Point(79, 184);
-            this.label10.Name = "label10";
-            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label10.Size = new System.Drawing.Size(113, 18);
-            this.label10.TabIndex = 28;
-            this.label10.Text = "انتقال (ShiftB) :";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.Font = new System.Drawing.Font("Vazir", 9.5F);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.label11.Location = new System.Drawing.Point(81, 76);
+            this.label11.Name = "label11";
+            this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label11.Size = new System.Drawing.Size(113, 18);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "کج کردن (TipB) :";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.Font = new System.Drawing.Font("Vazir", 9.5F);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
+            this.label9.Location = new System.Drawing.Point(81, 135);
+            this.label9.Name = "label9";
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label9.Size = new System.Drawing.Size(113, 18);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "انتقال (ShiftO) :";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // RotateBtn
             // 
@@ -534,7 +572,7 @@
             0,
             0,
             0});
-            this.RotateBtn.Location = new System.Drawing.Point(18, 35);
+            this.RotateBtn.Location = new System.Drawing.Point(20, 15);
             this.RotateBtn.Maximum = new decimal(new int[] {
             360,
             0,
@@ -546,68 +584,38 @@
             0,
             -2147483648});
             this.RotateBtn.Name = "RotateBtn";
-            this.RotateBtn.Size = new System.Drawing.Size(55, 26);
+            this.RotateBtn.Size = new System.Drawing.Size(55, 20);
             this.RotateBtn.TabIndex = 35;
             this.RotateBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.RotateBtn.ValueChanged += new System.EventHandler(this.NumericBtn_ValueChanged);
             // 
-            // label9
+            // ShiftOxBtn
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.Font = new System.Drawing.Font("Vazir", 9.5F);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.label9.Location = new System.Drawing.Point(79, 155);
-            this.label9.Name = "label9";
-            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label9.Size = new System.Drawing.Size(113, 18);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "انتقال (ShiftO) :";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.Font = new System.Drawing.Font("Vazir", 9.5F);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.label11.Location = new System.Drawing.Point(79, 96);
-            this.label11.Name = "label11";
-            this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label11.Size = new System.Drawing.Size(113, 18);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "کج کردن (TipB) :";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.Font = new System.Drawing.Font("Vazir", 9.5F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.label8.Location = new System.Drawing.Point(79, 126);
-            this.label8.Name = "label8";
-            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label8.Size = new System.Drawing.Size(113, 18);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "انتقال (ShiftM) :";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.Font = new System.Drawing.Font("Vazir", 9.5F);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.label12.Location = new System.Drawing.Point(79, 67);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(113, 18);
-            this.label12.TabIndex = 24;
-            this.label12.Text = "کج کردن (TipM) :";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShiftOxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShiftOxBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(241)))), ((int)(((byte)(248)))));
+            this.ShiftOxBtn.Location = new System.Drawing.Point(20, 132);
+            this.ShiftOxBtn.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.ShiftOxBtn.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.ShiftOxBtn.Name = "ShiftOxBtn";
+            this.ShiftOxBtn.Size = new System.Drawing.Size(55, 20);
+            this.ShiftOxBtn.TabIndex = 121;
+            this.ShiftOxBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ShiftOxBtn.ValueChanged += new System.EventHandler(this.NumericBtn_ValueChanged);
             // 
             // label15
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.label15.Location = new System.Drawing.Point(79, 38);
+            this.label15.Location = new System.Drawing.Point(81, 18);
             this.label15.Name = "label15";
             this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label15.Size = new System.Drawing.Size(113, 18);
@@ -617,46 +625,79 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.groupBox2);
+            this.panel6.Controls.Add(this.exPanel2);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(5, 42);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(5);
-            this.panel6.Size = new System.Drawing.Size(210, 377);
+            this.panel6.Size = new System.Drawing.Size(210, 427);
             this.panel6.TabIndex = 1;
             // 
-            // groupBox2
+            // exPanel2
             // 
-            this.groupBox2.Controls.Add(this.panel42);
-            this.groupBox2.Controls.Add(this.panel44);
-            this.groupBox2.Controls.Add(this.panel28);
-            this.groupBox2.Controls.Add(this.panel9);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.groupBox2.Location = new System.Drawing.Point(5, 5);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox2.Size = new System.Drawing.Size(200, 367);
-            this.groupBox2.TabIndex = 47;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "  انتخاب ناحیه درمان  ";
+            this.exPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.exPanel2.BorderColor = System.Drawing.Color.Thistle;
+            this.exPanel2.Controls.Add(this.panel42);
+            this.exPanel2.Controls.Add(this.btnReset);
+            this.exPanel2.Controls.Add(this.panel44);
+            this.exPanel2.Controls.Add(this.panel9);
+            this.exPanel2.Controls.Add(this.panel28);
+            this.exPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exPanel2.Location = new System.Drawing.Point(5, 5);
+            this.exPanel2.Name = "exPanel2";
+            this.exPanel2.Size = new System.Drawing.Size(200, 417);
+            this.exPanel2.TabIndex = 0;
             // 
             // panel42
             // 
             this.panel42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.panel42.Controls.Add(this.btnMobility);
+            this.panel42.Controls.Add(this.btnFracture);
             this.panel42.Controls.Add(this.btnCrown);
-            this.panel42.Controls.Add(this.btnReset);
             this.panel42.Controls.Add(this.btnX);
             this.panel42.Controls.Add(this.btnImplant);
             this.panel42.Controls.Add(this.btnBuildup);
             this.panel42.Controls.Add(this.btnExtract);
             this.panel42.Controls.Add(this.btnRCT);
-            this.panel42.Location = new System.Drawing.Point(10, 179);
+            this.panel42.Location = new System.Drawing.Point(11, 158);
             this.panel42.Name = "panel42";
             this.panel42.Padding = new System.Windows.Forms.Padding(8);
-            this.panel42.Size = new System.Drawing.Size(180, 165);
+            this.panel42.Size = new System.Drawing.Size(180, 247);
             this.panel42.TabIndex = 138;
+            // 
+            // btnMobility
+            // 
+            this.btnMobility.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMobility.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.btnMobility.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
+            this.btnMobility.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMobility.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMobility.ForeColor = System.Drawing.Color.White;
+            this.btnMobility.Location = new System.Drawing.Point(10, 123);
+            this.btnMobility.Name = "btnMobility";
+            this.btnMobility.Size = new System.Drawing.Size(74, 28);
+            this.btnMobility.TabIndex = 41;
+            this.btnMobility.Tag = "0";
+            this.btnMobility.Text = "Mobility";
+            this.btnMobility.UseVisualStyleBackColor = false;
+            this.btnMobility.Click += new System.EventHandler(this.btnMobility_Click);
+            // 
+            // btnFracture
+            // 
+            this.btnFracture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFracture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.btnFracture.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
+            this.btnFracture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFracture.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFracture.ForeColor = System.Drawing.Color.White;
+            this.btnFracture.Location = new System.Drawing.Point(95, 123);
+            this.btnFracture.Name = "btnFracture";
+            this.btnFracture.Size = new System.Drawing.Size(74, 28);
+            this.btnFracture.TabIndex = 42;
+            this.btnFracture.Tag = "0";
+            this.btnFracture.Text = "Fracture";
+            this.btnFracture.UseVisualStyleBackColor = false;
+            this.btnFracture.Click += new System.EventHandler(this.btnFracture_Click);
             // 
             // btnCrown
             // 
@@ -666,31 +707,14 @@
             this.btnCrown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrown.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrown.ForeColor = System.Drawing.Color.White;
-            this.btnCrown.Location = new System.Drawing.Point(10, 89);
+            this.btnCrown.Location = new System.Drawing.Point(10, 85);
             this.btnCrown.Name = "btnCrown";
-            this.btnCrown.Size = new System.Drawing.Size(74, 29);
+            this.btnCrown.Size = new System.Drawing.Size(74, 28);
             this.btnCrown.TabIndex = 40;
             this.btnCrown.Tag = "0";
             this.btnCrown.Text = "Crown";
             this.btnCrown.UseVisualStyleBackColor = false;
             this.btnCrown.Click += new System.EventHandler(this.btnCrown_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
-            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.ForeColor = System.Drawing.Color.DarkOrange;
-            this.btnReset.Location = new System.Drawing.Point(10, 129);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(159, 29);
-            this.btnReset.TabIndex = 39;
-            this.btnReset.Tag = "0";
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnX
             // 
@@ -700,9 +724,9 @@
             this.btnX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnX.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnX.ForeColor = System.Drawing.Color.White;
-            this.btnX.Location = new System.Drawing.Point(95, 89);
+            this.btnX.Location = new System.Drawing.Point(95, 85);
             this.btnX.Name = "btnX";
-            this.btnX.Size = new System.Drawing.Size(74, 29);
+            this.btnX.Size = new System.Drawing.Size(74, 28);
             this.btnX.TabIndex = 38;
             this.btnX.Tag = "0";
             this.btnX.Text = "Sealant";
@@ -717,9 +741,9 @@
             this.btnImplant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImplant.Font = new System.Drawing.Font("Vazir", 9.75F);
             this.btnImplant.ForeColor = System.Drawing.Color.White;
-            this.btnImplant.Location = new System.Drawing.Point(10, 50);
+            this.btnImplant.Location = new System.Drawing.Point(10, 48);
             this.btnImplant.Name = "btnImplant";
-            this.btnImplant.Size = new System.Drawing.Size(74, 29);
+            this.btnImplant.Size = new System.Drawing.Size(74, 28);
             this.btnImplant.TabIndex = 30;
             this.btnImplant.Tag = "10";
             this.btnImplant.Text = "Implant";
@@ -736,7 +760,7 @@
             this.btnBuildup.ForeColor = System.Drawing.Color.White;
             this.btnBuildup.Location = new System.Drawing.Point(10, 12);
             this.btnBuildup.Name = "btnBuildup";
-            this.btnBuildup.Size = new System.Drawing.Size(74, 29);
+            this.btnBuildup.Size = new System.Drawing.Size(74, 28);
             this.btnBuildup.TabIndex = 37;
             this.btnBuildup.Tag = "11";
             this.btnBuildup.Text = "Buildup";
@@ -751,9 +775,9 @@
             this.btnExtract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtract.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExtract.ForeColor = System.Drawing.Color.White;
-            this.btnExtract.Location = new System.Drawing.Point(95, 50);
+            this.btnExtract.Location = new System.Drawing.Point(95, 48);
             this.btnExtract.Name = "btnExtract";
-            this.btnExtract.Size = new System.Drawing.Size(74, 29);
+            this.btnExtract.Size = new System.Drawing.Size(74, 28);
             this.btnExtract.TabIndex = 32;
             this.btnExtract.Text = "Extract";
             this.btnExtract.UseVisualStyleBackColor = false;
@@ -769,20 +793,37 @@
             this.btnRCT.ForeColor = System.Drawing.Color.White;
             this.btnRCT.Location = new System.Drawing.Point(95, 12);
             this.btnRCT.Name = "btnRCT";
-            this.btnRCT.Size = new System.Drawing.Size(74, 29);
+            this.btnRCT.Size = new System.Drawing.Size(74, 28);
             this.btnRCT.TabIndex = 35;
             this.btnRCT.Text = "RCT";
             this.btnRCT.UseVisualStyleBackColor = false;
             this.btnRCT.Click += new System.EventHandler(this.btnRCT_Click);
             // 
+            // btnReset
+            // 
+            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.Color.Thistle;
+            this.btnReset.Location = new System.Drawing.Point(11, 14);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(84, 28);
+            this.btnReset.TabIndex = 39;
+            this.btnReset.Tag = "0";
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // panel44
             // 
             this.panel44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
             this.panel44.Controls.Add(this.btnDrawBigX);
-            this.panel44.Location = new System.Drawing.Point(94, 30);
+            this.panel44.Location = new System.Drawing.Point(104, 9);
             this.panel44.Name = "panel44";
             this.panel44.Padding = new System.Windows.Forms.Padding(8);
-            this.panel44.Size = new System.Drawing.Size(45, 40);
+            this.panel44.Size = new System.Drawing.Size(40, 35);
             this.panel44.TabIndex = 154;
             // 
             // btnDrawBigX
@@ -796,34 +837,11 @@
             this.btnDrawBigX.Image = global::Dentistry.Properties.Resources.action_Cancel_16xLG;
             this.btnDrawBigX.Location = new System.Drawing.Point(8, 8);
             this.btnDrawBigX.Name = "btnDrawBigX";
-            this.btnDrawBigX.Size = new System.Drawing.Size(29, 24);
+            this.btnDrawBigX.Size = new System.Drawing.Size(24, 19);
             this.btnDrawBigX.TabIndex = 141;
             this.btnDrawBigX.Tag = "20";
             this.btnDrawBigX.UseVisualStyleBackColor = false;
             this.btnDrawBigX.Click += new System.EventHandler(this.btnDrawBigX_Click);
-            // 
-            // panel28
-            // 
-            this.panel28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
-            this.panel28.Controls.Add(this.colorLbl);
-            this.panel28.Location = new System.Drawing.Point(145, 30);
-            this.panel28.Name = "panel28";
-            this.panel28.Padding = new System.Windows.Forms.Padding(8);
-            this.panel28.Size = new System.Drawing.Size(45, 40);
-            this.panel28.TabIndex = 153;
-            // 
-            // colorLbl
-            // 
-            this.colorLbl.BackColor = System.Drawing.Color.Crimson;
-            this.colorLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorLbl.Location = new System.Drawing.Point(8, 8);
-            this.colorLbl.Name = "colorLbl";
-            this.colorLbl.Padding = new System.Windows.Forms.Padding(3);
-            this.colorLbl.Size = new System.Drawing.Size(29, 24);
-            this.colorLbl.TabIndex = 45;
-            this.colorLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.colorLbl.Click += new System.EventHandler(this.colorLbl_Click);
             // 
             // panel9
             // 
@@ -837,7 +855,7 @@
             this.panel9.Controls.Add(this.LxBtn);
             this.panel9.Controls.Add(this.VxBtn);
             this.panel9.Controls.Add(this.MxBtn);
-            this.panel9.Location = new System.Drawing.Point(10, 79);
+            this.panel9.Location = new System.Drawing.Point(11, 57);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
             this.panel9.Size = new System.Drawing.Size(180, 89);
@@ -971,6 +989,29 @@
             this.MxBtn.UseVisualStyleBackColor = false;
             this.MxBtn.Click += new System.EventHandler(this.UpdateSurf);
             // 
+            // panel28
+            // 
+            this.panel28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.panel28.Controls.Add(this.colorLbl);
+            this.panel28.Location = new System.Drawing.Point(151, 8);
+            this.panel28.Name = "panel28";
+            this.panel28.Padding = new System.Windows.Forms.Padding(8);
+            this.panel28.Size = new System.Drawing.Size(40, 35);
+            this.panel28.TabIndex = 153;
+            // 
+            // colorLbl
+            // 
+            this.colorLbl.BackColor = System.Drawing.Color.Crimson;
+            this.colorLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorLbl.Location = new System.Drawing.Point(8, 8);
+            this.colorLbl.Name = "colorLbl";
+            this.colorLbl.Padding = new System.Windows.Forms.Padding(3);
+            this.colorLbl.Size = new System.Drawing.Size(24, 19);
+            this.colorLbl.TabIndex = 45;
+            this.colorLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.colorLbl.Click += new System.EventHandler(this.colorLbl_Click);
+            // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(45)))), ((int)(((byte)(73)))));
@@ -1016,7 +1057,7 @@
             this.ToothDescriptionPnl.Controls.Add(this.ToothDescriptionTxt);
             this.ToothDescriptionPnl.Controls.Add(this.ToothIdLbl);
             this.ToothDescriptionPnl.ForeColor = System.Drawing.Color.White;
-            this.ToothDescriptionPnl.Location = new System.Drawing.Point(66, 282);
+            this.ToothDescriptionPnl.Location = new System.Drawing.Point(59, 188);
             this.ToothDescriptionPnl.Name = "ToothDescriptionPnl";
             this.ToothDescriptionPnl.Padding = new System.Windows.Forms.Padding(10, 5, 10, 10);
             this.ToothDescriptionPnl.Size = new System.Drawing.Size(352, 199);
@@ -1028,7 +1069,7 @@
             this.ToothDescriptionTxt.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToothDescriptionTxt.Location = new System.Drawing.Point(10, 36);
             this.ToothDescriptionTxt.Name = "ToothDescriptionTxt";
-            this.ToothDescriptionTxt.Size = new System.Drawing.Size(332, 150);
+            this.ToothDescriptionTxt.Size = new System.Drawing.Size(332, 122);
             this.ToothDescriptionTxt.TabIndex = 0;
             this.ToothDescriptionTxt.Text = "";
             // 
@@ -1070,7 +1111,7 @@
             this.dgToothServices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(45)))), ((int)(((byte)(73)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Orange;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(45)))), ((int)(((byte)(73)))));
@@ -1122,7 +1163,7 @@
             // 
             this.ColumnToothImage.DataPropertyName = "ToothImage";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
+            dataGridViewCellStyle2.NullValue = null;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             this.ColumnToothImage.DefaultCellStyle = dataGridViewCellStyle2;
@@ -1182,6 +1223,137 @@
             this.toothTxt.TabIndex = 1;
             this.toothTxt.Text = "...";
             // 
+            // MobilityPnl
+            // 
+            this.MobilityPnl.BackColor = System.Drawing.Color.Transparent;
+            this.MobilityPnl.BorderColor = System.Drawing.Color.Thistle;
+            this.MobilityPnl.Controls.Add(this.Mobility3Btn);
+            this.MobilityPnl.Controls.Add(this.MobilityLbl);
+            this.MobilityPnl.Controls.Add(this.Mobility2Btn);
+            this.MobilityPnl.Controls.Add(this.Mobility1Btn);
+            this.MobilityPnl.Location = new System.Drawing.Point(87, 466);
+            this.MobilityPnl.Name = "MobilityPnl";
+            this.MobilityPnl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MobilityPnl.Size = new System.Drawing.Size(217, 77);
+            this.MobilityPnl.TabIndex = 167;
+            this.MobilityPnl.Visible = false;
+            // 
+            // Mobility3Btn
+            // 
+            this.Mobility3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.Mobility3Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
+            this.Mobility3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Mobility3Btn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mobility3Btn.ForeColor = System.Drawing.Color.White;
+            this.Mobility3Btn.Location = new System.Drawing.Point(166, 28);
+            this.Mobility3Btn.Name = "Mobility3Btn";
+            this.Mobility3Btn.Size = new System.Drawing.Size(35, 27);
+            this.Mobility3Btn.TabIndex = 5;
+            this.Mobility3Btn.Tag = "3";
+            this.Mobility3Btn.Text = "M3";
+            this.Mobility3Btn.UseVisualStyleBackColor = false;
+            this.Mobility3Btn.Click += new System.EventHandler(this.MobilityBtn_Click);
+            // 
+            // MobilityLbl
+            // 
+            this.MobilityLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MobilityLbl.ForeColor = System.Drawing.Color.White;
+            this.MobilityLbl.Location = new System.Drawing.Point(15, 31);
+            this.MobilityLbl.Name = "MobilityLbl";
+            this.MobilityLbl.Size = new System.Drawing.Size(68, 24);
+            this.MobilityLbl.TabIndex = 2;
+            this.MobilityLbl.Text = "Mobility:";
+            this.MobilityLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Mobility2Btn
+            // 
+            this.Mobility2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.Mobility2Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
+            this.Mobility2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Mobility2Btn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mobility2Btn.ForeColor = System.Drawing.Color.White;
+            this.Mobility2Btn.Location = new System.Drawing.Point(127, 28);
+            this.Mobility2Btn.Name = "Mobility2Btn";
+            this.Mobility2Btn.Size = new System.Drawing.Size(35, 27);
+            this.Mobility2Btn.TabIndex = 4;
+            this.Mobility2Btn.Tag = "2";
+            this.Mobility2Btn.Text = "M2";
+            this.Mobility2Btn.UseVisualStyleBackColor = false;
+            this.Mobility2Btn.Click += new System.EventHandler(this.MobilityBtn_Click);
+            // 
+            // Mobility1Btn
+            // 
+            this.Mobility1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.Mobility1Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
+            this.Mobility1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Mobility1Btn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mobility1Btn.ForeColor = System.Drawing.Color.White;
+            this.Mobility1Btn.Location = new System.Drawing.Point(88, 28);
+            this.Mobility1Btn.Name = "Mobility1Btn";
+            this.Mobility1Btn.Size = new System.Drawing.Size(35, 27);
+            this.Mobility1Btn.TabIndex = 3;
+            this.Mobility1Btn.Tag = "1";
+            this.Mobility1Btn.Text = "M1";
+            this.Mobility1Btn.UseVisualStyleBackColor = false;
+            this.Mobility1Btn.Click += new System.EventHandler(this.MobilityBtn_Click);
+            // 
+            // FracturePnl
+            // 
+            this.FracturePnl.BackColor = System.Drawing.Color.Transparent;
+            this.FracturePnl.BorderColor = System.Drawing.Color.Thistle;
+            this.FracturePnl.Controls.Add(this.FractureRootBtn);
+            this.FracturePnl.Controls.Add(this.FractureLbl);
+            this.FracturePnl.Controls.Add(this.FractureCrownBtn);
+            this.FracturePnl.Location = new System.Drawing.Point(463, 438);
+            this.FracturePnl.Name = "FracturePnl";
+            this.FracturePnl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.FracturePnl.Size = new System.Drawing.Size(217, 77);
+            this.FracturePnl.TabIndex = 168;
+            this.FracturePnl.Visible = false;
+            // 
+            // FractureRootBtn
+            // 
+            this.FractureRootBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.FractureRootBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
+            this.FractureRootBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FractureRootBtn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FractureRootBtn.ForeColor = System.Drawing.Color.White;
+            this.FractureRootBtn.Location = new System.Drawing.Point(145, 28);
+            this.FractureRootBtn.Name = "FractureRootBtn";
+            this.FractureRootBtn.Size = new System.Drawing.Size(60, 27);
+            this.FractureRootBtn.TabIndex = 5;
+            this.FractureRootBtn.Tag = "2";
+            this.FractureRootBtn.Text = "Root";
+            this.FractureRootBtn.UseVisualStyleBackColor = false;
+            this.FractureRootBtn.Click += new System.EventHandler(this.FractureBtn_Click);
+            // 
+            // FractureLbl
+            // 
+            this.FractureLbl.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FractureLbl.ForeColor = System.Drawing.Color.White;
+            this.FractureLbl.Location = new System.Drawing.Point(15, 31);
+            this.FractureLbl.Name = "FractureLbl";
+            this.FractureLbl.Size = new System.Drawing.Size(68, 24);
+            this.FractureLbl.TabIndex = 3;
+            this.FractureLbl.Text = "Fracture:";
+            this.FractureLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // FractureCrownBtn
+            // 
+            this.FractureCrownBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(38)))), ((int)(((byte)(73)))));
+            this.FractureCrownBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(141)))), ((int)(((byte)(168)))));
+            this.FractureCrownBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FractureCrownBtn.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FractureCrownBtn.ForeColor = System.Drawing.Color.White;
+            this.FractureCrownBtn.Location = new System.Drawing.Point(80, 28);
+            this.FractureCrownBtn.Name = "FractureCrownBtn";
+            this.FractureCrownBtn.Size = new System.Drawing.Size(60, 27);
+            this.FractureCrownBtn.TabIndex = 4;
+            this.FractureCrownBtn.Tag = "1";
+            this.FractureCrownBtn.Text = "Crown";
+            this.FractureCrownBtn.UseVisualStyleBackColor = false;
+            this.FractureCrownBtn.Click += new System.EventHandler(this.FractureBtn_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(45)))), ((int)(((byte)(73)))));
@@ -1191,6 +1363,8 @@
             this.panel2.Controls.Add(this.TeethChart);
             this.panel2.Controls.Add(this.PermanentTopThPnl);
             this.panel2.Controls.Add(this.panel13);
+            this.panel2.Controls.Add(this.FracturePnl);
+            this.panel2.Controls.Add(this.MobilityPnl);
             this.panel2.Controls.Add(this.panel8);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(473, 5);
@@ -2856,25 +3030,27 @@
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
+            this.exPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ShiftBxBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipBxBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ShiftOxBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TipMxBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShiftMxBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RotateBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShiftOxBtn)).EndInit();
             this.panel6.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.exPanel2.ResumeLayout(false);
             this.panel42.ResumeLayout(false);
             this.panel44.ResumeLayout(false);
-            this.panel28.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel28.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.ToothDescriptionPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toothImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgToothServices)).EndInit();
+            this.MobilityPnl.ResumeLayout(false);
+            this.FracturePnl.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.PrimaryBotThPnl.ResumeLayout(false);
@@ -2962,21 +3138,7 @@
         private System.Windows.Forms.Button btnImplant;
         private System.Windows.Forms.Button btnExtract;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.NumericUpDown ShiftBxBtn;
-        private System.Windows.Forms.NumericUpDown TipBxBtn;
-        private System.Windows.Forms.NumericUpDown ShiftOxBtn;
-        private System.Windows.Forms.NumericUpDown TipMxBtn;
-        private System.Windows.Forms.NumericUpDown ShiftMxBtn;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown RotateBtn;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button ExBtn;
         private System.Windows.Forms.Button BFxBtn;
@@ -3127,5 +3289,30 @@
         private System.Windows.Forms.Panel ToothDescriptionPnl;
         private System.Windows.Forms.RichTextBox ToothDescriptionTxt;
         private System.Windows.Forms.Label ToothIdLbl;
+        private System.Windows.Forms.Label MobilityLbl;
+        private System.Windows.Forms.Button Mobility1Btn;
+        private System.Windows.Forms.Button Mobility2Btn;
+        private System.Windows.Forms.Button Mobility3Btn;
+        private System.Windows.Forms.NumericUpDown ShiftBxBtn;
+        private System.Windows.Forms.NumericUpDown TipBxBtn;
+        private System.Windows.Forms.NumericUpDown ShiftOxBtn;
+        private System.Windows.Forms.NumericUpDown TipMxBtn;
+        private System.Windows.Forms.NumericUpDown ShiftMxBtn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown RotateBtn;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label15;
+        private UserControls.ExPanel exPanel1;
+        private UserControls.ExPanel exPanel2;
+        private System.Windows.Forms.Button btnMobility;
+        private System.Windows.Forms.Button btnFracture;
+        private UserControls.ExPanel FracturePnl;
+        private System.Windows.Forms.Button FractureRootBtn;
+        private System.Windows.Forms.Button FractureCrownBtn;
+        private System.Windows.Forms.Label FractureLbl;
+        private UserControls.ExPanel MobilityPnl;
     }
 }

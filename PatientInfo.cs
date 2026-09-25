@@ -193,14 +193,51 @@ namespace Dentistry
             var dd = result.Data;
 
             FillGrid_dgPatientInfo(dd);
-            
+
         }
 
         #endregion
 
+        // چه patient یه ExpandoObject خالی/ناقص باشه چه یه anonymous type،
+        // این تابع به‌جای پرتاب Exception روی propertyهای غایب، defaultValue برمی‌گردونه
+        private static T SafeGetProperty<T>(dynamic obj, string propertyName, T defaultValue = default(T))
+        {
+            if (obj == null)
+                return defaultValue;
+
+            object source = obj;
+
+            if (source is IDictionary<string, object> dict)
+            {
+                if (dict.TryGetValue(propertyName, out object value) && value != null)
+                {
+                    try { return (T)Convert.ChangeType(value, typeof(T)); }
+                    catch { return defaultValue; }
+                }
+                return defaultValue;
+            }
+
+            try
+            {
+                var prop = source.GetType().GetProperty(propertyName);
+                if (prop == null)
+                    return defaultValue;
+
+                var val = prop.GetValue(source, null);
+                if (val == null)
+                    return defaultValue;
+
+                return (T)Convert.ChangeType(val, typeof(T));
+            }
+            catch
+            {
+                return defaultValue;
+            }
+        }
+
         #region FillGrid_dgPatientInfo
         private void FillGrid_dgPatientInfo(dynamic data = null)
-        {            
+        {
             dynamic patient = new ExpandoObject();
             patient.PatientId = 0;
             patient.DoctorId = 0;
@@ -226,24 +263,24 @@ namespace Dentistry
                     return;
                 }
 
-                this.DoctorId = patient.DoctorId;
+                this.DoctorId = SafeGetProperty<int>(patient, "DoctorId", 0);
             }
 
             List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>()
             {
-                new KeyValuePair<string, string>("پزشک بیمار  ", Convert.ToString(patient.DoctorTitle)),
-                new KeyValuePair<string, string>("كد بیمار  ", Convert.ToString(patient.PatientId)),
-                new KeyValuePair<string, string>("نام بیمار", Convert.ToString(patient.PatientName)),
-                new KeyValuePair<string, string>("كد ملی", Convert.ToString(patient.NationalCode)),
-                new KeyValuePair<string, string>("معرف", Convert.ToString(patient.Presenter)),
-                new KeyValuePair<string, string>("شغل", Convert.ToString(patient.JobTitle)),
-                new KeyValuePair<string, string>("جنسیت :",  Convert.ToString(patient.GenderTitle)),
-                new KeyValuePair<string, string>("سن", Convert.ToString(patient.Age)),
-                new KeyValuePair<string, string>(" تلفن ثابت", Convert.ToString(patient.FixedPhone)),
-                new KeyValuePair<string, string>("تلفن همراه", Convert.ToString(patient.MobilePhone)),
-                new KeyValuePair<string, string>("آدرس", Convert.ToString(patient.Address)),
-                new KeyValuePair<string, string>("بیمه گر پایه", Convert.ToString(Convert.ToString(patient.BI_InsurerTitle))),
-                new KeyValuePair<string, string>("تاریخ انقضا",  Convert.ToString(patient.BI_ExpirationSolarDate)),
+                new KeyValuePair<string, string>("پزشک بیمار  ", SafeGetProperty<string>(patient, "DoctorTitle", "")),
+                new KeyValuePair<string, string>("كد بیمار  ", SafeGetProperty<int>(patient, "PatientId", 0).ToString()),
+                new KeyValuePair<string, string>("نام بیمار", SafeGetProperty<string>(patient, "PatientName", "")),
+                new KeyValuePair<string, string>("كد ملی", SafeGetProperty<string>(patient, "NationalCode", "")),
+                new KeyValuePair<string, string>("معرف", SafeGetProperty<string>(patient, "Presenter", "")),
+                new KeyValuePair<string, string>("شغل", SafeGetProperty<string>(patient, "JobTitle", "")),
+                new KeyValuePair<string, string>("جنسیت :",  SafeGetProperty<string>(patient, "GenderTitle", "")),
+                new KeyValuePair<string, string>("سن", SafeGetProperty<string>(patient, "Age", "")),
+                new KeyValuePair<string, string>(" تلفن ثابت", SafeGetProperty<string>(patient, "FixedPhone", "")),
+                new KeyValuePair<string, string>("تلفن همراه", SafeGetProperty<string>(patient, "MobilePhone", "")),
+                new KeyValuePair<string, string>("آدرس", SafeGetProperty<string>(patient, "Address", "")),
+                new KeyValuePair<string, string>("بیمه گر پایه", SafeGetProperty<string>(patient, "BI_InsurerTitle", "")),
+                new KeyValuePair<string, string>("تاریخ انقضا",  SafeGetProperty<string>(patient, "BI_ExpirationSolarDate", "")),
 
 
             };
@@ -259,7 +296,7 @@ namespace Dentistry
         #endregion
         #region FillGrid_dgPatientServices
         private void FillGrid_dgPatientServices()
-        {          
+        {
             //this.dgPatientServices_ColumnOrder();
 
             int checkupTypeId = 2;
@@ -267,17 +304,17 @@ namespace Dentistry
             dynamic sObj = new ExpandoObject();
             sObj.PatientId = this.PatientId;
             sObj.CheckupTypeId = checkupTypeId;
-            
+
             JsonResponse<dynamic> result = Dentistry.DataProvider.GetPatientServicesX(sObj);
-           
+
             if (result == null || result.Success == false || result.Data == null)
                 return;
             var dd = result.Data;
 
             var rawList = (dd as IEnumerable<dynamic>).ToList();
-          
+
             var patientServiceObjs = rawList.Select(i => new Class.PatientService(i)).ToList();
-         
+
             var patientServiceList = patientServiceObjs
                 .Select(i =>
                 new
@@ -297,14 +334,14 @@ namespace Dentistry
                     i.Comment,
                     i.CheckupTypeCode,
                     i.ToothImage,   // <-- suspect: decodes/resizes an image per row, no caching
-            }).ToList();
-           
-            this.dgPatientServices.DataSource = patientServiceList;         
-            this.dgPatientServices.Refresh();         
+                }).ToList();
 
-          
+            this.dgPatientServices.DataSource = patientServiceList;
+            this.dgPatientServices.Refresh();
+
+
         }
-        
+
         #endregion
 
 
@@ -364,7 +401,7 @@ namespace Dentistry
                 return;
 
 
-            int checkupTypeId = 2;                                
+            int checkupTypeId = 2;
 
             PatientServiceDefine form = new PatientServiceDefine(this.PatientId, checkupTypeId);
             var result = form.ShowDialog(this);
@@ -384,7 +421,7 @@ namespace Dentistry
             if (this.dgPatientServices.CurrentCell == null)
                 return;
 
-          
+
             int checkupTypeId = 2;
 
             var patientServiceId = Convert.ToInt32(this.dgPatientServices["ColumnPatientServiceId", this.dgPatientServices.CurrentRow.Index].Value);
@@ -1085,7 +1122,7 @@ namespace Dentistry
                 PatientId = this.PatientId,
                 CheckupTypeId = 2
             };
-           
+
             var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
             if (result == null || result.Success == false || result.Data == null)
                 return;
@@ -1218,6 +1255,16 @@ namespace Dentistry
 
 
 
+                // Claude: fixes "System.ArgumentException ... Value of 'null' is not valid for
+                // 'stream'" - DataGridViewImageColumn only swaps in NullValue for
+                // DBNull.Value by default, not a plain C# null, so a null Image byte[] here
+                // was falling through to WinForms' own Image.FromStream(null) at paint time
+                // (same root cause as the ToothImage fix in PatientTeethView.cs). Kept the
+                // bound value as byte[] (not converted to Image like ToothImage) because
+                // ButtonPictureViewer_Click below reads this same cell's Value back as a
+                // byte[] to open the full-size image - converting it here would break that.
+                dgPatientDocs.Columns["ColumnDocumentImage"].DefaultCellStyle.DataSourceNullValue = null;
+
                 this.dgPatientDocs.DataSource = list;
             }
             catch (System.Exception exp)
@@ -1342,6 +1389,13 @@ namespace Dentistry
                 else
                 {
                     byte[] RegistrationImage = (byte[])this.dgPatientDocs["ColumnDocumentImage", this.dgPatientDocs.CurrentRow.Index].Value;
+                    // Claude: guard against a row with no stored image and no valid file path -
+                    // previously this reached "new MemoryStream(null)" and threw.
+                    if (RegistrationImage == null || RegistrationImage.Length == 0)
+                    {
+                        MessageBox.Show("تصویری برای این سند ثبت نشده است.");
+                        return;
+                    }
                     MemoryStream memoryStream = new MemoryStream(RegistrationImage);
                     System.Drawing.Image Image = Image.FromStream(memoryStream);
                     Image.Save(Application.StartupPath + "\\Temp.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -1368,7 +1422,7 @@ namespace Dentistry
 
 
         }
-      
+
 
         #endregion
 
@@ -1393,7 +1447,7 @@ namespace Dentistry
                 dynamic sObj = new
                 {
                     PatientId = patientId
-                };               
+                };
                 var result = Dentistry.DataProvider.GetOnePatientInfoX(sObj); // Patient  &  PatientInsurance
                 if (result == null || result.Success == false || result.Data == null)
                     return;
@@ -1405,12 +1459,12 @@ namespace Dentistry
                 {
                     PatientId = patientId,
                 };
-                result = Dentistry.DataProvider.GetPatientTransactionsX(sObj); 
+                result = Dentistry.DataProvider.GetPatientTransactionsX(sObj);
                 if (result == null || result.Success == false || result.Data == null)
                     return;
                 var patientFinancial = result.Data;
-                if (patient != null )
-                {                   
+                if (patient != null)
+                {
                     this.PatientId = Publics.GetPropertyValue<int>(patient, "PatientId");
                     //var patientName = Publics.GetPropertyExist<string>(patient, "PatientName");
                     //this.PatientRemianedTxt.Text = Publics.GetPropertyExist<string>(patient, "patientFinancial");

@@ -1281,7 +1281,7 @@ namespace Dentistry
                     // guard below rather than letting a null PatientId throw/misbehave
                     // on the long comparison.
                     bool hasPatientId = PatientId != null;
-                    long pid = PatientId ?? 0;
+                    int pid = PatientId ?? 0;
 
                     var finalResult = db.Set<SpecialDrug>()
                         .Where(a => a.Id != 0)
@@ -1320,7 +1320,7 @@ namespace Dentistry
                 {
                     // same null-PatientId behavior as GetPatientSpecialDrug - see note there.
                     bool hasPatientId = PatientId != null;
-                    long pid = PatientId ?? 0;
+                    int pid = PatientId ?? 0;
 
                     var finalResult = db.Set<SpecialDiseas>()
                         .Where(a => a.Id != 0)
@@ -1479,7 +1479,7 @@ namespace Dentistry
                 var insuranceByPatient = piiData
                     .Select(i => new
                     {
-                        PatientId = (long)i.PatientId,
+                        PatientId = (int)i.PatientId,
                         BasicInsurerId = (int)i.BI_InsurerId,
                         BasicInsurerTitle = (string)i.BI_InsurerTitle,
                         BasicInsurerPercent = (int)i.BI_Percent
@@ -2595,6 +2595,10 @@ namespace Dentistry
                             Surface_I_Color = thi.Surface_I_Color ?? 0,
                             Surface_V = thi.Surface_V ?? false,
                             Surface_V_Color = thi.Surface_V_Color ?? 0,
+                            Mobility = thi.Mobility ?? 0,
+                            ColorMobility = thi.ColorMobility ?? 0,
+                            Fracture = thi.Fracture ?? 0,
+                            ColorFracture = thi.ColorFracture ?? 0,
                             Description = thi.Description ?? "",
                         });
                     log.AppendLine("4. Build .Select() projection (no execution yet): " + sw.ElapsedMilliseconds + " ms"); sw.Restart();
@@ -2654,6 +2658,10 @@ namespace Dentistry
                                            Surface_I_Color = gItem.Select(t => t.Surface_I_Color).First(),
                                            Surface_V = gItem.Select(t => t.Surface_V).First(),
                                            Surface_V_Color = gItem.Select(t => t.Surface_V_Color).First(),
+                                           Mobility = gItem.Select(t => t.Mobility).First(),
+                                           ColorMobility = gItem.Select(t => t.ColorMobility).First(),
+                                           Fracture = gItem.Select(t => t.Fracture).First(),
+                                           ColorFracture = gItem.Select(t => t.ColorFracture).First(),
                                            Description = gItem.Select(t => t.Description).First(),
                                        }).ToList();
                     log.AppendLine("7. In-memory GroupBy/Sum/First (" + finalResult.Count + " groups): " + sw.ElapsedMilliseconds + " ms");
@@ -2750,6 +2758,10 @@ namespace Dentistry
                             Surface_I_Color = thi.Surface_I_Color ?? 0,
                             Surface_V = thi.Surface_V ?? false,
                             Surface_V_Color = thi.Surface_V_Color ?? 0,
+                            Mobility = thi.Mobility ?? 0,
+                            ColorMobility = thi.ColorMobility ?? 0,
+                            Fracture = thi.Fracture ?? 0,
+                            ColorFracture = thi.ColorFracture ?? 0,
                             Description = thi.Description ?? "",
                         })
                         .ToList();
@@ -2806,6 +2818,11 @@ namespace Dentistry
                                            Surface_I_Color = gItem.Select(t => t.Surface_I_Color).First(),
                                            Surface_V = gItem.Select(t => t.Surface_V).First(),
                                            Surface_V_Color = gItem.Select(t => t.Surface_V_Color).First(),
+
+                                           Mobility = gItem.Select(t => t.Mobility).First(),
+                                           ColorMobility = gItem.Select(t => t.ColorMobility).First(),
+                                           Fracture = gItem.Select(t => t.Fracture).First(),
+                                           ColorFracture = gItem.Select(t => t.ColorFracture).First(),
 
                                            Description = gItem.Select(t => t.Description).First(),
                                        }).ToList();
@@ -5122,6 +5139,10 @@ namespace Dentistry
                     var Surface_I_Color = x.HasValue("Surface_I_Color") ? x.GetValue<int>("Surface_I_Color") : (int?)null;
                     var Surface_V = x.HasValue("Surface_V") ? x.GetValue<bool>("Surface_V") : false;
                     var Surface_V_Color = x.HasValue("Surface_V_Color") ? x.GetValue<int>("Surface_V_Color") : (int?)null;
+                    var Mobility = x.HasValue("Mobility") ? x.GetValue<int>("Mobility") : 0;
+                    var ColorMobility = x.HasValue("ColorMobility") ? x.GetValue<int>("ColorMobility") : (int?)null;
+                    var Fracture = x.HasValue("Fracture") ? x.GetValue<int>("Fracture") : 0;
+                    var ColorFracture = x.HasValue("ColorFracture") ? x.GetValue<int>("ColorFracture") : (int?)null;
 
                     var Description = x.HasValue("Description") ? x.GetValue<string>("Description") : null;
 
@@ -5179,6 +5200,10 @@ namespace Dentistry
                         Surface_I_Color = Surface_I_Color,
                         Surface_V = Surface_V,
                         Surface_V_Color = Surface_V_Color,
+                        Mobility = Mobility,
+                        ColorMobility = ColorMobility,
+                        Fracture = Fracture,
+                        ColorFracture = ColorFracture,
                         Description = Description,
                         IsDeleted = false
                     };

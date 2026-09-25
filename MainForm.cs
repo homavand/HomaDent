@@ -72,7 +72,7 @@ namespace Dentistry
             //}
 
 
-            DashboardX Mdiform = new DashboardX();
+            Dashboard Mdiform = new Dashboard();
             this.FormShow(Mdiform);
 
             

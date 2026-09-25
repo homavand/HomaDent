@@ -62,6 +62,12 @@ namespace Dentistry.Models
         public bool? Surface_V { get; set; }
         public int? Surface_V_Color { get; set; }
 
+        public int? Mobility { get; set; }
+        public int? ColorMobility { get; set; }
+
+        public int? Fracture { get; set; }
+        public int? ColorFracture { get; set; }
+
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
 

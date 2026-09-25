@@ -21,6 +21,10 @@ namespace Dentistry
         PopupControl.Popup pp;
         Color BtnDefaultColor = Color.FromArgb(58, 45, 73);
         Color BtnSelectedColor = Color.FromArgb(91, 68, 156);
+        //ToothId of the tooth the MobilityPnl grade-picker is currently open for (set in btnMobility_Click).
+        int _currentMobilityToothId;
+        //ToothId of the tooth the FracturePnl location-picker is currently open for (set in btnFracture_Click).
+        int _currentFractureToothId;
 
         //Class.WaitFormFunc waitForm = new Class.WaitFormFunc();
 
@@ -148,6 +152,38 @@ namespace Dentistry
             }
 
         }
+        // Claude: converts a raw ToothImage byte[] (can be null/empty for tooth types with
+        // no stored image) into an Image safely - never throws. Fixes the
+        // "System.ArgumentException ... Value of 'null' is not valid for 'stream'" seen in
+        // Debug output: dgToothServices' ColumnToothImage binds ToothImage straight from the
+        // DB result, and WinForms internally calls Image.FromStream(null) at cell-paint time
+        // for any row where it's null - same bug pattern as the dgPatientDocs one.
+        private static Image ToothImageSafe(object rawToothImage)
+        {
+            byte[] bytes = rawToothImage as byte[];
+            if (bytes == null || bytes.Length == 0)
+                return null;
+            try
+            {
+                using (var ms = new System.IO.MemoryStream(bytes))
+                {
+                    // Claude: Image.FromStream normally requires the backing stream to stay
+                    // open for the image's lifetime - copying into a Bitmap up front avoids
+                    // that lifetime dependency, since ms is disposed right after this call.
+                    using (var temp = Image.FromStream(ms))
+                    {
+                        return new Bitmap(temp);
+                    }
+                }
+            }
+            catch
+            {
+                // Claude: malformed/corrupt image data - treat the same as "no image" rather
+                // than letting the exception reach the grid's paint code.
+                return null;
+            }
+        }
+
         private void GetTeethData()
         {
             dynamic sObj = new System.Dynamic.ExpandoObject();
@@ -163,7 +199,7 @@ namespace Dentistry
                                                                 {
                                                                     i.Id,
                                                                     Tooth = string.Join("  -  ", string.Format("({0}) {1}", i.ToothName, i.ToothTitle)),
-                                                                    i.ToothImage,
+                                                                    ToothImage = ToothImageSafe(i.ToothImage), // Claude: was "i.ToothImage" - raw byte[] could be null, now converted safely
 
                                                                 }).ToList() : Enumerable.Empty<dynamic>();
 
@@ -226,7 +262,7 @@ namespace Dentistry
                         s.ServiceGroupTitle,
                         s.ServiceTitle,
                         t.ToothId,
-                        t.ToothImage
+                        ToothImage = ToothImageSafe(t.ToothImage), // Claude: was "t.ToothImage" - same fix as GetTeethData() above
 
                     });
                 }
@@ -328,6 +364,10 @@ namespace Dentistry
             tooth.IsCrown = toothInfo.IsCrown;
             tooth.IsPontic = toothInfo.IsPontic;
             tooth.IsSealant = toothInfo.IsSealant;
+            tooth.Mobility = toothInfo.Mobility;
+            tooth.ColorMobility = Color.FromArgb(Convert.ToInt32(toothInfo.ColorMobility));
+            tooth.Fracture = toothInfo.Fracture;
+            tooth.ColorFracture = Color.FromArgb(Convert.ToInt32(toothInfo.ColorFracture));
 
             tooth.Description = toothInfo.Description;
 
@@ -440,10 +480,17 @@ namespace Dentistry
 
             if (tooth.ToothImage != null)
             {
-                System.IO.MemoryStream memoryStream = new System.IO.MemoryStream((byte[])tooth.ToothImage);
-                Image image = Image.FromStream(memoryStream);
-                memoryStream.Close();
-                this.toothImg.Image = image;
+                // Claude: tooth.ToothImage here already went through ToothImageSafe() inside
+                // GetTeethData() when TeethList was built, so it's already an Image/Bitmap,
+                // not a raw byte[]. Re-wrapping it in a MemoryStream and calling
+                // Image.FromStream on it was the bug: a dynamic (byte[]) cast on an Image
+                // throws "Cannot convert type 'System.Drawing.Bitmap' to 'byte[]'".
+                // Claude: NOT disposing the previous toothImg.Image here - it's a reference
+                // into TeethList's cache (one Bitmap per tooth, built once in GetTeethData()
+                // and reused on every click of that tooth), not a fresh allocation per click.
+                // Disposing it would leave a dangling reference in TeethList and throw
+                // ObjectDisposedException the next time that same tooth is clicked.
+                this.toothImg.Image = (Image)tooth.ToothImage;
             }
 
 
@@ -467,6 +514,8 @@ namespace Dentistry
 
         private void TeethChart_ToothSelectedEvent(object sender, ToothEventArgs e)
         {
+            MobilityPnl.Visible = false;
+            FracturePnl.Visible = false;
             TeethChart.TeethDeSelected();
             this.ResetButton();
             var toothName = e.ToothId;
@@ -1493,6 +1542,10 @@ namespace Dentistry
                     iObj.IsPontic = toothInfo_base.IsPontic;
                     iObj.IsSealant = toothInfo_base.IsSealant;
                     iObj.ColorSealant = toothInfo_base.ColorSealant;
+                    iObj.Mobility = toothInfo_base.Mobility;
+                    iObj.ColorMobility = toothInfo_base.ColorMobility;
+                    iObj.Fracture = toothInfo_base.Fracture;
+                    iObj.ColorFracture = toothInfo_base.ColorFracture;
 
                     iObj.Surface = toothInfo_base.Surface;
                     iObj.SurfaceColor = toothInfo_base.SurfaceColor;
@@ -1654,6 +1707,163 @@ namespace Dentistry
             this.CheckTeethDescriptions();
         }
 
+        //Shown when the user selects a tooth on the chart and then clicks the
+        //"Mobility" toolbar button: positions MobilityPnl directly above that
+        //tooth's number on the chart so the user can pick its grade (I/II/III)
+        //without leaving the chart view.
+        private void btnMobility_Click(object sender, EventArgs e)
+        {
+            if (TeethChart.SelectedTeeth == null || TeethChart.SelectedTeeth.Length == 0)
+            {
+                return;
+            }
+
+            string toothNum = TeethChart.SelectedTeeth[0];
+            ToothGraphic tooth = TeethChart.GetToothInfo(toothNum);
+            if (tooth == null)
+            {
+                return;
+            }
+
+            _currentMobilityToothId = ToothInfoClass.ToothNameToToothId(toothNum);
+            RefreshMobilityButtons(tooth.Mobility);
+
+            PositionMobilityPnl(toothNum);
+            MobilityPnl.Visible = true;
+            MobilityPnl.BringToFront();
+        }
+
+        //Places MobilityPnl right above (or, for the lower arch, right below) the
+        //given tooth's number circle, converting from TeethChart's own local
+        //coordinates into panel2's coordinate space (MobilityPnl's parent, same as
+        //TeethChart's), and keeping it fully inside panel2's bounds.
+        private void PositionMobilityPnl(string toothNum)
+        {
+            Point toothPos = TeethChart.GetToothNumberPosition(toothNum);
+            //TeethChart.GetToothNumberPosition() is relative to TeethChart itself;
+            //offset by TeethChart's own position within panel2 to land in panel2's space.
+            int panelX = toothPos.X + TeethChart.Left;
+            int panelY = toothPos.Y + TeethChart.Top;
+
+            int toothId = ToothInfoClass.ToothNameToToothId(toothNum);
+            bool isUpperArch = (toothId >= 1 && toothId <= 16) || (toothId >= 33 && toothId <= 42);
+
+            int left = panelX - (MobilityPnl.Width / 2) + 12;
+            int top = isUpperArch
+                ? panelY - MobilityPnl.Height - 10
+                : panelY + 35;
+
+            //Keep the panel fully on screen inside panel2.
+            left = Math.Max(0, Math.Min(left, panel2.Width - MobilityPnl.Width));
+            top = Math.Max(0, Math.Min(top, panel2.Height - MobilityPnl.Height));
+
+            MobilityPnl.Location = new Point(left, top);
+        }
+
+        //Sets the mobility grade (1-3) on whichever tooth MobilityPnl is currently
+        //open for. Clicking the already-active grade clears it back to 0 (no
+        //mobility recorded), same toggle convention as the other attribute buttons.
+        private void MobilityBtn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int grade = Convert.ToInt32(btn.Tag);
+
+            string toothNum = ToothInfoClass.ToothIdToToothName(_currentMobilityToothId);
+            ToothGraphic tooth = TeethChart.GetToothInfo(toothNum);
+
+            tooth.Mobility = (tooth.Mobility == grade) ? 0 : grade;
+            tooth.ColorMobility = colorLbl.BackColor;
+
+            RefreshMobilityButtons(tooth.Mobility);
+            MobilityPnl.Visible = false;
+            TeethChart.Refresh();
+        }
+
+        //Highlights the button matching the given grade (0 = none highlighted) among
+        //the three mobility buttons in MobilityPnl.
+        private void RefreshMobilityButtons(int currentGrade)
+        {
+            Mobility1Btn.BackColor = (currentGrade == 1) ? this.BtnSelectedColor : this.BtnDefaultColor;
+            Mobility2Btn.BackColor = (currentGrade == 2) ? this.BtnSelectedColor : this.BtnDefaultColor;
+            Mobility3Btn.BackColor = (currentGrade == 3) ? this.BtnSelectedColor : this.BtnDefaultColor;
+        }
+
+        //Shown when the user selects a tooth on the chart and then clicks the
+        //"Fracture" toolbar button: positions FracturePnl directly above that
+        //tooth's number on the chart so the user can flag Crown and/or Root
+        //fracture without leaving the chart view.
+        private void btnFracture_Click(object sender, EventArgs e)
+        {
+            if (TeethChart.SelectedTeeth == null || TeethChart.SelectedTeeth.Length == 0)
+            {
+                return;
+            }
+
+            string toothNum = TeethChart.SelectedTeeth[0];
+            ToothGraphic tooth = TeethChart.GetToothInfo(toothNum);
+            if (tooth == null)
+            {
+                return;
+            }
+
+            _currentFractureToothId = ToothInfoClass.ToothNameToToothId(toothNum);
+            RefreshFractureButtons(tooth.Fracture);
+
+            PositionFracturePnl(toothNum);
+            FracturePnl.Visible = true;
+            FracturePnl.BringToFront();
+        }
+
+        //Places FracturePnl right above (or, for the lower arch, right below) the
+        //given tooth's number circle, same positioning convention as MobilityPnl.
+        private void PositionFracturePnl(string toothNum)
+        {
+            Point toothPos = TeethChart.GetToothNumberPosition(toothNum);
+            int panelX = toothPos.X + TeethChart.Left;
+            int panelY = toothPos.Y + TeethChart.Top;
+
+            int toothId = ToothInfoClass.ToothNameToToothId(toothNum);
+            bool isUpperArch = (toothId >= 1 && toothId <= 16) || (toothId >= 33 && toothId <= 42);
+
+            int left = panelX - (FracturePnl.Width / 2) + 12;
+            int top = isUpperArch
+                ? panelY - FracturePnl.Height - 10
+                : panelY + 35;
+
+            left = Math.Max(0, Math.Min(left, panel2.Width - FracturePnl.Width));
+            top = Math.Max(0, Math.Min(top, panel2.Height - FracturePnl.Height));
+
+            FracturePnl.Location = new Point(left, top);
+        }
+
+        //Toggles the Crown (1) or Root (2) bit on whichever tooth FracturePnl is
+        //currently open for. Unlike Mobility's grades, Crown and Root are
+        //independent - both can be active at once (Fracture == 3) - so the panel
+        //stays open after each click, letting the user flag both locations before
+        //moving on; it closes when a different tooth is selected instead.
+        private void FractureBtn_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int bit = Convert.ToInt32(btn.Tag);
+
+            string toothNum = ToothInfoClass.ToothIdToToothName(_currentFractureToothId);
+            ToothGraphic tooth = TeethChart.GetToothInfo(toothNum);
+
+            tooth.Fracture = tooth.Fracture ^ bit;
+            tooth.ColorFracture = colorLbl.BackColor;
+
+            RefreshFractureButtons(tooth.Fracture);
+            TeethChart.Refresh();
+        }
+
+        //Highlights whichever of the Crown/Root buttons are currently set in the
+        //given bitmask (1=Crown, 2=Root, 3=both) among the two buttons in FracturePnl.
+        private void RefreshFractureButtons(int currentLocation)
+        {
+            FractureCrownBtn.BackColor = ((currentLocation & 1) != 0) ? this.BtnSelectedColor : this.BtnDefaultColor;
+            FractureRootBtn.BackColor = ((currentLocation & 2) != 0) ? this.BtnSelectedColor : this.BtnDefaultColor;
+        }
+
 
 
 
@@ -1669,12 +1879,12 @@ namespace Dentistry
 
             toothInfo.ToothId = ToothInfoClass.ToothNameToToothId(toothGraphic.ToothId);
             toothInfo.Visible = toothGraphic.Visible;
-            toothInfo.Rotate = toothGraphic.Rotate;
-            toothInfo.TipB = toothGraphic.TipB;
-            toothInfo.TipM = toothGraphic.TipM;
-            toothInfo.ShiftM = toothGraphic.ShiftM;
-            toothInfo.ShiftO = toothGraphic.ShiftO;
-            toothInfo.ShiftB = toothGraphic.ShiftB;
+            toothInfo.Rotate = (int)toothGraphic.Rotate;
+            toothInfo.TipB = (int)toothGraphic.TipB;
+            toothInfo.TipM = (int)toothGraphic.TipM;
+            toothInfo.ShiftM = (int)toothGraphic.ShiftM;
+            toothInfo.ShiftO = (int)toothGraphic.ShiftO;
+            toothInfo.ShiftB = (int)toothGraphic.ShiftB;
             toothInfo.IsRCT = toothGraphic.IsRCT;
             toothInfo.ColorRCT = toothGraphic.ColorRCT.ToArgb();
             toothInfo.IsBU = toothGraphic.IsBU;
@@ -1685,6 +1895,10 @@ namespace Dentistry
             toothInfo.IsPontic = toothGraphic.IsPontic;
             toothInfo.IsSealant = toothGraphic.IsSealant;
             toothInfo.ColorSealant = toothGraphic.ColorSealant.ToArgb();
+            toothInfo.Mobility = toothGraphic.Mobility;
+            toothInfo.ColorMobility = toothGraphic.ColorMobility.ToArgb();
+            toothInfo.Fracture = toothGraphic.Fracture;
+            toothInfo.ColorFracture = toothGraphic.ColorFracture.ToArgb();
 
             toothInfo.Surface = toothGraphic.Surface != null ? toothGraphic.Surface : "";
             toothInfo.SurfaceColor = toothGraphic.SurfaceColor.ToArgb();

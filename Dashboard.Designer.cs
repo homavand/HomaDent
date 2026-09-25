@@ -45,6 +45,7 @@
             this.pnlMDi = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.BackupBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.Label();
@@ -53,9 +54,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.UserNameTxt = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgTodayPatients = new System.Windows.Forms.DataGridView();
+            this.PatientPnl = new System.Windows.Forms.TableLayoutPanel();
+            this.dgPatient = new System.Windows.Forms.DataGridView();
             this.ColumnPatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDoctorTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSolarDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,9 +67,9 @@
             this.ColumnPatientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDoctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnServiceGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgTodayCheque = new System.Windows.Forms.DataGridView();
+            this.PatientPanelTitleLbl = new System.Windows.Forms.Label();
+            this.ChequePnl = new System.Windows.Forms.TableLayoutPanel();
+            this.dgCheque = new System.Windows.Forms.DataGridView();
             this.ColumnX2PayId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnX2PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnChequeTypeTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,21 +77,36 @@
             this.ColumnX2ChequeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnX2PatientAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumneX2Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.lvPatientFollowUp = new System.Windows.Forms.ListView();
+            this.ChequePanelTitleLbl = new System.Windows.Forms.Label();
+            this.FollowupPnl = new System.Windows.Forms.TableLayoutPanel();
+            this.dgFollowup = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.dysTypePnl = new System.Windows.Forms.Panel();
-            this.exPanel1 = new Dentistry.UserControls.ExPanel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.exPanel2 = new Dentistry.UserControls.ExPanel();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.exPanel3 = new Dentistry.UserControls.ExPanel();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.FollowupPanelTitleLbl = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.CurrentWeekFollowupTxt = new System.Windows.Forms.LinkLabel();
+            this.CurrentWeekFollowupLbl = new System.Windows.Forms.Label();
+            this.FollowupLbl = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.NextWeekChequeLbl = new System.Windows.Forms.Label();
+            this.CurrentWeekChequeLbl = new System.Windows.Forms.Label();
+            this.CurrentWeekChequeTxt = new System.Windows.Forms.LinkLabel();
+            this.NextWeekChequeTxt = new System.Windows.Forms.LinkLabel();
+            this.ChequeLbl = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.AfterTomorrowPatientLbl = new System.Windows.Forms.Label();
+            this.AfterTomorrowPatientTxt = new System.Windows.Forms.LinkLabel();
+            this.TomorrowPatientLbl = new System.Windows.Forms.Label();
+            this.TomorrowPatientTxt = new System.Windows.Forms.LinkLabel();
+            this.TodayPatientLbl = new System.Windows.Forms.Label();
+            this.TodayPatientTxt = new System.Windows.Forms.LinkLabel();
+            this.PatientLbl = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel = new System.Windows.Forms.Panel();
@@ -115,31 +130,28 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.days5Rdo = new System.Windows.Forms.RadioButton();
             this.todayRdo = new System.Windows.Forms.RadioButton();
             this.days3Rdo = new System.Windows.Forms.RadioButton();
             this.panel9 = new Dentistry.UserControls.ExPanel();
             this.panel10 = new Dentistry.UserControls.ExPanel();
             this.panel13 = new Dentistry.UserControls.ExPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlMDi.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTodayPatients)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTodayCheque)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.dysTypePnl.SuspendLayout();
-            this.exPanel1.SuspendLayout();
-            this.exPanel2.SuspendLayout();
-            this.exPanel3.SuspendLayout();
+            this.PatientPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPatient)).BeginInit();
+            this.ChequePnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCheque)).BeginInit();
+            this.FollowupPnl.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel17.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel.SuspendLayout();
@@ -178,7 +190,7 @@
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 387F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1305, 845);
             this.tableLayoutPanel1.TabIndex = 55;
@@ -197,6 +209,16 @@
             this.panel1.Size = new System.Drawing.Size(1299, 57);
             this.panel1.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(327, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 130;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // BackupBtn
             // 
             this.BackupBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -204,7 +226,7 @@
             this.BackupBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
             this.BackupBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
             this.BackupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackupBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackupBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackupBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
             this.BackupBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BackupBtn.Location = new System.Drawing.Point(652, 14);
@@ -220,11 +242,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label2.Location = new System.Drawing.Point(19, 8);
+            this.label2.Location = new System.Drawing.Point(20, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 18);
+            this.label2.Size = new System.Drawing.Size(39, 18);
             this.label2.TabIndex = 128;
-            this.label2.Text = "ایمیل پشتیبانی";
+            this.label2.Text = "Email";
             // 
             // email
             // 
@@ -257,7 +279,7 @@
             this.UserProfileBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(86)))), ((int)(((byte)(172)))));
             this.UserProfileBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
             this.UserProfileBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UserProfileBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserProfileBtn.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserProfileBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(68)))), ((int)(((byte)(156)))));
             this.UserProfileBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.UserProfileBtn.Location = new System.Drawing.Point(30, 14);
@@ -294,65 +316,56 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.tabControl1);
-            this.panel4.Controls.Add(this.panel6);
+            this.panel4.Controls.Add(this.PatientPnl);
+            this.panel4.Controls.Add(this.ChequePnl);
+            this.panel4.Controls.Add(this.FollowupPnl);
+            this.panel4.Controls.Add(this.panel11);
+            this.panel4.Controls.Add(this.panel14);
+            this.panel4.Controls.Add(this.panel16);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 76);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5);
-            this.panel4.Size = new System.Drawing.Size(1299, 381);
+            this.panel4.Size = new System.Drawing.Size(1299, 294);
             this.panel4.TabIndex = 1;
             // 
-            // tabControl1
+            // PatientPnl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.ItemSize = new System.Drawing.Size(250, 30);
-            this.tabControl1.Location = new System.Drawing.Point(5, 48);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tabControl1.RightToLeftLayout = true;
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1289, 328);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 2;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.PatientPnl.ColumnCount = 1;
+            this.PatientPnl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.PatientPnl.Controls.Add(this.dgPatient, 0, 1);
+            this.PatientPnl.Controls.Add(this.PatientPanelTitleLbl, 0, 0);
+            this.PatientPnl.Location = new System.Drawing.Point(603, 219);
+            this.PatientPnl.Name = "PatientPnl";
+            this.PatientPnl.Padding = new System.Windows.Forms.Padding(5);
+            this.PatientPnl.RowCount = 2;
+            this.PatientPnl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.PatientPnl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.PatientPnl.Size = new System.Drawing.Size(199, 93);
+            this.PatientPnl.TabIndex = 142;
+            this.PatientPnl.Visible = false;
             // 
-            // tabPage1
+            // dgPatient
             // 
-            this.tabPage1.Controls.Add(this.dgTodayPatients);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(10);
-            this.tabPage1.Size = new System.Drawing.Size(1281, 290);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "بیماران ";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dgTodayPatients
-            // 
-            this.dgTodayPatients.AllowUserToAddRows = false;
-            this.dgTodayPatients.AllowUserToDeleteRows = false;
-            this.dgTodayPatients.AllowUserToResizeColumns = false;
-            this.dgTodayPatients.AllowUserToResizeRows = false;
-            this.dgTodayPatients.BackgroundColor = System.Drawing.Color.White;
-            this.dgTodayPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgTodayPatients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgPatient.AllowUserToAddRows = false;
+            this.dgPatient.AllowUserToDeleteRows = false;
+            this.dgPatient.AllowUserToResizeColumns = false;
+            this.dgPatient.AllowUserToResizeRows = false;
+            this.dgPatient.BackgroundColor = System.Drawing.Color.White;
+            this.dgPatient.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgPatient.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgTodayPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgTodayPatients.ColumnHeadersHeight = 30;
-            this.dgTodayPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgTodayPatients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgPatient.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgPatient.ColumnHeadersHeight = 30;
+            this.dgPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgPatient.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnPatientName,
             this.ColumnDoctorTitle,
             this.ColumnSolarDate,
@@ -363,35 +376,34 @@
             this.ColumnId,
             this.ColumnPatientId,
             this.ColumnDoctorId,
-            this.ColumnServiceGroupId,
-            this.ColumnColor});
-            this.dgTodayPatients.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgTodayPatients.EnableHeadersVisualStyles = false;
-            this.dgTodayPatients.GridColor = System.Drawing.Color.White;
-            this.dgTodayPatients.Location = new System.Drawing.Point(10, 10);
-            this.dgTodayPatients.MultiSelect = false;
-            this.dgTodayPatients.Name = "dgTodayPatients";
-            this.dgTodayPatients.ReadOnly = true;
-            this.dgTodayPatients.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ColumnServiceGroupId});
+            this.dgPatient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgPatient.EnableHeadersVisualStyles = false;
+            this.dgPatient.GridColor = System.Drawing.Color.White;
+            this.dgPatient.Location = new System.Drawing.Point(8, 38);
+            this.dgPatient.MultiSelect = false;
+            this.dgPatient.Name = "dgPatient";
+            this.dgPatient.ReadOnly = true;
+            this.dgPatient.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgTodayPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgTodayPatients.RowHeadersVisible = false;
-            this.dgTodayPatients.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgTodayPatients.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.dgTodayPatients.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTodayPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTodayPatients.Size = new System.Drawing.Size(1261, 270);
-            this.dgTodayPatients.TabIndex = 8;
+            this.dgPatient.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgPatient.RowHeadersVisible = false;
+            this.dgPatient.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgPatient.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.dgPatient.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgPatient.RowTemplate.Height = 25;
+            this.dgPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgPatient.Size = new System.Drawing.Size(183, 47);
+            this.dgPatient.TabIndex = 9;
             // 
             // ColumnPatientName
             // 
-            this.ColumnPatientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnPatientName.DataPropertyName = "PatientName";
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -402,6 +414,7 @@
             this.ColumnPatientName.HeaderText = "نام بیمار";
             this.ColumnPatientName.Name = "ColumnPatientName";
             this.ColumnPatientName.ReadOnly = true;
+            this.ColumnPatientName.Width = 150;
             // 
             // ColumnDoctorTitle
             // 
@@ -480,46 +493,53 @@
             this.ColumnServiceGroupId.ReadOnly = true;
             this.ColumnServiceGroupId.Visible = false;
             // 
-            // ColumnColor
+            // PatientPanelTitleLbl
             // 
-            this.ColumnColor.DataPropertyName = "Color";
-            this.ColumnColor.HeaderText = "Color";
-            this.ColumnColor.Name = "ColumnColor";
-            this.ColumnColor.ReadOnly = true;
-            this.ColumnColor.Visible = false;
+            this.PatientPanelTitleLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.PatientPanelTitleLbl.Location = new System.Drawing.Point(8, 5);
+            this.PatientPanelTitleLbl.Name = "PatientPanelTitleLbl";
+            this.PatientPanelTitleLbl.Size = new System.Drawing.Size(183, 30);
+            this.PatientPanelTitleLbl.TabIndex = 10;
+            this.PatientPanelTitleLbl.Text = "label1";
+            this.PatientPanelTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // tabPage2
+            // ChequePnl
             // 
-            this.tabPage2.Controls.Add(this.dgTodayCheque);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(10);
-            this.tabPage2.Size = new System.Drawing.Size(1281, 290);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "سر رسید چک ها";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.ChequePnl.ColumnCount = 1;
+            this.ChequePnl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ChequePnl.Controls.Add(this.dgCheque, 0, 1);
+            this.ChequePnl.Controls.Add(this.ChequePanelTitleLbl, 0, 0);
+            this.ChequePnl.Location = new System.Drawing.Point(833, 219);
+            this.ChequePnl.Name = "ChequePnl";
+            this.ChequePnl.Padding = new System.Windows.Forms.Padding(5);
+            this.ChequePnl.RowCount = 2;
+            this.ChequePnl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.ChequePnl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ChequePnl.Size = new System.Drawing.Size(199, 93);
+            this.ChequePnl.TabIndex = 141;
+            this.ChequePnl.Visible = false;
             // 
-            // dgTodayCheque
+            // dgCheque
             // 
-            this.dgTodayCheque.AllowUserToAddRows = false;
-            this.dgTodayCheque.AllowUserToDeleteRows = false;
-            this.dgTodayCheque.AllowUserToResizeColumns = false;
-            this.dgTodayCheque.AllowUserToResizeRows = false;
-            this.dgTodayCheque.BackgroundColor = System.Drawing.Color.White;
-            this.dgTodayCheque.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgTodayCheque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgCheque.AllowUserToAddRows = false;
+            this.dgCheque.AllowUserToDeleteRows = false;
+            this.dgCheque.AllowUserToResizeColumns = false;
+            this.dgCheque.AllowUserToResizeRows = false;
+            this.dgCheque.BackgroundColor = System.Drawing.Color.White;
+            this.dgCheque.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgCheque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgTodayCheque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgTodayCheque.ColumnHeadersHeight = 30;
-            this.dgTodayCheque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgTodayCheque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgCheque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgCheque.ColumnHeadersHeight = 30;
+            this.dgCheque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgCheque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnX2PayId,
             this.ColumnX2PatientName,
             this.ColumnChequeTypeTitle,
@@ -527,30 +547,30 @@
             this.ColumnX2ChequeNumber,
             this.ColumnX2PatientAmount,
             this.ColumneX2Comment});
-            this.dgTodayCheque.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgTodayCheque.EnableHeadersVisualStyles = false;
-            this.dgTodayCheque.GridColor = System.Drawing.Color.White;
-            this.dgTodayCheque.Location = new System.Drawing.Point(10, 10);
-            this.dgTodayCheque.MultiSelect = false;
-            this.dgTodayCheque.Name = "dgTodayCheque";
-            this.dgTodayCheque.ReadOnly = true;
-            this.dgTodayCheque.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dgCheque.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgCheque.EnableHeadersVisualStyles = false;
+            this.dgCheque.GridColor = System.Drawing.Color.White;
+            this.dgCheque.Location = new System.Drawing.Point(8, 38);
+            this.dgCheque.MultiSelect = false;
+            this.dgCheque.Name = "dgCheque";
+            this.dgCheque.ReadOnly = true;
+            this.dgCheque.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgTodayCheque.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgTodayCheque.RowHeadersVisible = false;
-            this.dgTodayCheque.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgTodayCheque.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.dgTodayCheque.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTodayCheque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTodayCheque.Size = new System.Drawing.Size(1261, 270);
-            this.dgTodayCheque.TabIndex = 8;
-            this.dgTodayCheque.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTodayCheque_CellDoubleClick);
+            this.dgCheque.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgCheque.RowHeadersVisible = false;
+            this.dgCheque.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgCheque.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.dgCheque.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCheque.RowTemplate.Height = 25;
+            this.dgCheque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCheque.Size = new System.Drawing.Size(183, 47);
+            this.dgCheque.TabIndex = 11;
             // 
             // ColumnX2PayId
             // 
@@ -608,36 +628,51 @@
             this.ColumneX2Comment.Name = "ColumneX2Comment";
             this.ColumneX2Comment.ReadOnly = true;
             // 
-            // tabPage4
+            // ChequePanelTitleLbl
             // 
-            this.tabPage4.Controls.Add(this.lvPatientFollowUp);
-            this.tabPage4.Location = new System.Drawing.Point(4, 34);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(10);
-            this.tabPage4.Size = new System.Drawing.Size(1281, 290);
-            this.tabPage4.TabIndex = 6;
-            this.tabPage4.Text = "فالوآپ بیماران";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.ChequePanelTitleLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ChequePanelTitleLbl.Location = new System.Drawing.Point(8, 5);
+            this.ChequePanelTitleLbl.Name = "ChequePanelTitleLbl";
+            this.ChequePanelTitleLbl.Size = new System.Drawing.Size(183, 30);
+            this.ChequePanelTitleLbl.TabIndex = 10;
+            this.ChequePanelTitleLbl.Text = "label1";
+            this.ChequePanelTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lvPatientFollowUp
+            // FollowupPnl
             // 
-            this.lvPatientFollowUp.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lvPatientFollowUp.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.FollowupPnl.ColumnCount = 1;
+            this.FollowupPnl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.FollowupPnl.Controls.Add(this.dgFollowup, 0, 1);
+            this.FollowupPnl.Controls.Add(this.FollowupPanelTitleLbl, 0, 0);
+            this.FollowupPnl.Location = new System.Drawing.Point(1064, 219);
+            this.FollowupPnl.Name = "FollowupPnl";
+            this.FollowupPnl.Padding = new System.Windows.Forms.Padding(5);
+            this.FollowupPnl.RowCount = 2;
+            this.FollowupPnl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.FollowupPnl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.FollowupPnl.Size = new System.Drawing.Size(200, 93);
+            this.FollowupPnl.TabIndex = 140;
+            this.FollowupPnl.Visible = false;
+            // 
+            // dgFollowup
+            // 
+            this.dgFollowup.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgFollowup.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader3});
-            this.lvPatientFollowUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvPatientFollowUp.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvPatientFollowUp.HideSelection = false;
-            this.lvPatientFollowUp.Location = new System.Drawing.Point(10, 10);
-            this.lvPatientFollowUp.Name = "lvPatientFollowUp";
-            this.lvPatientFollowUp.RightToLeftLayout = true;
-            this.lvPatientFollowUp.Size = new System.Drawing.Size(1261, 270);
-            this.lvPatientFollowUp.TabIndex = 3;
-            this.lvPatientFollowUp.UseCompatibleStateImageBehavior = false;
-            this.lvPatientFollowUp.View = System.Windows.Forms.View.Details;
+            this.dgFollowup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgFollowup.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgFollowup.HideSelection = false;
+            this.dgFollowup.Location = new System.Drawing.Point(8, 38);
+            this.dgFollowup.Name = "dgFollowup";
+            this.dgFollowup.RightToLeftLayout = true;
+            this.dgFollowup.Size = new System.Drawing.Size(184, 47);
+            this.dgFollowup.TabIndex = 11;
+            this.dgFollowup.UseCompatibleStateImageBehavior = false;
+            this.dgFollowup.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -669,138 +704,300 @@
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader3.Width = 500;
             // 
-            // panel6
+            // FollowupPanelTitleLbl
             // 
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Controls.Add(this.dysTypePnl);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(5, 5);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1289, 43);
-            this.panel6.TabIndex = 3;
+            this.FollowupPanelTitleLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.FollowupPanelTitleLbl.Location = new System.Drawing.Point(8, 5);
+            this.FollowupPanelTitleLbl.Name = "FollowupPanelTitleLbl";
+            this.FollowupPanelTitleLbl.Size = new System.Drawing.Size(184, 30);
+            this.FollowupPanelTitleLbl.TabIndex = 10;
+            this.FollowupPanelTitleLbl.Text = "label1";
+            this.FollowupPanelTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dysTypePnl
+            // panel11
             // 
-            this.dysTypePnl.Controls.Add(this.exPanel1);
-            this.dysTypePnl.Controls.Add(this.exPanel2);
-            this.dysTypePnl.Controls.Add(this.exPanel3);
-            this.dysTypePnl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dysTypePnl.Location = new System.Drawing.Point(429, 0);
-            this.dysTypePnl.Name = "dysTypePnl";
-            this.dysTypePnl.Size = new System.Drawing.Size(860, 43);
-            this.dysTypePnl.TabIndex = 98;
+            this.panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel11.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel11.Controls.Add(this.panel12);
+            this.panel11.Location = new System.Drawing.Point(602, 29);
+            this.panel11.Name = "panel11";
+            this.panel11.Padding = new System.Windows.Forms.Padding(1);
+            this.panel11.Size = new System.Drawing.Size(200, 180);
+            this.panel11.TabIndex = 139;
             // 
-            // exPanel1
+            // panel12
             // 
-            this.exPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exPanel1.BackColor = System.Drawing.Color.White;
-            this.exPanel1.BorderBottomWidth = 2;
-            this.exPanel1.BorderColor = System.Drawing.Color.Red;
-            this.exPanel1.BorderLeftWidth = 0;
-            this.exPanel1.BorderRightWidth = 0;
-            this.exPanel1.BorderTopWidth = 0;
-            this.exPanel1.Controls.Add(this.radioButton1);
-            this.exPanel1.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.exPanel1.Location = new System.Drawing.Point(365, 6);
-            this.exPanel1.Name = "exPanel1";
-            this.exPanel1.Size = new System.Drawing.Size(150, 30);
-            this.exPanel1.TabIndex = 128;
-            this.exPanel1.TabStop = false;
-            this.exPanel1.Tag = "4";
+            this.panel12.BackColor = System.Drawing.Color.White;
+            this.panel12.Controls.Add(this.CurrentWeekFollowupTxt);
+            this.panel12.Controls.Add(this.CurrentWeekFollowupLbl);
+            this.panel12.Controls.Add(this.FollowupLbl);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(1, 1);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(198, 178);
+            this.panel12.TabIndex = 135;
             // 
-            // radioButton1
+            // CurrentWeekFollowupTxt
             // 
-            this.radioButton1.BackColor = System.Drawing.Color.LavenderBlush;
-            this.radioButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton1.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(0, 0);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.radioButton1.Size = new System.Drawing.Size(150, 30);
-            this.radioButton1.TabIndex = 119;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Tag = "5";
-            this.radioButton1.Text = " 5 روز آتی";
-            this.radioButton1.UseVisualStyleBackColor = false;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.daysRdo_CheckedChanged);
+            this.CurrentWeekFollowupTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.CurrentWeekFollowupTxt.AutoSize = true;
+            this.CurrentWeekFollowupTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentWeekFollowupTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.CurrentWeekFollowupTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.CurrentWeekFollowupTxt.Location = new System.Drawing.Point(42, 76);
+            this.CurrentWeekFollowupTxt.Name = "CurrentWeekFollowupTxt";
+            this.CurrentWeekFollowupTxt.Size = new System.Drawing.Size(39, 37);
+            this.CurrentWeekFollowupTxt.TabIndex = 15;
+            this.CurrentWeekFollowupTxt.TabStop = true;
+            this.CurrentWeekFollowupTxt.Tag = "CurrentWeek";
+            this.CurrentWeekFollowupTxt.Text = "10";
+            this.CurrentWeekFollowupTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CurrentWeekFollowupTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkFollowup_LinkClicked);
             // 
-            // exPanel2
+            // CurrentWeekFollowupLbl
             // 
-            this.exPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exPanel2.BackColor = System.Drawing.Color.White;
-            this.exPanel2.BorderBottomWidth = 2;
-            this.exPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.exPanel2.BorderLeftWidth = 0;
-            this.exPanel2.BorderRightWidth = 0;
-            this.exPanel2.BorderTopWidth = 0;
-            this.exPanel2.Controls.Add(this.radioButton2);
-            this.exPanel2.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.exPanel2.Location = new System.Drawing.Point(694, 6);
-            this.exPanel2.Name = "exPanel2";
-            this.exPanel2.Size = new System.Drawing.Size(150, 30);
-            this.exPanel2.TabIndex = 125;
-            this.exPanel2.TabStop = false;
-            this.exPanel2.Tag = "4";
+            this.CurrentWeekFollowupLbl.AutoSize = true;
+            this.CurrentWeekFollowupLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.CurrentWeekFollowupLbl.Location = new System.Drawing.Point(82, 85);
+            this.CurrentWeekFollowupLbl.Name = "CurrentWeekFollowupLbl";
+            this.CurrentWeekFollowupLbl.Size = new System.Drawing.Size(72, 18);
+            this.CurrentWeekFollowupLbl.TabIndex = 16;
+            this.CurrentWeekFollowupLbl.Text = "هفته ی جاری";
             // 
-            // radioButton2
+            // FollowupLbl
             // 
-            this.radioButton2.BackColor = System.Drawing.Color.Honeydew;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton2.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(0, 0);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.radioButton2.Size = new System.Drawing.Size(150, 30);
-            this.radioButton2.TabIndex = 119;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Tag = "1";
-            this.radioButton2.Text = "تاریخ امروز";
-            this.radioButton2.UseVisualStyleBackColor = false;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.daysRdo_CheckedChanged);
+            this.FollowupLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.FollowupLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FollowupLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FollowupLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.FollowupLbl.Location = new System.Drawing.Point(0, 0);
+            this.FollowupLbl.Name = "FollowupLbl";
+            this.FollowupLbl.Size = new System.Drawing.Size(198, 35);
+            this.FollowupLbl.TabIndex = 7;
+            this.FollowupLbl.Text = "فالوآپ بیماران";
+            this.FollowupLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // exPanel3
+            // panel14
             // 
-            this.exPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exPanel3.BackColor = System.Drawing.Color.White;
-            this.exPanel3.BorderBottomWidth = 2;
-            this.exPanel3.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.exPanel3.BorderLeftWidth = 0;
-            this.exPanel3.BorderRightWidth = 0;
-            this.exPanel3.BorderTopWidth = 0;
-            this.exPanel3.Controls.Add(this.radioButton3);
-            this.exPanel3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.exPanel3.Location = new System.Drawing.Point(530, 6);
-            this.exPanel3.Name = "exPanel3";
-            this.exPanel3.Size = new System.Drawing.Size(150, 30);
-            this.exPanel3.TabIndex = 126;
-            this.exPanel3.TabStop = false;
-            this.exPanel3.Tag = "4";
+            this.panel14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel14.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel14.Controls.Add(this.panel15);
+            this.panel14.Location = new System.Drawing.Point(833, 29);
+            this.panel14.Name = "panel14";
+            this.panel14.Padding = new System.Windows.Forms.Padding(1);
+            this.panel14.Size = new System.Drawing.Size(200, 180);
+            this.panel14.TabIndex = 138;
             // 
-            // radioButton3
+            // panel15
             // 
-            this.radioButton3.BackColor = System.Drawing.Color.AliceBlue;
-            this.radioButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton3.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(0, 0);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.radioButton3.Size = new System.Drawing.Size(150, 30);
-            this.radioButton3.TabIndex = 119;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Tag = "3";
-            this.radioButton3.Text = "3 روز آتی ";
-            this.radioButton3.UseVisualStyleBackColor = false;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.daysRdo_CheckedChanged);
+            this.panel15.BackColor = System.Drawing.Color.White;
+            this.panel15.Controls.Add(this.NextWeekChequeLbl);
+            this.panel15.Controls.Add(this.CurrentWeekChequeLbl);
+            this.panel15.Controls.Add(this.CurrentWeekChequeTxt);
+            this.panel15.Controls.Add(this.NextWeekChequeTxt);
+            this.panel15.Controls.Add(this.ChequeLbl);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel15.Location = new System.Drawing.Point(1, 1);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(198, 178);
+            this.panel15.TabIndex = 135;
+            // 
+            // NextWeekChequeLbl
+            // 
+            this.NextWeekChequeLbl.AutoSize = true;
+            this.NextWeekChequeLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.NextWeekChequeLbl.Location = new System.Drawing.Point(77, 111);
+            this.NextWeekChequeLbl.Name = "NextWeekChequeLbl";
+            this.NextWeekChequeLbl.Size = new System.Drawing.Size(64, 18);
+            this.NextWeekChequeLbl.TabIndex = 15;
+            this.NextWeekChequeLbl.Text = "هفته ی آتی";
+            // 
+            // CurrentWeekChequeLbl
+            // 
+            this.CurrentWeekChequeLbl.AutoSize = true;
+            this.CurrentWeekChequeLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.CurrentWeekChequeLbl.Location = new System.Drawing.Point(77, 69);
+            this.CurrentWeekChequeLbl.Name = "CurrentWeekChequeLbl";
+            this.CurrentWeekChequeLbl.Size = new System.Drawing.Size(72, 18);
+            this.CurrentWeekChequeLbl.TabIndex = 14;
+            this.CurrentWeekChequeLbl.Text = "هفته ی جاری";
+            // 
+            // CurrentWeekChequeTxt
+            // 
+            this.CurrentWeekChequeTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.CurrentWeekChequeTxt.AutoSize = true;
+            this.CurrentWeekChequeTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentWeekChequeTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.CurrentWeekChequeTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.CurrentWeekChequeTxt.Location = new System.Drawing.Point(37, 60);
+            this.CurrentWeekChequeTxt.Name = "CurrentWeekChequeTxt";
+            this.CurrentWeekChequeTxt.Size = new System.Drawing.Size(39, 37);
+            this.CurrentWeekChequeTxt.TabIndex = 13;
+            this.CurrentWeekChequeTxt.TabStop = true;
+            this.CurrentWeekChequeTxt.Tag = "CurrentWeek";
+            this.CurrentWeekChequeTxt.Text = "10";
+            this.CurrentWeekChequeTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CurrentWeekChequeTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkCheque_LinkClicked);
+            // 
+            // NextWeekChequeTxt
+            // 
+            this.NextWeekChequeTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.NextWeekChequeTxt.AutoSize = true;
+            this.NextWeekChequeTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NextWeekChequeTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.NextWeekChequeTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.NextWeekChequeTxt.Location = new System.Drawing.Point(37, 102);
+            this.NextWeekChequeTxt.Name = "NextWeekChequeTxt";
+            this.NextWeekChequeTxt.Size = new System.Drawing.Size(39, 37);
+            this.NextWeekChequeTxt.TabIndex = 17;
+            this.NextWeekChequeTxt.TabStop = true;
+            this.NextWeekChequeTxt.Tag = "NextWeek";
+            this.NextWeekChequeTxt.Text = "10";
+            this.NextWeekChequeTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.NextWeekChequeTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkCheque_LinkClicked);
+            // 
+            // ChequeLbl
+            // 
+            this.ChequeLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.ChequeLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ChequeLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChequeLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ChequeLbl.Location = new System.Drawing.Point(0, 0);
+            this.ChequeLbl.Name = "ChequeLbl";
+            this.ChequeLbl.Size = new System.Drawing.Size(198, 35);
+            this.ChequeLbl.TabIndex = 7;
+            this.ChequeLbl.Text = "سررسید چک ها";
+            this.ChequeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel16
+            // 
+            this.panel16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel16.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel16.Controls.Add(this.panel17);
+            this.panel16.Controls.Add(this.PatientLbl);
+            this.panel16.Location = new System.Drawing.Point(1064, 29);
+            this.panel16.Name = "panel16";
+            this.panel16.Padding = new System.Windows.Forms.Padding(1);
+            this.panel16.Size = new System.Drawing.Size(200, 180);
+            this.panel16.TabIndex = 137;
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.White;
+            this.panel17.Controls.Add(this.AfterTomorrowPatientLbl);
+            this.panel17.Controls.Add(this.AfterTomorrowPatientTxt);
+            this.panel17.Controls.Add(this.TomorrowPatientLbl);
+            this.panel17.Controls.Add(this.TomorrowPatientTxt);
+            this.panel17.Controls.Add(this.TodayPatientLbl);
+            this.panel17.Controls.Add(this.TodayPatientTxt);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel17.Location = new System.Drawing.Point(1, 36);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(198, 143);
+            this.panel17.TabIndex = 135;
+            // 
+            // AfterTomorrowPatientLbl
+            // 
+            this.AfterTomorrowPatientLbl.AutoSize = true;
+            this.AfterTomorrowPatientLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.AfterTomorrowPatientLbl.Location = new System.Drawing.Point(100, 93);
+            this.AfterTomorrowPatientLbl.Name = "AfterTomorrowPatientLbl";
+            this.AfterTomorrowPatientLbl.Size = new System.Drawing.Size(48, 18);
+            this.AfterTomorrowPatientLbl.TabIndex = 10;
+            this.AfterTomorrowPatientLbl.Text = "پس فردا";
+            // 
+            // AfterTomorrowPatientTxt
+            // 
+            this.AfterTomorrowPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.AfterTomorrowPatientTxt.AutoSize = true;
+            this.AfterTomorrowPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AfterTomorrowPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.AfterTomorrowPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.AfterTomorrowPatientTxt.Location = new System.Drawing.Point(60, 82);
+            this.AfterTomorrowPatientTxt.Name = "AfterTomorrowPatientTxt";
+            this.AfterTomorrowPatientTxt.Size = new System.Drawing.Size(39, 37);
+            this.AfterTomorrowPatientTxt.TabIndex = 12;
+            this.AfterTomorrowPatientTxt.TabStop = true;
+            this.AfterTomorrowPatientTxt.Tag = "AfterTomorrow";
+            this.AfterTomorrowPatientTxt.Text = "10";
+            this.AfterTomorrowPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AfterTomorrowPatientTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkPatient_Click);
+            // 
+            // TomorrowPatientLbl
+            // 
+            this.TomorrowPatientLbl.AutoSize = true;
+            this.TomorrowPatientLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.TomorrowPatientLbl.Location = new System.Drawing.Point(100, 56);
+            this.TomorrowPatientLbl.Name = "TomorrowPatientLbl";
+            this.TomorrowPatientLbl.Size = new System.Drawing.Size(26, 18);
+            this.TomorrowPatientLbl.TabIndex = 9;
+            this.TomorrowPatientLbl.Text = "فردا";
+            // 
+            // TomorrowPatientTxt
+            // 
+            this.TomorrowPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.TomorrowPatientTxt.AutoSize = true;
+            this.TomorrowPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TomorrowPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.TomorrowPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.TomorrowPatientTxt.Location = new System.Drawing.Point(60, 44);
+            this.TomorrowPatientTxt.Name = "TomorrowPatientTxt";
+            this.TomorrowPatientTxt.Size = new System.Drawing.Size(39, 37);
+            this.TomorrowPatientTxt.TabIndex = 11;
+            this.TomorrowPatientTxt.TabStop = true;
+            this.TomorrowPatientTxt.Tag = "Tomorrow";
+            this.TomorrowPatientTxt.Text = "10";
+            this.TomorrowPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TomorrowPatientTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkPatient_Click);
+            // 
+            // TodayPatientLbl
+            // 
+            this.TodayPatientLbl.AutoSize = true;
+            this.TodayPatientLbl.ForeColor = System.Drawing.Color.DimGray;
+            this.TodayPatientLbl.Location = new System.Drawing.Point(100, 14);
+            this.TodayPatientLbl.Name = "TodayPatientLbl";
+            this.TodayPatientLbl.Size = new System.Drawing.Size(32, 18);
+            this.TodayPatientLbl.TabIndex = 8;
+            this.TodayPatientLbl.Text = "امروز";
+            // 
+            // TodayPatientTxt
+            // 
+            this.TodayPatientTxt.ActiveLinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.TodayPatientTxt.AutoSize = true;
+            this.TodayPatientTxt.Font = new System.Drawing.Font("Vazir FD", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TodayPatientTxt.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.TodayPatientTxt.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.TodayPatientTxt.Location = new System.Drawing.Point(60, 5);
+            this.TodayPatientTxt.Name = "TodayPatientTxt";
+            this.TodayPatientTxt.Size = new System.Drawing.Size(39, 37);
+            this.TodayPatientTxt.TabIndex = 7;
+            this.TodayPatientTxt.TabStop = true;
+            this.TodayPatientTxt.Tag = "Today";
+            this.TodayPatientTxt.Text = "10";
+            this.TodayPatientTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TodayPatientTxt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkPatient_Click);
+            // 
+            // PatientLbl
+            // 
+            this.PatientLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.PatientLbl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PatientLbl.Font = new System.Drawing.Font("Vazir", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PatientLbl.Location = new System.Drawing.Point(1, 1);
+            this.PatientLbl.Name = "PatientLbl";
+            this.PatientLbl.Size = new System.Drawing.Size(198, 35);
+            this.PatientLbl.TabIndex = 4;
+            this.PatientLbl.Text = "بیماران نوبت دهی شده";
+            this.PatientLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.panel7);
             this.panel8.Controls.Add(this.panel5);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 463);
+            this.panel8.Location = new System.Drawing.Point(3, 376);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1299, 379);
+            this.panel8.Size = new System.Drawing.Size(1299, 466);
             this.panel8.TabIndex = 2;
             // 
             // panel7
@@ -814,25 +1011,25 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 40);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1299, 339);
+            this.panel7.Size = new System.Drawing.Size(1299, 426);
             this.panel7.TabIndex = 2;
             // 
             // panel
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.BackColor = System.Drawing.Color.White;
+            this.panel.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel.Controls.Add(this.patientsFinancialChart);
             this.panel.Controls.Add(this.labelName);
             this.panel.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.panel.Location = new System.Drawing.Point(219, 28);
             this.panel.Name = "panel";
+            this.panel.Padding = new System.Windows.Forms.Padding(1);
             this.panel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.panel.Size = new System.Drawing.Size(500, 350);
             this.panel.TabIndex = 13;
             // 
             // patientsFinancialChart
             // 
-            this.patientsFinancialChart.BackColor = System.Drawing.Color.Transparent;
             chartArea1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.CursorX.Interval = 3D;
             chartArea1.Name = "ChartArea1";
@@ -844,22 +1041,22 @@
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
             this.patientsFinancialChart.Legends.Add(legend1);
-            this.patientsFinancialChart.Location = new System.Drawing.Point(0, 27);
+            this.patientsFinancialChart.Location = new System.Drawing.Point(1, 36);
             this.patientsFinancialChart.Name = "patientsFinancialChart";
             this.patientsFinancialChart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.patientsFinancialChart.Size = new System.Drawing.Size(500, 323);
+            this.patientsFinancialChart.Size = new System.Drawing.Size(498, 313);
             this.patientsFinancialChart.TabIndex = 41;
             this.patientsFinancialChart.Text = "chart1";
             // 
             // labelName
             // 
-            this.labelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(60)))), ((int)(((byte)(102)))));
+            this.labelName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.labelName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelName.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.labelName.Location = new System.Drawing.Point(0, 0);
+            this.labelName.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.ForeColor = System.Drawing.Color.Black;
+            this.labelName.Location = new System.Drawing.Point(1, 1);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(500, 27);
+            this.labelName.Size = new System.Drawing.Size(498, 35);
             this.labelName.TabIndex = 40;
             this.labelName.Text = "کارکرد مطب بر اسای تراکنشات مالی ";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -959,22 +1156,24 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.groupBox2.Controls.Add(this.YearLbl);
             this.groupBox2.Controls.Add(this.patientsServiceChart);
             this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(753, 28);
             this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(1);
             this.groupBox2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.groupBox2.Size = new System.Drawing.Size(500, 350);
             this.groupBox2.TabIndex = 19;
             // 
             // YearLbl
             // 
-            this.YearLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(60)))), ((int)(((byte)(102)))));
-            this.YearLbl.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.YearLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.YearLbl.Location = new System.Drawing.Point(81, 5);
+            this.YearLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.YearLbl.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YearLbl.ForeColor = System.Drawing.Color.Black;
+            this.YearLbl.Location = new System.Drawing.Point(90, 10);
             this.YearLbl.Name = "YearLbl";
             this.YearLbl.Size = new System.Drawing.Size(41, 17);
             this.YearLbl.TabIndex = 42;
@@ -983,7 +1182,6 @@
             // 
             // patientsServiceChart
             // 
-            this.patientsServiceChart.BackColor = System.Drawing.Color.Transparent;
             chartArea4.BackColor = System.Drawing.Color.Transparent;
             chartArea4.CursorX.Interval = 3D;
             chartArea4.Name = "ChartArea1";
@@ -995,22 +1193,22 @@
             legend4.IsTextAutoFit = false;
             legend4.Name = "Legend1";
             this.patientsServiceChart.Legends.Add(legend4);
-            this.patientsServiceChart.Location = new System.Drawing.Point(0, 27);
+            this.patientsServiceChart.Location = new System.Drawing.Point(1, 36);
             this.patientsServiceChart.Name = "patientsServiceChart";
             this.patientsServiceChart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.patientsServiceChart.Size = new System.Drawing.Size(500, 323);
+            this.patientsServiceChart.Size = new System.Drawing.Size(498, 313);
             this.patientsServiceChart.TabIndex = 9;
             this.patientsServiceChart.Text = "chart1";
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(60)))), ((int)(((byte)(102)))));
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Vazir", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(225)))), ((int)(((byte)(243)))));
-            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Font = new System.Drawing.Font("Vazir", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(1, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(500, 27);
+            this.label4.Size = new System.Drawing.Size(498, 35);
             this.label4.TabIndex = 41;
             this.label4.Text = "درآمد مطب بر اساس گروه خدمات";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1111,76 +1309,26 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.DataPropertyName = "Tamas";
-            this.dataGridViewImageColumn1.HeaderText = "تماس";
-            this.dataGridViewImageColumn1.Image = global::Dentistry.Properties.Resources.Play;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewImageColumn1.Visible = false;
-            this.dataGridViewImageColumn1.Width = 50;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "وضعیت";
-            this.dataGridViewImageColumn2.Image = global::Dentistry.Properties.Resources.Ok_On;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewImageColumn2.Width = 50;
-            // 
             // days5Rdo
             // 
-            this.days5Rdo.BackColor = System.Drawing.Color.LavenderBlush;
-            this.days5Rdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.days5Rdo.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.days5Rdo.Location = new System.Drawing.Point(0, 0);
             this.days5Rdo.Name = "days5Rdo";
-            this.days5Rdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.days5Rdo.Size = new System.Drawing.Size(200, 30);
-            this.days5Rdo.TabIndex = 119;
-            this.days5Rdo.TabStop = true;
-            this.days5Rdo.Tag = "5";
-            this.days5Rdo.Text = "تاریخ امروز تا  5 روز آتی";
-            this.days5Rdo.UseVisualStyleBackColor = false;
-            this.days5Rdo.CheckedChanged += new System.EventHandler(this.daysRdo_CheckedChanged);
+            this.days5Rdo.Size = new System.Drawing.Size(104, 24);
+            this.days5Rdo.TabIndex = 0;
             // 
             // todayRdo
             // 
-            this.todayRdo.BackColor = System.Drawing.Color.Honeydew;
-            this.todayRdo.Checked = true;
-            this.todayRdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.todayRdo.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.todayRdo.Location = new System.Drawing.Point(0, 0);
             this.todayRdo.Name = "todayRdo";
-            this.todayRdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.todayRdo.Size = new System.Drawing.Size(200, 30);
-            this.todayRdo.TabIndex = 119;
-            this.todayRdo.TabStop = true;
-            this.todayRdo.Tag = "1";
-            this.todayRdo.Text = "تاریخ امروز";
-            this.todayRdo.UseVisualStyleBackColor = false;
-            this.todayRdo.CheckedChanged += new System.EventHandler(this.daysRdo_CheckedChanged);
+            this.todayRdo.Size = new System.Drawing.Size(104, 24);
+            this.todayRdo.TabIndex = 0;
             // 
             // days3Rdo
             // 
-            this.days3Rdo.BackColor = System.Drawing.Color.AliceBlue;
-            this.days3Rdo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.days3Rdo.Font = new System.Drawing.Font("Vazir FD", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.days3Rdo.Location = new System.Drawing.Point(0, 0);
             this.days3Rdo.Name = "days3Rdo";
-            this.days3Rdo.Padding = new System.Windows.Forms.Padding(3, 3, 8, 3);
-            this.days3Rdo.Size = new System.Drawing.Size(200, 30);
-            this.days3Rdo.TabIndex = 119;
-            this.days3Rdo.TabStop = true;
-            this.days3Rdo.Tag = "3";
-            this.days3Rdo.Text = "تاریخ امروز تا  3 روز آتی";
-            this.days3Rdo.UseVisualStyleBackColor = false;
-            this.days3Rdo.CheckedChanged += new System.EventHandler(this.daysRdo_CheckedChanged);
+            this.days3Rdo.Size = new System.Drawing.Size(104, 24);
+            this.days3Rdo.TabIndex = 0;
             // 
             // panel9
             // 
@@ -1233,16 +1381,6 @@
             this.panel13.TabStop = false;
             this.panel13.Tag = "4";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(327, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 130;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
@@ -1257,7 +1395,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Tag = "0";
             this.Text = "نرم افزار دندانپزشکی  هما";
-            this.Load += new System.EventHandler(this.MDIForm_Load);
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.Shown += new System.EventHandler(this.Dashboard_Shown);
             this.pnlMDi.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1266,17 +1404,20 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgTodayPatients)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgTodayCheque)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.dysTypePnl.ResumeLayout(false);
-            this.exPanel1.ResumeLayout(false);
-            this.exPanel2.ResumeLayout(false);
-            this.exPanel3.ResumeLayout(false);
+            this.PatientPnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgPatient)).EndInit();
+            this.ChequePnl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgCheque)).EndInit();
+            this.FollowupPnl.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel.ResumeLayout(false);
@@ -1296,14 +1437,9 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMDi;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel groupBox1;
         private System.Windows.Forms.Label UserNameTxt;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage4;
         public System.Windows.Forms.Panel panel;
         private Dentistry.UserControls.PersianDateTimePicker toDateTxt;
         private Dentistry.UserControls.PersianDateTimePicker fromDateTxt;
@@ -1320,15 +1456,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataVisualization.Charting.Chart costsFinancialChart;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.DataGridView dgTodayPatients;
-        public System.Windows.Forms.DataGridView dgTodayCheque;
-        private System.Windows.Forms.ListView lvPatientFollowUp;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataVisualization.Charting.Chart patientsFinancialChart;
@@ -1336,7 +1463,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private UserControls.ExPanel panel9;
         private System.Windows.Forms.RadioButton days5Rdo;
@@ -1345,13 +1471,43 @@
         private UserControls.ExPanel panel13;
         private System.Windows.Forms.RadioButton days3Rdo;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel dysTypePnl;
-        private UserControls.ExPanel exPanel1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private UserControls.ExPanel exPanel2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private UserControls.ExPanel exPanel3;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label email;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BackupBtn;
+        private System.Windows.Forms.Button UserProfileBtn;
+        private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.LinkLabel CurrentWeekFollowupTxt;
+        private System.Windows.Forms.Label CurrentWeekFollowupLbl;
+        private System.Windows.Forms.Label FollowupLbl;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Label NextWeekChequeLbl;
+        private System.Windows.Forms.Label CurrentWeekChequeLbl;
+        private System.Windows.Forms.LinkLabel CurrentWeekChequeTxt;
+        private System.Windows.Forms.LinkLabel NextWeekChequeTxt;
+        private System.Windows.Forms.Label ChequeLbl;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Label AfterTomorrowPatientLbl;
+        private System.Windows.Forms.LinkLabel AfterTomorrowPatientTxt;
+        private System.Windows.Forms.Label TomorrowPatientLbl;
+        private System.Windows.Forms.LinkLabel TomorrowPatientTxt;
+        private System.Windows.Forms.Label TodayPatientLbl;
+        private System.Windows.Forms.LinkLabel TodayPatientTxt;
+        private System.Windows.Forms.Label PatientLbl;
+        private System.Windows.Forms.TableLayoutPanel FollowupPnl;
+        private System.Windows.Forms.ListView dgFollowup;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Label FollowupPanelTitleLbl;
+        private System.Windows.Forms.TableLayoutPanel ChequePnl;
+        public System.Windows.Forms.DataGridView dgCheque;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnX2PayId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnX2PatientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnChequeTypeTitle;
@@ -1359,11 +1515,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnX2ChequeNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnX2PatientAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumneX2Comment;
-        private System.Windows.Forms.Label email;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button BackupBtn;
-        private System.Windows.Forms.Button UserProfileBtn;
-        private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.Label ChequePanelTitleLbl;
+        private System.Windows.Forms.TableLayoutPanel PatientPnl;
+        public System.Windows.Forms.DataGridView dgPatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPatientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDoctorTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSolarDate;
@@ -1375,8 +1529,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPatientId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDoctorId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnServiceGroupId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnColor;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label PatientPanelTitleLbl;
     }
 }
 
